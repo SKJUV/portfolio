@@ -49,62 +49,6 @@ export const securitySkills: SecuritySkill[] = [
 
 export const projects: Project[] = [
   {
-    id: "sirh",
-    title: "SIRH SaaS (projetHMRS)",
-    subtitle: "Plateforme complète multi-tenant pour la zone CEMAC",
-    description:
-      "Système d'Information RH complet avec authentification JWT custom, RBAC granulaire par module:action, moteur de paie avec règles fiscales CNPS/IRPP, recrutement ATS, gestion des congés et audit trail. Architecture sécurisée de bout en bout avec isolation multi-tenant.",
-    badge: "Security-First Architecture",
-    badgeType: "security",
-    stack: ["Django 6", "DRF", "PostgreSQL 16", "Redis", "Celery", "Next.js", "Docker", "Sentry"],
-    securityPoints: [
-      "JWT custom claims",
-      "RBAC module:action",
-      "Multi-tenancy TenantMiddleware",
-      "HSTS preload + X-Frame DENY",
-      "Docker multi-stage non-root",
-      "Audit trail IP",
-      "Soft-delete OHADA/CNPS",
-      "Token rotation + blacklist",
-    ],
-    githubUrl: "https://github.com/SKJUV/projetHMRS",
-  },
-  {
-    id: "solaire",
-    title: "Solaire CM Connect ☀️ (sollar-CM)",
-    subtitle: "Plateforme solaire avec marketplace pour le Cameroun",
-    description:
-      "Application de calcul de besoins énergétiques solaires, marketplace d'équipements et annuaire de fournisseurs/techniciens certifiés. Sécurité native via Supabase avec Row Level Security sur toutes les tables.",
-    badge: "Row Level Security",
-    badgeType: "security",
-    stack: ["React", "Vite", "Tailwind CSS", "shadcn/ui", "Supabase", "PostgreSQL"],
-    securityPoints: [
-      "RLS sur toutes les tables",
-      "Auth Supabase",
-      "Politiques auth.uid()",
-      "Schema SQL contraintes",
-    ],
-    githubUrl: "https://github.com/SKJUV/sollar-CM",
-  },
-  {
-    id: "prouy1",
-    title: "ProUY1 (proUY1)",
-    subtitle: "Système de gestion universitaire Yaoundé 1",
-    description:
-      "Application de gestion des diplômes, attestations et PV pour l'Université de Yaoundé 1. Génération PDF en masse, gestion des étudiants, filtrage avancé et panneau d'administration avec contrôle d'accès par rôle.",
-    badge: "Système Universitaire",
-    badgeType: "university",
-    stack: ["PHP", "MySQL/MariaDB", "FPDF/FPDI", "Bootstrap", "jQuery"],
-    securityPoints: [
-      "Auth sessions + RBAC",
-      "BCrypt",
-      "htmlspecialchars XSS",
-      "PDO prepared statements",
-      "Contrôle accès admin",
-    ],
-    githubUrl: "https://github.com/SKJUV/proUY1",
-  },
-  {
     id: "educonverse",
     title: "EduConverse",
     subtitle: "Plateforme éducative multilingue avec IA",
@@ -139,16 +83,52 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/SKJUV/EduAfrique",
   },
   {
-    id: "tpjava",
-    title: "TP Java ICT207",
-    subtitle: "Travaux pratiques universitaires L2",
+    id: "hrms",
+    title: "HRMS",
+    subtitle: "Système de gestion des ressources humaines en Java",
     description:
-      "Travaux pratiques de programmation Java réalisés dans le cadre du module ICT207 (Programmation en Java) en Licence 2. Fondamentaux de la programmation orientée objet.",
+      "Application Java de gestion des ressources humaines permettant le suivi des employés, la gestion des départements et l'administration du personnel.",
+    badge: "Gestion RH",
+    badgeType: "university",
+    stack: ["Java"],
+    securityPoints: [],
+    githubUrl: "https://github.com/SKJUV/HRMS",
+  },
+  {
+    id: "botwha",
+    title: "Bot WhatsApp",
+    subtitle: "Bot d'automatisation WhatsApp en Python",
+    description:
+      "Bot WhatsApp développé en Python pour automatiser l'envoi de messages et les interactions sur la plateforme de messagerie.",
+    badge: "Automatisation",
+    badgeType: "academic",
+    stack: ["Python"],
+    securityPoints: [],
+    githubUrl: "https://github.com/SKJUV/botwha",
+  },
+  {
+    id: "portfolio-printcf",
+    title: "Portfolio Print CF",
+    subtitle: "Présentation du projet Print CF",
+    description:
+      "Site portfolio de présentation du projet Print CF, réalisé en HTML et CSS pour mettre en valeur le design et l'identité visuelle du projet.",
+    badge: "Web Design",
+    badgeType: "academic",
+    stack: ["HTML", "CSS"],
+    securityPoints: [],
+    githubUrl: "https://github.com/SKJUV/portfolio-printcf",
+  },
+  {
+    id: "projet-console",
+    title: "Projet Console Java",
+    subtitle: "Application console en Java",
+    description:
+      "Projet Java en mode console réalisé dans un cadre académique, mettant en pratique les fondamentaux de la programmation orientée objet.",
     badge: "Académique",
     badgeType: "academic",
     stack: ["Java"],
     securityPoints: [],
-    githubUrl: "https://github.com/SKJUV/TP_0_ICT207_SINENG_24H2194",
+    githubUrl: "https://github.com/SKJUV/projet-console",
   },
 ];
 
