@@ -38,7 +38,7 @@ export default function Footer() {
         </div>
 
         <div className="space-y-1 text-sm text-muted-foreground">
-          <p>© 2026 SINENG KENGNI Juvénal — Conçu avec 🔐 et ❤️ pour la sécurité</p>
+          <p>© 2026 SINENG KENGNI Juvénal</p>
           <p className="font-mono text-xs opacity-60">github.com/SKJUV</p>
         </div>
       </div>
