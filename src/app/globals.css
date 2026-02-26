@@ -22,6 +22,8 @@
   --radius: 0.75rem;
   --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", Consolas, "Courier New", monospace;
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.3);
 }
 
 .dark {
@@ -41,6 +43,8 @@
   --destructive-foreground: 0 0% 100%;
   --border: 240 10% 15%;
   --ring: 152 100% 50%;
+  --glass-bg: rgba(15, 15, 25, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.08);
 }
 
 * {
@@ -55,6 +59,81 @@ body {
 
 .font-mono, code, pre {
   font-family: var(--font-mono);
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.dark .glass-card {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+  border-color: hsl(var(--primary) / 0.4);
+}
+
+.dark .glass-card:hover {
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Shell prompt styling */
+.shell-prompt::before {
+  content: "❯ ";
+  color: hsl(var(--primary));
+  font-weight: bold;
+}
+
+/* Subtle glow effect */
+.glow-primary {
+  box-shadow: 0 0 20px hsl(var(--primary) / 0.15);
+}
+
+.dark .glow-primary {
+  box-shadow: 0 0 30px hsl(var(--primary) / 0.2);
+}
+
+/* Background mesh gradient */
+.bg-mesh {
+  background-image:
+    radial-gradient(at 20% 20%, hsl(var(--primary) / 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 80%, hsl(var(--accent) / 0.08) 0px, transparent 50%);
+}
+
+.dark .bg-mesh {
+  background-image:
+    radial-gradient(at 20% 20%, hsl(var(--primary) / 0.12) 0px, transparent 50%),
+    radial-gradient(at 80% 80%, hsl(var(--accent) / 0.1) 0px, transparent 50%);
+}
+
+/* Typing cursor animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
 }
 
 @layer utilities {
