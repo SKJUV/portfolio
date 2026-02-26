@@ -22,14 +22,16 @@ export default function Footer() {
             GitHub
           </a>
           <a
-            href="mailto:votre-email@example.com"
+            href="mailto:sinengjuvenal@gmail.com"
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:opacity-90 transition-all glow-primary"
           >
             <Mail className="h-4 w-4" />
             Email
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/juvenal-sineng-kengni"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 glass rounded-xl text-sm font-medium hover:bg-primary/10 transition-all"
           >
             <Linkedin className="h-4 w-4" />
