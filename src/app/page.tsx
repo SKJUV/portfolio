@@ -5,6 +5,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import ProfileSection from "@/components/ProfileSection";
 import Footer from "@/components/Footer";
+import AIChatBot from "@/components/AIChatBot";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <SkillsSection />
       <ProfileSection />
       <Footer />
+      <AIChatBot />
     </main>
   );
 }
