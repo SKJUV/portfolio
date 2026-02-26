@@ -21,25 +21,30 @@ export default function Terminal() {
   }, [visibleLines]);
 
   return (
-    <div className="bg-card border border-border rounded-lg overflow-hidden font-mono text-sm">
-      {/* Window dots */}
-      <div className="flex items-center gap-2 px-4 py-2 bg-secondary/50 border-b border-border">
-        <span className="w-3 h-3 rounded-full bg-destructive" />
-        <span className="w-3 h-3 rounded-full bg-yellow-400" />
-        <span className="w-3 h-3 rounded-full bg-primary" />
-        <span className="ml-2 text-xs text-muted-foreground">terminal — bash</span>
+    <div className="glass-card rounded-2xl overflow-hidden font-mono text-sm glow-primary">
+      {/* Window title bar */}
+      <div className="flex items-center gap-2 px-4 py-2.5 bg-black/5 dark:bg-white/5 border-b border-white/10">
+        <span className="w-3 h-3 rounded-full bg-destructive/80" />
+        <span className="w-3 h-3 rounded-full bg-yellow-400/80" />
+        <span className="w-3 h-3 rounded-full bg-primary/80" />
+        <span className="ml-2 text-xs text-muted-foreground">skjuv@portfolio — bash</span>
       </div>
 
       {/* Terminal body */}
-      <div className="p-4 space-y-2 min-h-[200px]">
+      <div className="p-4 space-y-2.5 min-h-[200px] bg-black/[0.02] dark:bg-black/20">
         {terminalLines.slice(0, visibleLines).map((line, i) => (
-          <div key={i}>
-            <p className="text-primary">{line.command}</p>
-            <p className="text-foreground pl-2">{line.output}</p>
+          <div key={i} className="space-y-0.5">
+            <p className="text-primary font-medium">{line.command}</p>
+            <p className="text-foreground/80 pl-4 text-xs sm:text-sm">{line.output}</p>
           </div>
         ))}
         {visibleLines < terminalLines.length && (
-          <span className="inline-block w-2 h-4 bg-primary animate-pulse" />
+          <span className="inline-block w-2 h-4 bg-primary cursor-blink" />
+        )}
+        {visibleLines >= terminalLines.length && (
+          <p className="text-primary">
+            $ <span className="inline-block w-2 h-4 bg-primary cursor-blink align-middle" />
+          </p>
         )}
       </div>
     </div>
