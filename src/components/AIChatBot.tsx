@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Bot } from "lucide-react";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { MessageCircle, X, Send, Bot, Sparkles } from "lucide-react";
 import type { PortfolioData } from "@/lib/admin-types";
 import type { Project, SecuritySkill, SkillCategory, ProfileCategory } from "@/lib/types";
 
@@ -18,11 +18,13 @@ interface ChatData {
   terminalLines: { command: string; output: string }[];
 }
 
-function generateResponse(question: string, data: ChatData, fallbackMessage: string, customResponses: { keywords: string[]; response: string; enabled: boolean }[]): string {
+// ============================================
+// Fallback local (utilisé si Gemini non dispo)
+// ============================================
+function generateLocalResponse(question: string, data: ChatData, fallbackMessage: string, customResponses: { keywords: string[]; response: string; enabled: boolean }[]): string {
   const { projects, skillCategories, securitySkills, profileCategories, terminalLines } = data;
   const q = question.toLowerCase().trim();
 
-  // Check custom responses first (admin-defined)
   for (const cr of customResponses) {
     if (!cr.enabled) continue;
     if (cr.keywords.some((kw) => q.includes(kw.toLowerCase()))) {
@@ -30,163 +32,61 @@ function generateResponse(question: string, data: ChatData, fallbackMessage: str
     }
   }
 
-  // Refuse off-topic questions
-  const offTopicPatterns = [
-    /\b(météo|weather|meteo)\b/,
-    /\b(politique|politic)\b/,
-    /\b(cuisine|recipe|recette)\b/,
-    /\b(sport|football|basket)\b/,
-    /\b(musique|music)\b/,
-    /\b(film|movie|série|series)\b/,
-    /\b(jeu|game|gaming)\b/,
-  ];
-  if (offTopicPatterns.some((p) => p.test(q))) {
-    return fallbackMessage;
-  }
+  const offTopicPatterns = [/\b(météo|weather|meteo)\b/, /\b(politique|politic)\b/, /\b(cuisine|recipe|recette)\b/, /\b(sport|football|basket)\b/, /\b(musique|music)\b/, /\b(film|movie|série|series)\b/, /\b(jeu|game|gaming)\b/];
+  if (offTopicPatterns.some((p) => p.test(q))) return fallbackMessage;
 
-  // Greeting
   if (/^(salut|hello|hi|hey|bonjour|coucou|yo|bonsoir)/i.test(q)) {
     return "Bonjour ! 👋 Je suis l'assistant IA de Juvénal SINENG KENGNI. Posez-moi des questions sur ses compétences, projets, ou parcours !";
   }
 
-  // Who is he / presentation
-  if (
-    /qui (es[t\-]|est)/.test(q) ||
-    /présent/.test(q) ||
-    /c'est qui/.test(q) ||
-    /who (is|are)/.test(q) ||
-    /tell me about/.test(q) ||
-    /parle.*(moi|nous).*de (toi|lui|juvenal|juvénal)/.test(q)
-  ) {
-    return "Juvénal SINENG KENGNI (SKJUV) est un développeur Full-Stack passionné par la cybersécurité 🛡️. Il développe des systèmes robustes et sécurisés pour l'Afrique francophone. Ses spécialités : JWT, RBAC, OWASP Top 10, Docker Hardening, et bien plus !";
+  if (/qui (es[t\-]|est)/.test(q) || /présent/.test(q) || /c'est qui/.test(q) || /who (is|are)/.test(q)) {
+    return "Juvénal SINENG KENGNI (SKJUV) est un développeur Full-Stack passionné par la cybersécurité 🛡️. Ses spécialités : JWT, RBAC, OWASP Top 10, Docker Hardening.";
   }
 
-  // Contact
-  if (/contact|email|mail|linkedin|joindre|écrire/.test(q)) {
-    return "📬 Vous pouvez contacter Juvénal par :\n• Email : sinengjuvenal@gmail.com\n• GitHub : github.com/SKJUV\n• LinkedIn : linkedin.com/in/juvenal-sineng-kengni";
+  if (/contact|email|mail|linkedin|joindre/.test(q)) {
+    return "📬 Contact :\n• Email : sinengjuvenal@gmail.com\n• GitHub : github.com/SKJUV\n• LinkedIn : linkedin.com/in/juvenal-sineng-kengni";
   }
 
-  // Projects
-  if (/projet|project|réalis|portfolio|travaux|works/.test(q)) {
-    const projectList = projects
-      .map((p) => `• **${p.title}** — ${p.subtitle}`)
-      .join("\n");
-    return `Voici les projets de Juvénal :\n${projectList}\n\nVous pouvez me demander des détails sur un projet spécifique !`;
+  if (/projet|project|réalis|travaux|works/.test(q)) {
+    return `Projets de Juvénal :\n${projects.map((p) => `• **${p.title}** — ${p.subtitle}`).join("\n")}\n\nDemandez des détails sur un projet !`;
   }
 
-  // Specific project lookup
   for (const project of projects) {
-    if (
-      q.includes(project.title.toLowerCase()) ||
-      q.includes(project.id.toLowerCase())
-    ) {
-      const stackStr = project.stack.join(", ");
-      const secStr =
-        project.securityPoints.length > 0
-          ? `\nSécurité : ${project.securityPoints.join(", ")}`
-          : "";
-      return `**${project.title}** — ${project.subtitle}\n${project.description}\n\nStack : ${stackStr}${secStr}\n🔗 ${project.githubUrl}`;
+    if (q.includes(project.title.toLowerCase()) || q.includes(project.id.toLowerCase())) {
+      return `**${project.title}** — ${project.subtitle}\n${project.description}\nStack : ${project.stack.join(", ")}\n🔗 ${project.githubUrl}`;
     }
   }
 
-  // Security skills
   if (/sécurité|security|sécu|cyber|owasp|hack|pentest/.test(q)) {
-    const skills = securitySkills
-      .map((s) => `${s.icon} **${s.title}** : ${s.description}`)
-      .join("\n");
-    return `La sécurité est la passion #1 de Juvénal ! Voici ses domaines :\n\n${skills}`;
+    return `Sécurité (passion #1) :\n\n${securitySkills.map((s) => `${s.icon} **${s.title}** : ${s.description}`).join("\n")}`;
   }
 
-  // Skills / competences
-  if (/compétence|skill|technolog|stack|lang|maîtrise|connai/.test(q)) {
-    const cats = skillCategories
-      .map((c) => `${c.icon} **${c.title}** : ${c.items.slice(0, 6).join(", ")}...`)
-      .join("\n");
-    return `Voici les compétences de Juvénal :\n\n${cats}`;
+  if (/compétence|skill|technolog|stack|lang|maîtrise/.test(q)) {
+    return `Compétences :\n\n${skillCategories.map((c) => `${c.icon} **${c.title}** : ${c.items.slice(0, 6).join(", ")}...`).join("\n")}`;
   }
 
-  // Specific skill category lookup
-  for (const cat of skillCategories) {
-    const catTitle = cat.title.toLowerCase();
-    if (q.includes(catTitle) || cat.items.some((i) => q.includes(i.toLowerCase()))) {
-      return `${cat.icon} **${cat.title}**\n${cat.items.join(", ")}`;
-    }
-  }
-
-  // Backend
-  if (/backend|serveur|server|django|python|java|php|node/.test(q)) {
-    const backend = skillCategories.find((c) => c.title === "Backend");
-    return backend
-      ? `⚙️ Compétences Backend de Juvénal :\n${backend.items.join(", ")}`
-      : "Juvénal maîtrise plusieurs technologies backend dont Python, Django, Java, PHP, Node.js.";
-  }
-
-  // Frontend
-  if (/frontend|front|react|next|tailwind|ui|interface/.test(q)) {
-    const frontend = skillCategories.find((c) => c.title === "Frontend");
-    return frontend
-      ? `🎨 Compétences Frontend de Juvénal :\n${frontend.items.join(", ")}`
-      : "Juvénal travaille avec React, Next.js, TypeScript, Tailwind CSS et shadcn/ui.";
-  }
-
-  // DevOps
-  if (/devops|docker|infra|deploy|déploiement|ci|cd/.test(q)) {
-    const devops = skillCategories.find((c) => c.title.includes("DevOps"));
-    return devops
-      ? `🐳 Compétences DevOps de Juvénal :\n${devops.items.join(", ")}`
-      : "Juvénal utilise Docker, Docker Compose, Gunicorn, Sentry et des builds multi-stage.";
-  }
-
-  // Linux / systems
   if (/linux|manjaro|zorin|système|system|terminal|os/.test(q)) {
-    const linux = profileCategories.find((c) => c.title.includes("Linux"));
-    const win = profileCategories.find((c) => c.title.includes("Windows"));
-    const points = [
-      ...(linux?.points ?? []),
-      ...(win?.points ?? []),
-    ];
-    return `🐧 Systèmes utilisés par Juvénal :\n${points.map((p) => `• ${p}`).join("\n")}`;
+    const points = [...(profileCategories.find((c) => c.title.includes("Linux"))?.points ?? []), ...(profileCategories.find((c) => c.title.includes("Windows"))?.points ?? [])];
+    return `🐧 Systèmes :\n${points.map((p) => `• ${p}`).join("\n")}`;
   }
 
-  // AI & Data
-  if (/\b(ia|ai|intelligence|data|machine|ml|kaggle|genkit)\b/.test(q)) {
-    const ai = skillCategories.find((c) => c.title.includes("IA"));
-    return ai
-      ? `🤖 Compétences IA & Data de Juvénal :\n${ai.items.join(", ")}`
-      : "Juvénal utilise Google Genkit AI, Firebase AI, Kaggle et travaille sur des pipelines ML.";
-  }
-
-  // Tools
-  if (/outil|tool|git|vscode|vs code|prisma/.test(q)) {
-    const tools = profileCategories.find((c) => c.title.includes("Outils"));
-    return tools
-      ? `🛠️ Outils de développement de Juvénal :\n${tools.points.map((p) => `• ${p}`).join("\n")}`
-      : "Juvénal utilise Git CLI, VS Code, GitHub Education Pack et Prisma ORM.";
-  }
-
-  // Level / experience
-  if (/niveau|level|expérience|experience|parcours|formation/.test(q)) {
+  if (/niveau|level|expérience|experience|parcours/.test(q)) {
     const levelLine = terminalLines.find((l) => l.command.includes("LEVEL"));
-    return `📈 ${levelLine?.output ?? "Intermédiaire en progression rapide"}\nJuvénal est un constructeur de compétences passionné qui progresse constamment dans la cybersécurité et le développement Full-Stack.`;
+    return `📈 ${levelLine?.output ?? "Intermédiaire en progression rapide"}`;
   }
 
-  // GitHub
-  if (/github|repo|code source/.test(q)) {
-    return "🔗 Le profil GitHub de Juvénal : https://github.com/SKJUV\nVous y trouverez tous ses projets open-source !";
-  }
+  if (/github|repo|code source/.test(q)) return "🔗 GitHub de Juvénal : https://github.com/SKJUV";
 
-  // What can you do
   if (/que (peux|sais|peut)|what can you|aide|help/.test(q)) {
-    return "Je peux vous renseigner sur :\n• 👤 Qui est Juvénal SINENG KENGNI\n• 🛡️ Ses compétences en cybersécurité\n• 💻 Ses projets (EduConverse, EduAfrique, HRMS...)\n• ⚙️ Son stack technique\n• 📬 Comment le contacter\n• 🐧 Ses systèmes et outils\n\nPosez-moi une question !";
+    return "Je peux vous renseigner sur :\n• 👤 Qui est Juvénal\n• 🛡️ Cybersécurité\n• 💻 Projets\n• ⚙️ Stack technique\n• 📬 Contact\n\nPosez votre question !";
   }
 
-  // Default fallback
   return fallbackMessage;
 }
 
 export default function AIChatBot({ data }: { data: PortfolioData }) {
   const settings = data.chatBotSettings;
-  
+
   const chatData: ChatData = {
     projects: data.projects,
     skillCategories: data.skillCategories,
@@ -204,6 +104,7 @@ export default function AIChatBot({ data }: { data: PortfolioData }) {
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [useGemini, setUseGemini] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -212,37 +113,69 @@ export default function AIChatBot({ data }: { data: PortfolioData }) {
     return null;
   }
 
+  /* eslint-disable react-hooks/rules-of-hooks */
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   useEffect(() => {
-    if (isOpen) {
-      inputRef.current?.focus();
-    }
+    if (isOpen) inputRef.current?.focus();
   }, [isOpen]);
 
-  const handleSend = () => {
+  const handleSend = useCallback(async () => {
     const trimmed = input.trim();
-    if (!trimmed) return;
+    if (!trimmed || isTyping) return;
 
     const userMessage: Message = { role: "user", content: trimmed };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setIsTyping(true);
 
-    // Simulate a small delay for natural feel
-    setTimeout(() => {
-      const response = generateResponse(
-        trimmed,
-        chatData,
-        settings?.fallbackMessage || "Je suis spécialisé uniquement sur Juvénal SINENG KENGNI.",
-        settings?.customResponses || []
-      );
-      setMessages((prev) => [...prev, { role: "assistant", content: response }]);
-      setIsTyping(false);
-    }, 500);
-  };
+    // Tenter d'abord avec Gemini
+    if (useGemini) {
+      try {
+        // Envoyer l'historique (sans le welcome message) pour le contexte conversationnel
+        const history = messages.slice(1).concat(userMessage);
+
+        const res = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: trimmed,
+            history: history.slice(-10), // Limiter à 10 derniers messages
+          }),
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.response) {
+          setMessages((prev) => [...prev, { role: "assistant", content: data.response }]);
+          setIsTyping(false);
+          return;
+        }
+
+        // Si Gemini signale un fallback, désactiver pour cette session
+        if (data.fallback) {
+          console.warn("Gemini non disponible, basculement sur le mode local");
+          setUseGemini(false);
+        }
+      } catch {
+        console.warn("Erreur réseau Gemini, basculement sur le mode local");
+        setUseGemini(false);
+      }
+    }
+
+    // Fallback local (pattern matching)
+    const response = generateLocalResponse(
+      trimmed,
+      chatData,
+      settings?.fallbackMessage || "Je suis spécialisé uniquement sur Juvénal SINENG KENGNI.",
+      settings?.customResponses || []
+    );
+    setMessages((prev) => [...prev, { role: "assistant", content: response }]);
+    setIsTyping(false);
+  }, [input, isTyping, useGemini, messages, chatData, settings]);
+  /* eslint-enable react-hooks/rules-of-hooks */
 
   return (
     <>
@@ -266,8 +199,13 @@ export default function AIChatBot({ data }: { data: PortfolioData }) {
               <Bot className="h-5 w-5" />
             </div>
             <div className="flex-1">
-              <p className="text-sm font-semibold">{settings?.botName || "Assistant IA"}</p>
-              <p className="text-xs text-muted-foreground">{settings?.botDescription || "Tout savoir sur Juvénal"}</p>
+              <p className="text-sm font-semibold flex items-center gap-1.5">
+                {settings?.botName || "Assistant IA"}
+                {useGemini && <Sparkles className="h-3.5 w-3.5 text-primary" />}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                {useGemini ? "Propulsé par Gemini AI" : settings?.botDescription || "Tout savoir sur Juvénal"}
+              </p>
             </div>
             <button
               onClick={() => setIsOpen(false)}
@@ -329,7 +267,7 @@ export default function AIChatBot({ data }: { data: PortfolioData }) {
               />
               <button
                 type="submit"
-                disabled={!input.trim()}
+                disabled={!input.trim() || isTyping}
                 className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground transition-all hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
                 aria-label="Envoyer"
               >

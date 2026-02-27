@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { writeFile, mkdir } from "fs/promises";
 import { join } from "path";
 import { existsSync } from "fs";
+import { supabaseAdmin, isSupabaseConfigured } from "@/lib/supabase";
 
 export async function POST(request: NextRequest) {
   try {
@@ -30,12 +31,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create uploads directory if needed
-    const uploadsDir = join(process.cwd(), "public", "uploads");
-    if (!existsSync(uploadsDir)) {
-      await mkdir(uploadsDir, { recursive: true });
-    }
-
     // Generate unique filename
     const ext = file.name.split(".").pop() || "png";
     const safeName = file.name
@@ -43,14 +38,40 @@ export async function POST(request: NextRequest) {
       .replace(/[^a-zA-Z0-9-_]/g, "-")
       .substring(0, 50);
     const uniqueName = `${safeName}-${Date.now()}.${ext}`;
-    const filePath = join(uploadsDir, uniqueName);
 
-    // Write file
+    // === Supabase Storage (production / Vercel) ===
+    if (isSupabaseConfigured() && supabaseAdmin) {
+      const bytes = await file.arrayBuffer();
+      const { error } = await supabaseAdmin.storage
+        .from("uploads")
+        .upload(uniqueName, Buffer.from(bytes), {
+          contentType: file.type,
+          upsert: false,
+        });
+
+      if (error) {
+        console.error("Supabase upload error:", error);
+        return NextResponse.json({ error: "Erreur lors de l'upload" }, { status: 500 });
+      }
+
+      const { data: publicUrl } = supabaseAdmin.storage
+        .from("uploads")
+        .getPublicUrl(uniqueName);
+
+      return NextResponse.json({ url: publicUrl.publicUrl, filename: uniqueName });
+    }
+
+    // === Local filesystem (développement) ===
+    const uploadsDir = join(process.cwd(), "public", "uploads");
+    if (!existsSync(uploadsDir)) {
+      await mkdir(uploadsDir, { recursive: true });
+    }
+
+    const filePath = join(uploadsDir, uniqueName);
     const bytes = await file.arrayBuffer();
     await writeFile(filePath, Buffer.from(bytes));
 
     const url = `/uploads/${uniqueName}`;
-
     return NextResponse.json({ url, filename: uniqueName });
   } catch (error) {
     console.error("Upload error:", error);
