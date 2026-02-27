@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { getPortfolioData } from "@/lib/data-manager";
+import githubReposData from "@/data/github-repos.json";
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
@@ -8,57 +9,27 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-2.0-flash-lite"];
 
 // ============================================
-// Cache des repos GitHub (refresh toutes les heures)
+// Repos GitHub chargés depuis le JSON local enrichi
 // ============================================
 interface GitHubRepo {
   name: string;
   description: string | null;
   language: string | null;
-  html_url: string;
-  topics: string[];
-  stargazers_count: number;
-  forks_count: number;
-  updated_at: string;
+  languages: Record<string, number>;
+  url: string;
   homepage: string | null;
+  topics: string[];
+  stars: number;
+  forks: number;
+  created_at: string;
+  updated_at: string;
+  default_branch: string;
+  is_fork: boolean;
+  readme: string | null;
 }
 
-let cachedRepos: GitHubRepo[] = [];
-let reposCacheTime = 0;
-const CACHE_DURATION = 60 * 60 * 1000; // 1 heure
-
-async function fetchGitHubRepos(githubUrl: string): Promise<GitHubRepo[]> {
-  // Vérifier le cache
-  if (cachedRepos.length > 0 && Date.now() - reposCacheTime < CACHE_DURATION) {
-    return cachedRepos;
-  }
-
-  try {
-    // Extraire le username depuis l'URL GitHub
-    const username = githubUrl.replace(/\/$/, "").split("/").pop();
-    if (!username) return cachedRepos;
-
-    const res = await fetch(
-      `https://api.github.com/users/${username}/repos?sort=updated&per_page=30&type=public`,
-      {
-        headers: { Accept: "application/vnd.github.v3+json" },
-        next: { revalidate: 3600 },
-      }
-    );
-
-    if (!res.ok) {
-      console.warn(`[chat] GitHub API ${res.status}: ${res.statusText}`);
-      return cachedRepos;
-    }
-
-    const repos: GitHubRepo[] = await res.json();
-    cachedRepos = repos;
-    reposCacheTime = Date.now();
-    console.info(`[chat] ${repos.length} repos GitHub chargés pour le contexte`);
-    return repos;
-  } catch (err) {
-    console.warn("[chat] Erreur fetch GitHub repos:", err);
-    return cachedRepos;
-  }
+function getGitHubRepos(): GitHubRepo[] {
+  return githubReposData as unknown as GitHubRepo[];
 }
 
 function formatGitHubRepos(repos: GitHubRepo[]): string {
@@ -66,24 +37,36 @@ function formatGitHubRepos(repos: GitHubRepo[]): string {
 
   const repoLines = repos
     .map((r) => {
-      const parts = [`- **${r.name}**`];
-      if (r.description) parts.push(`: ${r.description}`);
-      if (r.language) parts.push(` [${r.language}]`);
-      if (r.topics.length > 0) parts.push(` Tags: ${r.topics.join(", ")}`);
-      if (r.stargazers_count > 0) parts.push(` ⭐${r.stargazers_count}`);
-      if (r.homepage) parts.push(` | Demo: ${r.homepage}`);
-      parts.push(` | ${r.html_url}`);
-      return parts.join("");
+      const parts = [`### ${r.name}`];
+      if (r.description) parts.push(`Description: ${r.description}`);
+      if (r.language) parts.push(`Langage principal: ${r.language}`);
+      const langs = Object.keys(r.languages);
+      if (langs.length > 1) parts.push(`Stack: ${langs.join(", ")}`);
+      if (r.topics.length > 0) parts.push(`Tags: ${r.topics.join(", ")}`);
+      if (r.stars > 0) parts.push(`⭐ ${r.stars} stars`);
+      if (r.forks > 0) parts.push(`🍴 ${r.forks} forks`);
+      if (r.homepage) parts.push(`Demo: ${r.homepage}`);
+      parts.push(`URL: ${r.url}`);
+      if (r.readme && r.readme.length > 20 && !r.readme.includes("\u0000")) {
+        // Inclure un extrait du README nettoyé (max 500 chars)
+        const cleanReadme = r.readme.replace(/[#*`\-=|]/g, "").replace(/\n{3,}/g, "\n\n").trim();
+        if (cleanReadme.length > 20) {
+          parts.push(`README (extrait): ${cleanReadme.substring(0, 500)}${cleanReadme.length > 500 ? "..." : ""}`);
+        }
+      }
+      return parts.join("\n");
     })
-    .join("\n");
+    .join("\n\n");
 
-  return `\n\n=== REPOS GITHUB PUBLICS (${repos.length}) ===\n${repoLines}`;
+  return `\n\n=== REPOS GITHUB PUBLICS (${repos.length}) ===
+Voici TOUS les repos publics de Juvenal sur GitHub. Utilise ces informations pour répondre aux questions sur ses projets, technologies et activité GitHub.\n\n${repoLines}`;
 }
 
 /**
  * Construit le contexte du portfolio pour le system prompt de Gemini
  */
-function buildPortfolioContext(data: Awaited<ReturnType<typeof getPortfolioData>>, githubRepos: GitHubRepo[]): string {
+function buildPortfolioContext(data: Awaited<ReturnType<typeof getPortfolioData>>): string {
+  const githubRepos = getGitHubRepos();
   const { settings, projects, securitySkills, skillCategories, profileCategories, terminalLines, certifications, technologies } = data;
 
   const projectsList = projects
@@ -178,10 +161,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Charger les données du portfolio + repos GitHub pour le contexte
+    // Charger les données du portfolio pour le contexte
     const data = await getPortfolioData();
-    const githubRepos = await fetchGitHubRepos(data.settings.contactGithub);
-    const systemContext = buildPortfolioContext(data, githubRepos);
+    const systemContext = buildPortfolioContext(data);
 
     // Configurer Gemini
     const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
