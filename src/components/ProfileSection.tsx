@@ -1,6 +1,8 @@
-import { profileCategories } from "@/lib/data";
+import type { PortfolioData } from "@/lib/admin-types";
 
-export default function ProfileSection() {
+export default function ProfileSection({ data }: { data: PortfolioData }) {
+  const { profileCategories } = data as unknown as { profileCategories: PortfolioData["profileCategories"] };
+
   return (
     <section id="profile" className="py-16 px-4 bg-secondary/20">
       <div className="max-w-6xl mx-auto space-y-10">

@@ -2,20 +2,24 @@
 
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, Bot } from "lucide-react";
-import {
-  projects,
-  skillCategories,
-  securitySkills,
-  profileCategories,
-  terminalLines,
-} from "@/lib/data";
+import type { PortfolioData } from "@/lib/admin-types";
+import type { Project, SecuritySkill, SkillCategory, ProfileCategory } from "@/lib/types";
 
 interface Message {
   role: "user" | "assistant";
   content: string;
 }
 
-function generateResponse(question: string): string {
+interface ChatData {
+  projects: Project[];
+  skillCategories: SkillCategory[];
+  securitySkills: SecuritySkill[];
+  profileCategories: ProfileCategory[];
+  terminalLines: { command: string; output: string }[];
+}
+
+function generateResponse(question: string, data: ChatData): string {
+  const { projects, skillCategories, securitySkills, profileCategories, terminalLines } = data;
   const q = question.toLowerCase().trim();
 
   // Refuse off-topic questions
@@ -172,7 +176,15 @@ function generateResponse(question: string): string {
   return "Je suis spécialisé uniquement sur Juvénal SINENG KENGNI. Vous pouvez me demander ses compétences, projets, outils, ou comment le contacter ! 😊";
 }
 
-export default function AIChatBot() {
+export default function AIChatBot({ data }: { data: PortfolioData }) {
+  const chatData: ChatData = {
+    projects: data.projects,
+    skillCategories: data.skillCategories,
+    securitySkills: data.securitySkills,
+    profileCategories: data.profileCategories,
+    terminalLines: data.terminalLines,
+  };
+
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -207,7 +219,7 @@ export default function AIChatBot() {
 
     // Simulate a small delay for natural feel
     setTimeout(() => {
-      const response = generateResponse(trimmed);
+      const response = generateResponse(trimmed, chatData);
       setMessages((prev) => [...prev, { role: "assistant", content: response }]);
       setIsTyping(false);
     }, 500);

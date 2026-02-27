@@ -1,7 +1,9 @@
-import { projects } from "@/lib/data";
 import ProjectCard from "./ProjectCard";
+import type { PortfolioData } from "@/lib/admin-types";
 
-export default function ProjectsSection() {
+export default function ProjectsSection({ data }: { data: PortfolioData }) {
+  const { projects } = data as unknown as { projects: PortfolioData["projects"] };
+
   return (
     <section id="projects" className="py-16 px-4 bg-secondary/20">
       <div className="max-w-6xl mx-auto space-y-10">

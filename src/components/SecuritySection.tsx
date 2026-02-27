@@ -1,6 +1,8 @@
-import { securitySkills } from "@/lib/data";
+import type { PortfolioData } from "@/lib/admin-types";
 
-export default function SecuritySection() {
+export default function SecuritySection({ data }: { data: PortfolioData }) {
+  const { securitySkills } = data as unknown as { securitySkills: PortfolioData["securitySkills"] };
+
   return (
     <section id="security" className="py-16 px-4 bg-mesh">
       <div className="max-w-6xl mx-auto space-y-10">

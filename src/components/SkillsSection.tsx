@@ -1,6 +1,8 @@
-import { skillCategories } from "@/lib/data";
+import type { PortfolioData } from "@/lib/admin-types";
 
-export default function SkillsSection() {
+export default function SkillsSection({ data }: { data: PortfolioData }) {
+  const { skillCategories } = data as unknown as { skillCategories: PortfolioData["skillCategories"] };
+
   return (
     <section id="skills" className="py-16 px-4 bg-mesh">
       <div className="max-w-6xl mx-auto space-y-10">

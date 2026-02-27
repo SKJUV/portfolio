@@ -1,9 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { terminalLines } from "@/lib/data";
 
-export default function Terminal() {
+interface TerminalProps {
+  terminalLines: { command: string; output: string }[];
+}
+
+export default function Terminal({ terminalLines }: TerminalProps) {
   const [visibleLines, setVisibleLines] = useState(0);
 
   useEffect(() => {

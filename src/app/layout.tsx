@@ -1,12 +1,22 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import { getPortfolioData } from "@/lib/data-manager";
 
-export const metadata: Metadata = {
-  title: "SINENG KENGNI Juvénal — Cybersecurity & Full-Stack",
-  description:
-    "Portfolio de SINENG KENGNI Juvénal, passionné de cybersécurité et développeur Full-Stack.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const data = await getPortfolioData();
+    return {
+      title: data.settings.siteTitle,
+      description: data.settings.siteDescription,
+    };
+  } catch {
+    return {
+      title: "Portfolio",
+      description: "Mon portfolio personnel",
+    };
+  }
+}
 
 export default function RootLayout({
   children,

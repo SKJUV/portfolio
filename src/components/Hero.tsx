@@ -1,21 +1,28 @@
 import { Github, Mail } from "lucide-react";
 import Terminal from "./Terminal";
+import type { PortfolioData } from "@/lib/admin-types";
 
-export default function Hero() {
+export default function Hero({ data }: { data: PortfolioData }) {
+  const { settings, terminalLines } = data;
+
+  // Séparer le nom pour le styling : dernier mot en primary
+  const titleParts = settings.heroTitle.split(" ");
+  const lastName = titleParts.pop() || "";
+  const firstParts = titleParts.join(" ");
+
   return (
     <section className="relative pt-24 pb-16 px-4 bg-mesh overflow-hidden">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div className="space-y-6">
           <div className="space-y-3">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-              SINENG KENGNI <span className="text-primary">Juvénal</span>
+              {firstParts} <span className="text-primary">{lastName}</span>
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground">
-              🛡️ Cybersecurity Enthusiast &amp; Full-Stack Developer
+              {settings.heroSubtitle}
             </p>
             <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-              Passionné par la sécurité applicative, l&apos;architecture sécurisée et le développement
-              de systèmes robustes pour l&apos;Afrique francophone.
+              {settings.heroDescription}
             </p>
           </div>
 
@@ -27,7 +34,7 @@ export default function Hero() {
               Voir mes projets
             </a>
             <a
-              href="https://github.com/SKJUV"
+              href={settings.contactGithub}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 glass rounded-xl text-sm font-medium hover:bg-primary/10 transition-all"
@@ -45,7 +52,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <Terminal />
+        <Terminal terminalLines={terminalLines} />
       </div>
     </section>
   );
