@@ -7,10 +7,83 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 // Modèles à essayer dans l'ordre (le premier disponible sera utilisé)
 const GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-2.0-flash-lite"];
 
+// ============================================
+// Cache des repos GitHub (refresh toutes les heures)
+// ============================================
+interface GitHubRepo {
+  name: string;
+  description: string | null;
+  language: string | null;
+  html_url: string;
+  topics: string[];
+  stargazers_count: number;
+  forks_count: number;
+  updated_at: string;
+  homepage: string | null;
+}
+
+let cachedRepos: GitHubRepo[] = [];
+let reposCacheTime = 0;
+const CACHE_DURATION = 60 * 60 * 1000; // 1 heure
+
+async function fetchGitHubRepos(githubUrl: string): Promise<GitHubRepo[]> {
+  // Vérifier le cache
+  if (cachedRepos.length > 0 && Date.now() - reposCacheTime < CACHE_DURATION) {
+    return cachedRepos;
+  }
+
+  try {
+    // Extraire le username depuis l'URL GitHub
+    const username = githubUrl.replace(/\/$/, "").split("/").pop();
+    if (!username) return cachedRepos;
+
+    const res = await fetch(
+      `https://api.github.com/users/${username}/repos?sort=updated&per_page=30&type=public`,
+      {
+        headers: { Accept: "application/vnd.github.v3+json" },
+        next: { revalidate: 3600 },
+      }
+    );
+
+    if (!res.ok) {
+      console.warn(`[chat] GitHub API ${res.status}: ${res.statusText}`);
+      return cachedRepos;
+    }
+
+    const repos: GitHubRepo[] = await res.json();
+    cachedRepos = repos;
+    reposCacheTime = Date.now();
+    console.info(`[chat] ${repos.length} repos GitHub chargés pour le contexte`);
+    return repos;
+  } catch (err) {
+    console.warn("[chat] Erreur fetch GitHub repos:", err);
+    return cachedRepos;
+  }
+}
+
+function formatGitHubRepos(repos: GitHubRepo[]): string {
+  if (repos.length === 0) return "";
+
+  const repoLines = repos
+    .map((r) => {
+      const parts = [`- **${r.name}**`];
+      if (r.description) parts.push(`: ${r.description}`);
+      if (r.language) parts.push(` [${r.language}]`);
+      if (r.topics.length > 0) parts.push(` Tags: ${r.topics.join(", ")}`);
+      if (r.stargazers_count > 0) parts.push(` ⭐${r.stargazers_count}`);
+      if (r.homepage) parts.push(` | Demo: ${r.homepage}`);
+      parts.push(` | ${r.html_url}`);
+      return parts.join("");
+    })
+    .join("\n");
+
+  return `\n\n=== REPOS GITHUB PUBLICS (${repos.length}) ===\n${repoLines}`;
+}
+
 /**
  * Construit le contexte du portfolio pour le system prompt de Gemini
  */
-function buildPortfolioContext(data: Awaited<ReturnType<typeof getPortfolioData>>): string {
+function buildPortfolioContext(data: Awaited<ReturnType<typeof getPortfolioData>>, githubRepos: GitHubRepo[]): string {
   const { settings, projects, securitySkills, skillCategories, profileCategories, terminalLines, certifications, technologies } = data;
 
   const projectsList = projects
@@ -80,6 +153,7 @@ ${techList}
 
 === CERTIFICATIONS (${certifications.length}) ===
 ${certList || "Aucune certification listée pour le moment."}
+${formatGitHubRepos(githubRepos)}
 `.trim();
 }
 
@@ -104,9 +178,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Charger les données du portfolio pour le contexte
+    // Charger les données du portfolio + repos GitHub pour le contexte
     const data = await getPortfolioData();
-    const systemContext = buildPortfolioContext(data);
+    const githubRepos = await fetchGitHubRepos(data.settings.contactGithub);
+    const systemContext = buildPortfolioContext(data, githubRepos);
 
     // Configurer Gemini
     const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
