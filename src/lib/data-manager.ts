@@ -4,13 +4,14 @@ import type { PortfolioData } from "./admin-types";
 import { supabaseAdmin, isSupabaseConfigured } from "./supabase";
 
 const DATA_FILE_PATH = path.join(process.cwd(), "src/data/portfolio-data.json");
+const IS_VERCEL = !!process.env.VERCEL;
 
 // Cache pour éviter de retenter Supabase à chaque requête quand il échoue
 let supabaseAvailable: boolean | null = null; // null = pas encore testé
 
 function shouldUseSupabase(): boolean {
   if (!isSupabaseConfigured()) return false;
-  if (supabaseAvailable === false) return false; // déjà échoué
+  if (supabaseAvailable === false) return false;
   return true;
 }
 
@@ -26,10 +27,15 @@ async function getDataFromSupabase(): Promise<PortfolioData | null> {
       .select("data")
       .eq("id", 1)
       .single();
-    if (error || !data) return null;
+    if (error) {
+      console.error("[data-manager] Supabase SELECT error:", error.message, error.code);
+      return null;
+    }
+    if (!data) return null;
     supabaseAvailable = true;
     return data.data as PortfolioData;
-  } catch {
+  } catch (err) {
+    console.error("[data-manager] Supabase exception:", err);
     supabaseAvailable = false;
     return null;
   }
@@ -41,6 +47,7 @@ async function saveDataToSupabase(portfolioData: PortfolioData): Promise<void> {
     .from("portfolio_data")
     .upsert({ id: 1, data: portfolioData, updated_at: new Date().toISOString() });
   if (error) {
+    console.error("[data-manager] Supabase UPSERT error:", error.message, error.code);
     supabaseAvailable = false;
     throw new Error(`Supabase write error: ${error.message}`);
   }
@@ -57,18 +64,16 @@ async function getDataFromFile(): Promise<PortfolioData> {
 }
 
 async function saveDataToFile(data: PortfolioData): Promise<void> {
+  if (IS_VERCEL) {
+    throw new Error("Impossible d'écrire sur le filesystem Vercel (read-only). Vérifiez votre configuration Supabase.");
+  }
   await fs.writeFile(DATA_FILE_PATH, JSON.stringify(data, null, 2), "utf-8");
 }
 
 // ============================================
-// API publique — choisit automatiquement
-// Supabase si configuré et accessible, sinon fichier local
+// API publique
 // ============================================
 
-/**
- * Lire toutes les données du portfolio
- * Stratégie : Supabase si disponible, sinon JSON local
- */
 export async function getPortfolioData(): Promise<PortfolioData> {
   if (shouldUseSupabase()) {
     try {
@@ -80,29 +85,30 @@ export async function getPortfolioData(): Promise<PortfolioData> {
         const localData = await getDataFromFile();
         try {
           await saveDataToSupabase(localData);
-        } catch {
-          // seed échoué, pas grave, on a le local
+          console.info("[data-manager] Seed Supabase réussi ✓");
+        } catch (err) {
+          console.error("[data-manager] Seed Supabase échoué:", err);
         }
         return localData;
       }
     } catch {
-      // Supabase inaccessible → marquer et fallback
       supabaseAvailable = false;
     }
   }
   return getDataFromFile();
 }
 
-/**
- * Écrire toutes les données du portfolio
- */
 export async function savePortfolioData(data: PortfolioData): Promise<void> {
   if (shouldUseSupabase()) {
     try {
       await saveDataToSupabase(data);
       return;
-    } catch {
-      // Supabase échoué → fallback local
+    } catch (err) {
+      // Sur Vercel, on ne peut pas fallback sur le filesystem
+      if (IS_VERCEL) {
+        throw new Error(`Écriture Supabase échouée et filesystem Vercel read-only. ${err instanceof Error ? err.message : err}`);
+      }
+      console.warn("[data-manager] Supabase write échoué, fallback fichier local");
     }
   }
   await saveDataToFile(data);
