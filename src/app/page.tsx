@@ -5,6 +5,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import ProfileSection from "@/components/ProfileSection";
 import CertificationsSection from "@/components/CertificationsSection";
+import VisionSection from "@/components/VisionSection";
 import Footer from "@/components/Footer";
 import AIChatBot from "@/components/AIChatBot";
 import { getPortfolioData } from "@/lib/data-manager";
@@ -16,6 +17,7 @@ const sectionComponents: Record<string, React.ComponentType<{ data: Record<strin
   SkillsSection: SkillsSection as unknown as React.ComponentType<{ data: Record<string, unknown> }>,
   ProfileSection: ProfileSection as unknown as React.ComponentType<{ data: Record<string, unknown> }>,
   CertificationsSection: CertificationsSection as unknown as React.ComponentType<{ data: Record<string, unknown> }>,
+  VisionSection: VisionSection as unknown as React.ComponentType<{ data: Record<string, unknown> }>,
 };
 
 export const dynamic = "force-dynamic";
@@ -29,7 +31,7 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <Navbar />
+      <Navbar sections={data.sections} />
       <Hero data={data} />
       {enabledSections.map((section) => {
         const Component = sectionComponents[section.component];

@@ -18,9 +18,17 @@ interface ChatData {
   terminalLines: { command: string; output: string }[];
 }
 
-function generateResponse(question: string, data: ChatData): string {
+function generateResponse(question: string, data: ChatData, fallbackMessage: string, customResponses: { keywords: string[]; response: string; enabled: boolean }[]): string {
   const { projects, skillCategories, securitySkills, profileCategories, terminalLines } = data;
   const q = question.toLowerCase().trim();
+
+  // Check custom responses first (admin-defined)
+  for (const cr of customResponses) {
+    if (!cr.enabled) continue;
+    if (cr.keywords.some((kw) => q.includes(kw.toLowerCase()))) {
+      return cr.response;
+    }
+  }
 
   // Refuse off-topic questions
   const offTopicPatterns = [
@@ -33,7 +41,7 @@ function generateResponse(question: string, data: ChatData): string {
     /\b(jeu|game|gaming)\b/,
   ];
   if (offTopicPatterns.some((p) => p.test(q))) {
-    return "Je suis uniquement programmé pour répondre aux questions concernant Juvénal SINENG KENGNI, son parcours, ses compétences et ses projets. 😊";
+    return fallbackMessage;
   }
 
   // Greeting
@@ -173,10 +181,12 @@ function generateResponse(question: string, data: ChatData): string {
   }
 
   // Default fallback
-  return "Je suis spécialisé uniquement sur Juvénal SINENG KENGNI. Vous pouvez me demander ses compétences, projets, outils, ou comment le contacter ! 😊";
+  return fallbackMessage;
 }
 
 export default function AIChatBot({ data }: { data: PortfolioData }) {
+  const settings = data.chatBotSettings;
+  
   const chatData: ChatData = {
     projects: data.projects,
     skillCategories: data.skillCategories,
@@ -189,14 +199,18 @@ export default function AIChatBot({ data }: { data: PortfolioData }) {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content:
-        "Bonjour ! 👋 Je suis l'assistant IA de Juvénal. Posez-moi vos questions sur son parcours, ses compétences ou ses projets !",
+      content: settings?.welcomeMessage || "Bonjour ! 👋 Je suis l'assistant IA de Juvénal. Posez-moi vos questions sur son parcours, ses compétences ou ses projets !",
     },
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // If chatbot is disabled, don't render
+  if (settings && !settings.enabled) {
+    return null;
+  }
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -219,7 +233,12 @@ export default function AIChatBot({ data }: { data: PortfolioData }) {
 
     // Simulate a small delay for natural feel
     setTimeout(() => {
-      const response = generateResponse(trimmed, chatData);
+      const response = generateResponse(
+        trimmed,
+        chatData,
+        settings?.fallbackMessage || "Je suis spécialisé uniquement sur Juvénal SINENG KENGNI.",
+        settings?.customResponses || []
+      );
       setMessages((prev) => [...prev, { role: "assistant", content: response }]);
       setIsTyping(false);
     }, 500);
@@ -247,8 +266,8 @@ export default function AIChatBot({ data }: { data: PortfolioData }) {
               <Bot className="h-5 w-5" />
             </div>
             <div className="flex-1">
-              <p className="text-sm font-semibold">Assistant IA</p>
-              <p className="text-xs text-muted-foreground">Tout savoir sur Juvénal</p>
+              <p className="text-sm font-semibold">{settings?.botName || "Assistant IA"}</p>
+              <p className="text-xs text-muted-foreground">{settings?.botDescription || "Tout savoir sur Juvénal"}</p>
             </div>
             <button
               onClick={() => setIsOpen(false)}
@@ -305,7 +324,7 @@ export default function AIChatBot({ data }: { data: PortfolioData }) {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Posez une question sur Juvénal..."
+                placeholder={settings?.inputPlaceholder || "Posez une question sur Juvénal..."}
                 className="flex-1 rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm outline-none placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary/30 transition-colors"
               />
               <button

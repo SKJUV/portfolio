@@ -141,3 +141,99 @@ html {
     text-wrap: balance;
   }
 }
+
+/* ==========================================
+   ADMIN THEME — séparé du portfolio
+   ========================================== */
+.admin-theme {
+  --admin-bg: 220 16% 96%;
+  --admin-sidebar: 224 20% 98%;
+  --admin-card: 0 0% 100%;
+  --admin-border: 220 13% 90%;
+  --admin-primary: 220 90% 56%;
+  --admin-primary-fg: 0 0% 100%;
+  --admin-muted: 220 14% 94%;
+  --admin-muted-fg: 220 10% 42%;
+  --admin-accent: 200 80% 50%;
+  --admin-success: 152 70% 40%;
+  --admin-danger: 0 72% 50%;
+}
+
+.dark .admin-theme {
+  --admin-bg: 224 20% 6%;
+  --admin-sidebar: 224 22% 8%;
+  --admin-card: 224 18% 10%;
+  --admin-border: 224 14% 16%;
+  --admin-primary: 220 90% 60%;
+  --admin-primary-fg: 0 0% 100%;
+  --admin-muted: 224 14% 14%;
+  --admin-muted-fg: 220 10% 55%;
+  --admin-accent: 200 80% 55%;
+  --admin-success: 152 70% 45%;
+  --admin-danger: 0 72% 55%;
+}
+
+.admin-theme {
+  background-color: hsl(var(--admin-bg));
+  color: hsl(var(--foreground));
+}
+
+.admin-theme .admin-sidebar {
+  background-color: hsl(var(--admin-sidebar));
+  border-color: hsl(var(--admin-border));
+}
+
+.admin-theme .admin-card {
+  background-color: hsl(var(--admin-card));
+  border: 1px solid hsl(var(--admin-border));
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s ease;
+}
+
+.admin-theme .admin-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.dark .admin-theme .admin-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.admin-theme .admin-input {
+  background-color: hsl(var(--admin-bg));
+  border: 1px solid hsl(var(--admin-border));
+  border-radius: 0.625rem;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.admin-theme .admin-input:focus {
+  border-color: hsl(var(--admin-primary));
+  box-shadow: 0 0 0 3px hsl(var(--admin-primary) / 0.12);
+}
+
+.admin-theme .admin-btn-primary {
+  background-color: hsl(var(--admin-primary));
+  color: hsl(var(--admin-primary-fg));
+  border-radius: 0.625rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: opacity 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-theme .admin-btn-primary:hover {
+  opacity: 0.9;
+}
+
+.admin-theme .admin-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+

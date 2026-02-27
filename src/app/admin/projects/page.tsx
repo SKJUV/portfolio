@@ -145,7 +145,7 @@ export default function ProjectsPage() {
 
       {/* Form */}
       {isFormOpen && (
-        <div className="glass-card rounded-2xl p-6 space-y-4">
+        <div className="admin-card p-4 sm:p-6 space-y-4">
           <h3 className="font-semibold">
             {adding ? "Nouveau projet" : `Modifier : ${form.title}`}
           </h3>
@@ -158,7 +158,7 @@ export default function ProjectsPage() {
                 value={form.id}
                 onChange={(e) => setForm({ ...form, id: e.target.value })}
                 disabled={!!editing}
-                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary disabled:opacity-50"
+                className="admin-input disabled:opacity-50"
               />
             </div>
             <div className="space-y-1.5">
@@ -168,7 +168,7 @@ export default function ProjectsPage() {
                 placeholder="Mon Projet"
                 value={form.title}
                 onChange={(e) => setForm({ ...form, title: e.target.value })}
-                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                className="admin-input"
               />
             </div>
             <div className="space-y-1.5">
@@ -178,7 +178,7 @@ export default function ProjectsPage() {
                 placeholder="Description courte"
                 value={form.subtitle}
                 onChange={(e) => setForm({ ...form, subtitle: e.target.value })}
-                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                className="admin-input"
               />
             </div>
             <div className="space-y-1.5">
@@ -188,7 +188,7 @@ export default function ProjectsPage() {
                 placeholder="EdTech, Sécurité..."
                 value={form.badge}
                 onChange={(e) => setForm({ ...form, badge: e.target.value })}
-                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                className="admin-input"
               />
             </div>
             <div className="space-y-1.5">
@@ -196,7 +196,7 @@ export default function ProjectsPage() {
               <select
                 value={form.badgeType}
                 onChange={(e) => setForm({ ...form, badgeType: e.target.value })}
-                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                className="admin-input"
               >
                 <option value="security">Sécurité</option>
                 <option value="education">Éducation</option>
@@ -209,7 +209,7 @@ export default function ProjectsPage() {
               <select
                 value={form.status || "completed"}
                 onChange={(e) => setForm({ ...form, status: e.target.value })}
-                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                className="admin-input"
               >
                 <option value="in-progress">En cours</option>
                 <option value="completed">Terminé</option>
@@ -222,7 +222,7 @@ export default function ProjectsPage() {
                 placeholder="https://github.com/..."
                 value={form.githubUrl}
                 onChange={(e) => setForm({ ...form, githubUrl: e.target.value })}
-                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                className="admin-input"
               />
             </div>
             <div className="space-y-1.5">
@@ -232,7 +232,7 @@ export default function ProjectsPage() {
                 placeholder="https://demo.example.com"
                 value={form.liveUrl || ""}
                 onChange={(e) => setForm({ ...form, liveUrl: e.target.value })}
-                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                className="admin-input"
               />
             </div>
           </div>
@@ -244,7 +244,7 @@ export default function ProjectsPage() {
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
               rows={3}
-              className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary resize-none"
+              className="admin-input resize-none"
             />
           </div>
 
@@ -258,7 +258,7 @@ export default function ProjectsPage() {
                 placeholder="Next.js, TypeScript, Firebase"
                 value={stackInput}
                 onChange={(e) => updateStack(e.target.value)}
-                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                className="admin-input"
               />
               {form.stack.length > 0 && (
                 <div className="flex flex-wrap gap-1 mt-1">
@@ -279,7 +279,7 @@ export default function ProjectsPage() {
                 placeholder="Firebase Auth, RBAC, Validation serveur"
                 value={securityInput}
                 onChange={(e) => updateSecurity(e.target.value)}
-                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                className="admin-input"
               />
             </div>
           </div>
@@ -307,7 +307,7 @@ export default function ProjectsPage() {
       {/* Projects list */}
       <div className="grid gap-3">
         {projects.map((project) => (
-          <div key={project.id} className="glass-card rounded-xl p-5">
+          <div key={project.id} className="admin-card p-4 sm:p-5">
             <div className="flex items-start justify-between gap-4">
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">

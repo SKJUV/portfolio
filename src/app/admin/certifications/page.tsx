@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Plus, Pencil, Trash2, Save, X, Award, ExternalLink } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
+import { Plus, Pencil, Trash2, Save, X, Award, ExternalLink, Upload, Image as ImageIcon } from "lucide-react";
 import type { Certification } from "@/lib/admin-types";
 
 const emptyCert: Certification = {
@@ -21,6 +21,8 @@ export default function CertificationsPage() {
   const [adding, setAdding] = useState(false);
   const [form, setForm] = useState<Certification>(emptyCert);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     fetch("/api/admin/certifications")
@@ -29,6 +31,31 @@ export default function CertificationsPage() {
       .catch(console.error)
       .finally(() => setLoading(false));
   }, []);
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.url) {
+        setForm({ ...form, imageUrl: data.url });
+      } else {
+        alert(data.error || "Erreur lors de l'upload");
+      }
+    } catch {
+      alert("Erreur lors de l'upload de l'image");
+    } finally {
+      setUploading(false);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    }
+  };
 
   const handleSave = async () => {
     if (!form.name || !form.platform) return;
@@ -101,7 +128,7 @@ export default function CertificationsPage() {
 
       {/* Form */}
       {(adding || editing) && (
-        <div className="glass-card rounded-2xl p-6 space-y-4">
+        <div className="admin-card p-4 sm:p-6 space-y-4">
           <h3 className="font-semibold">
             {adding ? "Nouvelle certification" : "Modifier la certification"}
           </h3>
@@ -113,7 +140,7 @@ export default function CertificationsPage() {
                 placeholder="Google Cybersecurity Certificate"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                className="admin-input"
               />
             </div>
             <div className="space-y-1.5">
@@ -123,7 +150,7 @@ export default function CertificationsPage() {
                 placeholder="Coursera, Udemy, Google..."
                 value={form.platform}
                 onChange={(e) => setForm({ ...form, platform: e.target.value })}
-                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                className="admin-input"
               />
             </div>
             <div className="space-y-1.5">
@@ -132,7 +159,7 @@ export default function CertificationsPage() {
                 type="date"
                 value={form.date}
                 onChange={(e) => setForm({ ...form, date: e.target.value })}
-                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                className="admin-input"
               />
             </div>
             <div className="space-y-1.5">
@@ -142,18 +169,71 @@ export default function CertificationsPage() {
                 placeholder="https://coursera.org/verify/..."
                 value={form.verificationUrl || ""}
                 onChange={(e) => setForm({ ...form, verificationUrl: e.target.value })}
-                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                className="admin-input"
               />
             </div>
-            <div className="space-y-1.5">
-              <label className="text-xs text-muted-foreground font-medium">URL de l&apos;image</label>
-              <input
-                type="url"
-                placeholder="https://example.com/cert.png"
-                value={form.imageUrl || ""}
-                onChange={(e) => setForm({ ...form, imageUrl: e.target.value })}
-                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
-              />
+            <div className="space-y-1.5 sm:col-span-2">
+              <label className="text-xs text-muted-foreground font-medium">Image de la certification</label>
+              <div className="flex flex-col sm:flex-row gap-3">
+                {/* Preview */}
+                {form.imageUrl && (
+                  <div className="relative shrink-0 w-32 h-24 rounded-lg overflow-hidden border border-border bg-muted">
+                    <img
+                      src={form.imageUrl}
+                      alt="Preview"
+                      className="w-full h-full object-cover"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setForm({ ...form, imageUrl: "" })}
+                      className="absolute top-1 right-1 p-1 rounded-full bg-destructive text-destructive-foreground hover:opacity-90"
+                    >
+                      <X className="h-3 w-3" />
+                    </button>
+                  </div>
+                )}
+                <div className="flex-1 space-y-2">
+                  {/* File upload */}
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml"
+                    onChange={handleImageUpload}
+                    className="hidden"
+                    id="cert-image-upload"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    disabled={uploading}
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-dashed border-border text-sm text-muted-foreground hover:border-primary hover:text-primary transition-all w-full justify-center disabled:opacity-50"
+                  >
+                    {uploading ? (
+                      <>
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary" />
+                        Upload en cours...
+                      </>
+                    ) : (
+                      <>
+                        <Upload className="h-4 w-4" />
+                        {form.imageUrl ? "Changer l'image" : "Importer une image"}
+                      </>
+                    )}
+                  </button>
+                  {/* OR: URL */}
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] text-muted-foreground uppercase tracking-wide">ou URL</span>
+                    <div className="flex-1 h-px bg-border" />
+                  </div>
+                  <input
+                    type="url"
+                    placeholder="https://example.com/cert.png"
+                    value={form.imageUrl || ""}
+                    onChange={(e) => setForm({ ...form, imageUrl: e.target.value })}
+                    className="admin-input"
+                  />
+                </div>
+              </div>
             </div>
           </div>
           <div className="space-y-1.5">
@@ -163,7 +243,7 @@ export default function CertificationsPage() {
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
               rows={3}
-              className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary resize-none"
+              className="admin-input resize-none"
             />
           </div>
           <div className="flex gap-2 pt-2">
@@ -188,7 +268,7 @@ export default function CertificationsPage() {
 
       {/* Certifications list */}
       {certifications.length === 0 && !adding ? (
-        <div className="glass-card rounded-2xl p-12 text-center">
+        <div className="admin-card p-8 sm:p-12 text-center">
           <Award className="h-12 w-12 text-muted-foreground/30 mx-auto mb-4" />
           <p className="text-sm text-muted-foreground">
             Aucune certification pour le moment
@@ -200,8 +280,19 @@ export default function CertificationsPage() {
       ) : (
         <div className="grid gap-3">
           {certifications.map((cert) => (
-            <div key={cert.id} className="glass-card rounded-xl p-5">
-              <div className="flex items-start justify-between gap-4">
+            <div key={cert.id} className="admin-card p-4 sm:p-5">
+              <div className="flex items-start gap-3 sm:gap-4">
+                {/* Image thumbnail */}
+                {cert.imageUrl && (
+                  <div className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden border border-border bg-muted">
+                    <img src={cert.imageUrl} alt={cert.name} className="w-full h-full object-cover" />
+                  </div>
+                )}
+                {!cert.imageUrl && (
+                  <div className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg border border-border bg-muted flex items-center justify-center">
+                    <ImageIcon className="h-6 w-6 text-muted-foreground/30" />
+                  </div>
+                )}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <Award className="h-4 w-4 text-amber-500 shrink-0" />

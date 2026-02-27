@@ -1,50 +1,209 @@
-import { Github, Mail, Linkedin } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { Github, Mail, Linkedin, Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import type { PortfolioData } from "@/lib/admin-types";
 
 export default function Footer({ data }: { data: PortfolioData }) {
   const { settings } = data;
 
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setStatus("error");
+        setErrorMsg(data.error || "Erreur lors de l'envoi");
+        return;
+      }
+
+      setStatus("success");
+      setForm({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch {
+      setStatus("error");
+      setErrorMsg("Erreur de connexion au serveur");
+    }
+  };
+
   return (
-    <footer id="contact" className="py-16 px-4 bg-mesh">
-      <div className="max-w-6xl mx-auto text-center space-y-8">
-        <div className="space-y-2">
-          <h2 className="text-2xl sm:text-3xl font-bold">📬 Contact</h2>
-          <p className="text-sm sm:text-base text-muted-foreground">
-            Intéressé par une collaboration ? Parlons sécurité !
+    <footer id="contact" className="py-20 px-4 bg-mesh">
+      <div className="max-w-6xl mx-auto space-y-16">
+        {/* Titre */}
+        <div className="text-center space-y-3">
+          <h2 className="text-3xl sm:text-4xl font-bold">📬 Contact</h2>
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            Intéressé par une collaboration ? Envoyez-moi un message !
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3">
-          <a
-            href={settings.contactGithub}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 glass rounded-xl text-sm font-medium hover:bg-primary/10 transition-all"
-          >
-            <Github className="h-4 w-4" />
-            GitHub
-          </a>
-          <a
-            href={`mailto:${settings.contactEmail}`}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:opacity-90 transition-all glow-primary"
-          >
-            <Mail className="h-4 w-4" />
-            Email
-          </a>
-          <a
-            href={settings.contactLinkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 glass rounded-xl text-sm font-medium hover:bg-primary/10 transition-all"
-          >
-            <Linkedin className="h-4 w-4" />
-            LinkedIn
-          </a>
-        </div>
+        <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
+          {/* Formulaire de contact */}
+          <div className="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
+            <h3 className="text-lg font-semibold">Envoyer un message</h3>
 
-        <div className="space-y-1 text-sm text-muted-foreground">
-          <p>{settings.footerText}</p>
-          <p className="font-mono text-xs opacity-60">github.com/SKJUV</p>
+            {status === "success" ? (
+              <div className="flex items-start gap-3 p-4 rounded-xl bg-primary/10 text-primary">
+                <CheckCircle className="h-5 w-5 mt-0.5 shrink-0" />
+                <div>
+                  <p className="font-medium text-sm">Message envoyé !</p>
+                  <p className="text-xs opacity-80 mt-0.5">Merci, je vous répondrai rapidement.</p>
+                </div>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-medium text-muted-foreground mb-1.5">
+                      Nom
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      maxLength={100}
+                      value={form.name}
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      placeholder="Votre nom"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-background text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-muted-foreground mb-1.5">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      placeholder="votre@email.com"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-background text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-colors"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">
+                    Objet
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    maxLength={200}
+                    value={form.subject}
+                    onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                    placeholder="Sujet de votre message"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-background text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">
+                    Message
+                  </label>
+                  <textarea
+                    required
+                    maxLength={5000}
+                    rows={5}
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    placeholder="Écrivez votre message ici..."
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-background text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-colors resize-none"
+                  />
+                </div>
+
+                {status === "error" && (
+                  <div className="flex items-center gap-2 text-destructive text-xs">
+                    <AlertCircle className="h-3.5 w-3.5" />
+                    {errorMsg}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={status === "sending"}
+                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:opacity-90 transition-all glow-primary disabled:opacity-50"
+                >
+                  {status === "sending" ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Send className="h-4 w-4" />
+                  )}
+                  {status === "sending" ? "Envoi..." : "Envoyer"}
+                </button>
+              </form>
+            )}
+          </div>
+
+          {/* Infos de contact */}
+          <div className="space-y-8">
+            <div className="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
+              <h3 className="text-lg font-semibold">Retrouvez-moi</h3>
+
+              <div className="space-y-4">
+                <a
+                  href={`mailto:${settings.contactEmail}`}
+                  className="flex items-center gap-4 p-3 rounded-xl hover:bg-muted/50 transition-colors group"
+                >
+                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                    <Mail className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium">Email</p>
+                    <p className="text-xs text-muted-foreground">{settings.contactEmail}</p>
+                  </div>
+                </a>
+
+                <a
+                  href={settings.contactGithub}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-3 rounded-xl hover:bg-muted/50 transition-colors group"
+                >
+                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                    <Github className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium">GitHub</p>
+                    <p className="text-xs text-muted-foreground">{settings.contactGithub.replace("https://", "")}</p>
+                  </div>
+                </a>
+
+                <a
+                  href={settings.contactLinkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-3 rounded-xl hover:bg-muted/50 transition-colors group"
+                >
+                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                    <Linkedin className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium">LinkedIn</p>
+                    <p className="text-xs text-muted-foreground">{settings.contactLinkedin.replace("https://www.", "")}</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div className="text-center space-y-1 text-sm text-muted-foreground">
+              <p>{settings.footerText}</p>
+              <p className="font-mono text-xs opacity-60">github.com/SKJUV</p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

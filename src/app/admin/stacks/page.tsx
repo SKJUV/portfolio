@@ -108,7 +108,7 @@ export default function StacksPage() {
 
       {/* Add/Edit form */}
       {(adding || editing) && (
-        <div className="glass-card rounded-2xl p-5 space-y-4">
+        <div className="admin-card p-4 sm:p-5 space-y-4">
           <h3 className="font-semibold text-sm">
             {adding ? "Nouvelle technologie" : "Modifier la technologie"}
           </h3>
@@ -121,7 +121,7 @@ export default function StacksPage() {
                 value={form.id}
                 onChange={(e) => setForm({ ...form, id: e.target.value })}
                 disabled={!!editing}
-                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary disabled:opacity-50"
+                className="admin-input disabled:opacity-50"
               />
             </div>
             <div className="space-y-1.5">
@@ -131,7 +131,7 @@ export default function StacksPage() {
                 placeholder="React, Docker..."
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                className="admin-input"
               />
             </div>
             <div className="space-y-1.5">
@@ -141,7 +141,7 @@ export default function StacksPage() {
                 onChange={(e) =>
                   setForm({ ...form, category: e.target.value as Technology["category"] })
                 }
-                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                className="admin-input"
               >
                 {categories.map((c) => (
                   <option key={c.value} value={c.value}>
@@ -202,11 +202,11 @@ export default function StacksPage() {
       </div>
 
       {/* Technologies grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
         {filtered.map((tech) => (
           <div
             key={tech.id}
-            className="glass-card rounded-xl px-4 py-3 flex items-center justify-between"
+            className="admin-card px-3 sm:px-4 py-3 flex items-center justify-between"
           >
             <div className="flex items-center gap-3">
               <span className={`text-xs px-2 py-0.5 rounded-lg font-medium ${getCategoryStyle(tech.category)}`}>

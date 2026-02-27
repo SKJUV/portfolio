@@ -4,7 +4,7 @@ export default function ProfileSection({ data }: { data: PortfolioData }) {
   const { profileCategories } = data as unknown as { profileCategories: PortfolioData["profileCategories"] };
 
   return (
-    <section id="profile" className="py-16 px-4 bg-secondary/20">
+    <section id="profile" className="py-16 px-4 bg-mesh">
       <div className="max-w-6xl mx-auto space-y-10">
         <div className="space-y-3">
           <h2 className="text-2xl sm:text-3xl font-bold">👤 Profil Informatique</h2>

@@ -11,11 +11,54 @@
     "contactLinkedin": "https://www.linkedin.com/in/juvenal-sineng-kengni"
   },
   "sections": [
-    { "id": "security", "title": "Pratiques Sécurité", "icon": "🔒", "enabled": true, "order": 0, "component": "SecuritySection" },
-    { "id": "projects", "title": "Projets", "icon": "💼", "enabled": true, "order": 1, "component": "ProjectsSection" },
-    { "id": "skills", "title": "Compétences", "icon": "🧠", "enabled": true, "order": 2, "component": "SkillsSection" },
-    { "id": "profile", "title": "Profil Informatique", "icon": "👤", "enabled": true, "order": 3, "component": "ProfileSection" },
-    { "id": "certifications", "title": "Certifications", "icon": "🏆", "enabled": false, "order": 4, "component": "CertificationsSection" }
+    {
+      "id": "security",
+      "title": "Pratiques Sécurité",
+      "icon": "🔒",
+      "enabled": true,
+      "order": 0,
+      "component": "SecuritySection"
+    },
+    {
+      "id": "projects",
+      "title": "Projets",
+      "icon": "💼",
+      "enabled": true,
+      "order": 1,
+      "component": "ProjectsSection"
+    },
+    {
+      "id": "certifications",
+      "title": "Certifications",
+      "icon": "🏆",
+      "enabled": true,
+      "order": 2,
+      "component": "CertificationsSection"
+    },
+    {
+      "id": "skills",
+      "title": "Compétences",
+      "icon": "🧠",
+      "enabled": true,
+      "order": 3,
+      "component": "SkillsSection"
+    },
+    {
+      "id": "profile",
+      "title": "Profil Informatique",
+      "icon": "👤",
+      "enabled": true,
+      "order": 4,
+      "component": "ProfileSection"
+    },
+    {
+      "id": "vision",
+      "title": "Vision et Passions",
+      "icon": "🔮",
+      "enabled": true,
+      "order": 5,
+      "component": "VisionSection"
+    }
   ],
   "projects": [
     {
@@ -25,8 +68,20 @@
       "description": "E-learning platform pour la Digital Innovation Week Cameroun. Cours en français et langues nationales, système de rôles (teacher/student/admin), assistant IA pour les leçons via Google Genkit, dashboards par rôle.",
       "badge": "EdTech Multilingue + IA",
       "badgeType": "education",
-      "stack": ["Next.js", "TypeScript", "Firebase", "Google Genkit AI", "shadcn/ui", "Tailwind CSS"],
-      "securityPoints": ["Rôles teacher/student/admin", "Account Security page", "Firebase Auth", "IA contrôlée"],
+      "stack": [
+        "Next.js",
+        "TypeScript",
+        "Firebase",
+        "Google Genkit AI",
+        "shadcn/ui",
+        "Tailwind CSS"
+      ],
+      "securityPoints": [
+        "Rôles teacher/student/admin",
+        "Account Security page",
+        "Firebase Auth",
+        "IA contrôlée"
+      ],
       "githubUrl": "https://github.com/SKJUV/EduConverse",
       "status": "completed"
     },
@@ -37,8 +92,20 @@
       "description": "Plateforme de cours en ligne pour l'Afrique avec tuteur IA intelligent, parcours d'apprentissage personnalisés, quiz/évaluations, accès hors-ligne et catalogue de cours (Business, Agriculture, Tech, Arts & Culture).",
       "badge": "AI-Powered Learning",
       "badgeType": "education",
-      "stack": ["Next.js 15", "TypeScript", "Firebase", "Google Genkit AI", "Tailwind CSS", "Recharts"],
-      "securityPoints": ["Firebase Auth", "IA Tutor contrôlée", "Server Actions Zod", "Validation serveur"],
+      "stack": [
+        "Next.js 15",
+        "TypeScript",
+        "Firebase",
+        "Google Genkit AI",
+        "Tailwind CSS",
+        "Recharts"
+      ],
+      "securityPoints": [
+        "Firebase Auth",
+        "IA Tutor contrôlée",
+        "Server Actions Zod",
+        "Validation serveur"
+      ],
       "githubUrl": "https://github.com/SKJUV/EduAfrique",
       "status": "completed"
     },
@@ -49,7 +116,9 @@
       "description": "Application Java de gestion des ressources humaines permettant le suivi des employés, la gestion des départements et l'administration du personnel.",
       "badge": "Gestion RH",
       "badgeType": "university",
-      "stack": ["Java"],
+      "stack": [
+        "Java"
+      ],
       "securityPoints": [],
       "githubUrl": "https://github.com/SKJUV/HRMS",
       "status": "completed"
@@ -61,7 +130,9 @@
       "description": "Bot WhatsApp développé en Python pour automatiser l'envoi de messages et les interactions sur la plateforme de messagerie.",
       "badge": "Automatisation",
       "badgeType": "academic",
-      "stack": ["Python"],
+      "stack": [
+        "Python"
+      ],
       "securityPoints": [],
       "githubUrl": "https://github.com/SKJUV/botwha",
       "status": "completed"
@@ -73,7 +144,10 @@
       "description": "Site portfolio de présentation du projet Print CF, réalisé en HTML et CSS pour mettre en valeur le design et l'identité visuelle du projet.",
       "badge": "Web Design",
       "badgeType": "academic",
-      "stack": ["HTML", "CSS"],
+      "stack": [
+        "HTML",
+        "CSS"
+      ],
       "securityPoints": [],
       "githubUrl": "https://github.com/SKJUV/portfolio-printcf",
       "status": "completed"
@@ -85,7 +159,9 @@
       "description": "Projet Java en mode console réalisé dans un cadre académique, mettant en pratique les fondamentaux de la programmation orientée objet.",
       "badge": "Académique",
       "badgeType": "academic",
-      "stack": ["Java"],
+      "stack": [
+        "Java"
+      ],
       "securityPoints": [],
       "githubUrl": "https://github.com/SKJUV/projet-console",
       "status": "completed"
@@ -96,139 +172,424 @@
       "icon": "🔐",
       "title": "Authentification & Autorisation",
       "description": "JWT personnalisé avec rotation de tokens, RBAC granulaire, multi-tenancy sécurisé, OAuth PKCE flow.",
-      "tags": ["JWT Custom Claims", "Token Rotation", "RBAC", "Multi-tenant", "OAuth PKCE", "Spotify API"]
+      "tags": [
+        "JWT Custom Claims",
+        "Token Rotation",
+        "RBAC",
+        "Multi-tenant",
+        "OAuth PKCE",
+        "Spotify API"
+      ]
     },
     {
       "icon": "🛡️",
       "title": "Hardening Web & HTTP",
       "description": "HSTS preload, X-Frame-Options DENY, XSS Filter, CSRF protection.",
-      "tags": ["HSTS 1 an", "X-Frame DENY", "XSS Filter", "CSRF Secure", "Content-Type Nosniff", "SSL Redirect"]
+      "tags": [
+        "HSTS 1 an",
+        "X-Frame DENY",
+        "XSS Filter",
+        "CSRF Secure",
+        "Content-Type Nosniff",
+        "SSL Redirect"
+      ]
     },
     {
       "icon": "🐳",
       "title": "Sécurité Infrastructure",
       "description": "Dockerfiles multi-stage, exécution non-root, healthchecks, Sentry, CORS strict.",
-      "tags": ["Docker Non-Root", "Multi-Stage Build", "Sentry", "CORS Strict", "Gunicorn", "Healthcheck"]
+      "tags": [
+        "Docker Non-Root",
+        "Multi-Stage Build",
+        "Sentry",
+        "CORS Strict",
+        "Gunicorn",
+        "Healthcheck"
+      ]
     },
     {
       "icon": "📋",
       "title": "Audit & Conformité",
       "description": "Audit trail complet, conformité OHADA/CNPS, soft-delete.",
-      "tags": ["Audit Log", "OHADA", "CNPS", "Traçabilité IP", "Soft Delete"]
+      "tags": [
+        "Audit Log",
+        "OHADA",
+        "CNPS",
+        "Traçabilité IP",
+        "Soft Delete"
+      ]
     },
     {
       "icon": "🗄️",
       "title": "Sécurité BDD",
       "description": "Row Level Security, requêtes préparées PDO, BCrypt hashing.",
-      "tags": ["RLS", "Prepared Statements", "BCrypt", "Access Policies", "PDO"]
+      "tags": [
+        "RLS",
+        "Prepared Statements",
+        "BCrypt",
+        "Access Policies",
+        "PDO"
+      ]
     },
     {
       "icon": "🔍",
       "title": "OWASP & Pentesting",
       "description": "OWASP Top 10, Hack The Box, VPN, culture cybersécurité.",
-      "tags": ["OWASP Top 10", "Hack The Box", "VPN", "Input Validation", "Least Privilege"]
+      "tags": [
+        "OWASP Top 10",
+        "Hack The Box",
+        "VPN",
+        "Input Validation",
+        "Least Privilege"
+      ]
     }
   ],
   "skillCategories": [
     {
       "icon": "🛡️",
       "title": "Sécurité (Passion #1)",
-      "items": ["JWT", "RBAC", "OWASP Top 10", "HSTS", "XSS Prevention", "CSRF", "RLS", "Audit Logging", "Multi-tenancy", "Docker Hardening", "BCrypt", "OAuth PKCE", "VPN", "Hack The Box"]
+      "items": [
+        "JWT",
+        "RBAC",
+        "OWASP Top 10",
+        "HSTS",
+        "XSS Prevention",
+        "CSRF",
+        "RLS",
+        "Audit Logging",
+        "Multi-tenancy",
+        "Docker Hardening",
+        "BCrypt",
+        "OAuth PKCE",
+        "VPN",
+        "Hack The Box"
+      ]
     },
     {
       "icon": "⚙️",
       "title": "Backend",
-      "items": ["Python", "Django", "DRF", "PHP", "Java", "Node.js", "PostgreSQL", "MySQL", "Redis", "Celery", "Supabase", "Firebase"]
+      "items": [
+        "Python",
+        "Django",
+        "DRF",
+        "PHP",
+        "Java",
+        "Node.js",
+        "PostgreSQL",
+        "MySQL",
+        "Redis",
+        "Celery",
+        "Supabase",
+        "Firebase"
+      ]
     },
     {
       "icon": "🎨",
       "title": "Frontend",
-      "items": ["React", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Vite", "Bootstrap", "Chart.js", "Recharts", "DOM Manipulation"]
+      "items": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Vite",
+        "Bootstrap",
+        "Chart.js",
+        "Recharts",
+        "DOM Manipulation"
+      ]
     },
     {
       "icon": "🐳",
       "title": "DevOps & Infra",
-      "items": ["Docker", "Docker Compose", "Gunicorn", "Sentry", "S3/boto3", "WhiteNoise", "Multi-stage Builds"]
+      "items": [
+        "Docker",
+        "Docker Compose",
+        "Gunicorn",
+        "Sentry",
+        "S3/boto3",
+        "WhiteNoise",
+        "Multi-stage Builds"
+      ]
     },
     {
       "icon": "🐧",
       "title": "Systèmes & Administration",
-      "items": ["Manjaro (KDE)", "Zorin OS Pro", "Windows 11 Pro", "Terminal avancé", "pacman/yay", "DNS Config", "BIOS Diagnostic", "Troubleshooting"]
+      "items": [
+        "Manjaro (KDE)",
+        "Zorin OS Pro",
+        "Windows 11 Pro",
+        "Terminal avancé",
+        "pacman/yay",
+        "DNS Config",
+        "BIOS Diagnostic",
+        "Troubleshooting"
+      ]
     },
     {
       "icon": "🤖",
       "title": "IA & Data",
-      "items": ["Google Genkit AI", "Firebase AI", "Kaggle", "Pipelines ML", "Nettoyage CSV", "Zod Validation"]
+      "items": [
+        "Google Genkit AI",
+        "Firebase AI",
+        "Kaggle",
+        "Pipelines ML",
+        "Nettoyage CSV",
+        "Zod Validation"
+      ]
     }
   ],
   "profileCategories": [
     {
       "icon": "🐧",
       "title": "Systèmes Linux",
-      "points": ["Manjaro KDE avec pacman/yay", "Zorin OS Pro", "Terminal avancé (ps, pkill, find, gestion ~/.config)", "Installation/désinstallation propre"]
+      "points": [
+        "Manjaro KDE avec pacman/yay",
+        "Zorin OS Pro",
+        "Terminal avancé (ps, pkill, find, gestion ~/.config)",
+        "Installation/désinstallation propre"
+      ]
     },
     {
       "icon": "🪟",
       "title": "Windows",
-      "points": ["Windows 11 Pro", "DNS Google 8.8.8.8/8.8.4.4", "Diagnostic réseau", "Diagnostic BIOS (CMOS checksum, bips système)"]
+      "points": [
+        "Windows 11 Pro",
+        "DNS Google 8.8.8.8/8.8.4.4",
+        "Diagnostic réseau",
+        "Diagnostic BIOS (CMOS checksum, bips système)"
+      ]
     },
     {
       "icon": "🟢",
       "title": "Bots & APIs",
-      "points": ["Bot WhatsApp Pydroid 3", "OAuth PKCE flow Spotify", "Token API", "Intégration API Spotify"]
+      "points": [
+        "Bot WhatsApp Pydroid 3",
+        "OAuth PKCE flow Spotify",
+        "Token API",
+        "Intégration API Spotify"
+      ]
     },
     {
       "icon": "📊",
       "title": "Data Science & ML",
-      "points": ["Kaggle CSV", "Nettoyage données", "Pipelines ML", "Progression structurée"]
+      "points": [
+        "Kaggle CSV",
+        "Nettoyage données",
+        "Pipelines ML",
+        "Progression structurée"
+      ]
     },
     {
       "icon": "🔧",
       "title": "Résolution de Problèmes",
-      "points": ["Diagnostic système et lecture logs", "Analyse bips BIOS", "Correction erreurs JavaScript", "Nettoyage apps corrompues", "Réinitialisation configurations"]
+      "points": [
+        "Diagnostic système et lecture logs",
+        "Analyse bips BIOS",
+        "Correction erreurs JavaScript",
+        "Nettoyage apps corrompues",
+        "Réinitialisation configurations"
+      ]
     },
     {
       "icon": "🛠️",
       "title": "Outils Dev",
-      "points": ["Git CLI (branches, commits)", "VS Code", "GitHub Education Pack", "Prisma ORM (schema.prisma, seed.ts)"]
+      "points": [
+        "Git CLI (branches, commits)",
+        "VS Code",
+        "GitHub Education Pack",
+        "Prisma ORM (schema.prisma, seed.ts)"
+      ]
     }
   ],
   "certifications": [],
   "technologies": [
-    { "id": "nextjs", "name": "Next.js", "category": "frontend" },
-    { "id": "react", "name": "React", "category": "frontend" },
-    { "id": "typescript", "name": "TypeScript", "category": "frontend" },
-    { "id": "tailwindcss", "name": "Tailwind CSS", "category": "frontend" },
-    { "id": "shadcnui", "name": "shadcn/ui", "category": "frontend" },
-    { "id": "vite", "name": "Vite", "category": "frontend" },
-    { "id": "bootstrap", "name": "Bootstrap", "category": "frontend" },
-    { "id": "chartjs", "name": "Chart.js", "category": "frontend" },
-    { "id": "recharts", "name": "Recharts", "category": "frontend" },
-    { "id": "html", "name": "HTML", "category": "frontend" },
-    { "id": "css", "name": "CSS", "category": "frontend" },
-    { "id": "python", "name": "Python", "category": "backend" },
-    { "id": "django", "name": "Django", "category": "backend" },
-    { "id": "drf", "name": "DRF", "category": "backend" },
-    { "id": "php", "name": "PHP", "category": "backend" },
-    { "id": "java", "name": "Java", "category": "backend" },
-    { "id": "nodejs", "name": "Node.js", "category": "backend" },
-    { "id": "postgresql", "name": "PostgreSQL", "category": "backend" },
-    { "id": "mysql", "name": "MySQL", "category": "backend" },
-    { "id": "redis", "name": "Redis", "category": "backend" },
-    { "id": "firebase", "name": "Firebase", "category": "backend" },
-    { "id": "supabase", "name": "Supabase", "category": "backend" },
-    { "id": "docker", "name": "Docker", "category": "devops" },
-    { "id": "docker-compose", "name": "Docker Compose", "category": "devops" },
-    { "id": "gunicorn", "name": "Gunicorn", "category": "devops" },
-    { "id": "sentry", "name": "Sentry", "category": "devops" },
-    { "id": "genkit", "name": "Google Genkit AI", "category": "data" },
-    { "id": "kaggle", "name": "Kaggle", "category": "data" }
+    {
+      "id": "nextjs",
+      "name": "Next.js",
+      "category": "frontend"
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "category": "frontend"
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "category": "frontend"
+    },
+    {
+      "id": "tailwindcss",
+      "name": "Tailwind CSS",
+      "category": "frontend"
+    },
+    {
+      "id": "shadcnui",
+      "name": "shadcn/ui",
+      "category": "frontend"
+    },
+    {
+      "id": "vite",
+      "name": "Vite",
+      "category": "frontend"
+    },
+    {
+      "id": "bootstrap",
+      "name": "Bootstrap",
+      "category": "frontend"
+    },
+    {
+      "id": "chartjs",
+      "name": "Chart.js",
+      "category": "frontend"
+    },
+    {
+      "id": "recharts",
+      "name": "Recharts",
+      "category": "frontend"
+    },
+    {
+      "id": "html",
+      "name": "HTML",
+      "category": "frontend"
+    },
+    {
+      "id": "css",
+      "name": "CSS",
+      "category": "frontend"
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "category": "backend"
+    },
+    {
+      "id": "django",
+      "name": "Django",
+      "category": "backend"
+    },
+    {
+      "id": "drf",
+      "name": "DRF",
+      "category": "backend"
+    },
+    {
+      "id": "php",
+      "name": "PHP",
+      "category": "backend"
+    },
+    {
+      "id": "java",
+      "name": "Java",
+      "category": "backend"
+    },
+    {
+      "id": "nodejs",
+      "name": "Node.js",
+      "category": "backend"
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "category": "backend"
+    },
+    {
+      "id": "mysql",
+      "name": "MySQL",
+      "category": "backend"
+    },
+    {
+      "id": "redis",
+      "name": "Redis",
+      "category": "backend"
+    },
+    {
+      "id": "firebase",
+      "name": "Firebase",
+      "category": "backend"
+    },
+    {
+      "id": "supabase",
+      "name": "Supabase",
+      "category": "backend"
+    },
+    {
+      "id": "docker",
+      "name": "Docker",
+      "category": "devops"
+    },
+    {
+      "id": "docker-compose",
+      "name": "Docker Compose",
+      "category": "devops"
+    },
+    {
+      "id": "gunicorn",
+      "name": "Gunicorn",
+      "category": "devops"
+    },
+    {
+      "id": "sentry",
+      "name": "Sentry",
+      "category": "devops"
+    },
+    {
+      "id": "genkit",
+      "name": "Google Genkit AI",
+      "category": "data"
+    },
+    {
+      "id": "kaggle",
+      "name": "Kaggle",
+      "category": "data"
+    },
+    {
+      "id": "Python",
+      "name": "Machine learning",
+      "category": "data"
+    }
   ],
   "terminalLines": [
-    { "command": "$ whoami", "output": "juvenal_sineng — security_enthusiast && full_stack_dev" },
-    { "command": "$ uname -a", "output": "Manjaro Linux | Zorin OS Pro | Windows 11 Pro" },
-    { "command": "$ cat /etc/skills", "output": "JWT · RBAC · HSTS · Docker Hardening · OWASP Top 10" },
-    { "command": "$ nmap --top-ports passion", "output": "PORT 443/tcp — Sécuriser chaque ligne de code 🔐" },
-    { "command": "$ echo $LEVEL", "output": "Intermédiaire en progression rapide → Constructeur de compétences" }
-  ]
+    {
+      "command": "$ whoami",
+      "output": "juvenal_sineng — security_enthusiast && full_stack_dev"
+    },
+    {
+      "command": "$ uname -a",
+      "output": "Manjaro Linux | Zorin OS Pro | Windows 11 Pro"
+    },
+    {
+      "command": "$ cat /etc/skills",
+      "output": "JWT · RBAC · HSTS · Docker Hardening · OWASP Top 10"
+    },
+    {
+      "command": "$ nmap --top-ports passion",
+      "output": "PORT 443/tcp — Sécuriser chaque ligne de code 🔐"
+    },
+    {
+      "command": "$ echo $LEVEL",
+      "output": "Intermédiaire en progression rapide → Constructeur de compétences"
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg-1772193246377",
+      "name": "skjuve",
+      "email": "juvenalskengni@gmail.com",
+      "subject": "demande de travail",
+      "message": "Je voudrais coolaborer avec vous",
+      "date": "2026-02-27T11:54:06.377Z",
+      "read": true
+    }
+  ],
+  "chatBotSettings": {
+    "enabled": true,
+    "botName": "Assistant IA",
+    "botDescription": "Tout savoir sur Juvénal",
+    "welcomeMessage": "Bonjour ! 👋 Je suis l'assistant IA de Juvénal. Posez-moi vos questions sur son parcours, ses compétences ou ses projets !",
+    "fallbackMessage": "Je suis spécialisé uniquement sur Juvénal SINENG KENGNI. Vous pouvez me demander ses compétences, projets, outils, ou comment le contacter ! 😊",
+    "inputPlaceholder": "Posez une question sur Juvénal...",
+    "customResponses": []
+  }
 }

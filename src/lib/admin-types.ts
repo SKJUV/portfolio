@@ -40,6 +40,33 @@ export interface Technology {
   category: "frontend" | "backend" | "devops" | "security" | "data" | "other";
 }
 
+export interface ContactMessage {
+  id: string;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  date: string;
+  read: boolean;
+}
+
+export interface ChatBotSettings {
+  enabled: boolean;
+  botName: string;
+  botDescription: string;
+  welcomeMessage: string;
+  fallbackMessage: string;
+  inputPlaceholder: string;
+  customResponses: ChatBotCustomResponse[];
+}
+
+export interface ChatBotCustomResponse {
+  id: string;
+  keywords: string[]; // mots-clés de déclenchement
+  response: string;
+  enabled: boolean;
+}
+
 export interface PortfolioData {
   settings: SiteSettings;
   sections: Section[];
@@ -50,4 +77,6 @@ export interface PortfolioData {
   certifications: Certification[];
   technologies: Technology[];
   terminalLines: { command: string; output: string }[];
+  messages: ContactMessage[];
+  chatBotSettings: ChatBotSettings;
 }

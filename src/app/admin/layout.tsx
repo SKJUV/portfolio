@@ -14,6 +14,8 @@ import {
   Menu,
   X,
   ChevronRight,
+  MessageSquare,
+  Bot,
 } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 
@@ -23,6 +25,8 @@ const sidebarItems = [
   { href: "/admin/projects", label: "Projets", icon: FolderKanban },
   { href: "/admin/stacks", label: "Technologies", icon: Code2 },
   { href: "/admin/certifications", label: "Certifications", icon: Award },
+  { href: "/admin/chatbot", label: "Chatbot IA", icon: Bot },
+  { href: "/admin/messages", label: "Messages", icon: MessageSquare },
   { href: "/admin/settings", label: "Personnalisation", icon: Settings },
 ];
 
@@ -46,9 +50,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="admin-theme min-h-screen">
       {/* Mobile header */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 glass border-b border-border/50 h-14 flex items-center justify-between px-4">
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 admin-sidebar border-b border-border/50 h-14 flex items-center justify-between px-4">
         <button
           onClick={() => setSidebarOpen(true)}
           className="p-2 rounded-lg hover:bg-muted transition-colors"
@@ -72,7 +76,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 z-50 h-full w-64 glass border-r border-border/50 flex flex-col transition-transform duration-300 lg:translate-x-0 ${
+        className={`fixed top-0 left-0 z-50 h-full w-64 admin-sidebar border-r border-border/50 flex flex-col transition-transform duration-300 lg:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >

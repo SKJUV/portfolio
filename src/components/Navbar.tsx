@@ -4,15 +4,26 @@ import { useState } from "react";
 import { Shield, Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
-const navLinks = [
-  { href: "#security", label: "Sécurité" },
-  { href: "#projects", label: "Projets" },
-  { href: "#skills", label: "Compétences" },
-  { href: "#profile", label: "Profil" },
-  { href: "#contact", label: "Contact" },
-];
+interface NavSection {
+  id: string;
+  title: string;
+  enabled: boolean;
+  order: number;
+}
 
-export default function Navbar() {
+interface NavbarProps {
+  sections?: NavSection[];
+}
+
+export default function Navbar({ sections = [] }: NavbarProps) {
+  // Générer les liens dynamiquement à partir des sections activées
+  const sectionLinks = sections
+    .filter((s) => s.enabled)
+    .sort((a, b) => a.order - b.order)
+    .map((s) => ({ href: `#${s.id}`, label: s.title }));
+
+  // Contact toujours à la fin
+  const navLinks = [...sectionLinks, { href: "#contact", label: "Contact" }];
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (

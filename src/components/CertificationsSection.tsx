@@ -11,7 +11,7 @@ export default function CertificationsSection({ data }: { data: PortfolioData })
   }
 
   return (
-    <section id="certifications" className="py-20 px-4">
+    <section id="certifications" className="py-20 px-4 bg-mesh">
       <div className="max-w-6xl mx-auto space-y-12">
         <div className="text-center space-y-3">
           <h2 className="text-3xl sm:text-4xl font-bold">

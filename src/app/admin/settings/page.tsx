@@ -97,7 +97,7 @@ export default function SettingsPage() {
       </div>
 
       {/* SEO */}
-      <div className="glass-card rounded-2xl p-6 space-y-4">
+      <div className="admin-card p-4 sm:p-6 space-y-4">
         <h2 className="font-semibold">🔍 SEO & Métadonnées</h2>
         <div className="space-y-3">
           <div className="space-y-1.5">
@@ -106,7 +106,7 @@ export default function SettingsPage() {
               type="text"
               value={settings.siteTitle}
               onChange={(e) => setSettings({ ...settings, siteTitle: e.target.value })}
-              className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+              className="admin-input"
             />
           </div>
           <div className="space-y-1.5">
@@ -115,14 +115,14 @@ export default function SettingsPage() {
               value={settings.siteDescription}
               onChange={(e) => setSettings({ ...settings, siteDescription: e.target.value })}
               rows={2}
-              className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary resize-none"
+              className="admin-input resize-none"
             />
           </div>
         </div>
       </div>
 
       {/* Hero */}
-      <div className="glass-card rounded-2xl p-6 space-y-4">
+      <div className="admin-card p-4 sm:p-6 space-y-4">
         <h2 className="font-semibold">🏠 Section Hero</h2>
         <div className="space-y-3">
           <div className="space-y-1.5">
@@ -131,7 +131,7 @@ export default function SettingsPage() {
               type="text"
               value={settings.heroTitle}
               onChange={(e) => setSettings({ ...settings, heroTitle: e.target.value })}
-              className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+              className="admin-input"
             />
           </div>
           <div className="space-y-1.5">
@@ -140,7 +140,7 @@ export default function SettingsPage() {
               type="text"
               value={settings.heroSubtitle}
               onChange={(e) => setSettings({ ...settings, heroSubtitle: e.target.value })}
-              className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+              className="admin-input"
             />
           </div>
           <div className="space-y-1.5">
@@ -149,14 +149,14 @@ export default function SettingsPage() {
               value={settings.heroDescription}
               onChange={(e) => setSettings({ ...settings, heroDescription: e.target.value })}
               rows={3}
-              className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary resize-none"
+              className="admin-input resize-none"
             />
           </div>
         </div>
       </div>
 
       {/* Contact */}
-      <div className="glass-card rounded-2xl p-6 space-y-4">
+      <div className="admin-card p-4 sm:p-6 space-y-4">
         <h2 className="font-semibold">📬 Contact</h2>
         <div className="grid sm:grid-cols-2 gap-3">
           <div className="space-y-1.5 sm:col-span-2">
@@ -165,7 +165,7 @@ export default function SettingsPage() {
               type="email"
               value={settings.contactEmail}
               onChange={(e) => setSettings({ ...settings, contactEmail: e.target.value })}
-              className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+              className="admin-input"
             />
           </div>
           <div className="space-y-1.5">
@@ -174,7 +174,7 @@ export default function SettingsPage() {
               type="url"
               value={settings.contactGithub}
               onChange={(e) => setSettings({ ...settings, contactGithub: e.target.value })}
-              className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+              className="admin-input"
             />
           </div>
           <div className="space-y-1.5">
@@ -183,14 +183,14 @@ export default function SettingsPage() {
               type="url"
               value={settings.contactLinkedin}
               onChange={(e) => setSettings({ ...settings, contactLinkedin: e.target.value })}
-              className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+              className="admin-input"
             />
           </div>
         </div>
       </div>
 
       {/* Footer */}
-      <div className="glass-card rounded-2xl p-6 space-y-4">
+      <div className="admin-card p-4 sm:p-6 space-y-4">
         <h2 className="font-semibold">📄 Footer</h2>
         <div className="space-y-1.5">
           <label className="text-xs text-muted-foreground font-medium">Texte du footer</label>
@@ -198,7 +198,7 @@ export default function SettingsPage() {
             type="text"
             value={settings.footerText}
             onChange={(e) => setSettings({ ...settings, footerText: e.target.value })}
-            className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+            className="admin-input"
           />
         </div>
       </div>

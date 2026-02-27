@@ -9,6 +9,7 @@ import {
   TrendingUp,
   Eye,
   EyeOff,
+  MessageSquare,
 } from "lucide-react";
 import type { PortfolioData } from "@/lib/admin-types";
 
@@ -40,6 +41,8 @@ export default function AdminDashboard() {
 
   const enabledSections = data.sections.filter((s) => s.enabled).length;
   const totalSections = data.sections.length;
+  const unreadMessages = (data.messages || []).filter((m) => !m.read).length;
+  const totalMessages = (data.messages || []).length;
 
   const stats = [
     {
@@ -70,6 +73,13 @@ export default function AdminDashboard() {
       color: "text-amber-500",
       bg: "bg-amber-500/10",
     },
+    {
+      label: "Messages",
+      value: unreadMessages > 0 ? `${unreadMessages} non lu${unreadMessages > 1 ? "s" : ""}` : totalMessages,
+      icon: MessageSquare,
+      color: unreadMessages > 0 ? "text-red-500" : "text-cyan-500",
+      bg: unreadMessages > 0 ? "bg-red-500/10" : "bg-cyan-500/10",
+    },
   ];
 
   return (
@@ -83,9 +93,9 @@ export default function AdminDashboard() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
         {stats.map((stat) => (
-          <div key={stat.label} className="glass-card rounded-2xl p-5">
+          <div key={stat.label} className="admin-card p-4 sm:p-5">
             <div className="flex items-center justify-between mb-3">
               <div className={`p-2.5 rounded-xl ${stat.bg}`}>
                 <stat.icon className={`h-5 w-5 ${stat.color}`} />
@@ -99,8 +109,8 @@ export default function AdminDashboard() {
       </div>
 
       {/* Sections overview */}
-      <div className="glass-card rounded-2xl p-6">
-        <h2 className="text-lg font-semibold mb-4">Sections du portfolio</h2>
+      <div className="admin-card p-4 sm:p-6">
+        <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Sections du portfolio</h2>
         <div className="space-y-3">
           {data.sections
             .sort((a, b) => a.order - b.order)
@@ -135,9 +145,9 @@ export default function AdminDashboard() {
       </div>
 
       {/* Recent projects */}
-      <div className="glass-card rounded-2xl p-6">
-        <h2 className="text-lg font-semibold mb-4">Projets récents</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className="admin-card p-4 sm:p-6">
+        <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Projets récents</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {data.projects.slice(0, 6).map((project) => (
             <div
               key={project.id}
