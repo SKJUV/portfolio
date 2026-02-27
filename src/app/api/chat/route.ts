@@ -4,6 +4,9 @@ import { getPortfolioData } from "@/lib/data-manager";
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
+// Modèles à essayer dans l'ordre (le premier disponible sera utilisé)
+const GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-2.0-flash-lite"];
+
 /**
  * Construit le contexte du portfolio pour le system prompt de Gemini
  */
@@ -107,15 +110,6 @@ export async function POST(request: NextRequest) {
 
     // Configurer Gemini
     const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash",
-      systemInstruction: systemContext,
-      generationConfig: {
-        maxOutputTokens: 500,
-        temperature: 0.7,
-        topP: 0.9,
-      },
-    });
 
     // Construire l'historique de conversation pour Gemini
     const chatHistory = (history || []).map((msg: { role: string; content: string }) => ({
@@ -123,20 +117,40 @@ export async function POST(request: NextRequest) {
       parts: [{ text: msg.content }],
     }));
 
-    // Démarrer le chat avec l'historique
-    const chat = model.startChat({
-      history: chatHistory,
-    });
+    // Essayer chaque modèle jusqu'à ce qu'un fonctionne
+    let lastError: unknown = null;
+    for (const modelName of GEMINI_MODELS) {
+      try {
+        const model = genAI.getGenerativeModel({
+          model: modelName,
+          systemInstruction: systemContext,
+          generationConfig: {
+            maxOutputTokens: 500,
+            temperature: 0.7,
+            topP: 0.9,
+          },
+        });
 
-    // Envoyer le message et obtenir la réponse
-    const result = await chat.sendMessage(message);
-    const response = result.response.text();
+        const chat = model.startChat({ history: chatHistory });
+        const result = await chat.sendMessage(message);
+        const response = result.response.text();
 
-    return NextResponse.json({ response });
+        return NextResponse.json({ response, model: modelName });
+      } catch (err) {
+        console.warn(`[chat] Modèle ${modelName} échoué:`, err instanceof Error ? err.message : err);
+        lastError = err;
+        // Continuer avec le modèle suivant
+      }
+    }
+
+    // Tous les modèles ont échoué
+    console.error("Tous les modèles Gemini ont échoué:", lastError);
+    return NextResponse.json(
+      { error: "Erreur du service IA", fallback: true },
+      { status: 500 }
+    );
   } catch (error) {
     console.error("Gemini API error:", error);
-
-    // En cas d'erreur (quota, réseau, etc.), signaler le fallback
     return NextResponse.json(
       { error: "Erreur du service IA", fallback: true },
       { status: 500 }
