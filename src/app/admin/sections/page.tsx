@@ -221,7 +221,7 @@ export default function SectionsPage() {
                     onClick={() => handleToggle(section.id)}
                     className={`p-1.5 sm:p-2 rounded-lg transition-colors ${
                       section.enabled
-                        ? "text-green-600 hover:bg-green-500/10"
+                        ? "text-primary hover:bg-primary/10"
                         : "text-muted-foreground hover:bg-muted"
                     }`}
                     title={section.enabled ? "Désactiver" : "Activer"}

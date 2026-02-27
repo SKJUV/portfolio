@@ -135,7 +135,7 @@ export default function ProjectsPage() {
               setAdding(true);
               setForm(emptyProject);
             }}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:opacity-90 transition-all"
+            className="admin-btn-primary px-4 py-2.5"
           >
             <Plus className="h-4 w-4" />
             Nouveau projet
@@ -288,7 +288,7 @@ export default function ProjectsPage() {
             <button
               onClick={handleSave}
               disabled={saving || !form.id || !form.title}
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:opacity-90 disabled:opacity-50"
+              className="admin-btn-primary px-4 py-2.5"
             >
               <Save className="h-4 w-4" />
               {saving ? "Sauvegarde..." : adding ? "Ajouter" : "Enregistrer"}
@@ -315,7 +315,7 @@ export default function ProjectsPage() {
                   <span
                     className={`text-xs px-2 py-0.5 rounded-lg ${
                       (project.status || "completed") === "completed"
-                        ? "bg-green-500/10 text-green-600"
+                        ? "bg-primary/10 text-primary"
                         : "bg-amber-500/10 text-amber-600"
                     }`}
                   >

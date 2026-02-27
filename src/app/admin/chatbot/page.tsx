@@ -127,7 +127,7 @@ export default function ChatBotAdminPage() {
           <button
             onClick={handleSave}
             disabled={saving || !hasChanges}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:opacity-90 disabled:opacity-50 transition-all"
+            className="admin-btn-primary px-4 py-2.5"
           >
             <Save className="h-4 w-4" />
             {saving ? "Sauvegarde..." : saved ? "Sauvegardé ✓" : "Enregistrer"}
@@ -139,8 +139,8 @@ export default function ChatBotAdminPage() {
       <div className="admin-card p-5">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className={`p-2.5 rounded-xl ${settings.enabled ? "bg-green-500/10" : "bg-muted"}`}>
-              <Bot className={`h-5 w-5 ${settings.enabled ? "text-green-500" : "text-muted-foreground"}`} />
+            <div className={`p-2.5 rounded-xl ${settings.enabled ? "bg-primary/10" : "bg-muted"}`}>
+              <Bot className={`h-5 w-5 ${settings.enabled ? "text-primary" : "text-muted-foreground"}`} />
             </div>
             <div>
               <p className="text-sm font-medium">Chatbot {settings.enabled ? "actif" : "désactivé"}</p>
@@ -155,7 +155,7 @@ export default function ChatBotAdminPage() {
             onClick={() => setSettings({ ...settings, enabled: !settings.enabled })}
             className={`p-2.5 rounded-xl transition-all ${
               settings.enabled
-                ? "bg-green-500/10 text-green-500 hover:bg-green-500/20"
+                ? "bg-primary/10 text-primary hover:bg-primary/20"
                 : "bg-muted text-muted-foreground hover:bg-muted/80"
             }`}
           >
@@ -242,7 +242,7 @@ export default function ChatBotAdminPage() {
           </div>
           <button
             onClick={addCustomResponse}
-            className="inline-flex items-center gap-1.5 px-3 py-2 bg-primary text-primary-foreground rounded-xl text-xs font-medium hover:opacity-90 transition-all"
+            className="admin-btn-primary text-xs px-3 py-2"
           >
             <Plus className="h-3.5 w-3.5" />
             Ajouter
@@ -298,7 +298,7 @@ export default function ChatBotAdminPage() {
                       onClick={() => updateCustomResponse(cr.id, { enabled: !cr.enabled })}
                       className={`p-1.5 rounded-lg transition-colors ${
                         cr.enabled
-                          ? "text-green-500 hover:bg-green-500/10"
+                          ? "text-primary hover:bg-primary/10"
                           : "text-muted-foreground hover:bg-muted"
                       }`}
                       title={cr.enabled ? "Désactiver" : "Activer"}

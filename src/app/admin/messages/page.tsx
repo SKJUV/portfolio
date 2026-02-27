@@ -117,7 +117,7 @@ export default function AdminMessagesPage() {
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 filter === f
                   ? "bg-primary text-primary-foreground"
-                  : "glass text-muted-foreground hover:text-foreground"
+                  : "bg-muted/50 text-muted-foreground hover:text-foreground"
               }`}
             >
               {f === "all" ? "Tous" : f === "unread" ? "Non lus" : "Lus"}
@@ -208,7 +208,7 @@ export default function AdminMessagesPage() {
                   <div className="flex items-center gap-2 pt-1">
                     <button
                       onClick={() => toggleRead(msg)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg glass hover:bg-muted/50 transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border border-border bg-muted/30 hover:bg-muted/50 transition-colors"
                     >
                       {msg.read ? (
                         <>

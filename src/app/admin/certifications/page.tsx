@@ -118,7 +118,7 @@ export default function CertificationsPage() {
               setAdding(true);
               setForm(emptyCert);
             }}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:opacity-90 transition-all"
+            className="admin-btn-primary px-4 py-2.5"
           >
             <Plus className="h-4 w-4" />
             Nouvelle certification
@@ -250,7 +250,7 @@ export default function CertificationsPage() {
             <button
               onClick={handleSave}
               disabled={saving || !form.name || !form.platform}
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:opacity-90 disabled:opacity-50"
+              className="admin-btn-primary px-4 py-2.5"
             >
               <Save className="h-4 w-4" />
               {saving ? "Sauvegarde..." : adding ? "Ajouter" : "Enregistrer"}

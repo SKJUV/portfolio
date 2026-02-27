@@ -37,7 +37,7 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background bg-mesh px-4">
+    <div className="admin-theme min-h-screen flex items-center justify-center bg-background px-4">
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
@@ -51,7 +51,7 @@ export default function AdminLoginPage() {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-6 space-y-5">
+        <form onSubmit={handleSubmit} className="admin-card p-6 space-y-5">
           <div className="space-y-2">
             <label htmlFor="password" className="text-sm font-medium flex items-center gap-2">
               <Lock className="h-4 w-4 text-muted-foreground" />
@@ -64,7 +64,7 @@ export default function AdminLoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Entrez le mot de passe admin"
-                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all pr-10"
+                className="admin-input pr-10"
                 required
                 autoFocus
               />
@@ -87,7 +87,7 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={loading || !password}
-            className="w-full rounded-xl bg-primary text-primary-foreground py-3 text-sm font-medium hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed glow-primary"
+            className="admin-btn-primary w-full justify-center py-3 disabled:cursor-not-allowed"
           >
             {loading ? "Connexion..." : "Se connecter"}
           </button>

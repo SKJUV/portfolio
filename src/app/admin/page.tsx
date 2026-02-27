@@ -56,8 +56,8 @@ export default function AdminDashboard() {
       label: "Sections",
       value: `${enabledSections}/${totalSections}`,
       icon: Layers,
-      color: "text-green-500",
-      bg: "bg-green-500/10",
+      color: "text-teal-500",
+      bg: "bg-teal-500/10",
     },
     {
       label: "Technologies",
@@ -130,7 +130,7 @@ export default function AdminDashboard() {
                 </div>
                 <div className="flex items-center gap-2">
                   {section.enabled ? (
-                    <span className="inline-flex items-center gap-1.5 text-xs text-green-600 bg-green-500/10 px-2.5 py-1 rounded-lg">
+                    <span className="inline-flex items-center gap-1.5 text-xs text-primary bg-primary/10 px-2.5 py-1 rounded-lg">
                       <Eye className="h-3 w-3" /> Actif
                     </span>
                   ) : (

@@ -6,7 +6,7 @@ import type { Technology } from "@/lib/admin-types";
 
 const categories = [
   { value: "frontend", label: "Frontend", color: "text-blue-500 bg-blue-500/10" },
-  { value: "backend", label: "Backend", color: "text-green-500 bg-green-500/10" },
+  { value: "backend", label: "Backend", color: "text-teal-500 bg-teal-500/10" },
   { value: "devops", label: "DevOps", color: "text-purple-500 bg-purple-500/10" },
   { value: "security", label: "Sécurité", color: "text-red-500 bg-red-500/10" },
   { value: "data", label: "Data / IA", color: "text-amber-500 bg-amber-500/10" },
@@ -98,7 +98,7 @@ export default function StacksPage() {
               setAdding(true);
               setForm(emptyTech);
             }}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:opacity-90 transition-all"
+            className="admin-btn-primary px-4 py-2.5"
           >
             <Plus className="h-4 w-4" />
             Nouvelle techno
@@ -155,7 +155,7 @@ export default function StacksPage() {
             <button
               onClick={handleSave}
               disabled={saving || !form.id || !form.name}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:opacity-90 disabled:opacity-50"
+              className="admin-btn-primary px-4 py-2"
             >
               <Save className="h-4 w-4" />
               {saving ? "Sauvegarde..." : adding ? "Ajouter" : "Enregistrer"}

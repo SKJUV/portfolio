@@ -88,7 +88,7 @@ export default function SettingsPage() {
           <button
             onClick={handleSave}
             disabled={saving || !hasChanges}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:opacity-90 disabled:opacity-50 transition-all"
+            className="admin-btn-primary px-4 py-2.5"
           >
             <Save className="h-4 w-4" />
             {saving ? "Sauvegarde..." : saved ? "Sauvegardé ✓" : "Enregistrer"}
