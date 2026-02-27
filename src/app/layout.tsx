@@ -3,7 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { getPortfolioData } from "@/lib/data-manager";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-mauve-seven-75.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://sineng-juvenal.me";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
