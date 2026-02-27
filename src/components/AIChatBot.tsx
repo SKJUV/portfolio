@@ -1,9 +1,36 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { MessageCircle, X, Send, Bot, Sparkles } from "lucide-react";
 import type { PortfolioData } from "@/lib/admin-types";
 import type { Project, SecuritySkill, SkillCategory, ProfileCategory } from "@/lib/types";
+
+/**
+ * Rendu markdown léger → HTML
+ * Supporte : **bold**, *italic*, `code`, [lien](url), listes (• -), \n
+ */
+function renderMarkdown(text: string): string {
+  return text
+    // Échapper le HTML
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    // Code inline `code`
+    .replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>')
+    // Gras **text** ou __text__
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/__(.+?)__/g, "<strong>$1</strong>")
+    // Italique *text* ou _text_
+    .replace(/\*(.+?)\*/g, "<em>$1</em>")
+    .replace(/(?<![\w])_(.+?)_(?![\w])/g, "<em>$1</em>")
+    // Liens [texte](url)
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="chat-link">$1</a>')
+    // Listes à puces (lignes commençant par • - *)
+    .replace(/^[•\-\*]\s+(.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>\n?)+/g, (match) => `<ul class="chat-list">${match}</ul>`)
+    // Sauts de ligne
+    .replace(/\n/g, "<br/>");
+}
 
 interface Message {
   role: "user" | "assistant";
@@ -224,13 +251,18 @@ export default function AIChatBot({ data }: { data: PortfolioData }) {
                 className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed whitespace-pre-line ${
+                  className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed chat-message ${
                     msg.role === "user"
                       ? "bg-primary text-primary-foreground rounded-br-md"
                       : "bg-muted text-foreground rounded-bl-md"
                   }`}
+                  dangerouslySetInnerHTML={
+                    msg.role === "assistant"
+                      ? { __html: renderMarkdown(msg.content) }
+                      : undefined
+                  }
                 >
-                  {msg.content}
+                  {msg.role === "user" ? msg.content : undefined}
                 </div>
               </div>
             ))}

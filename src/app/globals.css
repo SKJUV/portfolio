@@ -264,3 +264,53 @@ html {
   transform: none;
 }
 
+/* ============================================
+   Chatbot message markdown styles
+   ============================================ */
+.chat-message strong {
+  font-weight: 700;
+}
+.chat-message em {
+  font-style: italic;
+}
+.chat-message .inline-code {
+  background: hsl(var(--muted));
+  padding: 0.1em 0.35em;
+  border-radius: 0.25rem;
+  font-size: 0.85em;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+}
+.chat-message .chat-link {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.chat-message .chat-link:hover {
+  opacity: 0.8;
+}
+.chat-message .chat-list {
+  list-style: none;
+  padding-left: 0.25rem;
+  margin: 0.35rem 0;
+}
+.chat-message .chat-list li {
+  position: relative;
+  padding-left: 1.1em;
+  margin-bottom: 0.15rem;
+}
+.chat-message .chat-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: hsl(var(--primary));
+  font-weight: 700;
+}
+/* User messages — code & links override for contrast */
+.chat-message.bg-primary .inline-code {
+  background: rgba(255, 255, 255, 0.15);
+}
+.chat-message.bg-primary .chat-link {
+  color: inherit;
+  opacity: 0.9;
+}
+
