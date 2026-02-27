@@ -9,7 +9,7 @@ export async function GET() {
     return NextResponse.json(data.chatBotSettings || {
       enabled: true,
       botName: "Assistant IA",
-      botDescription: "Tout savoir sur Juvénal",
+      botDescription: "Tout savoir sur Juvenal",
       welcomeMessage: "Bonjour ! 👋",
       fallbackMessage: "Je ne peux répondre qu'aux questions sur ce portfolio.",
       inputPlaceholder: "Posez une question...",

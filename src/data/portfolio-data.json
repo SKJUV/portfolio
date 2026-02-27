@@ -586,10 +586,10 @@
   "chatBotSettings": {
     "enabled": true,
     "botName": "Assistant IA",
-    "botDescription": "Tout savoir sur Juvénal",
-    "welcomeMessage": "Bonjour ! 👋 Je suis l'assistant IA de Juvénal. Posez-moi vos questions sur son parcours, ses compétences ou ses projets !",
-    "fallbackMessage": "Je suis spécialisé uniquement sur Juvénal SINENG KENGNI. Vous pouvez me demander ses compétences, projets, outils, ou comment le contacter ! 😊",
-    "inputPlaceholder": "Posez une question sur Juvénal...",
+    "botDescription": "Tout savoir sur Juvenal",
+    "welcomeMessage": "Bonjour ! 👋 Je suis l'assistant IA de Juvenal. Posez-moi vos questions sur son parcours, ses compétences ou ses projets !",
+    "fallbackMessage": "Je suis spécialisé uniquement sur Juvenal SINENG KENGNI. Vous pouvez me demander ses compétences, projets, outils, ou comment le contacter ! 😊",
+    "inputPlaceholder": "Posez une question sur Juvenal...",
     "customResponses": []
   }
 }

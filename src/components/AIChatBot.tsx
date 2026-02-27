@@ -63,11 +63,11 @@ function generateLocalResponse(question: string, data: ChatData, fallbackMessage
   if (offTopicPatterns.some((p) => p.test(q))) return fallbackMessage;
 
   if (/^(salut|hello|hi|hey|bonjour|coucou|yo|bonsoir)/i.test(q)) {
-    return "Bonjour ! 👋 Je suis l'assistant IA de Juvénal SINENG KENGNI. Posez-moi des questions sur ses compétences, projets, ou parcours !";
+    return "Bonjour ! 👋 Je suis l'assistant IA de Juvenal SINENG KENGNI. Posez-moi des questions sur ses compétences, projets, ou parcours !";
   }
 
   if (/qui (es[t\-]|est)/.test(q) || /présent/.test(q) || /c'est qui/.test(q) || /who (is|are)/.test(q)) {
-    return "Juvénal SINENG KENGNI (SKJUV) est un développeur Full-Stack passionné par la cybersécurité 🛡️. Ses spécialités : JWT, RBAC, OWASP Top 10, Docker Hardening.";
+    return "Juvenal SINENG KENGNI (SKJUV) est un développeur Full-Stack passionné par la cybersécurité 🛡️. Ses spécialités : JWT, RBAC, OWASP Top 10, Docker Hardening.";
   }
 
   if (/contact|email|mail|linkedin|joindre/.test(q)) {
@@ -75,7 +75,7 @@ function generateLocalResponse(question: string, data: ChatData, fallbackMessage
   }
 
   if (/projet|project|réalis|travaux|works/.test(q)) {
-    return `Projets de Juvénal :\n${projects.map((p) => `• **${p.title}** — ${p.subtitle}`).join("\n")}\n\nDemandez des détails sur un projet !`;
+    return `Projets de Juvenal :\n${projects.map((p) => `• **${p.title}** — ${p.subtitle}`).join("\n")}\n\nDemandez des détails sur un projet !`;
   }
 
   for (const project of projects) {
@@ -102,10 +102,10 @@ function generateLocalResponse(question: string, data: ChatData, fallbackMessage
     return `📈 ${levelLine?.output ?? "Intermédiaire en progression rapide"}`;
   }
 
-  if (/github|repo|code source/.test(q)) return "🔗 GitHub de Juvénal : https://github.com/SKJUV";
+  if (/github|repo|code source/.test(q)) return "🔗 GitHub de Juvenal : https://github.com/SKJUV";
 
   if (/que (peux|sais|peut)|what can you|aide|help/.test(q)) {
-    return "Je peux vous renseigner sur :\n• 👤 Qui est Juvénal\n• 🛡️ Cybersécurité\n• 💻 Projets\n• ⚙️ Stack technique\n• 📬 Contact\n\nPosez votre question !";
+    return "Je peux vous renseigner sur :\n• 👤 Qui est Juvenal\n• 🛡️ Cybersécurité\n• 💻 Projets\n• ⚙️ Stack technique\n• 📬 Contact\n\nPosez votre question !";
   }
 
   return fallbackMessage;
@@ -126,7 +126,7 @@ export default function AIChatBot({ data }: { data: PortfolioData }) {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: settings?.welcomeMessage || "Bonjour ! 👋 Je suis l'assistant IA de Juvénal. Posez-moi vos questions sur son parcours, ses compétences ou ses projets !",
+      content: settings?.welcomeMessage || "Bonjour ! 👋 Je suis l'assistant IA de Juvenal. Posez-moi vos questions sur son parcours, ses compétences ou ses projets !",
     },
   ]);
   const [input, setInput] = useState("");
@@ -196,7 +196,7 @@ export default function AIChatBot({ data }: { data: PortfolioData }) {
     const response = generateLocalResponse(
       trimmed,
       chatData,
-      settings?.fallbackMessage || "Je suis spécialisé uniquement sur Juvénal SINENG KENGNI.",
+      settings?.fallbackMessage || "Je suis spécialisé uniquement sur Juvenal SINENG KENGNI.",
       settings?.customResponses || []
     );
     setMessages((prev) => [...prev, { role: "assistant", content: response }]);
@@ -231,7 +231,7 @@ export default function AIChatBot({ data }: { data: PortfolioData }) {
                 {useGemini && <Sparkles className="h-3.5 w-3.5 text-primary" />}
               </p>
               <p className="text-xs text-muted-foreground">
-                {useGemini ? "Propulsé par Gemini AI" : settings?.botDescription || "Tout savoir sur Juvénal"}
+                {useGemini ? "Propulsé par Gemini AI" : settings?.botDescription || "Tout savoir sur Juvenal"}
               </p>
             </div>
             <button
@@ -294,7 +294,7 @@ export default function AIChatBot({ data }: { data: PortfolioData }) {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder={settings?.inputPlaceholder || "Posez une question sur Juvénal..."}
+                placeholder={settings?.inputPlaceholder || "Posez une question sur Juvenal..."}
                 className="flex-1 rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm outline-none placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary/30 transition-colors"
               />
               <button

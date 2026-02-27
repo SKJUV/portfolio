@@ -17,7 +17,7 @@ import type { ChatBotSettings, ChatBotCustomResponse } from "@/lib/admin-types";
 const defaultSettings: ChatBotSettings = {
   enabled: true,
   botName: "Assistant IA",
-  botDescription: "Tout savoir sur Juvénal",
+  botDescription: "Tout savoir sur Juvenal",
   welcomeMessage: "",
   fallbackMessage: "",
   inputPlaceholder: "",
