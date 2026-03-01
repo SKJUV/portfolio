@@ -8,7 +8,7 @@
     "footerText": "© 2026 SINENG KENGNI Juvenal",
     "contactEmail": "sinengjuvenal@gmail.com",
     "contactGithub": "https://github.com/SKJUV",
-    "contactLinkedin": "https://www.linkedin.com/in/juvenal-sineng-kengni"
+    "contactLinkedin": "https://cm.linkedin.com/in/juvenal-sineng-kengni"
   },
   "sections": [
     {
@@ -62,11 +62,35 @@
   ],
   "projects": [
     {
+      "id": "portfolio",
+      "title": "Portfolio Personnel",
+      "subtitle": "Site portfolio moderne avec CMS admin et chatbot IA",
+      "description": "Portfolio full-stack avec panneau d'administration complet, chatbot IA (Google Gemini), système i18n FR/EN, thème jour/nuit, stockage Supabase, déploiement Vercel avec domaine personnalisé.",
+      "badge": "Full-Stack + IA",
+      "badgeType": "security",
+      "stack": [
+        "Next.js 15",
+        "TypeScript",
+        "Tailwind CSS",
+        "Supabase",
+        "Google Gemini",
+        "Vercel"
+      ],
+      "securityPoints": [
+        "Auth HMAC-SHA256",
+        "Edge Middleware",
+        "Supabase RLS",
+        "CORS strict"
+      ],
+      "githubUrl": "https://github.com/SKJUV/portfolio",
+      "liveUrl": "https://sineng-juvenal.me"
+    },
+    {
       "id": "educonverse",
       "title": "EduConverse",
       "subtitle": "Plateforme éducative multilingue avec IA",
-      "description": "E-learning platform pour la Digital Innovation Week Cameroun. Cours en français et langues nationales, système de rôles (teacher/student/admin), assistant IA pour les leçons via Google Genkit, dashboards par rôle.",
-      "badge": "EdTech Multilingue + IA",
+      "description": "Plateforme e-learning pour la Digital Innovation Week Cameroun. Cours en français et langues nationales, système de rôles, assistant IA via Google Genkit, dashboards par rôle.",
+      "badge": "EdTech + IA",
       "badgeType": "education",
       "stack": [
         "Next.js",
@@ -78,18 +102,17 @@
       ],
       "securityPoints": [
         "Rôles teacher/student/admin",
-        "Account Security page",
         "Firebase Auth",
-        "IA contrôlée"
+        "IA contrôlée",
+        "Server Actions Zod"
       ],
-      "githubUrl": "https://github.com/SKJUV/EduConverse",
-      "status": "completed"
+      "githubUrl": "https://github.com/SKJUV/EduConverse"
     },
     {
       "id": "eduafrique",
       "title": "EduAfrique",
       "subtitle": "E-learning africain avec tuteur IA",
-      "description": "Plateforme de cours en ligne pour l'Afrique avec tuteur IA intelligent, parcours d'apprentissage personnalisés, quiz/évaluations, accès hors-ligne et catalogue de cours (Business, Agriculture, Tech, Arts & Culture).",
+      "description": "Plateforme de cours en ligne pour l'Afrique avec tuteur IA intelligent, parcours personnalisés, quiz/évaluations, catalogue de cours (Business, Agriculture, Tech, Arts & Culture).",
       "badge": "AI-Powered Learning",
       "badgeType": "education",
       "stack": [
@@ -106,85 +129,105 @@
         "Server Actions Zod",
         "Validation serveur"
       ],
-      "githubUrl": "https://github.com/SKJUV/EduAfrique",
-      "status": "completed"
+      "githubUrl": "https://github.com/SKJUV/EduAfrique"
     },
     {
       "id": "hrms",
       "title": "HRMS",
-      "subtitle": "Système de gestion des ressources humaines en Java",
-      "description": "Application Java de gestion des ressources humaines permettant le suivi des employés, la gestion des départements et l'administration du personnel.",
+      "subtitle": "Système de gestion des ressources humaines",
+      "description": "Application Java complète pour la gestion RH : suivi des employés, gestion des départements, administration du personnel avec base de données PostgreSQL.",
       "badge": "Gestion RH",
+      "badgeType": "university",
+      "stack": [
+        "Java",
+        "PostgreSQL",
+        "CSS"
+      ],
+      "securityPoints": [
+        "Gestion des rôles",
+        "Requêtes préparées"
+      ],
+      "githubUrl": "https://github.com/SKJUV/HRMS"
+    },
+    {
+      "id": "gestion-employes",
+      "title": "Gestion des Employés",
+      "subtitle": "Application Java de gestion du personnel",
+      "description": "Système de gestion des employés en Java permettant le CRUD complet, l'organisation par départements et le suivi administratif.",
+      "badge": "Gestion",
       "badgeType": "university",
       "stack": [
         "Java"
       ],
       "securityPoints": [],
-      "githubUrl": "https://github.com/SKJUV/HRMS",
-      "status": "completed"
+      "githubUrl": "https://github.com/SKJUV/gestion_des_employes"
+    },
+    {
+      "id": "tp108f",
+      "title": "Gestion de Bibliothèque",
+      "subtitle": "Application web PHP pour la gestion de bibliothèque",
+      "description": "Application web pour la gestion d'une bibliothèque : catalogue de livres, emprunts, retours, gestion des adhérents avec PHP et MySQL.",
+      "badge": "Web App",
+      "badgeType": "academic",
+      "stack": [
+        "PHP",
+        "MySQL",
+        "JavaScript",
+        "CSS",
+        "HTML"
+      ],
+      "securityPoints": [
+        "Requêtes préparées PDO",
+        "Validation entrées"
+      ],
+      "githubUrl": "https://github.com/SKJUV/tp108f"
     },
     {
       "id": "botwha",
       "title": "Bot WhatsApp",
       "subtitle": "Bot d'automatisation WhatsApp en Python",
-      "description": "Bot WhatsApp développé en Python pour automatiser l'envoi de messages et les interactions sur la plateforme de messagerie.",
+      "description": "Bot WhatsApp développé en Python pour automatiser les interactions et l'envoi de messages sur la plateforme de messagerie.",
       "badge": "Automatisation",
       "badgeType": "academic",
       "stack": [
         "Python"
       ],
       "securityPoints": [],
-      "githubUrl": "https://github.com/SKJUV/botwha",
-      "status": "completed"
+      "githubUrl": "https://github.com/SKJUV/botwha"
     },
     {
-      "id": "portfolio-printcf",
-      "title": "Portfolio Print CF",
-      "subtitle": "Présentation du projet Print CF",
-      "description": "Site portfolio de présentation du projet Print CF, réalisé en HTML et CSS pour mettre en valeur le design et l'identité visuelle du projet.",
-      "badge": "Web Design",
-      "badgeType": "academic",
-      "stack": [
-        "HTML",
-        "CSS"
-      ],
-      "securityPoints": [],
-      "githubUrl": "https://github.com/SKJUV/portfolio-printcf",
-      "status": "completed"
-    },
-    {
-      "id": "projet-console",
-      "title": "Projet Console Java",
-      "subtitle": "Application console en Java",
-      "description": "Projet Java en mode console réalisé dans un cadre académique, mettant en pratique les fondamentaux de la programmation orientée objet.",
+      "id": "tp1ct203",
+      "title": "TP C# .NET",
+      "subtitle": "Travaux pratiques en C#",
+      "description": "Projet académique en C# mettant en pratique la programmation orientée objet, les interfaces et les patterns de conception.",
       "badge": "Académique",
       "badgeType": "academic",
       "stack": [
-        "Java"
+        "C#",
+        ".NET"
       ],
       "securityPoints": [],
-      "githubUrl": "https://github.com/SKJUV/projet-console",
-      "status": "completed"
+      "githubUrl": "https://github.com/SKJUV/tp1ct203"
     }
   ],
   "securitySkills": [
     {
       "icon": "🔐",
       "title": "Authentification & Autorisation",
-      "description": "JWT personnalisé avec rotation de tokens, RBAC granulaire, multi-tenancy sécurisé, OAuth PKCE flow.",
+      "description": "JWT avec rotation de tokens, RBAC granulaire, multi-tenancy sécurisé, OAuth PKCE flow, Firebase Auth.",
       "tags": [
         "JWT Custom Claims",
         "Token Rotation",
         "RBAC",
         "Multi-tenant",
         "OAuth PKCE",
-        "Spotify API"
+        "Firebase Auth"
       ]
     },
     {
       "icon": "🛡️",
       "title": "Hardening Web & HTTP",
-      "description": "HSTS preload, X-Frame-Options DENY, XSS Filter, CSRF protection.",
+      "description": "HSTS preload, X-Frame-Options DENY, XSS Filter, CSRF protection, Content Security Policy.",
       "tags": [
         "HSTS 1 an",
         "X-Frame DENY",
@@ -197,7 +240,7 @@
     {
       "icon": "🐳",
       "title": "Sécurité Infrastructure",
-      "description": "Dockerfiles multi-stage, exécution non-root, healthchecks, Sentry, CORS strict.",
+      "description": "Dockerfiles multi-stage, exécution non-root, healthchecks, monitoring Sentry, CORS strict.",
       "tags": [
         "Docker Non-Root",
         "Multi-Stage Build",
@@ -208,37 +251,39 @@
       ]
     },
     {
-      "icon": "📋",
-      "title": "Audit & Conformité",
-      "description": "Audit trail complet, conformité OHADA/CNPS, soft-delete.",
+      "icon": "☁️",
+      "title": "Cloud Security",
+      "description": "Principes de sécurité cloud (Google Cloud), gestion des risques, identification et protection contre les menaces.",
       "tags": [
-        "Audit Log",
-        "OHADA",
-        "CNPS",
-        "Traçabilité IP",
-        "Soft Delete"
+        "Google Cloud",
+        "Risk Management",
+        "Threat Protection",
+        "Cloud Principles",
+        "IAM"
       ]
     },
     {
       "icon": "🗄️",
-      "title": "Sécurité BDD",
-      "description": "Row Level Security, requêtes préparées PDO, BCrypt hashing.",
+      "title": "Sécurité BDD & Crypto",
+      "description": "Row Level Security, requêtes préparées, BCrypt hashing, chiffrement/déchiffrement C++.",
       "tags": [
         "RLS",
         "Prepared Statements",
         "BCrypt",
-        "Access Policies",
-        "PDO"
+        "Encryption C++",
+        "PDO",
+        "Supabase RLS"
       ]
     },
     {
       "icon": "🔍",
       "title": "OWASP & Pentesting",
-      "description": "OWASP Top 10, Hack The Box, VPN, culture cybersécurité.",
+      "description": "OWASP Top 10, Hack The Box (CTF), OverTheWire, tests d'intrusion IBM, culture cybersécurité active.",
       "tags": [
         "OWASP Top 10",
         "Hack The Box",
-        "VPN",
+        "OverTheWire CTF",
+        "Pentest IBM",
         "Input Validation",
         "Least Privilege"
       ]
@@ -247,22 +292,23 @@
   "skillCategories": [
     {
       "icon": "🛡️",
-      "title": "Sécurité (Passion #1)",
+      "title": "Cybersécurité (Passion #1)",
       "items": [
+        "OWASP Top 10",
+        "Hack The Box",
+        "OverTheWire CTF",
+        "Pentest",
         "JWT",
         "RBAC",
-        "OWASP Top 10",
         "HSTS",
         "XSS Prevention",
         "CSRF",
         "RLS",
-        "Audit Logging",
-        "Multi-tenancy",
-        "Docker Hardening",
+        "Encryption C++",
+        "Cloud Security (Google)",
         "BCrypt",
         "OAuth PKCE",
-        "VPN",
-        "Hack The Box"
+        "Docker Hardening"
       ]
     },
     {
@@ -273,14 +319,16 @@
         "Django",
         "DRF",
         "PHP",
+        "MySQL",
         "Java",
         "Node.js",
         "PostgreSQL",
-        "MySQL",
         "Redis",
         "Celery",
         "Supabase",
-        "Firebase"
+        "Firebase",
+        "C#",
+        ".NET"
       ]
     },
     {
@@ -288,65 +336,85 @@
       "title": "Frontend",
       "items": [
         "React",
-        "Next.js",
+        "Next.js 15",
         "TypeScript",
+        "JavaScript",
         "Tailwind CSS",
         "shadcn/ui",
         "Vite",
         "Bootstrap",
         "Chart.js",
         "Recharts",
-        "DOM Manipulation"
+        "HTML5",
+        "CSS3"
       ]
     },
     {
       "icon": "🐳",
-      "title": "DevOps & Infra",
+      "title": "DevOps & Cloud",
       "items": [
         "Docker",
         "Docker Compose",
         "Gunicorn",
+        "Vercel",
         "Sentry",
+        "Google Cloud Security",
         "S3/boto3",
         "WhiteNoise",
-        "Multi-stage Builds"
+        "Multi-stage Builds",
+        "CI/CD"
       ]
     },
     {
       "icon": "🐧",
       "title": "Systèmes & Administration",
       "items": [
-        "Manjaro (KDE)",
+        "Manjaro Linux (KDE)",
         "Zorin OS Pro",
         "Windows 11 Pro",
         "Terminal avancé",
         "pacman/yay",
         "DNS Config",
-        "BIOS Diagnostic",
-        "Troubleshooting"
+        "Diagnostic BIOS",
+        "Troubleshooting réseau"
       ]
     },
     {
       "icon": "🤖",
       "title": "IA & Data",
       "items": [
+        "Google Gemini",
         "Google Genkit AI",
         "Firebase AI",
+        "Matplotlib",
+        "Seaborn",
         "Kaggle",
-        "Pipelines ML",
-        "Nettoyage CSV",
+        "Data Visualization",
+        "JSON Processing",
         "Zod Validation"
       ]
     }
   ],
   "profileCategories": [
     {
+      "icon": "🎓",
+      "title": "Formation & Communautés",
+      "points": [
+        "Étudiant à l'Université de Yaoundé 1",
+        "GDSC Université de Yaoundé 1",
+        "GDG Yaoundé — Google Developer Groups",
+        "Django Cameroon (Hacktoberfest 2025)",
+        "Women TechMakers Yaoundé",
+        "17 certifications Coursera (IBM, Google Cloud)"
+      ]
+    },
+    {
       "icon": "🐧",
       "title": "Systèmes Linux",
       "points": [
         "Manjaro KDE avec pacman/yay",
         "Zorin OS Pro",
-        "Terminal avancé (ps, pkill, find, gestion ~/.config)",
+        "Terminal avancé (ps, pkill, find, ~/.config)",
         "Installation/désinstallation propre"
       ]
     },
@@ -364,20 +432,20 @@
       "icon": "🟢",
       "title": "Bots & APIs",
       "points": [
-        "Bot WhatsApp Pydroid 3",
-        "OAuth PKCE flow Spotify",
-        "Token API",
-        "Intégration API Spotify"
+        "Bot WhatsApp Python",
+        "OAuth PKCE flow",
+        "Token API & intégrations",
+        "Google Gemini AI API"
       ]
     },
     {
       "icon": "📊",
-      "title": "Data Science & ML",
+      "title": "Data Science & Visualisation",
       "points": [
-        "Kaggle CSV",
-        "Nettoyage données",
-        "Pipelines ML",
-        "Progression structurée"
+        "Python Matplotlib & Seaborn",
+        "Traitement JSON avec Python",
+        "Kaggle — nettoyage de données",
+        "Progression structurée en ML"
       ]
     },
     {
@@ -386,23 +454,177 @@
       "points": [
         "Diagnostic système et lecture logs",
         "Analyse bips BIOS",
-        "Correction erreurs JavaScript",
-        "Nettoyage apps corrompues",
-        "Réinitialisation configurations"
+        "CTF Hack The Box & OverTheWire",
+        "Correction erreurs JavaScript/TypeScript",
+        "Nettoyage apps corrompues"
       ]
     },
     {
       "icon": "🛠️",
       "title": "Outils Dev",
       "points": [
-        "Git CLI (branches, commits)",
-        "VS Code",
+        "Git CLI (branches, commits, merge)",
+        "VS Code avec extensions",
         "GitHub Education Pack",
-        "Prisma ORM (schema.prisma, seed.ts)"
+        "Vercel, Supabase, Firebase"
       ]
     }
   ],
-  "certifications": [],
+  "certifications": [
+    {
+      "id": "coursera-python-101",
+      "name": "Python 101: Develop Your First Python Program",
+      "platform": "Coursera",
+      "date": "2025",
+      "description": "Fondamentaux de Python : variables, structures de contrôle, fonctions et premier programme complet.",
+      "verificationUrl": "https://coursera.org/share/cf73e83a4ff5331807af194af6273abe",
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~ZLJ40S847XFE/CERTIFICATE_LANDING_PAGE~ZLJ40S847XFE.jpeg"
+    },
+    {
+      "id": "coursera-intro-javascript",
+      "name": "Introduction to JavaScript",
+      "platform": "Coursera",
+      "date": "2025",
+      "description": "Bases de JavaScript : syntaxe, DOM, événements, fonctions et programmation orientée objet.",
+      "verificationUrl": "https://coursera.org/share/80424b0eb18a75101aca3777adc10ec7",
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~TCH488GRHOPC/CERTIFICATE_LANDING_PAGE~TCH488GRHOPC.jpeg"
+    },
+    {
+      "id": "coursera-python-dataviz",
+      "name": "Python for Data Visualization: Matplotlib & Seaborn",
+      "platform": "Coursera",
+      "date": "2025",
+      "description": "Visualisation de données avec Python, création de graphiques avec Matplotlib et Seaborn.",
+      "verificationUrl": "https://coursera.org/share/bb31227e5f3d4a182ca457cb07139ea3",
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~Y4OIJU25O7RR/CERTIFICATE_LANDING_PAGE~Y4OIJU25O7RR.jpeg"
+    },
+    {
+      "id": "coursera-json-python",
+      "name": "Storing, Retrieving, and Processing JSON data with Python",
+      "platform": "Coursera",
+      "date": "2025",
+      "description": "Manipulation de données JSON avec Python : lecture, écriture, parsing et traitement de fichiers JSON.",
+      "verificationUrl": "https://coursera.org/share/74c2c9f88b3cac314e708c5abe102e91",
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~VRNGBDHYC99H/CERTIFICATE_LANDING_PAGE~VRNGBDHYC99H.jpeg"
+    },
+    {
+      "id": "coursera-encryption-cpp",
+      "name": "Encryption and Decryption using C++",
+      "platform": "Coursera",
+      "date": "2025",
+      "description": "Algorithmes de chiffrement et déchiffrement en C++ : concepts cryptographiques appliqués.",
+      "verificationUrl": "https://coursera.org/share/36411f51d0237f3601455363b7fc7a04",
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~PM90OKB2UM0C/CERTIFICATE_LANDING_PAGE~PM90OKB2UM0C.jpeg"
+    },
+    {
+      "id": "coursera-mysql-workbench",
+      "name": "Database Creation and Modeling using MySQL Workbench",
+      "platform": "Coursera",
+      "date": "2025",
+      "description": "Conception et modélisation de bases de données relationnelles avec MySQL Workbench.",
+      "verificationUrl": "https://coursera.org/share/4b971747279a13fae94f8e24622c3776",
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~IP9OB3XBA88X/CERTIFICATE_LANDING_PAGE~IP9OB3XBA88X.jpeg"
+    },
+    {
+      "id": "coursera-mysql-php",
+      "name": "Using MySQL Database with PHP",
+      "platform": "Coursera",
+      "date": "2025",
+      "description": "Intégration de bases de données MySQL avec PHP : CRUD, requêtes préparées et sécurité.",
+      "verificationUrl": "https://coursera.org/share/e9293e2387f63beecbf871db948b8d65",
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~JB0YFQGFV3ZG/CERTIFICATE_LANDING_PAGE~JB0YFQGFV3ZG.jpeg"
+    },
+    {
+      "id": "coursera-pentest-cryptography",
+      "name": "Penetration Testing, Threat Hunting, and Cryptography",
+      "platform": "Coursera (IBM)",
+      "date": "2025",
+      "description": "Tests d'intrusion, chasse aux menaces et cryptographie appliquée — formation IBM en cybersécurité.",
+      "verificationUrl": "https://coursera.org/share/7d8286f6edc8a2b50bc65f0acb2c497e",
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~ZQERTJSHU56B/CERTIFICATE_LANDING_PAGE~ZQERTJSHU56B.jpeg"
+    },
+    {
+      "id": "coursera-cloud-security-intro",
+      "name": "Introduction to Security Principles in Cloud Computing",
+      "platform": "Coursera (Google Cloud)",
+      "date": "2025",
+      "description": "Principes fondamentaux de sécurité dans le cloud computing — formation Google Cloud.",
+      "verificationUrl": "https://coursera.org/share/97fa6f6b82f644b398c0d5830d9e1863",
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~K7RXKU3KRQ8X/CERTIFICATE_LANDING_PAGE~K7RXKU3KRQ8X.jpeg"
+    },
+    {
+      "id": "coursera-cloud-security-risk",
+      "name": "Strategies for Cloud Security Risk Management",
+      "platform": "Coursera (Google Cloud)",
+      "date": "2025",
+      "description": "Stratégies de gestion des risques de sécurité cloud — formation Google Cloud.",
+      "verificationUrl": "https://coursera.org/share/00a19ebb2d2bedbb956abe9d1904eab9",
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~EDN83WUYGY90/CERTIFICATE_LANDING_PAGE~EDN83WUYGY90.jpeg"
+    },
+    {
+      "id": "coursera-cloud-security-threats",
+      "name": "Cloud Security Risks: Identify and Protect Against Threats",
+      "platform": "Coursera (Google Cloud)",
+      "date": "2025",
+      "description": "Identification et protection contre les menaces de sécurité cloud — formation Google Cloud.",
+      "verificationUrl": "https://coursera.org/share/fef5118ee94999b90e54498a630e5c5c",
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~2IH1SNCHOW7S/CERTIFICATE_LANDING_PAGE~2IH1SNCHOW7S.jpeg"
+    },
+    {
+      "id": "coursera-agile-user-stories",
+      "name": "Agile Projects: Creating User Stories with Value in Taiga",
+      "platform": "Coursera",
+      "date": "2025",
+      "description": "Méthodologie Agile : création de user stories à forte valeur ajoutée avec l'outil Taiga.",
+      "verificationUrl": "https://coursera.org/share/5789e9938820faf5be554be35ed4bee8",
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~SGH67700J9CC/CERTIFICATE_LANDING_PAGE~SGH67700J9CC.jpeg"
+    },
+    {
+      "id": "coursera-excel",
+      "name": "Getting Started with Microsoft Excel",
+      "platform": "Coursera",
+      "date": "2025",
+      "description": "Maîtrise des fondamentaux de Microsoft Excel : tableaux, formules, graphiques et analyse de données.",
+      "verificationUrl": "https://coursera.org/share/95926d468abbe6c17bcaacaa567607ab",
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~BZFQ0COWMWZO/CERTIFICATE_LANDING_PAGE~BZFQ0COWMWZO.jpeg"
+    },
+    {
+      "id": "coursera-ms-forms",
+      "name": "Create a Customer Service Survey in Microsoft Forms",
+      "platform": "Coursera",
+      "date": "2025",
+      "description": "Création de formulaires d'enquête de satisfaction client avec Microsoft Forms.",
+      "verificationUrl": "https://coursera.org/share/a0d48788762a9ed32b8236860a54e70c",
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~3JOOT559SW0A/CERTIFICATE_LANDING_PAGE~3JOOT559SW0A.jpeg"
+    },
+    {
+      "id": "coursera-ife-efe-matrix",
+      "name": "How to Use The IFE-EFE Matrix for Strategic Analysis",
+      "platform": "Coursera",
+      "date": "2025",
+      "description": "Analyse stratégique avec les matrices IFE-EFE pour la prise de décision en entreprise.",
+      "verificationUrl": "https://coursera.org/share/aabf5d9fe4c358f55aee4aac0bd62bb8",
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~EVZH8J4OEAJ5/CERTIFICATE_LANDING_PAGE~EVZH8J4OEAJ5.jpeg"
+    },
+    {
+      "id": "coursera-satisfaction-process",
+      "name": "Create a Services Customer Satisfaction Process",
+      "platform": "Coursera",
+      "date": "2025",
+      "description": "Mise en place d'un processus de satisfaction client pour les services.",
+      "verificationUrl": "https://coursera.org/share/2474d47ee90c7457c186ee53bcc2a5ba",
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~G2I9U16XZO96/CERTIFICATE_LANDING_PAGE~G2I9U16XZO96.jpeg"
+    },
+    {
+      "id": "coursera-facebook-ads",
+      "name": "Get Started with Facebook Ads Manager",
+      "platform": "Coursera",
+      "date": "2025",
+      "description": "Gestion de campagnes publicitaires avec Facebook Ads Manager.",
+      "verificationUrl": "https://coursera.org/share/140ef18a37fb3fa6bec4a50130b36f69",
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~CISOEGV6N8OL/CERTIFICATE_LANDING_PAGE~CISOEGV6N8OL.jpeg"
+    }
+  ],
   "technologies": [
     {
       "id": "nextjs",
@@ -553,23 +775,31 @@
   "terminalLines": [
     {
       "command": "$ whoami",
-      "output": "juvenal_sineng — security_enthusiast && full_stack_dev"
+      "output": "juvenal_sineng — cybersecurity enthusiast && full-stack developer"
     },
     {
       "command": "$ uname -a",
-      "output": "Manjaro Linux | Zorin OS Pro | Windows 11 Pro"
+      "output": "Manjaro Linux (KDE) | Zorin OS Pro | Windows 11 Pro"
     },
     {
       "command": "$ cat /etc/skills",
-      "output": "JWT · RBAC · HSTS · Docker Hardening · OWASP Top 10"
+      "output": "Pentest · OWASP Top 10 · JWT · RBAC · Docker Hardening · Cloud Security"
     },
     {
       "command": "$ nmap --top-ports passion",
       "output": "PORT 443/tcp — Sécuriser chaque ligne de code 🔐"
     },
     {
+      "command": "$ cat /etc/certifications | wc -l",
+      "output": "17 certifications Coursera (IBM, Google Cloud, Python, Security)"
+    },
+    {
+      "command": "$ echo $COMMUNITIES",
+      "output": "GDG Yaoundé · Django Cameroon · Women TechMakers · GDSC UY1"
+    },
+    {
       "command": "$ echo $LEVEL",
-      "output": "Intermédiaire en progression rapide → Constructeur de compétences"
+      "output": "Étudiant Université de Yaoundé 1 → En progression rapide 🚀"
     }
   ],
   "messages": [

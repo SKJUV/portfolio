@@ -21,20 +21,22 @@
     "readme": "# portfolio\n🛡️ Portfolio — Cybersecurity Enthusiast &amp; Full-Stack Developer\n"
   },
   {
-    "name": "SKJUV.github.io",
-    "description": null,
-    "language": null,
-    "languages": {},
-    "url": "https://github.com/SKJUV/SKJUV.github.io",
+    "name": "projet-console",
+    "description": "Projet Java",
+    "language": "Java",
+    "languages": {
+      "Java": 2642
+    },
+    "url": "https://github.com/SKJUV/projet-console",
     "homepage": null,
     "topics": [],
-    "stars": 0,
+    "stars": 1,
     "forks": 0,
-    "created_at": "2026-02-26T01:30:43Z",
-    "updated_at": "2026-02-26T01:30:49Z",
+    "created_at": "2025-11-10T12:41:21Z",
+    "updated_at": "2025-11-16T11:15:35Z",
     "default_branch": "main",
     "is_fork": false,
-    "readme": "# SKJUV.github.io"
+    "readme": "# projet-console\n"
   },
   {
     "name": "tp1ct203",
@@ -55,303 +57,6 @@
     "readme": "��#\u0000 \u0000t\u0000p\u00001\u0000c\u0000t\u00002\u00000\u00003\u0000\r\u0000\n\u0000"
   },
   {
-    "name": "HRMS",
-    "description": null,
-    "language": "Java",
-    "languages": {
-      "Java": 43280,
-      "PLpgSQL": 6224,
-      "CSS": 5058
-    },
-    "url": "https://github.com/SKJUV/HRMS",
-    "homepage": null,
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-12-27T13:34:05Z",
-    "updated_at": "2026-01-17T04:31:19Z",
-    "default_branch": "main",
-    "is_fork": false,
-    "readme": "# HRMS\n# Documentation : Système de Gestion des Ressources Humaines (HRMS)\n\nContenu :\n\n- [01 - Introduction](doc/01-introduction.md) — Vision et objectifs.\n- [02 - Requirements](doc/02-requirements.md) — Recueil exhaustif des besoins métiers.\n- [03 - Use Cases](doc/03-use-cases.md) — Cas d'utilisation et diagrammes Mermaid.\n- [04 - Database ER](doc/04-database-er.md) — Schéma relationnel (ER) en Mermaid.\n- [05 - Domain Models](doc/05-domain-models.md) — Description des modèles de domaine et méthodes métiers.\n- [06 - Classes](doc/06-classes.md) — Diagrammes de classes Mermaid et signatures Java.\n- [07 - Payroll](doc/07-payroll.md) — Spécifications détaillées du moteur de paie.\n- [08 - Security](doc/08-security.md) — RBAC et règles d'accès.\n- [09 - Workflows](doc/09-workflows.md) — Flux métiers (arrivée, congés, fin de mois) en Mermaid.\n- [10 - Deploiement et Visualisation](doc/10-deploiement-et-visualisation.md) — Conseils pour visualiser Mermaid et déploiement.\n\nChaque fichier est autonome mais fait partie d'une documentation unique. Les diagrammes sont fournis en syntaxe Mermaid pour être visualisés dans VSCode (extension Mermaid) ou via MkDocs/mermaid plugin.\n"
-  },
-  {
-    "name": "MonPortfolio",
-    "description": null,
-    "language": "JavaScript",
-    "languages": {
-      "JavaScript": 56232,
-      "CSS": 25647,
-      "HTML": 360
-    },
-    "url": "https://github.com/SKJUV/MonPortfolio",
-    "homepage": null,
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2026-01-04T08:06:26Z",
-    "updated_at": "2026-01-04T14:46:38Z",
-    "default_branch": "main",
-    "is_fork": false,
-    "readme": "# 🚀 Strategic Identity OS | Portfolio v2.1\n\n[![Tech Stack](https://img.shields.io/badge/Stack-React_19_+_Vite-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)\n[![Design](https://img.shields.io/badge/Design-Surgical_Precision-blue?style=for-the-badge)](https://github.com/skjuve)\n[![Performance](https://img.shields.io/badge/Performance-High_Frequency-green?style=for-the-badge)](https://vitejs.dev/)\n\n> **\"Engénierie critique. IA Intégrée. Excellence Architecturale.\"**\n\nBienvenue dans l'écosystème **Strategic Identity OS**, un portfolio de nouvelle génération conçu comme un système d'exploitation virtuel. Ce projet n'est pas qu'une simple vitrine ; c'est une démonstration vivante d'interfaces haute performance, de précision chirurgicale et de minimalisme exécutif.\n\n---\n\n## 💎 Design Philosophy: \"Executive Minimalism\"\n\nL'architecture visuelle de ce projet repose sur trois piliers fondamentaux :\n1. **Surgical Precision** : Chaque pixel est à sa place. Les alignements, les rayons de courbure (standardisés à 24px/32px) et les espacements suivent une grille mathématique rigoureuse.\n2. **High-End Aesthetics** : Utilisation intensive du *Glassmorphism* (verre dépoli), de gradients néons subtils (Blue/Purple/Green) et d'animations micro-interactives pour une sensation \"Premium Hardware\".\n3. **Adaptive Intelligence** : Grâce aux **Container Queries**, l'interface ne se contente pas d'être \"responsive\" ; elle adapte sa structure interne et sa typographie en fonction de la taille réelle de chaque fenêtre virtuelle.\n\n---\n\n## 🛠️ Technical Core\n\nLe projet exploite les technologies les plus modernes pour garantir fluidité et scalabilité :\n\n- **Engine** : `Vite` + `React 19` (Performance maximale et HMR instantané).\n- **Motion** : `Framer Motion` (Transitions fluides, stagger animations, et interactions physiques).\n- **Icons** : `Lucide React` (Iconographie vectorielle ultra-propre).\n- **Layout** : `Vanilla CSS` + `Tailwind` (Système de grille adaptative propriétaire).\n- **Utilities** : `React Draggable` (Gestion native du fenêtrage).\n\n---\n\n## 📁 Project Architecture\n\n```text\nportfolioSK/\n├── src/\n│   ├── components/\n│   │   ├── Desktop/       # Noyau de l'OS (Dock, TopBar, Wallpaper)\n│   │   │   ├── Desktop.jsx    # Logique principale & Apps (Skills, About, Contact)\n│   │   │   └── Desktop.css    # Design System & Adaptive Utilities\n│   │   └── Window/        # Moteur de fenêtrage\n│   ├── assets/            # Ressources haute résolution\n│   └── App.jsx            # Point d'entrée stratégique\n├── public/                # Assets statiques\n└── vite.config.js         # Configuration de l'accélérateur\n```\n\n---\n\n## 🚀 Key Modules\n\n### 🖥️ Virtual Desktop\nUn environnement multitâche complet avec une barre de menu \"Tactique\", un Dock interactif et un système de fenêtrage robuste.\n\n### 🧠 Executive Summary (About Me)\nUne présentation architecturale de mon parcours, mettant en avant mes objectifs stratégiques et ma philosophie d'ingénierie.\n\n### ⚡ Core Tech (Skills)\n\n... (tronqué)"
-  },
-  {
-    "name": "gestion_des_employes",
-    "description": null,
-    "language": "Java",
-    "languages": {
-      "Java": 34495
-    },
-    "url": "https://github.com/SKJUV/gestion_des_employes",
-    "homepage": null,
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-12-03T14:01:03Z",
-    "updated_at": "2025-12-13T17:28:50Z",
-    "default_branch": "main",
-    "is_fork": false,
-    "readme": "# Gestion des employes - Swing\n\nApplication Swing conforme au cahier des charges : CRUD employes, recherche/filtre, assignation et gestion des roles, persistance MariaDB/MySQL.\n\n## Prerequis\n- JDK 17+\n- Maven 3.9+\n- MariaDB/MySQL accessible (schema `gestion_employes`)\n\n## Installation base de donnees\n```sql\nCREATE DATABASE IF NOT EXISTS gestion_employes;\nUSE gestion_employes;\n\nCREATE TABLE role (\n    id INT AUTO_INCREMENT PRIMARY KEY,\n    nom VARCHAR(100) NOT NULL,\n    description VARCHAR(255)\n);\n\nCREATE TABLE employe (\n    id INT AUTO_INCREMENT PRIMARY KEY,\n    nom VARCHAR(100) NOT NULL,\n    prenom VARCHAR(100) NOT NULL,\n    date_embauche DATE NOT NULL,\n    poste VARCHAR(100) NOT NULL,\n    salaire DOUBLE NOT NULL,\n    service VARCHAR(100) NOT NULL,\n    role_id INT,\n    CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES role(id)\n);\n```\n\n## Configuration\nRenseigner vos identifiants MariaDB/MySQL dans `src/main/resources/db.properties` :\n```\njdbc.url=jdbc:mariadb://localhost:3306/gestion_employes\njdbc.user=<utilisateur>\njdbc.password=<motdepasse>\n```\n\n## Lancement\n```bash\nmvn clean package\nmvn exec:java\n```\n\n## Fonctionnalites cibles (docs/rapport.md)\n- Ajouter / modifier / supprimer un employe avec controle des champs obligatoires et rafraichissement de la liste.\n- Consulter la liste et rafraichissement au chargement.\n- Recherche par nom/prenom ou par identifiant.\n- Filtres par service et par poste.\n- Assignation de role depuis la fiche employe.\n- Gestion complete des roles (ajout, modification, suppression) avec mise a jour des listes deroulantes.\n\n## Structure\n- `src/main/java/com/gestion/employes/model` : entites `Employe`, `Role`.\n- `src/main/java/com/gestion/employes/dao` : `DBConnection`, `EmployeDAO` (CRUD employes + roles).\n- `src/main/java/com/gestion/employes/ui` : IHM Swing `EmployeController`, dialogue `RoleDialog`.\n- `pom.xml` : dependance `mysql-connector-j` et compilation Java 17.\n\n## Flux IHM (alignes sur la doc)\n- **Ajouter** : bouton Ajouter -> validation des champs -> insertion MySQL -> rafraichissement table -> confirmation.\n- **Modifier** : selection dans la table -> formulaire pre-rempli -> validation -> update -> rafraichissement -> confirmation.\n- **Supprimer** : selection -> confirmation -> suppression -> rafraichissement -> confirmation.\n- **Recherche/filtre** : champs en haut de l'ecran pour nom/id/service/poste -> requete DAO cible -> affichage restreint.\n- **Assigner un role** : selection employe -> choix dans la liste deroulante -> bouton Assigner role -> update -> rafraichissement -> confirmation.\n- **Gerer les roles** : bouton dedie -> dialogue CRUD roles -> rafraichissement de la combo role en sortie.\n\n## Notes\n- L'application utilise le driver MySQL, assurez-vous que Maven peut telecharger les dependances.\n- Les dates se saisissent au format ISO `yyyy-MM-dd`.\n- Les champs obligatoires vides ou formats invalides sont bloques avec un message d'erreur.\n"
-  },
-  {
-    "name": "projet-console",
-    "description": "Projet Java",
-    "language": "Java",
-    "languages": {
-      "Java": 2642
-    },
-    "url": "https://github.com/SKJUV/projet-console",
-    "homepage": null,
-    "topics": [],
-    "stars": 1,
-    "forks": 0,
-    "created_at": "2025-11-10T12:41:21Z",
-    "updated_at": "2025-11-16T11:15:35Z",
-    "default_branch": "main",
-    "is_fork": false,
-    "readme": "# projet-console\n"
-  },
-  {
-    "name": "DjangoBox",
-    "description": "DjangoBox is an open-source platform built for the Django Cameroon community to share and collect feedback. Whether it’s about an event, a person, or the community at large, DjangoBox provides a safe and structured way for members to express their thoughts and help improve the community experience.",
-    "language": null,
-    "languages": {
-      "Python": 18164,
-      "HTML": 9999,
-      "Shell": 1335,
-      "Batchfile": 1332,
-      "CSS": 1127
-    },
-    "url": "https://github.com/SKJUV/DjangoBox",
-    "homepage": "",
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-10-19T18:32:23Z",
-    "updated_at": "2025-10-19T18:32:23Z",
-    "default_branch": "main",
-    "is_fork": true,
-    "readme": "# DjangoBox\n\nDjangoBox is an open-source platform created for the Django Cameroon community to share and collect feedback. Whether it’s feedback about an event, a speaker, or the community at large, DjangoBox provides a simple, safe, and structured way for members to express their thoughts and help improve the community experience.\n\nKey goals:\n- Provide a lightweight web interface to submit and view community feedback\n- Help organizers and members collect actionable input after events\n- Offer an easy onboarding path for new contributors to the project\n\nSee `CONTRIBUTING.md` for details about how to contribute.\n\n## Features\n\n- Submit feedback entries with markdown support\n- View feedback summaries with pagination\n- AJAX form submission for better user experience\n- Admin interface for managing feedbacks and topics\n- Import sample data from JSON files\n- Responsive design with modern UI\n- Comprehensive test coverage\n- Small, focused Django app so contributors can get started quickly\n\n## Quick start (development)\n\nThese steps assume you have Python 3.8+ installed.\n\n### Linux/macOS:\n\n1. Create and activate a virtual environment:\n\n```bash\npython -m venv .venv\nsource .venv/bin/activate\n```\n\n2. Install dependencies:\n\n```bash\npip install -r requirements.txt\n```\n\n3. Prepare the database and run the development server:\n\n```bash\npython manage.py migrate\npython manage.py import_feedbacks  # Import sample data\npython manage.py runserver\n```\n\n4. Open http://127.0.0.1:8000/ in your browser to view the site.\n\n### Windows PowerShell:\n\n1. Create and activate a virtual environment:\n\n```powershell\npython -m venv .venv\n.\\.venv\\Scripts\\Activate.ps1\n```\n\n2. Install dependencies:\n\n```powershell\npip install -r requirements.txt\n```\n\n3. Prepare the database and run the development server:\n\n```powershell\npython manage.py migrate\npython manage.py import_feedbacks  # Import sample data\npython manage.py runserver\n```\n\n4. Open http://127.0.0.1:8000/ in your browser to view the site.\n\n## Running tests\n\nRun Django's test runner:\n\n```powershell\npython manage.py test\n```\n\n## Project structure (high level)\n\n- `DjangoBox/` — Django project settings and WSGI/ASGI entrypoints\n- `core/` — main app (models, views, forms, tests, management commands)\n- `templates/` — HTML templates\n- `data/feedbacks.json` — example/sample feedback data\n\n## Contributing\n\nContributions are welcome. Please read `CONTRIBUTING.md` for the contribution workflow, coding style, tests, and pull request checklist.\n\n## License\n\nThis project is licensed under the terms in the repository `LICENSE` file.\n\n---\nIf you'd like any part of this README expanded (examples, screenshots, setup for Docker, CI instructions), tell me what you'd like and I can add it.\n"
-  },
-  {
-    "name": "djangonistas",
-    "description": "A lightweight Django + Tailwind (CDN) starter crafted for Hacktoberfest 2025 with the Django Cameroon community.",
-    "language": null,
-    "languages": {
-      "Python": 57592,
-      "HTML": 45479
-    },
-    "url": "https://github.com/SKJUV/djangonistas",
-    "homepage": "",
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-10-19T15:50:33Z",
-    "updated_at": "2025-10-19T15:50:33Z",
-    "default_branch": "main",
-    "is_fork": true,
-    "readme": "# Djangonista\n\nA lightweight Django + Tailwind (CDN) starter crafted for Hacktoberfest 2025 with the Django Cameroon community.\n\n## Highlights\n\n- Uses `uv` for blazing-fast dependency management.\n- Tailwind CSS via CDN with sleek directory and detail pages.\n- JSON-powered data that seeds the database via focused management commands.\n- Ready-to-run Django admin and tests for quick local verification.\n\n## Quick Start\n\n```bash\n# Install dependencies\nuv sync\n\n# Apply migrations and load JSON-backed sample data\nuv run python manage.py migrate\nuv run python manage.py seed_people --refresh\nuv run python manage.py seed_communities --refresh\nuv run python manage.py seed_schools --refresh\n\n# Launch the development server\nuv run python manage.py runserver\n```\n\nVisit `http://127.0.0.1:8000/` for the landing page, `/people/`, `/communities/`, and `/schools/` for paginated directories, or append a slug (e.g. `/people/yokwe-juste/`) for individual profiles.\n\n## Project Layout\n\n```text\n.\n├── data/                 # JSON data consumed by the landing page\n├── djangonista/          # Django project configuration\n├── hub/                  # App with views, templates, models, and seed commands\n├── manage.py\n├── pyproject.toml        # Managed by uv\n└── uv.lock\n```\n\nUpdate the JSON files in `data/` to showcase new contributors, partner communities, or schools.\n\n## Contributing\n\nWe welcome contributions from first-time and seasoned contributors alike. Please read [`CONTRIBUTING.md`](CONTRIBUTING.md) for detailed guidelines, workflows, and testing tips.\n\n## License\n\nThis project is released under the [MIT License](LICENSE).\n"
-  },
-  {
-    "name": "eventator",
-    "description": "Eventator keeps our community inspired.",
-    "language": null,
-    "languages": {
-      "HTML": 18201,
-      "Python": 16938
-    },
-    "url": "https://github.com/SKJUV/eventator",
-    "homepage": "",
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-10-15T14:38:44Z",
-    "updated_at": "2025-10-15T14:38:44Z",
-    "default_branch": "main",
-    "is_fork": true,
-    "readme": "# Eventator\n\nEventator is a lightweight Django application crafted for Hacktoberfest 2025 with the Django Cameroon community. It showcases upcoming events and invites contributors to submit new ideas using a Tailwind-powered interface served via CDN.\n\n## Features\n- Curated list of published Hacktoberfest events\n- Submission form for community-driven event ideas stored as unpublished entries\n- Tailwind CSS UI loaded from CDN for quick iteration\n- JSON seed data (`data/events.json`) with a custom management command\n- SQLite database configured by default\n\n## Prerequisites\n- Python 3.10 or later\n- [uv](https://github.com/astral-sh/uv) for environment and dependency management\n\n## Installation\n```bash\nuv sync\n```\n\nThe first run creates a `.venv` folder managed by uv and installs all project dependencies declared in `pyproject.toml`.\n\n## Database setup\n```bash\nuv run python manage.py migrate\nuv run python manage.py seed_events\n```\n\nUse `uv run python manage.py seed_events --draft` to keep seeded entries in the review queue. A different JSON file can be supplied with `--path path/to/custom_events.json`.\n\n## Running the development server\n```bash\nuv run python manage.py runserver 0.0.0.0:8000\n```\n\nOpen http://127.0.0.1:8000/ to browse the current events and submit new ideas.\n\n## Tests\n```bash\nuv run python manage.py test\n```\n\n## Tailwind via CDN\nTailwind CSS is bootstrapped using the official CDN helper (`https://cdn.tailwindcss.com`) directly in `events/templates/events/home.html`. No local build tooling is required, keeping the project accessible for newcomers.\n"
-  },
-  {
-    "name": "BrainBurst",
-    "description": "Community-driven idea builder for projects, goals, and future plans.",
-    "language": "Python",
-    "languages": {
-      "Python": 19241,
-      "HTML": 7285
-    },
-    "url": "https://github.com/SKJUV/BrainBurst",
-    "homepage": "",
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-10-10T11:19:07Z",
-    "updated_at": "2025-10-10T12:42:05Z",
-    "default_branch": "main",
-    "is_fork": true,
-    "readme": "# BrainBurst\n\nCommunity-driven idea builder for projects, goals, and future plans.\n\n## Quick Start\n\n```bash\nuv sync\nuv run python manage.py migrate\nuv run python manage.py load_ideas\nuv run python manage.py load_plans\nuv run python manage.py runserver\n```\n\nVisit http://127.0.0.1:8000\n\n## Features\n\n- Full-screen hero homepage\n- Ideas: Browse and contribute project concepts\n- Plans: Share roadmaps, goals, and future strategies\n- Multi-format support: JSON, YAML, TOML with Markdown content\n- Slug-based individual pages for all content\n\n## Structure\n\n```\nbrainburst/\n├── data/\n│   ├── ideas.json      # Array of idea objects\n│   ├── ideas.yaml      # Array of idea objects (alternative)\n│   ├── plans.json      # Array of plan objects\n│   └── plans.yaml      # Array of plan objects (alternative)\n├── builder/            # Main Django app\n├── templates/          # Tailwind UI templates\n└── brainburst/         # Project settings\n```\n\n## Adding Content\n\nEdit `data/ideas.json` or `data/ideas.yaml` to add new ideas:\n\n```json\n[\n  {\n    \"slug\": \"mobile-app\",\n    \"title\": \"Mobile Learning Platform\",\n    \"category\": \"Education\",\n    \"description\": \"Brief overview\",\n    \"content\": \"# Full Markdown Content\\n\\n## Section\\n\\nYour detailed content here...\"\n  }\n]\n```\n\nOr use YAML for better readability:\n\n```yaml\n- slug: mobile-app\n  title: Mobile Learning Platform\n  category: Education\n  description: Brief overview\n  content: |\n    # Full Markdown Content\n\n    ## Section\n\n    Your detailed content here...\n```\n\nLoad into database:\n\n```bash\nuv run python manage.py load_ideas\nuv run python manage.py load_plans\n```\n\nExisting entries are automatically skipped.\n\n## Testing\n\n```bash\nuv run python manage.py test\n```\n\n## Contributing\n\nSee [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.\n\n## License\n\nMIT\n"
-  },
-  {
-    "name": "caisse-a-outils",
-    "description": "Caisse A Outils est une application Django qui recense des outils utiles pour la communauté Django Cameroun.",
-    "language": "Python",
-    "languages": {
-      "Python": 19972,
-      "HTML": 13834
-    },
-    "url": "https://github.com/SKJUV/caisse-a-outils",
-    "homepage": "",
-    "topics": [],
-    "stars": 1,
-    "forks": 0,
-    "created_at": "2025-10-06T09:39:03Z",
-    "updated_at": "2025-10-06T10:53:47Z",
-    "default_branch": "main",
-    "is_fork": true,
-    "readme": "# Caisse A Outils\n\nCaisse A Outils est une application Django qui recense des outils utiles pour la communauté Django Cameroun. Le contenu provient de fichiers JSON et Markdown stockés dans le dossier `data/`.\n\n\n## Prérequis\n- Python 3.11+\n- [uv](https://github.com/astral-sh/uv) (optionnel)\n\nSi vous ne souhaitez pas utiliser `uv`, vous pouvez installer les dépendances avec `pip` et le fichier `requirements.txt` fourni.\n\n\n## Démarrer\n\n### Avec uv (recommandé)\n1. Installer les dépendances : `uv sync`\n2. Créer les migrations : `uv run python manage.py makemigrations`\n3. Appliquer les migrations : `uv run python manage.py migrate`\n4. Charger les données : `uv run python manage.py load_data`\n5. Lancer le serveur : `uv run python manage.py runserver`\n\n### Avec pip\n1. Installer les dépendances :\n   ```bash\n   python -m venv .venv\n   source .venv/bin/activate\n   pip install -r requirements.txt\n   ```\n2. Créer les migrations :\n   ```bash\n   python manage.py makemigrations\n   ```\n3. Appliquer les migrations :\n   ```bash\n   python manage.py migrate\n   ```\n4. Charger les données :\n   ```bash\n   python manage.py load_data\n   ```\n5. Lancer le serveur :\n   ```bash\n   python manage.py runserver\n   ```\nOuvrez ensuite http://127.0.0.1:8000/ pour consulter la liste des outils. Les pages utilisent Tailwind CSS via le CDN officiel, aucun build supplémentaire n'est nécessaire.\n\n\n\n## Contenu\n- `data/tools.json` répertorie les outils affichés sur la page d'accueil et la page listant tous les outils.\n- Chaque entrée d'outil référence un fichier Markdown dans `data/tools/` qui est rendu sur la page de détail.\n- `data/resources/` contient les astuces, snippets et guides au format JSON, YAML ou TOML. Chaque fichier peut inclure directement du Markdown (`body`) ou pointer vers un fichier dédié dans `data/resources/content/` via `content_path`.\n\nPour proposer un nouvel outil ou une ressource, suivez les étapes décrites dans [CONTRIBUTING.md](CONTRIBUTING.md).\n\n## Licence\nCe projet est distribué sous licence MIT. Consultez le fichier [LICENSE](LICENSE) pour plus de détails.\n"
-  },
-  {
-    "name": "metry",
-    "description": null,
-    "language": "TypeScript",
-    "languages": {
-      "TypeScript": 291443,
-      "PLpgSQL": 7824,
-      "JavaScript": 6217,
-      "CSS": 4527,
-      "HTML": 2646,
-      "Batchfile": 1717,
-      "Shell": 1452
-    },
-    "url": "https://github.com/SKJUV/metry",
-    "homepage": "https://metry-pi.vercel.app",
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-10-05T22:02:47Z",
-    "updated_at": "2025-10-05T22:03:23Z",
-    "default_branch": "main",
-    "is_fork": false,
-    "readme": "# WeatherWise Explorer 🛰️\n\nA modern web application that helps users explore historical weather patterns and plan outdoor activities using real-time and historical weather data from Meteomatics API.\n\n## Features\n\n- **Location Search**: Search for any location worldwide using OpenStreetMap's Nominatim API\n- **Real-time Weather Data**: Access current weather conditions via Meteomatics API\n- **Historical Weather Data**: Historical weather patterns for better planning\n- **Weather Metrics**: View temperature, humidity, rainfall, and wind speed averages\n- **Risk Assessment**: Get probabilities for extreme weather conditions\n- **Activity Recommendations**: Smart suggestions based on weather patterns\n- **User Accounts**: Save favorite locations with Supabase authentication\n- **Interactive Charts**: Visualize weather data with responsive charts\n- **Mobile Responsive**: Works seamlessly on desktop and mobile devices\n\n## Tech Stack\n\n### Frontend\n- **React 18** with TypeScript\n- **Tailwind CSS** for styling\n- **Shadcn/ui** component library\n- **Recharts** for data visualization\n- **Lucide React** for icons\n\n### Backend\n- **Supabase** for database, authentication, and edge functions\n- **PostgreSQL** database with Row Level Security\n- **Meteomatics API** for real-time and historical weather data\n\n### Development\n- **Vite** for fast development and building\n- **ESLint** for code linting\n- **TypeScript** for type safety\n\n## Getting Started\n\n### Prerequisites\n\n- Node.js 18+ \n- npm or yarn\n- Supabase account\n\n### Installation\n\n1. **Clone the repository**\n   ```bash\n   git clone <repository-url>\n   cd metry1\n   ```\n\n2. **Install dependencies**\n   ```bash\n   npm install\n   ```\n\n3. **Set up environment variables**\n   ```bash\n   cp .env.example .env\n   ```\n   \n   Fill in your Supabase credentials:\n   ```env\n   VITE_SUPABASE_URL=your_supabase_project_url\n   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key\n   VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_anon_key\n   ```\n\n4. **Set up Supabase**\n   \n   Run the database migrations:\n   ```bash\n   npx supabase db push\n   ```\n   \n   Deploy the edge function:\n   ```bash\n   npx supabase functions deploy get-nasa-weather\n   ```\n\n5. **Start the development server**\n   ```bash\n   npm run dev\n   ```\n\n## Project Structure\n\n```\nsrc/\n├── components/\n│   ├── ui/                 # Shadcn/ui components\n│   ├── AuthModal.tsx       # Authentication modal\n│   ├── LocationSearch.tsx  # Location search component\n│   ├── NasaWeatherDashboard.tsx # Main dashboard\n│   ├── SavedLocations.tsx  # Saved locations management\n│   └── WeatherChart.tsx    # Weather data visualization\n├── hooks/\n│   └── use-toast.ts        # Toast notifications hook\n├── integrations/\n│   └── supabase/           # Supabase client and types\n├── lib/\n│   └── utils.ts            # Utility functions\n└── App.tsx                 # Main app component\n\nsupabase/\n├── functions/\n│   └── get-nasa-weather/   # Edge function for NASA API\n└── migrations/             # Database migrations\n``\n... (tronqué)"
-  },
-  {
-    "name": "PerfectScreen",
-    "description": "A Django web application for Django Cameroon's Hacktoberfest 2025 celebration. ",
-    "language": null,
-    "languages": {
-      "HTML": 27268,
-      "Python": 10998
-    },
-    "url": "https://github.com/SKJUV/PerfectScreen",
-    "homepage": "",
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-10-04T13:31:51Z",
-    "updated_at": "2025-10-04T13:31:51Z",
-    "default_branch": "main",
-    "is_fork": true,
-    "readme": "# Perfect Screen\n\nA Django web application for Django Cameroon's Hacktoberfest 2025 celebration. Share your social media posts about Django Cameroon's Hacktoberfest participation and see them displayed on a beautiful gallery.\n\n## About\n\nPerfect Screen is a community-driven project where participants can submit screenshots of their social media posts about Django Cameroon's Hacktoberfest 2025. All submissions are displayed in an elegant gallery with Hacktoberfest's official branding.\n\n## Features\n\n- Display social media post screenshots in an elegant hero section with overlapping, inclined cards\n- Paginated gallery view of community contributions\n- Lazy loading for optimal performance\n- Hacktoberfest 2025 official theme and colors\n- Management command to load data from JSON\n- Responsive design with TailwindCSS\n\n## Requirements\n\n- Python 3.11+\n- uv package manager\n- Django 5.2+\n- Pillow\n\n## Installation\n\n1. Clone the repository:\n```bash\ngit clone https://github.com/DjangoCameroon/PerfectScreen.git\ncd PerfectScreen\n```\n\n2. Install dependencies using uv:\n```bash\nuv sync\n```\n\n3. Run migrations:\n```bash\nuv run python manage.py migrate\n```\n\n4. Load sample data:\n```bash\nuv run python manage.py load_posts\n```\n\n5. Run the development server:\n```bash\nuv run python manage.py runserver\n```\n\n6. Visit `http://localhost:8000` in your browser\n\n## How to Participate\n\n1. Post about Django Cameroon Hacktoberfest on Twitter or LinkedIn\n2. Tag @DigitalOcean in your post\n3. Include these hashtags: `#DjangoCameroonHack` `#Hacktoberfest` `#DjCMRHacktoberfest`\n4. Star this repository on GitHub\n5. Take a screenshot of your post\n6. Follow the contribution guide to add your screenshot\n\n## Contributing\n\nPlease read [CONTRIBUTING.md](CONTRIBUTING.md) for detailed instructions on how to contribute your social media posts or code improvements.\n\n### Quick Contribution Steps\n\n1. Fork this repository\n2. Add your screenshot to `data/images/`\n3. Update `data/posts.json` with your information:\n```json\n{\n  \"username\": \"your_username\",\n  \"platform\": \"Twitter\",\n  \"screenshot\": \"images/your-username-twitter.png\",\n  \"post_url\": \"https://twitter.com/your_username/status/123456789\",\n  \"has_tagged_digitalocean\": true,\n  \"has_starred_repo\": true\n}\n```\n4. Submit a Pull Request\n\n## Project Structure\n\n```\nPerfectScreen/\n├── data/\n│   ├── images/          # Social media post screenshots\n│   └── posts.json       # Post metadata\n├── perfectscreen/       # Django project settings\n├── posts/              # Main Django app\n│   ├── management/\n│   │   └── commands/\n│   │       └── load_posts.py  # Load data from JSON\n│   ├── models.py       # SocialPost model\n│   ├── views.py        # View logic\n│   └── templates/\n│       └── posts/\n│           └── home.html  # Main template\n├── .github/\n│   ├── ISSUE_TEMPLATE/\n│   └── PULL_REQUEST_TEMPLATE/\n├── CONTRIBUTING.md\n├── LICENSE\n└── README.md\n```\n\n## Tech Stack\n\n- **Framework**: Django 5.2.7\n- **Package Manager**: uv\n- **Frontend**: TailwindCSS CDN\n- **Font**\n... (tronqué)"
-  },
-  {
-    "name": "sample-django-page",
-    "description": null,
-    "language": "Python",
-    "languages": {
-      "Python": 3520,
-      "HTML": 558
-    },
-    "url": "https://github.com/SKJUV/sample-django-page",
-    "homepage": null,
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-10-01T16:02:55Z",
-    "updated_at": "2025-10-01T16:05:22Z",
-    "default_branch": "main",
-    "is_fork": false,
-    "readme": "��#\u0000 \u0000s\u0000a\u0000m\u0000p\u0000l\u0000e\u0000-\u0000d\u0000j\u0000a\u0000n\u0000g\u0000o\u0000-\u0000p\u0000a\u0000g\u0000e\u0000\r\u0000\n\u0000"
-  },
-  {
-    "name": "portfolio-printcf",
-    "description": "presentation du projet print cf",
-    "language": "CSS",
-    "languages": {
-      "CSS": 35792,
-      "JavaScript": 22499,
-      "HTML": 752
-    },
-    "url": "https://github.com/SKJUV/portfolio-printcf",
-    "homepage": null,
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-09-10T11:36:10Z",
-    "updated_at": "2025-09-15T10:45:36Z",
-    "default_branch": "main",
-    "is_fork": false,
-    "readme": "# React + Vite\n\nThis template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.\n\nCurrently, two official plugins are available:\n\n- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh\n- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh\n\n## Expanding the ESLint configuration\n\nIf you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.\n#\u0000 \u0000p\u0000o\u0000r\u0000t\u0000f\u0000o\u0000l\u0000i\u0000o\u0000-\u0000p\u0000r\u0000i\u0000n\u0000t\u0000c\u0000f\u0000\r\u0000\n\u0000"
-  },
-  {
-    "name": "portfolio2",
-    "description": null,
-    "language": "CSS",
-    "languages": {
-      "CSS": 1760,
-      "TypeScript": 1294,
-      "JavaScript": 610,
-      "HTML": 366
-    },
-    "url": "https://github.com/SKJUV/portfolio2",
-    "homepage": null,
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-07-27T14:54:14Z",
-    "updated_at": "2025-07-27T14:55:31Z",
-    "default_branch": "main",
-    "is_fork": false,
-    "readme": "# React + TypeScript + Vite\n\nThis template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.\n\nCurrently, two official plugins are available:\n\n- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh\n- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh\n\n## Expanding the ESLint configuration\n\nIf you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:\n\n```js\nexport default tseslint.config([\n  globalIgnores(['dist']),\n  {\n    files: ['**/*.{ts,tsx}'],\n    extends: [\n      // Other configs...\n\n      // Remove tseslint.configs.recommended and replace with this\n      ...tseslint.configs.recommendedTypeChecked,\n      // Alternatively, use this for stricter rules\n      ...tseslint.configs.strictTypeChecked,\n      // Optionally, add this for stylistic rules\n      ...tseslint.configs.stylisticTypeChecked,\n\n      // Other configs...\n    ],\n    languageOptions: {\n      parserOptions: {\n        project: ['./tsconfig.node.json', './tsconfig.app.json'],\n        tsconfigRootDir: import.meta.dirname,\n      },\n      // other options...\n    },\n  },\n])\n```\n\nYou can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:\n\n```js\n// eslint.config.js\nimport reactX from 'eslint-plugin-react-x'\nimport reactDom from 'eslint-plugin-react-dom'\n\nexport default tseslint.config([\n  globalIgnores(['dist']),\n  {\n    files: ['**/*.{ts,tsx}'],\n    extends: [\n      // Other configs...\n      // Enable lint rules for React\n      reactX.configs['recommended-typescript'],\n      // Enable lint rules for React DOM\n      reactDom.configs.recommended,\n    ],\n    languageOptions: {\n      parserOptions: {\n        project: ['./tsconfig.node.json', './tsconfig.app.json'],\n        tsconfigRootDir: import.meta.dirname,\n      },\n      // other options...\n    },\n  },\n])\n```\n"
-  },
-  {
-    "name": "portfolio1",
-    "description": null,
-    "language": "TypeScript",
-    "languages": {
-      "TypeScript": 4450,
-      "CSS": 488,
-      "JavaScript": 474
-    },
-    "url": "https://github.com/SKJUV/portfolio1",
-    "homepage": null,
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-07-27T14:34:42Z",
-    "updated_at": "2025-07-27T14:36:48Z",
-    "default_branch": "main",
-    "is_fork": false,
-    "readme": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).\n\n## Getting Started\n\nFirst, run the development server:\n\n```bash\nnpm run dev\n# or\nyarn dev\n# or\npnpm dev\n# or\nbun dev\n```\n\nOpen [http://localhost:3000](http://localhost:3000) with your browser to see the result.\n\nYou can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.\n\nThis project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.\n\n## Learn More\n\nTo learn more about Next.js, take a look at the following resources:\n\n- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.\n- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.\n\nYou can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!\n\n## Deploy on Vercel\n\nThe easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.\n\nCheck out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.\n"
-  },
-  {
     "name": "botwha",
     "description": "bot whatsapp",
     "language": "Python",
@@ -368,65 +73,6 @@
     "default_branch": "main",
     "is_fork": false,
     "readme": null
-  },
-  {
-    "name": "tp108f",
-    "description": "Application pour gestion de bibliotheque",
-    "language": "PHP",
-    "languages": {
-      "PHP": 58435,
-      "JavaScript": 2566,
-      "CSS": 705
-    },
-    "url": "https://github.com/SKJUV/tp108f",
-    "homepage": null,
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-07-04T10:30:21Z",
-    "updated_at": "2025-07-06T10:59:30Z",
-    "default_branch": "main",
-    "is_fork": false,
-    "readme": "��#\u0000 \u0000t\u0000p\u00001\u00000\u00008\u0000f\u0000\r\u0000\n\u0000"
-  },
-  {
-    "name": "form1",
-    "description": null,
-    "language": "PHP",
-    "languages": {
-      "PHP": 16879
-    },
-    "url": "https://github.com/SKJUV/form1",
-    "homepage": null,
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-06-30T11:27:54Z",
-    "updated_at": "2025-07-01T09:09:52Z",
-    "default_branch": "main",
-    "is_fork": false,
-    "readme": "��#\u0000 \u0000f\u0000o\u0000r\u0000m\u00001\u0000\r\u0000\n\u0000"
-  },
-  {
-    "name": "EduConverse",
-    "description": "education contexte africain",
-    "language": "TypeScript",
-    "languages": {
-      "TypeScript": 180849,
-      "CSS": 3149,
-      "Nix": 1218,
-      "JavaScript": 135
-    },
-    "url": "https://github.com/SKJUV/EduConverse",
-    "homepage": null,
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-06-11T17:04:04Z",
-    "updated_at": "2025-06-11T17:07:27Z",
-    "default_branch": "master",
-    "is_fork": false,
-    "readme": "# Firebase Studio\n\nThis is a NextJS starter in Firebase Studio.\n\nTo get started, take a look at src/app/page.tsx.\n"
   },
   {
     "name": "EduAfrique",
@@ -450,139 +96,102 @@
     "readme": "# Firebase Studio\n\nThis is a NextJS starter in Firebase Studio.\n\nTo get started, take a look at src/app/page.tsx.\n"
   },
   {
-    "name": "Jjstore",
-    "description": null,
-    "language": null,
-    "languages": {},
-    "url": "https://github.com/SKJUV/Jjstore",
-    "homepage": null,
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-05-12T13:03:59Z",
-    "updated_at": "2025-05-12T13:03:59Z",
-    "default_branch": "main",
-    "is_fork": false,
-    "readme": null
-  },
-  {
-    "name": "instcon",
-    "description": "newconst",
-    "language": null,
-    "languages": {},
-    "url": "https://github.com/SKJUV/instcon",
-    "homepage": null,
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-05-09T15:27:33Z",
-    "updated_at": "2025-05-09T15:27:37Z",
-    "default_branch": "main",
-    "is_fork": false,
-    "readme": "# instcon\nnewconst\n"
-  },
-  {
-    "name": "juvpro1",
-    "description": null,
-    "language": null,
-    "languages": {},
-    "url": "https://github.com/SKJUV/juvpro1",
-    "homepage": null,
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-04-22T21:36:42Z",
-    "updated_at": "2025-04-22T21:39:32Z",
-    "default_branch": "main",
-    "is_fork": false,
-    "readme": "# React + Vite\n\nThis template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.\n\nCurrently, two official plugins are available:\n\n- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh\n- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh\n\n## Expanding the ESLint configuration\n\nIf you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.\n# juvpro1\n"
-  },
-  {
-    "name": "Copie1",
-    "description": null,
-    "language": null,
-    "languages": {},
-    "url": "https://github.com/SKJUV/Copie1",
-    "homepage": null,
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-04-08T12:35:04Z",
-    "updated_at": "2025-04-08T12:35:05Z",
-    "default_branch": "main",
-    "is_fork": false,
-    "readme": null
-  },
-  {
-    "name": "devoir1",
-    "description": null,
-    "language": null,
-    "languages": {},
-    "url": "https://github.com/SKJUV/devoir1",
-    "homepage": null,
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-04-08T12:34:02Z",
-    "updated_at": "2025-04-08T12:34:02Z",
-    "default_branch": "main",
-    "is_fork": false,
-    "readme": null
-  },
-  {
-    "name": "coliexpress",
-    "description": null,
-    "language": "HTML",
-    "languages": {
-      "HTML": 15472,
-      "CSS": 12068,
-      "JavaScript": 10307
-    },
-    "url": "https://github.com/SKJUV/coliexpress",
-    "homepage": null,
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "created_at": "2025-04-07T15:38:50Z",
-    "updated_at": "2025-04-07T15:50:43Z",
-    "default_branch": "main",
-    "is_fork": false,
-    "readme": "# coliexpress\n"
-  },
-  {
-    "name": "Myapp",
-    "description": null,
+    "name": "EduConverse",
+    "description": "education contexte africain",
     "language": "TypeScript",
     "languages": {
-      "TypeScript": 50847,
-      "CSS": 1203,
-      "JavaScript": 631
+      "TypeScript": 180849,
+      "CSS": 3149,
+      "Nix": 1218,
+      "JavaScript": 135
     },
-    "url": "https://github.com/SKJUV/Myapp",
+    "url": "https://github.com/SKJUV/EduConverse",
     "homepage": null,
     "topics": [],
     "stars": 0,
     "forks": 0,
-    "created_at": "2025-02-21T22:35:17Z",
-    "updated_at": "2025-02-21T22:35:23Z",
-    "default_branch": "main",
+    "created_at": "2025-06-11T17:04:04Z",
+    "updated_at": "2025-06-11T17:07:27Z",
+    "default_branch": "master",
     "is_fork": false,
-    "readme": "# Build AI-powered web apps with Gemini API Firebase Extensions\n\nThis is the code for [Build AI-powered web apps with Gemini API Firebase Extensions](https://firebase.google.com/codelabs/gemini-api-extensions-web) codelab.\n\n## Getting started\n\nFirst, replace `src/lib/firebase.config.js` with your own Firebase web app configuration.\n\nThen, run the development server:\n\n```bash\nnpm install\nnpm run dev\n```\n\nOpen [http://localhost:3000](http://localhost:3000) with your browser to see the result.\n\nYou can start editing the app by modifying `src/app/page.tsx`, `src/app/gallery/page.tsx`. The page auto-updates as you edit the file.\n\nThis project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.\n"
+    "readme": "# Firebase Studio\n\nThis is a NextJS starter in Firebase Studio.\n\nTo get started, take a look at src/app/page.tsx.\n"
   },
   {
-    "name": "site-web",
-    "description": "Site pour mon ecole",
-    "language": null,
-    "languages": {},
-    "url": "https://github.com/SKJUV/site-web",
+    "name": "gestion_des_employes",
+    "description": null,
+    "language": "Java",
+    "languages": {
+      "Java": 34495
+    },
+    "url": "https://github.com/SKJUV/gestion_des_employes",
     "homepage": null,
     "topics": [],
     "stars": 0,
     "forks": 0,
-    "created_at": "2023-04-12T19:04:15Z",
-    "updated_at": "2023-04-12T19:04:15Z",
+    "created_at": "2025-12-03T14:01:03Z",
+    "updated_at": "2025-12-13T17:28:50Z",
     "default_branch": "main",
     "is_fork": false,
-    "readme": null
+    "readme": "# Gestion des employes - Swing\n\nApplication Swing conforme au cahier des charges : CRUD employes, recherche/filtre, assignation et gestion des roles, persistance MariaDB/MySQL.\n\n## Prerequis\n- JDK 17+\n- Maven 3.9+\n- MariaDB/MySQL accessible (schema `gestion_employes`)\n\n## Installation base de donnees\n```sql\nCREATE DATABASE IF NOT EXISTS gestion_employes;\nUSE gestion_employes;\n\nCREATE TABLE role (\n    id INT AUTO_INCREMENT PRIMARY KEY,\n    nom VARCHAR(100) NOT NULL,\n    description VARCHAR(255)\n);\n\nCREATE TABLE employe (\n    id INT AUTO_INCREMENT PRIMARY KEY,\n    nom VARCHAR(100) NOT NULL,\n    prenom VARCHAR(100) NOT NULL,\n    date_embauche DATE NOT NULL,\n    poste VARCHAR(100) NOT NULL,\n    salaire DOUBLE NOT NULL,\n    service VARCHAR(100) NOT NULL,\n    role_id INT,\n    CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES role(id)\n);\n```\n\n## Configuration\nRenseigner vos identifiants MariaDB/MySQL dans `src/main/resources/db.properties` :\n```\njdbc.url=jdbc:mariadb://localhost:3306/gestion_employes\njdbc.user=<utilisateur>\njdbc.password=<motdepasse>\n```\n\n## Lancement\n```bash\nmvn clean package\nmvn exec:java\n```\n\n## Fonctionnalites cibles (docs/rapport.md)\n- Ajouter / modifier / supprimer un employe avec controle des champs obligatoires et rafraichissement de la liste.\n- Consulter la liste et rafraichissement au chargement.\n- Recherche par nom/prenom ou par identifiant.\n- Filtres par service et par poste.\n- Assignation de role depuis la fiche employe.\n- Gestion complete des roles (ajout, modification, suppression) avec mise a jour des listes deroulantes.\n\n## Structure\n- `src/main/java/com/gestion/employes/model` : entites `Employe`, `Role`.\n- `src/main/java/com/gestion/employes/dao` : `DBConnection`, `EmployeDAO` (CRUD employes + roles).\n- `src/main/java/com/gestion/employes/ui` : IHM Swing `EmployeController`, dialogue `RoleDialog`.\n- `pom.xml` : dependance `mysql-connector-j` et compilation Java 17.\n\n## Flux IHM (alignes sur la doc)\n- **Ajouter** : bouton Ajouter -> validation des champs -> insertion MySQL -> rafraichissement table -> confirmation.\n- **Modifier** : selection dans la table -> formulaire pre-rempli -> validation -> update -> rafraichissement -> confirmation.\n- **Supprimer** : selection -> confirmation -> suppression -> rafraichissement -> confirmation.\n- **Recherche/filtre** : champs en haut de l'ecran pour nom/id/service/poste -> requete DAO cible -> affichage restreint.\n- **Assigner un role** : selection employe -> choix dans la liste deroulante -> bouton Assigner role -> update -> rafraichissement -> confirmation.\n- **Gerer les roles** : bouton dedie -> dialogue CRUD roles -> rafraichissement de la combo role en sortie.\n\n## Notes\n- L'application utilise le driver MySQL, assurez-vous que Maven peut telecharger les dependances.\n- Les dates se saisissent au format ISO `yyyy-MM-dd`.\n- Les champs obligatoires vides ou formats invalides sont bloques avec un message d'erreur.\n"
+  },
+  {
+    "name": "HRMS",
+    "description": null,
+    "language": "Java",
+    "languages": {
+      "Java": 43280,
+      "PLpgSQL": 6224,
+      "CSS": 5058
+    },
+    "url": "https://github.com/SKJUV/HRMS",
+    "homepage": null,
+    "topics": [],
+    "stars": 0,
+    "forks": 0,
+    "created_at": "2025-12-27T13:34:05Z",
+    "updated_at": "2026-01-17T04:31:19Z",
+    "default_branch": "main",
+    "is_fork": false,
+    "readme": "# HRMS\n# Documentation : Système de Gestion des Ressources Humaines (HRMS)\n\nContenu :\n\n- [01 - Introduction](doc/01-introduction.md) — Vision et objectifs.\n- [02 - Requirements](doc/02-requirements.md) — Recueil exhaustif des besoins métiers.\n- [03 - Use Cases](doc/03-use-cases.md) — Cas d'utilisation et diagrammes Mermaid.\n- [04 - Database ER](doc/04-database-er.md) — Schéma relationnel (ER) en Mermaid.\n- [05 - Domain Models](doc/05-domain-models.md) — Description des modèles de domaine et méthodes métiers.\n- [06 - Classes](doc/06-classes.md) — Diagrammes de classes Mermaid et signatures Java.\n- [07 - Payroll](doc/07-payroll.md) — Spécifications détaillées du moteur de paie.\n- [08 - Security](doc/08-security.md) — RBAC et règles d'accès.\n- [09 - Workflows](doc/09-workflows.md) — Flux métiers (arrivée, congés, fin de mois) en Mermaid.\n- [10 - Deploiement et Visualisation](doc/10-deploiement-et-visualisation.md) — Conseils pour visualiser Mermaid et déploiement.\n\nChaque fichier est autonome mais fait partie d'une documentation unique. Les diagrammes sont fournis en syntaxe Mermaid pour être visualisés dans VSCode (extension Mermaid) ou via MkDocs/mermaid plugin.\n"
+  },
+  {
+    "name": "portfolio-printcf",
+    "description": "presentation du projet print cf",
+    "language": "CSS",
+    "languages": {
+      "CSS": 35792,
+      "JavaScript": 22499,
+      "HTML": 752
+    },
+    "url": "https://github.com/SKJUV/portfolio-printcf",
+    "homepage": null,
+    "topics": [],
+    "stars": 0,
+    "forks": 0,
+    "created_at": "2025-09-10T11:36:10Z",
+    "updated_at": "2025-09-15T10:45:36Z",
+    "default_branch": "main",
+    "is_fork": false,
+    "readme": "# React + Vite\n\nThis template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.\n\nCurrently, two official plugins are available:\n\n- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh\n- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh\n\n## Expanding the ESLint configuration\n\nIf you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.\n#\u0000 \u0000p\u0000o\u0000r\u0000t\u0000f\u0000o\u0000l\u0000i\u0000o\u0000-\u0000p\u0000r\u0000i\u0000n\u0000t\u0000c\u0000f\u0000\r\u0000\n\u0000"
+  },
+  {
+    "name": "tp108f",
+    "description": "Application pour gestion de bibliotheque",
+    "language": "PHP",
+    "languages": {
+      "PHP": 58435,
+      "JavaScript": 2566,
+      "CSS": 705
+    },
+    "url": "https://github.com/SKJUV/tp108f",
+    "homepage": null,
+    "topics": [],
+    "stars": 0,
+    "forks": 0,
+    "created_at": "2025-07-04T10:30:21Z",
+    "updated_at": "2025-07-06T10:59:30Z",
+    "default_branch": "main",
+    "is_fork": false,
+    "readme": "��#\u0000 \u0000t\u0000p\u00001\u00000\u00008\u0000f\u0000\r\u0000\n\u0000"
   }
 ]
