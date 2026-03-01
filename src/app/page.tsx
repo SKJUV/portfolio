@@ -30,7 +30,7 @@ export default async function Home() {
     .sort((a, b) => a.order - b.order);
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground bg-mesh">
       <Navbar sections={data.sections} />
       <Hero data={data} />
       {enabledSections.map((section) => {

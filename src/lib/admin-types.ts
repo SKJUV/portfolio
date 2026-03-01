@@ -8,6 +8,7 @@ export interface SiteSettings {
   heroTitle: string;
   heroSubtitle: string;
   heroDescription: string;
+  profileImageUrl?: string;
   footerText: string;
   contactEmail: string;
   contactGithub: string;

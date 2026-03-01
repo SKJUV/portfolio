@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Shield, Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import LanguageToggle from "./LanguageToggle";
+import { useLanguage } from "@/providers/LanguageProvider";
 
 interface NavSection {
   id: string;
@@ -16,14 +18,16 @@ interface NavbarProps {
 }
 
 export default function Navbar({ sections = [] }: NavbarProps) {
+  const { t } = useLanguage();
+
   // Générer les liens dynamiquement à partir des sections activées
   const sectionLinks = sections
     .filter((s) => s.enabled)
     .sort((a, b) => a.order - b.order)
-    .map((s) => ({ href: `#${s.id}`, label: s.title }));
+    .map((s) => ({ href: `#${s.id}`, label: t(`section.${s.id}`) || s.title }));
 
   // Contact toujours à la fin
-  const navLinks = [...sectionLinks, { href: "#contact", label: "Contact" }];
+  const navLinks = [...sectionLinks, { href: "#contact", label: t("nav.contact") }];
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -47,13 +51,15 @@ export default function Navbar({ sections = [] }: NavbarProps) {
               {link.label}
             </a>
           ))}
-          <div className="ml-2">
+          <div className="ml-2 flex items-center gap-1.5">
+            <LanguageToggle />
             <ThemeToggle />
           </div>
         </div>
 
         {/* Mobile */}
         <div className="flex items-center gap-2 md:hidden">
+          <LanguageToggle />
           <ThemeToggle />
           <button
             onClick={() => setMenuOpen(!menuOpen)}

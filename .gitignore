@@ -32,3 +32,7 @@ yarn-error.log*
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local data files (not for git)
+images/
+sineng_kengni_juvenal_profile.json

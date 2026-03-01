@@ -2,10 +2,16 @@
 
 import { useState } from "react";
 import { Github, Mail, Linkedin, Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useLanguage } from "@/providers/LanguageProvider";
 import type { PortfolioData } from "@/lib/admin-types";
 
 export default function Footer({ data }: { data: PortfolioData }) {
   const { settings } = data;
+  const { t } = useLanguage();
+  const headerRef = useScrollReveal<HTMLDivElement>();
+  const formRef = useScrollReveal<HTMLDivElement>(0.1);
+  const infoRef = useScrollReveal<HTMLDivElement>(0.1);
 
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -40,27 +46,27 @@ export default function Footer({ data }: { data: PortfolioData }) {
   };
 
   return (
-    <footer id="contact" className="py-20 px-4 bg-mesh">
+    <footer id="contact" className="py-20 px-4">
       <div className="max-w-6xl mx-auto space-y-16">
         {/* Titre */}
-        <div className="text-center space-y-3">
-          <h2 className="text-3xl sm:text-4xl font-bold">📬 Contact</h2>
+        <div ref={headerRef} className="text-center space-y-3">
+          <h2 className="text-3xl sm:text-4xl font-bold">📬 {t("contact.title")}</h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Intéressé par une collaboration ? Envoyez-moi un message !
+            {t("contact.subtitle")}
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
           {/* Formulaire de contact */}
-          <div className="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
-            <h3 className="text-lg font-semibold">Envoyer un message</h3>
+          <div ref={formRef} className="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
+            <h3 className="text-lg font-semibold">{t("contact.send")}</h3>
 
             {status === "success" ? (
               <div className="flex items-start gap-3 p-4 rounded-xl bg-primary/10 text-primary">
                 <CheckCircle className="h-5 w-5 mt-0.5 shrink-0" />
                 <div>
-                  <p className="font-medium text-sm">Message envoyé !</p>
-                  <p className="text-xs opacity-80 mt-0.5">Merci, je vous répondrai rapidement.</p>
+                  <p className="font-medium text-sm">{t("contact.sent")}</p>
+                  <p className="text-xs opacity-80 mt-0.5">{t("contact.sentDesc")}</p>
                 </div>
               </div>
             ) : (
@@ -68,7 +74,7 @@ export default function Footer({ data }: { data: PortfolioData }) {
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-medium text-muted-foreground mb-1.5">
-                      Nom
+                      {t("contact.name")}
                     </label>
                     <input
                       type="text"
@@ -76,20 +82,20 @@ export default function Footer({ data }: { data: PortfolioData }) {
                       maxLength={100}
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      placeholder="Votre nom"
+                      placeholder={t("contact.yourName")}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-background text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-colors"
                     />
                   </div>
                   <div>
                     <label className="block text-xs font-medium text-muted-foreground mb-1.5">
-                      Email
+                      {t("contact.email")}
                     </label>
                     <input
                       type="email"
                       required
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      placeholder="votre@email.com"
+                      placeholder={t("contact.yourEmail")}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-background text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-colors"
                     />
                   </div>
@@ -97,7 +103,7 @@ export default function Footer({ data }: { data: PortfolioData }) {
 
                 <div>
                   <label className="block text-xs font-medium text-muted-foreground mb-1.5">
-                    Objet
+                    {t("contact.subject")}
                   </label>
                   <input
                     type="text"
@@ -105,14 +111,14 @@ export default function Footer({ data }: { data: PortfolioData }) {
                     maxLength={200}
                     value={form.subject}
                     onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                    placeholder="Sujet de votre message"
+                    placeholder={t("contact.subjectPlaceholder")}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-background text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-colors"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs font-medium text-muted-foreground mb-1.5">
-                    Message
+                    {t("contact.message")}
                   </label>
                   <textarea
                     required
@@ -120,7 +126,7 @@ export default function Footer({ data }: { data: PortfolioData }) {
                     rows={5}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    placeholder="Écrivez votre message ici..."
+                    placeholder={t("contact.messagePlaceholder")}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-background text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-colors resize-none"
                   />
                 </div>
@@ -142,16 +148,16 @@ export default function Footer({ data }: { data: PortfolioData }) {
                   ) : (
                     <Send className="h-4 w-4" />
                   )}
-                  {status === "sending" ? "Envoi..." : "Envoyer"}
+                  {status === "sending" ? t("contact.sending") : t("contact.submit")}
                 </button>
               </form>
             )}
           </div>
 
           {/* Infos de contact */}
-          <div className="space-y-8">
+          <div ref={infoRef} className="space-y-8">
             <div className="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
-              <h3 className="text-lg font-semibold">Retrouvez-moi</h3>
+              <h3 className="text-lg font-semibold">{t("contact.info")}</h3>
 
               <div className="space-y-4">
                 <a
@@ -162,7 +168,7 @@ export default function Footer({ data }: { data: PortfolioData }) {
                     <Mail className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium">Email</p>
+                    <p className="text-sm font-medium">{t("contact.emailLabel")}</p>
                     <p className="text-xs text-muted-foreground">{settings.contactEmail}</p>
                   </div>
                 </a>
@@ -177,7 +183,7 @@ export default function Footer({ data }: { data: PortfolioData }) {
                     <Github className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium">GitHub</p>
+                    <p className="text-sm font-medium">{t("contact.githubLabel")}</p>
                     <p className="text-xs text-muted-foreground">{settings.contactGithub.replace("https://", "")}</p>
                   </div>
                 </a>
@@ -192,7 +198,7 @@ export default function Footer({ data }: { data: PortfolioData }) {
                     <Linkedin className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium">LinkedIn</p>
+                    <p className="text-sm font-medium">{t("contact.linkedinLabel")}</p>
                     <p className="text-xs text-muted-foreground">{settings.contactLinkedin.replace("https://www.", "")}</p>
                   </div>
                 </a>

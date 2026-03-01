@@ -49,7 +49,7 @@ Portfolio professionnel avec un dashboard admin CMS intégré, un chatbot IA ali
   - 📊 **Dashboard** — Vue d'ensemble avec statistiques
   - 📑 **Sections** — Activer/désactiver, réordonner les sections du portfolio
   - 💼 **Projets** — CRUD complet avec upload d'images
-  - 🏅 **Certifications** — Gestion avec upload images et PDF
+  - 🏅 **Certifications** — Gestion avec upload images
   - ⚙️ **Technologies** — Gérer la stack technique par catégorie
   - 💬 **Messages** — Lire les messages du formulaire de contact
   - 🤖 **Chatbot** — Configurer le comportement de l'IA
@@ -92,7 +92,7 @@ src/
 │       └── portfolio/              # API publique avec cache
 ├── components/
 │   ├── AIChatBot.tsx               # Chatbot flottant avec rendu markdown
-│   ├── CertificationsSection.tsx   # Section certifications (images + PDF)
+│   ├── CertificationsSection.tsx   # Section certifications (images + modal)
 │   ├── Hero.tsx                    # Hero avec terminal animé
 │   ├── Navbar.tsx                  # Navigation dynamique
 │   ├── ProjectCard.tsx             # Carte projet

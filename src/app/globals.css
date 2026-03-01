@@ -131,6 +131,129 @@ body {
   animation: blink 1s step-end infinite;
 }
 
+/* ============================================
+   Animations — Hero, sections, scroll
+   ============================================ */
+
+/* Fade-up entry */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out forwards;
+}
+
+/* Floating blobs */
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-15px) scale(1.03); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 8s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* Scroll-triggered reveal */
+@keyframes scroll-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-hidden {
+  opacity: 0;
+}
+
+.scroll-visible {
+  animation: scroll-reveal 0.7s ease-out forwards;
+}
+
+/* Stagger children animation for grids */
+.stagger-children > * {
+  opacity: 0;
+}
+
+.stagger-children.scroll-visible > * {
+  animation: fade-up 0.5s ease-out forwards;
+}
+
+.stagger-children.scroll-visible > *:nth-child(1) { animation-delay: 0s; }
+.stagger-children.scroll-visible > *:nth-child(2) { animation-delay: 0.08s; }
+.stagger-children.scroll-visible > *:nth-child(3) { animation-delay: 0.16s; }
+.stagger-children.scroll-visible > *:nth-child(4) { animation-delay: 0.24s; }
+.stagger-children.scroll-visible > *:nth-child(5) { animation-delay: 0.32s; }
+.stagger-children.scroll-visible > *:nth-child(6) { animation-delay: 0.4s; }
+.stagger-children.scroll-visible > *:nth-child(7) { animation-delay: 0.48s; }
+.stagger-children.scroll-visible > *:nth-child(8) { animation-delay: 0.56s; }
+.stagger-children.scroll-visible > *:nth-child(9) { animation-delay: 0.64s; }
+
+/* Pulse ring for "available" dot */
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+  70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* Horizontal scroll containers (mobile) */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Edge fade hint for scrollable containers */
+.scroll-fade-container {
+  position: relative;
+}
+
+.scroll-fade-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 2.5rem;
+  background: linear-gradient(to right, transparent, hsl(var(--background)));
+  pointer-events: none;
+  z-index: 2;
+}
+
+@media (min-width: 640px) {
+  .scroll-fade-container::after {
+    display: none;
+  }
+}
+
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;

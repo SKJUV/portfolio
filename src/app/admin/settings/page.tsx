@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Save, RotateCcw } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
+import { Save, RotateCcw, Upload, X, User } from "lucide-react";
 import type { SiteSettings } from "@/lib/admin-types";
 
 const defaultSettings: SiteSettings = {
@@ -10,6 +10,7 @@ const defaultSettings: SiteSettings = {
   heroTitle: "",
   heroSubtitle: "",
   heroDescription: "",
+  profileImageUrl: "",
   footerText: "",
   contactEmail: "",
   contactGithub: "",
@@ -22,6 +23,8 @@ export default function SettingsPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     fetch("/api/admin/settings")
@@ -59,6 +62,28 @@ export default function SettingsPage() {
 
   const handleReset = () => {
     setSettings(original);
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const res = await fetch("/api/admin/upload", { method: "POST", body: formData });
+      const data = await res.json();
+      if (data.url) {
+        setSettings({ ...settings, profileImageUrl: data.url });
+      } else {
+        alert(data.error || "Erreur upload");
+      }
+    } catch {
+      alert("Erreur lors de l'upload");
+    } finally {
+      setUploading(false);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    }
   };
 
   if (loading) {
@@ -125,6 +150,56 @@ export default function SettingsPage() {
       <div className="admin-card p-4 sm:p-6 space-y-4">
         <h2 className="font-semibold">🏠 Section Hero</h2>
         <div className="space-y-3">
+          {/* Photo de profil */}
+          <div className="space-y-1.5">
+            <label className="text-xs text-muted-foreground font-medium">Photo de profil</label>
+            <div className="flex items-center gap-4">
+              {settings.profileImageUrl ? (
+                <div className="relative shrink-0">
+                  <img src={settings.profileImageUrl} alt="Profil" className="h-20 w-20 rounded-xl object-cover border border-border" />
+                  <button
+                    type="button"
+                    onClick={() => setSettings({ ...settings, profileImageUrl: "" })}
+                    className="absolute -top-1.5 -right-1.5 p-0.5 rounded-full bg-destructive text-destructive-foreground hover:opacity-90"
+                  >
+                    <X className="h-3 w-3" />
+                  </button>
+                </div>
+              ) : (
+                <div className="h-20 w-20 rounded-xl border border-dashed border-border bg-muted flex items-center justify-center">
+                  <User className="h-8 w-8 text-muted-foreground/30" />
+                </div>
+              )}
+              <div className="flex-1 space-y-2">
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp"
+                  onChange={handleImageUpload}
+                  className="hidden"
+                />
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={uploading}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-dashed border-border text-sm text-muted-foreground hover:border-primary hover:text-primary transition-all disabled:opacity-50"
+                >
+                  {uploading ? (
+                    <><div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary" /> Upload...</>
+                  ) : (
+                    <><Upload className="h-4 w-4" /> {settings.profileImageUrl ? "Changer" : "Importer"}</>
+                  )}
+                </button>
+                <input
+                  type="url"
+                  placeholder="ou URL: https://..."
+                  value={settings.profileImageUrl || ""}
+                  onChange={(e) => setSettings({ ...settings, profileImageUrl: e.target.value })}
+                  className="admin-input text-xs"
+                />
+              </div>
+            </div>
+          </div>
           <div className="space-y-1.5">
             <label className="text-xs text-muted-foreground font-medium">Titre principal</label>
             <input
