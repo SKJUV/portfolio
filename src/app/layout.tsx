@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { getPortfolioData } from "@/lib/data-manager";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import PageViewTracker from "@/components/PageViewTracker";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://sineng-juvenal.me";
 
@@ -171,6 +174,9 @@ export default async function RootLayout({
       </head>
       <body className="font-sans antialiased">
         <ThemeProvider>{children}</ThemeProvider>
+        <Analytics />
+        <SpeedInsights />
+        <PageViewTracker />
       </body>
     </html>
   );

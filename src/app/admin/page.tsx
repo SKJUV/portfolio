@@ -12,6 +12,7 @@ import {
   MessageSquare,
 } from "lucide-react";
 import type { PortfolioData } from "@/lib/admin-types";
+import AnalyticsChart from "@/components/AnalyticsChart";
 
 export default function AdminDashboard() {
   const [data, setData] = useState<PortfolioData | null>(null);
@@ -107,6 +108,9 @@ export default function AdminDashboard() {
           </div>
         ))}
       </div>
+
+      {/* Analytics — Graphe de visites */}
+      <AnalyticsChart />
 
       {/* Sections overview */}
       <div className="admin-card p-4 sm:p-6">

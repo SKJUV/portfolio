@@ -14,6 +14,7 @@ export interface Project {
   securityPoints_en?: string[];
   githubUrl: string;
   liveUrl?: string;
+  imageUrl?: string;
 }
 
 export interface SecuritySkill {

@@ -16,11 +16,13 @@ import {
   ChevronRight,
   MessageSquare,
   Bot,
+  BarChart3,
 } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const sidebarItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
   { href: "/admin/sections", label: "Sections", icon: Layers },
   { href: "/admin/projects", label: "Projets", icon: FolderKanban },
   { href: "/admin/stacks", label: "Technologies", icon: Code2 },

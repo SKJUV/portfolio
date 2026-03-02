@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { useLanguage } from "@/providers/LanguageProvider";
 import type { Project } from "@/lib/types";
@@ -16,6 +17,20 @@ export default function ProjectCard({ project }: { project: Project }) {
 
   return (
     <div className="flex flex-col p-5 glass-card rounded-2xl">
+      {/* Image du projet si disponible */}
+      {project.imageUrl && (
+        <div className="relative w-full h-40 mb-4 rounded-xl overflow-hidden bg-muted/30">
+          <Image
+            src={project.imageUrl}
+            alt={td(project.title, project.title_en)}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover"
+            loading="lazy"
+          />
+        </div>
+      )}
+
       <div className="flex items-start justify-between gap-2 mb-3">
         <span
           className={`inline-block text-xs px-2.5 py-1 rounded-lg font-medium ${badgeStyles[project.badgeType]}`}

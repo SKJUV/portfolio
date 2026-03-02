@@ -40,6 +40,23 @@ async function verifySessionToken(token: string): Promise<boolean> {
   }
 }
 
+// Headers de sécurité appliqués à toutes les réponses
+const SECURITY_HEADERS: Record<string, string> = {
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "DENY",
+  "X-XSS-Protection": "1; mode=block",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+  "X-DNS-Prefetch-Control": "on",
+};
+
+function applySecurityHeaders(response: NextResponse): NextResponse {
+  for (const [key, value] of Object.entries(SECURITY_HEADERS)) {
+    response.headers.set(key, value);
+  }
+  return response;
+}
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -47,7 +64,9 @@ export async function middleware(request: NextRequest) {
   if (pathname.startsWith("/admin") && !pathname.startsWith("/admin/login")) {
     const token = request.cookies.get(SESSION_COOKIE)?.value;
     if (!token || !(await verifySessionToken(token))) {
-      return NextResponse.redirect(new URL("/admin/login", request.url));
+      return applySecurityHeaders(
+        NextResponse.redirect(new URL("/admin/login", request.url))
+      );
     }
   }
 
@@ -55,13 +74,23 @@ export async function middleware(request: NextRequest) {
   if (pathname.startsWith("/api/admin") && !pathname.startsWith("/api/admin/auth")) {
     const token = request.cookies.get(SESSION_COOKIE)?.value;
     if (!token || !(await verifySessionToken(token))) {
-      return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
+      return applySecurityHeaders(
+        NextResponse.json({ error: "Non autorisé" }, { status: 401 })
+      );
     }
   }
 
-  return NextResponse.next();
+  return applySecurityHeaders(NextResponse.next());
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/api/admin/:path*"],
+  matcher: [
+    /*
+     * Matcher toutes les routes sauf :
+     * - _next/static (fichiers statiques)
+     * - _next/image (optimisation d'images)
+     * - favicon.ico
+     */
+    "/((?!_next/static|_next/image|favicon.ico).*)",
+  ],
 };
