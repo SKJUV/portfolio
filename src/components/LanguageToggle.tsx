@@ -3,13 +3,13 @@
 import { useLanguage } from "@/providers/LanguageProvider";
 
 export default function LanguageToggle() {
-  const { locale, setLocale } = useLanguage();
+  const { locale, setLocale, t } = useLanguage();
 
   return (
     <button
       onClick={() => setLocale(locale === "fr" ? "en" : "fr")}
       className="px-2 py-1.5 rounded-lg text-xs font-medium glass hover:bg-primary/10 transition-all flex items-center gap-1.5"
-      title={locale === "fr" ? "Switch to English" : "Passer en Français"}
+      title={locale === "fr" ? t("lang.switchEn") : t("lang.switchFr")}
     >
       <span className={locale === "fr" ? "opacity-100" : "opacity-40"}>🇫🇷</span>
       <span className="text-muted-foreground">/</span>

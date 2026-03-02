@@ -1,4 +1,7 @@
+"use client";
+
 import { ExternalLink } from "lucide-react";
+import { useLanguage } from "@/providers/LanguageProvider";
 import type { Project } from "@/lib/types";
 
 const badgeStyles: Record<Project["badgeType"], string> = {
@@ -9,13 +12,15 @@ const badgeStyles: Record<Project["badgeType"], string> = {
 };
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const { td } = useLanguage();
+
   return (
     <div className="flex flex-col p-5 glass-card rounded-2xl">
       <div className="flex items-start justify-between gap-2 mb-3">
         <span
           className={`inline-block text-xs px-2.5 py-1 rounded-lg font-medium ${badgeStyles[project.badgeType]}`}
         >
-          {project.badge}
+          {td(project.badge)}
         </span>
         <a
           href={project.githubUrl}
@@ -28,9 +33,9 @@ export default function ProjectCard({ project }: { project: Project }) {
         </a>
       </div>
 
-      <h3 className="font-semibold mb-1">{project.title}</h3>
-      <p className="text-sm text-primary mb-2">{project.subtitle}</p>
-      <p className="text-sm text-muted-foreground mb-4 flex-1">{project.description}</p>
+      <h3 className="font-semibold mb-1">{td(project.title)}</h3>
+      <p className="text-sm text-primary mb-2">{td(project.subtitle)}</p>
+      <p className="text-sm text-muted-foreground mb-4 flex-1">{td(project.description)}</p>
 
       {/* Stack */}
       <div className="flex flex-wrap gap-1.5 mb-3">
@@ -50,7 +55,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           {project.securityPoints.map((point) => (
             <li key={point} className="text-xs text-muted-foreground flex items-start gap-1.5">
               <span className="text-primary">▸</span>
-              <span>{point}</span>
+              <span>{td(point)}</span>
             </li>
           ))}
         </ul>

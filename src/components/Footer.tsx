@@ -32,7 +32,7 @@ export default function Footer({ data }: { data: PortfolioData }) {
 
       if (!res.ok) {
         setStatus("error");
-        setErrorMsg(data.error || "Erreur lors de l'envoi");
+        setErrorMsg(data.error || t("contact.errorSend"));
         return;
       }
 
@@ -41,7 +41,7 @@ export default function Footer({ data }: { data: PortfolioData }) {
       setTimeout(() => setStatus("idle"), 5000);
     } catch {
       setStatus("error");
-      setErrorMsg("Erreur de connexion au serveur");
+      setErrorMsg(t("contact.errorConnection"));
     }
   };
 

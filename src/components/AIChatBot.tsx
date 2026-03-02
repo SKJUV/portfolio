@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { MessageCircle, X, Send, Bot, Sparkles } from "lucide-react";
+import { useLanguage } from "@/providers/LanguageProvider";
 import type { PortfolioData } from "@/lib/admin-types";
 import type { Project, SecuritySkill, SkillCategory, ProfileCategory } from "@/lib/types";
 
@@ -48,7 +49,14 @@ interface ChatData {
 // ============================================
 // Fallback local (utilisé si Gemini non dispo)
 // ============================================
-function generateLocalResponse(question: string, data: ChatData, fallbackMessage: string, customResponses: { keywords: string[]; response: string; enabled: boolean }[]): string {
+function generateLocalResponse(
+  question: string,
+  data: ChatData,
+  fallbackMessage: string,
+  customResponses: { keywords: string[]; response: string; enabled: boolean }[],
+  t: (key: string) => string,
+  td: (text: string) => string,
+): string {
   const { projects, skillCategories, securitySkills, profileCategories, terminalLines } = data;
   const q = question.toLowerCase().trim();
 
@@ -60,52 +68,52 @@ function generateLocalResponse(question: string, data: ChatData, fallbackMessage
   }
 
   const offTopicPatterns = [/\b(météo|weather|meteo)\b/, /\b(politique|politic)\b/, /\b(cuisine|recipe|recette)\b/, /\b(sport|football|basket)\b/, /\b(musique|music)\b/, /\b(film|movie|série|series)\b/, /\b(jeu|game|gaming)\b/];
-  if (offTopicPatterns.some((p) => p.test(q))) return fallbackMessage;
+  if (offTopicPatterns.some((p) => p.test(q))) return t("chat.fallback.offTopic") || fallbackMessage;
 
   if (/^(salut|hello|hi|hey|bonjour|coucou|yo|bonsoir)/i.test(q)) {
-    return "Bonjour ! 👋 Je suis l'assistant IA de Juvenal SINENG KENGNI. Posez-moi des questions sur ses compétences, projets, ou parcours !";
+    return t("chat.fallback.hello");
   }
 
   if (/qui (es[t\-]|est)/.test(q) || /présent/.test(q) || /c'est qui/.test(q) || /who (is|are)/.test(q)) {
-    return "Juvenal SINENG KENGNI (SKJUV) est un développeur Full-Stack passionné par la cybersécurité 🛡️. Ses spécialités : JWT, RBAC, OWASP Top 10, Docker Hardening.";
+    return t("chat.fallback.who");
   }
 
   if (/contact|email|mail|linkedin|joindre/.test(q)) {
-    return "📬 Contact :\n• Email : sinengjuvenal@gmail.com\n• GitHub : github.com/SKJUV\n• LinkedIn : linkedin.com/in/juvenal-sineng-kengni";
+    return t("chat.fallback.contact");
   }
 
   if (/projet|project|réalis|travaux|works/.test(q)) {
-    return `Projets de Juvenal :\n${projects.map((p) => `• **${p.title}** — ${p.subtitle}`).join("\n")}\n\nDemandez des détails sur un projet !`;
+    return `${t("chat.fallback.projectsPrefix")}\n${projects.map((p) => `• **${td(p.title)}** — ${td(p.subtitle)}`).join("\n")}${t("chat.fallback.projectsSuffix")}`;
   }
 
   for (const project of projects) {
     if (q.includes(project.title.toLowerCase()) || q.includes(project.id.toLowerCase())) {
-      return `**${project.title}** — ${project.subtitle}\n${project.description}\nStack : ${project.stack.join(", ")}\n🔗 ${project.githubUrl}`;
+      return `**${td(project.title)}** — ${td(project.subtitle)}\n${td(project.description)}\nStack : ${project.stack.join(", ")}\n🔗 ${project.githubUrl}`;
     }
   }
 
   if (/sécurité|security|sécu|cyber|owasp|hack|pentest/.test(q)) {
-    return `Sécurité (passion #1) :\n\n${securitySkills.map((s) => `${s.icon} **${s.title}** : ${s.description}`).join("\n")}`;
+    return `${t("chat.fallback.securityPrefix")}${securitySkills.map((s) => `${s.icon} **${td(s.title)}** : ${td(s.description)}`).join("\n")}`;
   }
 
   if (/compétence|skill|technolog|stack|lang|maîtrise/.test(q)) {
-    return `Compétences :\n\n${skillCategories.map((c) => `${c.icon} **${c.title}** : ${c.items.slice(0, 6).join(", ")}...`).join("\n")}`;
+    return `${t("chat.fallback.skillsPrefix")}${skillCategories.map((c) => `${c.icon} **${td(c.title)}** : ${c.items.slice(0, 6).join(", ")}...`).join("\n")}`;
   }
 
   if (/linux|manjaro|zorin|système|system|terminal|os/.test(q)) {
     const points = [...(profileCategories.find((c) => c.title.includes("Linux"))?.points ?? []), ...(profileCategories.find((c) => c.title.includes("Windows"))?.points ?? [])];
-    return `🐧 Systèmes :\n${points.map((p) => `• ${p}`).join("\n")}`;
+    return `${t("chat.fallback.systemsPrefix")}${points.map((p) => `• ${td(p)}`).join("\n")}`;
   }
 
   if (/niveau|level|expérience|experience|parcours/.test(q)) {
     const levelLine = terminalLines.find((l) => l.command.includes("LEVEL"));
-    return `📈 ${levelLine?.output ?? "Intermédiaire en progression rapide"}`;
+    return `${t("chat.fallback.levelPrefix")}${td(levelLine?.output ?? "")}`;
   }
 
-  if (/github|repo|code source/.test(q)) return "🔗 GitHub de Juvenal : https://github.com/SKJUV";
+  if (/github|repo|code source/.test(q)) return t("chat.fallback.github");
 
   if (/que (peux|sais|peut)|what can you|aide|help/.test(q)) {
-    return "Je peux vous renseigner sur :\n• 👤 Qui est Juvenal\n• 🛡️ Cybersécurité\n• 💻 Projets\n• ⚙️ Stack technique\n• 📬 Contact\n\nPosez votre question !";
+    return t("chat.fallback.help");
   }
 
   return fallbackMessage;
@@ -113,6 +121,7 @@ function generateLocalResponse(question: string, data: ChatData, fallbackMessage
 
 export default function AIChatBot({ data }: { data: PortfolioData }) {
   const settings = data.chatBotSettings;
+  const { t, td } = useLanguage();
 
   const chatData: ChatData = {
     projects: data.projects,
@@ -126,7 +135,7 @@ export default function AIChatBot({ data }: { data: PortfolioData }) {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: settings?.welcomeMessage || "Bonjour ! 👋 Je suis l'assistant IA de Juvenal. Posez-moi vos questions sur son parcours, ses compétences ou ses projets !",
+      content: settings?.welcomeMessage || t("chat.fallback.hello"),
     },
   ]);
   const [input, setInput] = useState("");
@@ -196,12 +205,14 @@ export default function AIChatBot({ data }: { data: PortfolioData }) {
     const response = generateLocalResponse(
       trimmed,
       chatData,
-      settings?.fallbackMessage || "Je suis spécialisé uniquement sur Juvenal SINENG KENGNI.",
-      settings?.customResponses || []
+      settings?.fallbackMessage || t("chat.fallback.offTopic"),
+      settings?.customResponses || [],
+      t,
+      td,
     );
     setMessages((prev) => [...prev, { role: "assistant", content: response }]);
     setIsTyping(false);
-  }, [input, isTyping, useGemini, messages, chatData, settings]);
+  }, [input, isTyping, useGemini, messages, chatData, settings, t, td]);
   /* eslint-enable react-hooks/rules-of-hooks */
 
   return (
@@ -210,7 +221,7 @@ export default function AIChatBot({ data }: { data: PortfolioData }) {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-all duration-300 hover:scale-110 glow-primary"
-        aria-label={isOpen ? "Fermer le chat" : "Ouvrir le chat IA"}
+        aria-label={isOpen ? t("chat.closeChat") : t("chat.openChat")}
       >
         {isOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
       </button>
@@ -231,13 +242,13 @@ export default function AIChatBot({ data }: { data: PortfolioData }) {
                 {useGemini && <Sparkles className="h-3.5 w-3.5 text-primary" />}
               </p>
               <p className="text-xs text-muted-foreground">
-                {useGemini ? "Propulsé par Gemini AI" : settings?.botDescription || "Tout savoir sur Juvenal"}
+                {useGemini ? t("chat.poweredBy") : settings?.botDescription || t("chat.fallbackDesc")}
               </p>
             </div>
             <button
               onClick={() => setIsOpen(false)}
               className="rounded-lg p-1.5 text-muted-foreground hover:bg-muted transition-colors"
-              aria-label="Fermer"
+              aria-label={t("chat.close")}
             >
               <X className="h-4 w-4" />
             </button>
@@ -294,14 +305,14 @@ export default function AIChatBot({ data }: { data: PortfolioData }) {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder={settings?.inputPlaceholder || "Posez une question sur Juvenal..."}
+                placeholder={settings?.inputPlaceholder || t("chat.placeholder")}
                 className="flex-1 rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm outline-none placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary/30 transition-colors"
               />
               <button
                 type="submit"
                 disabled={!input.trim() || isTyping}
                 className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground transition-all hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
-                aria-label="Envoyer"
+                aria-label={t("chat.send")}
               >
                 <Send className="h-4 w-4" />
               </button>

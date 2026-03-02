@@ -64,7 +64,7 @@ export default function Navbar({ sections = [] }: NavbarProps) {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="p-2 rounded-lg glass hover:bg-primary/10 transition-all"
-            aria-label="Toggle menu"
+            aria-label={t("navbar.toggleMenu")}
           >
             {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import { Github, Mail, Linkedin } from "lucide-react";
 import Terminal from "./Terminal";
 import { useLanguage } from "@/providers/LanguageProvider";
@@ -8,13 +8,19 @@ import type { PortfolioData } from "@/lib/admin-types";
 
 export default function Hero({ data }: { data: PortfolioData }) {
   const { settings, terminalLines } = data;
-  const { t } = useLanguage();
+  const { t, td } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
 
   // Séparer le nom pour le styling : dernier mot en primary
   const titleParts = settings.heroTitle.split(" ");
   const lastName = titleParts.pop() || "";
   const firstParts = titleParts.join(" ");
+
+  // Translate terminal line outputs for current locale
+  const translatedLines = useMemo(() =>
+    terminalLines.map((line) => ({ command: line.command, output: td(line.output) })),
+    [terminalLines, td]
+  );
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -83,7 +89,7 @@ export default function Hero({ data }: { data: PortfolioData }) {
               className="inline-flex items-center gap-2 px-5 py-2.5 glass rounded-xl text-sm font-medium hover:bg-primary/10 transition-all hover:scale-105 active:scale-95"
             >
               <Github className="h-4 w-4" />
-              GitHub
+              {t("hero.github")}
             </a>
             <a
               href={settings.contactLinkedin}
@@ -92,20 +98,20 @@ export default function Hero({ data }: { data: PortfolioData }) {
               className="inline-flex items-center gap-2 px-5 py-2.5 glass rounded-xl text-sm font-medium hover:bg-primary/10 transition-all hover:scale-105 active:scale-95"
             >
               <Linkedin className="h-4 w-4" />
-              LinkedIn
+              {t("hero.linkedin")}
             </a>
             <a
               href={`mailto:${settings.contactEmail}`}
               className="inline-flex items-center gap-2 px-5 py-2.5 glass rounded-xl text-sm font-medium hover:bg-primary/10 transition-all hover:scale-105 active:scale-95"
             >
               <Mail className="h-4 w-4" />
-              Contact
+              {t("hero.contact")}
             </a>
           </div>
         </div>
 
         <div className="hero-animate opacity-0">
-          <Terminal terminalLines={terminalLines} />
+          <Terminal terminalLines={translatedLines} />
         </div>
       </div>
     </section>
