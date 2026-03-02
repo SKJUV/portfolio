@@ -74,6 +74,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "cert.date": "Date d'obtention",
     "cert.close": "Fermer",
     "cert.details": "Détails",
+    "cert.pageOf": "sur",
     // Contact
     "contact.title": "Contact",
     "contact.subtitle": "Intéressé par une collaboration ? Envoyez-moi un message !",
@@ -190,6 +191,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "cert.date": "Date obtained",
     "cert.close": "Close",
     "cert.details": "Details",
+    "cert.pageOf": "of",
     // Contact
     "contact.title": "Contact",
     "contact.subtitle": "Interested in working together? Send me a message!",
