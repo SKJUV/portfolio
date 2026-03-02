@@ -1,0 +1,285 @@
+{
+  "settings": {
+    "siteTitle": "John Doe — Developer Portfolio",
+    "siteTitle_en": "John Doe — Developer Portfolio",
+    "siteDescription": "Portfolio de John Doe, développeur Full-Stack passionné.",
+    "siteDescription_en": "Portfolio of John Doe, passionate Full-Stack developer.",
+    "heroTitle": "John Doe",
+    "heroSubtitle": "🚀 Full-Stack Developer",
+    "heroSubtitle_en": "🚀 Full-Stack Developer",
+    "heroDescription": "Passionné par le développement web moderne et la création d'expériences utilisateur exceptionnelles.",
+    "heroDescription_en": "Passionate about modern web development and creating exceptional user experiences.",
+    "footerText": "© 2026 John Doe",
+    "footerText_en": "© 2026 John Doe",
+    "contactEmail": "john@example.com",
+    "contactGithub": "https://github.com/johndoe",
+    "contactLinkedin": "https://linkedin.com/in/johndoe"
+  },
+  "sections": [
+    {
+      "id": "security",
+      "title": "Pratiques Sécurité",
+      "title_en": "Security Practices",
+      "icon": "🔒",
+      "enabled": true,
+      "order": 0,
+      "component": "SecuritySection"
+    },
+    {
+      "id": "projects",
+      "title": "Projets",
+      "title_en": "Projects",
+      "icon": "💼",
+      "enabled": true,
+      "order": 1,
+      "component": "ProjectsSection"
+    },
+    {
+      "id": "certifications",
+      "title": "Certifications",
+      "title_en": "Certifications",
+      "icon": "🏆",
+      "enabled": true,
+      "order": 2,
+      "component": "CertificationsSection"
+    },
+    {
+      "id": "skills",
+      "title": "Compétences",
+      "title_en": "Skills",
+      "icon": "🧠",
+      "enabled": true,
+      "order": 3,
+      "component": "SkillsSection"
+    },
+    {
+      "id": "profile",
+      "title": "Profil",
+      "title_en": "Profile",
+      "icon": "👤",
+      "enabled": true,
+      "order": 4,
+      "component": "ProfileSection"
+    },
+    {
+      "id": "vision",
+      "title": "Vision et Passions",
+      "title_en": "Vision & Passions",
+      "icon": "🔮",
+      "enabled": true,
+      "order": 5,
+      "component": "VisionSection"
+    }
+  ],
+  "projects": [
+    {
+      "id": "project-1",
+      "title": "Application E-Commerce",
+      "title_en": "E-Commerce Application",
+      "subtitle": "Boutique en ligne full-stack avec panier et paiement",
+      "subtitle_en": "Full-stack online store with cart and payment",
+      "description": "Application e-commerce complète avec authentification, panier, paiement Stripe, dashboard admin et gestion de stock.",
+      "description_en": "Complete e-commerce application with authentication, cart, Stripe payment, admin dashboard and inventory management.",
+      "badge": "Full-Stack",
+      "badge_en": "Full-Stack",
+      "badgeType": "security",
+      "stack": ["Next.js", "TypeScript", "Tailwind CSS", "Stripe", "PostgreSQL"],
+      "securityPoints": ["Auth JWT", "Validation Zod", "CSRF Protection", "Stripe Webhooks"],
+      "securityPoints_en": ["JWT Auth", "Zod Validation", "CSRF Protection", "Stripe Webhooks"],
+      "githubUrl": "https://github.com/johndoe/ecommerce",
+      "liveUrl": "https://shop.example.com"
+    },
+    {
+      "id": "project-2",
+      "title": "API RESTful",
+      "title_en": "RESTful API",
+      "subtitle": "API backend avec authentification et rate limiting",
+      "subtitle_en": "Backend API with authentication and rate limiting",
+      "description": "API REST construite avec Node.js et Express, documentation Swagger, tests automatisés et déploiement Docker.",
+      "description_en": "REST API built with Node.js and Express, Swagger documentation, automated tests and Docker deployment.",
+      "badge": "Backend",
+      "badge_en": "Backend",
+      "badgeType": "education",
+      "stack": ["Node.js", "Express", "MongoDB", "Docker", "Jest"],
+      "securityPoints": ["Rate Limiting", "Helmet.js", "Input Sanitization"],
+      "securityPoints_en": ["Rate Limiting", "Helmet.js", "Input Sanitization"],
+      "githubUrl": "https://github.com/johndoe/api-rest"
+    },
+    {
+      "id": "project-3",
+      "title": "Dashboard Analytique",
+      "title_en": "Analytics Dashboard",
+      "subtitle": "Tableau de bord interactif avec visualisations de données",
+      "subtitle_en": "Interactive dashboard with data visualizations",
+      "description": "Dashboard React avec graphiques interactifs, filtres avancés, export CSV et thème sombre/clair.",
+      "description_en": "React dashboard with interactive charts, advanced filters, CSV export and dark/light theme.",
+      "badge": "Data Viz",
+      "badge_en": "Data Viz",
+      "badgeType": "academic",
+      "stack": ["React", "TypeScript", "Recharts", "Tailwind CSS"],
+      "securityPoints": ["Auth Firebase", "Role-based access"],
+      "securityPoints_en": ["Firebase Auth", "Role-based access"],
+      "githubUrl": "https://github.com/johndoe/dashboard"
+    }
+  ],
+  "securitySkills": [
+    {
+      "icon": "🔐",
+      "title": "Authentification & Autorisation",
+      "title_en": "Authentication & Authorization",
+      "description": "JWT, OAuth 2.0, RBAC, sessions sécurisées et multi-factor authentication.",
+      "description_en": "JWT, OAuth 2.0, RBAC, secure sessions and multi-factor authentication.",
+      "tags": ["JWT", "OAuth 2.0", "RBAC", "MFA", "Session Security"]
+    },
+    {
+      "icon": "🛡️",
+      "title": "Sécurité Web",
+      "title_en": "Web Security",
+      "description": "OWASP Top 10, CSP, CORS, prévention XSS/CSRF, headers de sécurité.",
+      "description_en": "OWASP Top 10, CSP, CORS, XSS/CSRF prevention, security headers.",
+      "tags": ["OWASP", "CSP", "CORS", "XSS Prevention", "CSRF", "HSTS"]
+    },
+    {
+      "icon": "🗄️",
+      "title": "Sécurité Base de Données",
+      "title_en": "Database Security",
+      "description": "Requêtes préparées, RLS, chiffrement des données, backup sécurisé.",
+      "description_en": "Prepared queries, RLS, data encryption, secure backup.",
+      "tags": ["Prepared Statements", "RLS", "Encryption", "Backup", "SQL Injection Prevention"]
+    }
+  ],
+  "skillCategories": [
+    {
+      "icon": "🎨",
+      "title": "Frontend",
+      "items": ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3"]
+    },
+    {
+      "icon": "⚙️",
+      "title": "Backend",
+      "items": ["Node.js", "Python", "PostgreSQL", "MongoDB", "Redis", "Express"]
+    },
+    {
+      "icon": "🐳",
+      "title": "DevOps & Cloud",
+      "items": ["Docker", "CI/CD", "Vercel", "AWS", "Nginx", "GitHub Actions"]
+    },
+    {
+      "icon": "🧪",
+      "title": "Testing & Qualité",
+      "title_en": "Testing & Quality",
+      "items": ["Jest", "Cypress", "ESLint", "Prettier", "Husky", "TypeScript Strict"]
+    }
+  ],
+  "profileCategories": [
+    {
+      "icon": "🎓",
+      "title": "Formation",
+      "title_en": "Education",
+      "points": [
+        "Master en Informatique — Université Exemple",
+        "Licence en Développement Web",
+        "Certifications en ligne (Coursera, Udemy)"
+      ],
+      "points_en": [
+        "Master in Computer Science — Example University",
+        "Bachelor in Web Development",
+        "Online certifications (Coursera, Udemy)"
+      ]
+    },
+    {
+      "icon": "💼",
+      "title": "Expérience",
+      "title_en": "Experience",
+      "points": [
+        "Développeur Full-Stack — Startup XYZ",
+        "Stage — Agence Web ABC",
+        "Freelance — Projets divers"
+      ],
+      "points_en": [
+        "Full-Stack Developer — Startup XYZ",
+        "Internship — Web Agency ABC",
+        "Freelance — Various projects"
+      ]
+    },
+    {
+      "icon": "🛠️",
+      "title": "Outils Dev",
+      "title_en": "Dev Tools",
+      "points": [
+        "Git CLI (branches, merge, rebase)",
+        "VS Code avec extensions",
+        "Docker & Docker Compose",
+        "Postman, Insomnia"
+      ],
+      "points_en": [
+        "Git CLI (branches, merge, rebase)",
+        "VS Code with extensions",
+        "Docker & Docker Compose",
+        "Postman, Insomnia"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "id": "cert-example-1",
+      "name": "Introduction to Web Development",
+      "platform": "Coursera",
+      "date": "2025",
+      "description": "Fondamentaux du développement web : HTML, CSS, JavaScript.",
+      "description_en": "Web development fundamentals: HTML, CSS, JavaScript.",
+      "verificationUrl": "https://coursera.org/verify/example1",
+      "imageUrl": ""
+    },
+    {
+      "id": "cert-example-2",
+      "name": "React - The Complete Guide",
+      "platform": "Udemy",
+      "date": "2025",
+      "description": "Guide complet React avec Hooks, Redux et Next.js.",
+      "description_en": "Complete React guide with Hooks, Redux and Next.js.",
+      "verificationUrl": "https://udemy.com/certificate/example2",
+      "imageUrl": ""
+    }
+  ],
+  "technologies": [
+    { "id": "nextjs", "name": "Next.js", "category": "frontend" },
+    { "id": "react", "name": "React", "category": "frontend" },
+    { "id": "typescript", "name": "TypeScript", "category": "frontend" },
+    { "id": "tailwindcss", "name": "Tailwind CSS", "category": "frontend" },
+    { "id": "nodejs", "name": "Node.js", "category": "backend" },
+    { "id": "python", "name": "Python", "category": "backend" },
+    { "id": "postgresql", "name": "PostgreSQL", "category": "backend" },
+    { "id": "mongodb", "name": "MongoDB", "category": "backend" },
+    { "id": "docker", "name": "Docker", "category": "devops" },
+    { "id": "vercel", "name": "Vercel", "category": "devops" }
+  ],
+  "terminalLines": [
+    {
+      "command": "$ whoami",
+      "output": "john_doe — full-stack developer"
+    },
+    {
+      "command": "$ cat /etc/skills",
+      "output": "React · Next.js · TypeScript · Node.js · Docker · PostgreSQL"
+    },
+    {
+      "command": "$ echo $PASSION",
+      "output": "Building beautiful, performant and secure web applications 🚀"
+    },
+    {
+      "command": "$ uptime",
+      "output": "Coding since 2020 — 5+ years of experience"
+    }
+  ],
+  "messages": [],
+  "chatBotSettings": {
+    "enabled": true,
+    "botName": "Assistant IA",
+    "botDescription": "Ask me anything about John",
+    "welcomeMessage": "Hello! 👋 I'm John's AI assistant. Ask me about his skills, projects or anything else!",
+    "fallbackMessage": "I can only answer questions about John Doe. Feel free to ask about his skills, projects or how to contact him! 😊",
+    "inputPlaceholder": "Ask a question about John...",
+    "customResponses": []
+  }
+}
