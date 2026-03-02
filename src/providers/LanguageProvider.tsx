@@ -281,7 +281,7 @@ const dataTranslationsEN: Record<string, string> = {
   "Gestion des Employ\u00e9s": "Employee Management",
   "Gestion de Biblioth\u00e8que": "Library Management",
   "Bot WhatsApp": "WhatsApp Bot",
-  "TP C# .NET": "C# .NET Labs",
+  "TP203 — Emplois du Temps": "TP203 — Schedule Management",
 
   // ---- Project subtitles ----
   "Site portfolio moderne avec CMS admin et chatbot IA": "Modern portfolio with admin CMS and AI chatbot",
@@ -291,7 +291,7 @@ const dataTranslationsEN: Record<string, string> = {
   "Application Java de gestion du personnel": "Java personnel management application",
   "Application web PHP pour la gestion de biblioth\u00e8que": "PHP web app for library management",
   "Bot d'automatisation WhatsApp en Python": "Python WhatsApp automation bot",
-  "Travaux pratiques en C#": "C# practical work",
+  "Application desktop multiplateforme de gestion des emplois du temps universitaires": "Cross-platform desktop application for university schedule management",
 
   // ---- Project descriptions ----
   "Portfolio full-stack avec panneau d'administration complet, chatbot IA (Google Gemini), syst\u00e8me i18n FR/EN, th\u00e8me jour/nuit, stockage Supabase, d\u00e9ploiement Vercel avec domaine personnalis\u00e9.":
@@ -308,8 +308,8 @@ const dataTranslationsEN: Record<string, string> = {
     "Web application for library management: book catalog, borrowing, returns, member management with PHP and MySQL.",
   "Bot WhatsApp d\u00e9velopp\u00e9 en Python pour automatiser les interactions et l'envoi de messages sur la plateforme de messagerie.":
     "WhatsApp bot developed in Python to automate interactions and message sending on the messaging platform.",
-  "Projet acad\u00e9mique en C# mettant en pratique la programmation orient\u00e9e objet, les interfaces et les patterns de conception.":
-    "Academic C# project practicing object-oriented programming, interfaces and design patterns.",
+  "Application desktop Avalonia UI (.NET 9) avec architecture MVVM, 4 rôles (Admin, Enseignant, Étudiant, Délégué), gestion des séances/salles/UE, suivi pédagogique, API REST backend, thème sombre Glass Card.":
+    "Avalonia UI desktop application (.NET 9) with MVVM architecture, 4 roles (Admin, Teacher, Student, Delegate), session/room/course management, pedagogical tracking, REST API backend, dark Glass Card theme.",
 
   // ---- Project badges ----
   "Full-Stack + IA": "Full-Stack + AI",
@@ -317,10 +317,13 @@ const dataTranslationsEN: Record<string, string> = {
   "Gestion RH": "HR Management",
   "Gestion": "Management",
   "Automatisation": "Automation",
-  "Acad\u00e9mique": "Academic",
+  "Desktop MVVM": "Desktop MVVM",
 
   // ---- Project security points ----
   "CORS strict": "Strict CORS",
+  "Authentification login/password": "Login/password authentication",
+  "RBAC 4 r\u00f4les": "4-role RBAC",
+  "API REST s\u00e9curis\u00e9e": "Secure REST API",
   "R\u00f4les teacher/student/admin": "Teacher/student/admin roles",
   "IA contr\u00f4l\u00e9e": "Controlled AI",
   "IA Tutor contr\u00f4l\u00e9e": "Controlled AI Tutor",

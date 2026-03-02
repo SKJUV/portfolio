@@ -197,16 +197,23 @@
     },
     {
       "id": "tp1ct203",
-      "title": "TP C# .NET",
-      "subtitle": "Travaux pratiques en C#",
-      "description": "Projet académique en C# mettant en pratique la programmation orientée objet, les interfaces et les patterns de conception.",
-      "badge": "Académique",
-      "badgeType": "academic",
+      "title": "TP203 — Emplois du Temps",
+      "subtitle": "Application desktop multiplateforme de gestion des emplois du temps universitaires",
+      "description": "Application desktop Avalonia UI (.NET 9) avec architecture MVVM, 4 rôles (Admin, Enseignant, Étudiant, Délégué), gestion des séances/salles/UE, suivi pédagogique, API REST backend, thème sombre Glass Card.",
+      "badge": "Desktop MVVM",
+      "badgeType": "university",
       "stack": [
         "C#",
-        ".NET"
+        ".NET 9",
+        "Avalonia UI",
+        "CommunityToolkit MVVM",
+        "Newtonsoft.Json"
       ],
-      "securityPoints": [],
+      "securityPoints": [
+        "Authentification login/password",
+        "RBAC 4 rôles",
+        "API REST sécurisée"
+      ],
       "githubUrl": "https://github.com/SKJUV/tp1ct203"
     }
   ],
