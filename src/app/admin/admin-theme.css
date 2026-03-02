@@ -1,0 +1,125 @@
+/* ==========================================
+   ADMIN THEME — système de thème indépendant
+   Utilise .admin-dark au lieu de .dark pour
+   le mode sombre, complètement découplé du
+   thème du site public.
+   ========================================== */
+
+/* -- Light mode admin ---------------------- */
+.admin-theme {
+  --background: 220 16% 96%;
+  --foreground: 220 20% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 20% 10%;
+  --primary: 220 90% 56%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 14% 92%;
+  --secondary-foreground: 220 15% 20%;
+  --muted: 220 14% 94%;
+  --muted-foreground: 220 10% 42%;
+  --accent: 200 80% 50%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 72% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 13% 90%;
+  --ring: 220 90% 56%;
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(210, 218, 235, 0.5);
+
+  /* admin-specific */
+  --admin-sidebar-bg: 224 20% 98%;
+}
+
+/* -- Dark mode admin (indépendant) --------- */
+.admin-theme.admin-dark {
+  --background: 224 20% 6%;
+  --foreground: 210 15% 90%;
+  --card: 224 18% 10%;
+  --card-foreground: 210 15% 90%;
+  --primary: 220 90% 62%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 224 14% 12%;
+  --secondary-foreground: 0 0% 85%;
+  --muted: 224 14% 14%;
+  --muted-foreground: 220 10% 55%;
+  --accent: 200 80% 55%;
+  --accent-foreground: 224 20% 6%;
+  --destructive: 0 72% 55%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 224 14% 18%;
+  --ring: 220 90% 62%;
+  --glass-bg: rgba(14, 17, 30, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.06);
+
+  --admin-sidebar-bg: 224 22% 8%;
+}
+
+/* -- Base overrides ------------------------ */
+.admin-theme {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+.admin-theme * {
+  border-color: hsl(var(--border));
+}
+
+.admin-theme .admin-sidebar {
+  background-color: hsl(var(--admin-sidebar-bg));
+}
+
+/* -- Admin utility classes ----------------- */
+.admin-theme .admin-card {
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s ease;
+}
+.admin-theme .admin-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.admin-theme.admin-dark .admin-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.admin-theme .admin-input {
+  background-color: hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.625rem;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.875rem;
+  color: hsl(var(--foreground));
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+.admin-theme .admin-input:focus {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.12);
+}
+
+.admin-theme .admin-btn-primary {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-radius: 0.625rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: opacity 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.admin-theme .admin-btn-primary:hover {
+  opacity: 0.9;
+}
+.admin-theme .admin-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Disable glass-card hover lift inside admin */
+.admin-theme .glass-card:hover {
+  transform: none;
+}

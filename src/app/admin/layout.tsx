@@ -18,7 +18,9 @@ import {
   Bot,
   BarChart3,
 } from "lucide-react";
-import ThemeToggle from "@/components/ThemeToggle";
+import AdminThemeToggle from "@/components/AdminThemeToggle";
+import { AdminThemeProvider } from "@/providers/AdminThemeProvider";
+import "./admin-theme.css";
 
 const sidebarItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
@@ -52,7 +54,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   };
 
   return (
-    <div className="admin-theme min-h-screen">
+    <AdminThemeProvider>
       {/* Mobile header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 admin-sidebar border-b border-border/50 h-14 flex items-center justify-between px-4">
         <button
@@ -65,7 +67,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <Shield className="h-4 w-4 text-primary" />
           Admin
         </div>
-        <ThemeToggle />
+        <AdminThemeToggle />
       </div>
 
       {/* Sidebar overlay (mobile) */}
@@ -130,7 +132,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {/* Footer */}
         <div className="p-3 border-t border-border/50 space-y-2">
           <div className="flex items-center justify-between px-3">
-            <ThemeToggle />
+            <AdminThemeToggle />
             <a
               href="/"
               target="_blank"
@@ -155,6 +157,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <div className="p-4 sm:p-6 lg:p-8">{children}</div>
         </div>
       </main>
-    </div>
+    </AdminThemeProvider>
   );
 }
