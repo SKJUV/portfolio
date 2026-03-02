@@ -2,8 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { getPortfolioData } from "@/lib/data-manager";
 import githubReposData from "@/data/github-repos.json";
+import { createRateLimiter, getClientIP } from "@/lib/rate-limit";
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+
+// Rate limiter : 15 messages par minute par IP
+const chatLimiter = createRateLimiter("chat", {
+  maxRequests: 15,
+  windowMs: 60 * 1000,
+});
 
 // Modèles à essayer dans l'ordre (le premier disponible sera utilisé)
 const GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-2.0-flash-lite"];
@@ -142,6 +149,22 @@ ${formatGitHubRepos(githubRepos)}
 
 export async function POST(request: NextRequest) {
   try {
+    // Rate limiting
+    const ip = getClientIP(request);
+    const { success, remaining, resetAt } = chatLimiter.check(ip);
+    if (!success) {
+      return NextResponse.json(
+        { error: "Trop de messages. Veuillez patienter avant de réessayer." },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": String(Math.ceil((resetAt - Date.now()) / 1000)),
+            "X-RateLimit-Remaining": "0",
+          },
+        }
+      );
+    }
+
     const { message, history } = await request.json();
 
     if (!message || typeof message !== "string") {

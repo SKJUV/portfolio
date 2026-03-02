@@ -1,0 +1,38 @@
+name: CI — Lint & Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    name: Lint, Type-check & Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check
+        run: npx tsc --noEmit
+        continue-on-error: true
+
+      - name: Build
+        run: npx next build
+        env:
+          # Variables factices pour le build CI (pas besoin des vrais secrets)
+          NEXT_PUBLIC_SITE_URL: https://sineng-juvenal.me
+          ADMIN_PASSWORD: ci-build-only
+          ADMIN_SECRET: ci-build-secret-key

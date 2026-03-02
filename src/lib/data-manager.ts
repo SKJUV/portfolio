@@ -6,6 +6,28 @@ import { supabaseAdmin, isSupabaseConfigured } from "./supabase";
 const DATA_FILE_PATH = path.join(process.cwd(), "src/data/portfolio-data.json");
 const IS_VERCEL = !!process.env.VERCEL;
 
+// Cache en mémoire avec TTL pour éviter les requêtes Supabase à chaque rendu
+const CACHE_TTL_MS = 60 * 1000; // 60 secondes
+let cachedData: PortfolioData | null = null;
+let cacheTimestamp = 0;
+
+function getCachedData(): PortfolioData | null {
+  if (cachedData && Date.now() - cacheTimestamp < CACHE_TTL_MS) {
+    return cachedData;
+  }
+  return null;
+}
+
+function setCachedData(data: PortfolioData): void {
+  cachedData = data;
+  cacheTimestamp = Date.now();
+}
+
+function invalidateCache(): void {
+  cachedData = null;
+  cacheTimestamp = 0;
+}
+
 // Cache pour éviter de retenter Supabase à chaque requête quand il échoue
 let supabaseAvailable: boolean | null = null; // null = pas encore testé
 
@@ -75,10 +97,19 @@ async function saveDataToFile(data: PortfolioData): Promise<void> {
 // ============================================
 
 export async function getPortfolioData(): Promise<PortfolioData> {
+  // Vérifier le cache en mémoire d'abord
+  const cached = getCachedData();
+  if (cached) return cached;
+
+  let result: PortfolioData;
+
   if (shouldUseSupabase()) {
     try {
       const data = await getDataFromSupabase();
-      if (data) return data;
+      if (data) {
+        setCachedData(data);
+        return data;
+      }
       // Table vide → seeder depuis le JSON local
       if (supabaseAvailable !== false) {
         console.info("[data-manager] Supabase vide, seed depuis le JSON local...");
@@ -89,16 +120,21 @@ export async function getPortfolioData(): Promise<PortfolioData> {
         } catch (err) {
           console.error("[data-manager] Seed Supabase échoué:", err);
         }
+        setCachedData(localData);
         return localData;
       }
     } catch {
       supabaseAvailable = false;
     }
   }
-  return getDataFromFile();
+
+  result = await getDataFromFile();
+  setCachedData(result);
+  return result;
 }
 
 export async function savePortfolioData(data: PortfolioData): Promise<void> {
+  invalidateCache(); // Invalider le cache lors de l'écriture
   if (shouldUseSupabase()) {
     try {
       await saveDataToSupabase(data);

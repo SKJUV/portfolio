@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { Award, ExternalLink, X, Calendar, Building2, ChevronLeft, ChevronRight, Shield, Cloud, Code2, Wrench, Layers } from "lucide-react";
+import Image from "next/image";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useLanguage } from "@/providers/LanguageProvider";
 import type { PortfolioData, Certification } from "@/lib/admin-types";
@@ -100,10 +101,12 @@ function CertModal({ cert, onClose }: { cert: Certification; onClose: () => void
         {/* Header image */}
         {cert.imageUrl && (
           <div className="relative w-full aspect-video bg-muted/30 rounded-t-2xl overflow-hidden">
-            <img
+            <Image
               src={cert.imageUrl}
               alt={cert.name}
-              className="w-full h-full object-contain p-4"
+              fill
+              className="object-contain p-4"
+              sizes="(max-width: 640px) 90vw, 500px"
             />
           </div>
         )}
@@ -419,11 +422,13 @@ function CertCard({
       className="w-[80vw] max-w-[300px] flex-none snap-start sm:w-auto sm:max-w-none sm:flex-auto text-left glass-card rounded-2xl overflow-hidden hover:scale-[1.02] transition-all group cursor-pointer"
     >
       {cert.imageUrl ? (
-        <div className="w-full aspect-[16/10] bg-muted/20 overflow-hidden">
-          <img
+        <div className="relative w-full aspect-[16/10] bg-muted/20 overflow-hidden">
+          <Image
             src={cert.imageUrl}
             alt={cert.name}
-            className="w-full h-full object-contain p-3 group-hover:scale-105 transition-transform duration-300"
+            fill
+            className="object-contain p-3 group-hover:scale-105 transition-transform duration-300"
+            sizes="(max-width: 640px) 80vw, (max-width: 1024px) 45vw, 30vw"
           />
         </div>
       ) : (

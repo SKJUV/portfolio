@@ -1,8 +1,30 @@
 import { NextResponse } from "next/server";
 import { updatePortfolioData } from "@/lib/data-manager";
+import { createRateLimiter, getClientIP } from "@/lib/rate-limit";
+
+// Rate limiter : 3 messages par 10 minutes par IP
+const contactLimiter = createRateLimiter("contact", {
+  maxRequests: 3,
+  windowMs: 10 * 60 * 1000,
+});
 
 export async function POST(request: Request) {
   try {
+    // Rate limiting
+    const ip = getClientIP(request);
+    const { success, resetAt } = contactLimiter.check(ip);
+    if (!success) {
+      return NextResponse.json(
+        { error: "Trop de messages envoyés. Veuillez patienter quelques minutes." },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": String(Math.ceil((resetAt - Date.now()) / 1000)),
+          },
+        }
+      );
+    }
+
     const body = await request.json();
     const { name, email, subject, message } = body;
 

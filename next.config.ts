@@ -7,6 +7,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "**.supabase.co",
       },
+      {
+        protocol: "https",
+        hostname: "s3.amazonaws.com",
+        pathname: "/coursera_assets/**",
+      },
     ],
   },
 };
