@@ -1,37 +1,46 @@
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 import { supabaseAdmin, isSupabaseConfigured } from "@/lib/supabase";
 
-export async function GET() {
+const EMPTY_RESPONSE = {
+  daily: [],
+  topPages: [],
+  totalViews: 0,
+  uniqueVisitors: 0,
+  todayViews: 0,
+};
+
+export async function GET(request: NextRequest) {
   if (!isSupabaseConfigured() || !supabaseAdmin) {
-    return NextResponse.json({
-      daily: [],
-      topPages: [],
-      totalViews: 0,
-      uniqueVisitors: 0,
-      todayViews: 0,
-    });
+    return NextResponse.json(EMPTY_RESPONSE);
   }
 
   try {
-    const now = new Date();
-    const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+    const { searchParams } = new URL(request.url);
+    const daysParam = searchParams.get("days");
+    // 0 = tout l'historique, sinon nombre de jours
+    const days = daysParam ? parseInt(daysParam, 10) : 30;
 
-    // 1. Vues des 30 derniers jours
-    const { data: views, error } = await supabaseAdmin
+    const now = new Date();
+    const startDate = days > 0
+      ? new Date(now.getTime() - days * 24 * 60 * 60 * 1000)
+      : null; // null = pas de limite
+
+    // 1. Récupérer les vues
+    let query = supabaseAdmin
       .from("page_views")
       .select("path, ip_hash, created_at")
-      .gte("created_at", thirtyDaysAgo.toISOString())
       .order("created_at", { ascending: true });
+
+    if (startDate) {
+      query = query.gte("created_at", startDate.toISOString());
+    }
+
+    const { data: views, error } = await query;
 
     if (error) {
       console.error("[analytics] Supabase error:", error.message);
-      return NextResponse.json({
-        daily: [],
-        topPages: [],
-        totalViews: 0,
-        uniqueVisitors: 0,
-        todayViews: 0,
-      });
+      return NextResponse.json(EMPTY_RESPONSE);
     }
 
     const allViews = views || [];
@@ -67,7 +76,8 @@ export async function GET() {
 
     // Remplir les jours manquants (0 vues) pour un graphe continu
     const daily: { date: string; views: number; visitors: number }[] = [];
-    for (let d = new Date(thirtyDaysAgo); d <= now; d.setDate(d.getDate() + 1)) {
+    const fillStart = startDate || (allViews.length > 0 ? new Date(allViews[0].created_at) : now);
+    for (let d = new Date(fillStart); d <= now; d.setDate(d.getDate() + 1)) {
       const dateStr = d.toISOString().split("T")[0];
       const dayData = dailyMap.get(dateStr);
       daily.push({
@@ -92,12 +102,6 @@ export async function GET() {
     });
   } catch (err) {
     console.error("[analytics] Exception:", err);
-    return NextResponse.json({
-      daily: [],
-      topPages: [],
-      totalViews: 0,
-      uniqueVisitors: 0,
-      todayViews: 0,
-    });
+    return NextResponse.json(EMPTY_RESPONSE);
   }
 }

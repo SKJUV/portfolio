@@ -24,6 +24,8 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+DROP TRIGGER IF EXISTS portfolio_data_updated ON portfolio_data;
+
 CREATE TRIGGER portfolio_data_updated
   BEFORE UPDATE ON portfolio_data
   FOR EACH ROW

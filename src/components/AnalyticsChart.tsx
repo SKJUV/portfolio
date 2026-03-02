@@ -30,21 +30,31 @@ interface AnalyticsData {
 }
 
 type ChartMode = "views" | "visitors";
+type Period = "7" | "30" | "90" | "0";
+
+const PERIODS: { value: Period; label: string }[] = [
+  { value: "7", label: "7 jours" },
+  { value: "30", label: "30 jours" },
+  { value: "90", label: "90 jours" },
+  { value: "0", label: "Tout" },
+];
 
 export default function AnalyticsChart() {
   const [data, setData] = useState<AnalyticsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [mode, setMode] = useState<ChartMode>("views");
+  const [period, setPeriod] = useState<Period>("30");
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const chartRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
-    fetch("/api/admin/analytics")
+    setLoading(true);
+    fetch(`/api/admin/analytics?days=${period}`)
       .then((res) => res.json())
       .then(setData)
       .catch(console.error)
       .finally(() => setLoading(false));
-  }, []);
+  }, [period]);
 
   if (loading) {
     return (
@@ -124,19 +134,34 @@ export default function AnalyticsChart() {
 
       {/* Chart */}
       <div className="admin-card p-4 sm:p-6">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
           <div className="flex items-center gap-2">
             <BarChart3 className="h-5 w-5 text-primary" />
             <h2 className="text-base sm:text-lg font-semibold">
               Fréquence de visites
             </h2>
-            <span className="text-xs text-muted-foreground ml-1">
-              (30 derniers jours)
-            </span>
           </div>
 
-          {/* Toggle views/visitors */}
-          <div className="flex items-center gap-1 bg-muted/50 rounded-lg p-0.5">
+          <div className="flex items-center gap-2 flex-wrap">
+            {/* Sélecteur de période */}
+            <div className="flex items-center gap-1 bg-muted/50 rounded-lg p-0.5">
+              {PERIODS.map((p) => (
+                <button
+                  key={p.value}
+                  onClick={() => setPeriod(p.value)}
+                  className={`px-2.5 py-1.5 rounded-md text-xs font-medium transition-all ${
+                    period === p.value
+                      ? "bg-foreground/10 text-foreground shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {p.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Toggle views/visitors */}
+            <div className="flex items-center gap-1 bg-muted/50 rounded-lg p-0.5">
             <button
               onClick={() => setMode("views")}
               className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
@@ -159,6 +184,7 @@ export default function AnalyticsChart() {
               <Users className="h-3 w-3 inline mr-1" />
               Visiteurs
             </button>
+            </div>
           </div>
         </div>
 
@@ -254,8 +280,11 @@ export default function AnalyticsChart() {
                     }
                   />
 
-                  {/* Label date (tous les 5 jours + dernier) */}
-                  {(i % 5 === 0 || i === daily.length - 1) && (
+                  {/* Label date (espacement adaptatif) */}
+                  {(() => {
+                    const labelInterval = daily.length > 60 ? 10 : daily.length > 20 ? 5 : 3;
+                    return (i % labelInterval === 0 || i === daily.length - 1);
+                  })() && (
                     <text
                       x={x + barWidth / 2}
                       y={height - 8}
