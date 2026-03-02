@@ -1,40 +1,45 @@
 "use client";
 
-import { useState, useEffect, useCallback, useMemo } from "react";
-import { Award, ExternalLink, X, Calendar, Building2, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import { Award, ExternalLink, X, Calendar, Building2, ChevronLeft, ChevronRight, Shield, Cloud, Code2, Wrench, Layers } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useLanguage } from "@/providers/LanguageProvider";
 import type { PortfolioData, Certification } from "@/lib/admin-types";
 
 const CERTS_PER_PAGE = 6;
 
-/** Classement des certifications par catégorie thématique */
-function getCertCategory(cert: Certification): number {
+/* ─── Catégories ─── */
+type CertCategoryKey = "all" | "security" | "cloud" | "code" | "dev" | "other";
+
+const CATEGORY_CONFIG: { key: CertCategoryKey; icon: typeof Shield; i18nKey: string }[] = [
+  { key: "all", icon: Layers, i18nKey: "cert.filter.all" },
+  { key: "security", icon: Shield, i18nKey: "cert.filter.security" },
+  { key: "cloud", icon: Cloud, i18nKey: "cert.filter.cloud" },
+  { key: "code", icon: Code2, i18nKey: "cert.filter.code" },
+  { key: "dev", icon: Wrench, i18nKey: "cert.filter.dev" },
+  { key: "other", icon: Layers, i18nKey: "cert.filter.other" },
+];
+
+function getCertCategoryKey(cert: Certification): CertCategoryKey {
   const id = cert.id.toLowerCase();
   const name = cert.name.toLowerCase();
-  const platform = cert.platform.toLowerCase();
 
-  // 1. Sécurité (pentest, cryptography, encryption)
   if (
     name.includes("penetration") ||
-    name.includes("threat") ||
+    name.includes("threat hunting") ||
     name.includes("cryptography") ||
     name.includes("encryption") ||
     name.includes("decryption") ||
     (name.includes("security") && !name.includes("cloud"))
   )
-    return 1;
+    return "security";
 
-  // 2. Cloud Security
   if (
-    (name.includes("cloud") && name.includes("security")) ||
-    (name.includes("cloud") && name.includes("risk")) ||
-    (name.includes("cloud") && name.includes("threat")) ||
+    (name.includes("cloud") && (name.includes("security") || name.includes("risk") || name.includes("threat"))) ||
     id.includes("cloud-security")
   )
-    return 2;
+    return "cloud";
 
-  // 3. Programmation / Code
   if (
     name.includes("python") ||
     name.includes("javascript") ||
@@ -43,9 +48,8 @@ function getCertCategory(cert: Certification): number {
     id.includes("python") ||
     id.includes("javascript")
   )
-    return 3;
+    return "code";
 
-  // 4. Développement (BDD, PHP, frameworks)
   if (
     name.includes("mysql") ||
     name.includes("database") ||
@@ -54,11 +58,15 @@ function getCertCategory(cert: Certification): number {
     id.includes("mysql") ||
     id.includes("agile")
   )
-    return 4;
+    return "dev";
 
-  // 5. Autres (outils, business, marketing)
-  return 5;
+  return "other";
 }
+
+/** Ordre de tri des catégories */
+const CATEGORY_ORDER: Record<CertCategoryKey, number> = {
+  all: 0, security: 1, cloud: 2, code: 3, dev: 4, other: 5,
+};
 
 function CertModal({ cert, onClose }: { cert: Certification; onClose: () => void }) {
   const { t, td } = useLanguage();
@@ -164,8 +172,9 @@ export default function CertificationsSection({ data }: { data: PortfolioData })
   const mobileRef = useScrollReveal<HTMLDivElement>(0.05);
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
-  const [direction, setDirection] = useState<"left" | "right">("right");
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [activeFilter, setActiveFilter] = useState<CertCategoryKey>("all");
+  const [animClass, setAnimClass] = useState("opacity-100 translate-x-0 scale-100");
+  const isAnimatingRef = useRef(false);
 
   const handleClose = useCallback(() => setSelectedCert(null), []);
 
@@ -173,37 +182,96 @@ export default function CertificationsSection({ data }: { data: PortfolioData })
   const sortedCerts = useMemo(
     () =>
       [...(certifications || [])].sort(
-        (a, b) => getCertCategory(a) - getCertCategory(b)
+        (a, b) => CATEGORY_ORDER[getCertCategoryKey(a)] - CATEGORY_ORDER[getCertCategoryKey(b)]
       ),
     [certifications]
   );
 
+  // Filtrage par catégorie active
+  const filteredCerts = useMemo(
+    () =>
+      activeFilter === "all"
+        ? sortedCerts
+        : sortedCerts.filter((c) => getCertCategoryKey(c) === activeFilter),
+    [sortedCerts, activeFilter]
+  );
+
   const totalPages = useMemo(
-    () => Math.ceil(sortedCerts.length / CERTS_PER_PAGE),
-    [sortedCerts]
+    () => Math.ceil(filteredCerts.length / CERTS_PER_PAGE),
+    [filteredCerts]
   );
 
   const paginatedCerts = useMemo(
     () =>
-      sortedCerts.slice(
+      filteredCerts.slice(
         currentPage * CERTS_PER_PAGE,
         (currentPage + 1) * CERTS_PER_PAGE
       ),
-    [sortedCerts, currentPage]
+    [filteredCerts, currentPage]
+  );
+
+  // Compteur par catégorie pour les badges
+  const categoryCounts = useMemo(() => {
+    const counts: Record<CertCategoryKey, number> = { all: 0, security: 0, cloud: 0, code: 0, dev: 0, other: 0 };
+    sortedCerts.forEach((c) => {
+      counts[getCertCategoryKey(c)]++;
+      counts.all++;
+    });
+    return counts;
+  }, [sortedCerts]);
+
+  // Catégories disponibles (au moins 1 cert)
+  const availableCategories = useMemo(
+    () => CATEGORY_CONFIG.filter((c) => categoryCounts[c.key] > 0),
+    [categoryCounts]
+  );
+
+  const animateTransition = useCallback(
+    (direction: "left" | "right", callback: () => void) => {
+      if (isAnimatingRef.current) return;
+      isAnimatingRef.current = true;
+      // Exit
+      setAnimClass(
+        direction === "right"
+          ? "opacity-0 -translate-x-6 scale-[0.98]"
+          : "opacity-0 translate-x-6 scale-[0.98]"
+      );
+      setTimeout(() => {
+        callback();
+        // Enter from opposite side
+        setAnimClass(
+          direction === "right"
+            ? "opacity-0 translate-x-6 scale-[0.98]"
+            : "opacity-0 -translate-x-6 scale-[0.98]"
+        );
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            setAnimClass("opacity-100 translate-x-0 scale-100");
+            setTimeout(() => { isAnimatingRef.current = false; }, 300);
+          });
+        });
+      }, 250);
+    },
+    []
   );
 
   const goToPage = useCallback(
-    (page: number, dir: "left" | "right") => {
-      if (isAnimating || page < 0 || page >= totalPages || page === currentPage) return;
-      setDirection(dir);
-      setIsAnimating(true);
-      // Brief delay for exit animation, then switch page
-      setTimeout(() => {
-        setCurrentPage(page);
-        setTimeout(() => setIsAnimating(false), 50);
-      }, 200);
+    (page: number) => {
+      if (page < 0 || page >= totalPages || page === currentPage) return;
+      animateTransition(page > currentPage ? "right" : "left", () => setCurrentPage(page));
     },
-    [isAnimating, totalPages, currentPage]
+    [totalPages, currentPage, animateTransition]
+  );
+
+  const handleFilterChange = useCallback(
+    (key: CertCategoryKey) => {
+      if (key === activeFilter) return;
+      animateTransition("right", () => {
+        setActiveFilter(key);
+        setCurrentPage(0);
+      });
+    },
+    [activeFilter, animateTransition]
   );
 
   if (!certifications || certifications.length === 0) {
@@ -213,7 +281,7 @@ export default function CertificationsSection({ data }: { data: PortfolioData })
   return (
     <>
       <section id="certifications" className="py-20 px-4">
-        <div className="max-w-6xl mx-auto space-y-12">
+        <div className="max-w-6xl mx-auto space-y-10">
           <div ref={headerRef} className="text-center space-y-3">
             <h2 className="text-3xl sm:text-4xl font-bold">
               🏅 {t("section.certifications")}
@@ -223,28 +291,48 @@ export default function CertificationsSection({ data }: { data: PortfolioData })
             </p>
           </div>
 
-          {/* Mobile: horizontal scroll (all certs) */}
+          {/* ─── Filtres par catégorie ─── */}
+          <div className="flex flex-wrap justify-center gap-2" role="tablist" aria-label="Filtrer les certifications">
+            {availableCategories.map(({ key, icon: Icon, i18nKey }) => (
+              <button
+                key={key}
+                role="tab"
+                aria-selected={activeFilter === key}
+                onClick={() => handleFilterChange(key)}
+                className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium transition-all duration-200 ${
+                  activeFilter === key
+                    ? "bg-primary text-primary-foreground shadow-md shadow-primary/20 scale-105"
+                    : "glass-card hover:bg-primary/10 text-muted-foreground hover:text-foreground hover:scale-[1.02]"
+                }`}
+              >
+                <Icon className="h-3.5 w-3.5" />
+                {t(i18nKey)}
+                <span className={`ml-1 text-[10px] px-1.5 py-0.5 rounded-full ${
+                  activeFilter === key
+                    ? "bg-primary-foreground/20 text-primary-foreground"
+                    : "bg-muted text-muted-foreground"
+                }`}>
+                  {categoryCounts[key]}
+                </span>
+              </button>
+            ))}
+          </div>
+
+          {/* ─── Mobile: horizontal scroll ─── */}
           <div className="scroll-fade-container sm:hidden">
             <div ref={mobileRef} className="flex gap-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-4 stagger-children">
-              {sortedCerts.map((cert) => (
+              {filteredCerts.map((cert) => (
                 <CertCard key={cert.id} cert={cert} onSelect={setSelectedCert} />
               ))}
             </div>
           </div>
 
-          {/* Desktop: paginated grid */}
+          {/* ─── Desktop: paginated grid ─── */}
           <div className="hidden sm:block">
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden" aria-live="polite" aria-atomic="true">
               <div
-                key={currentPage}
                 ref={gridRef}
-                className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-300 ease-out ${
-                  isAnimating
-                    ? direction === "right"
-                      ? "opacity-0 translate-x-8"
-                      : "opacity-0 -translate-x-8"
-                    : "opacity-100 translate-x-0"
-                }`}
+                className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-300 ease-out ${animClass}`}
                 style={{ willChange: "transform, opacity" }}
               >
                 {paginatedCerts.map((cert, i) => (
@@ -259,24 +347,25 @@ export default function CertificationsSection({ data }: { data: PortfolioData })
               </div>
             </div>
 
-            {/* Pagination controls */}
+            {/* ─── Pagination ─── */}
             {totalPages > 1 && (
-              <div className="flex items-center justify-center gap-3 mt-10">
+              <nav className="flex items-center justify-center gap-3 mt-10" aria-label="Pagination des certifications">
                 <button
-                  onClick={() => goToPage(currentPage - 1, "left")}
-                  disabled={currentPage === 0 || isAnimating}
+                  onClick={() => goToPage(currentPage - 1)}
+                  disabled={currentPage === 0}
                   className="p-2.5 rounded-xl glass-card hover:bg-primary/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200 hover:scale-105 active:scale-95"
                   aria-label="Page précédente"
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </button>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2" role="list">
                   {Array.from({ length: totalPages }, (_, i) => (
                     <button
                       key={i}
-                      onClick={() => goToPage(i, i > currentPage ? "right" : "left")}
-                      disabled={isAnimating}
+                      onClick={() => goToPage(i)}
+                      aria-label={`Page ${i + 1}`}
+                      aria-current={i === currentPage ? "page" : undefined}
                       className={`h-9 min-w-[2.25rem] px-3 rounded-xl text-sm font-medium transition-all duration-200 ${
                         i === currentPage
                           ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 scale-105"
@@ -289,20 +378,20 @@ export default function CertificationsSection({ data }: { data: PortfolioData })
                 </div>
 
                 <button
-                  onClick={() => goToPage(currentPage + 1, "right")}
-                  disabled={currentPage === totalPages - 1 || isAnimating}
+                  onClick={() => goToPage(currentPage + 1)}
+                  disabled={currentPage === totalPages - 1}
                   className="p-2.5 rounded-xl glass-card hover:bg-primary/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200 hover:scale-105 active:scale-95"
                   aria-label="Page suivante"
                 >
                   <ChevronRight className="h-4 w-4" />
                 </button>
-              </div>
+              </nav>
             )}
 
-            {/* Page counter text */}
+            {/* Page counter */}
             {totalPages > 1 && (
-              <p className="text-center text-xs text-muted-foreground mt-3">
-                Page {currentPage + 1} {t("cert.pageOf") || "sur"} {totalPages} — {sortedCerts.length} {t("section.certifications").toLowerCase()}
+              <p className="text-center text-xs text-muted-foreground mt-3" aria-live="polite">
+                Page {currentPage + 1} {t("cert.pageOf") || "sur"} {totalPages} — {filteredCerts.length} {t("section.certifications").toLowerCase()}
               </p>
             )}
           </div>

@@ -82,6 +82,12 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  let certifications: { name: string; platform: string; description?: string; verificationUrl?: string }[] = [];
+  try {
+    const data = await getPortfolioData();
+    certifications = data.certifications || [];
+  } catch {}
+
   // JSON-LD Schema.org pour le référencement structuré
   const jsonLd = {
     "@context": "https://schema.org",
@@ -100,6 +106,16 @@ export default async function RootLayout({
       "TypeScript", "Node.js", "Python", "Java", "C#",
       "Network Security", "OWASP", "Penetration Testing"
     ],
+    hasCredential: certifications.map((cert) => ({
+      "@type": "EducationalOccupationalCredential",
+      name: cert.name,
+      credentialCategory: "Certificate",
+      recognizedBy: {
+        "@type": "Organization",
+        name: cert.platform,
+      },
+      ...(cert.verificationUrl ? { url: cert.verificationUrl } : {}),
+    })),
   };
 
   const websiteJsonLd = {
@@ -114,6 +130,27 @@ export default async function RootLayout({
     },
   };
 
+  const coursesJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Certifications",
+    numberOfItems: certifications.length,
+    itemListElement: certifications.map((cert, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Course",
+        name: cert.name,
+        description: cert.description || cert.name,
+        provider: {
+          "@type": "Organization",
+          name: cert.platform,
+        },
+        ...(cert.verificationUrl ? { url: cert.verificationUrl } : {}),
+      },
+    })),
+  };
+
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
@@ -125,6 +162,12 @@ export default async function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
+        {certifications.length > 0 && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(coursesJsonLd) }}
+          />
+        )}
       </head>
       <body className="font-sans antialiased">
         <ThemeProvider>{children}</ThemeProvider>
