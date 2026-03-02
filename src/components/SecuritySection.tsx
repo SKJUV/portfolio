@@ -28,8 +28,8 @@ export default function SecuritySection({ data }: { data: PortfolioData }) {
               className="w-[80vw] max-w-[300px] flex-none snap-start sm:w-auto sm:max-w-none sm:flex-auto p-5 glass-card rounded-2xl"
             >
               <div className="text-2xl mb-2">{skill.icon}</div>
-              <h3 className="font-semibold mb-1">{td(skill.title)}</h3>
-              <p className="text-sm text-muted-foreground mb-3">{td(skill.description)}</p>
+              <h3 className="font-semibold mb-1">{td(skill.title, skill.title_en)}</h3>
+              <p className="text-sm text-muted-foreground mb-3">{td(skill.description, skill.description_en)}</p>
               <div className="flex flex-wrap gap-1.5">
                 {skill.tags.map((tag) => (
                   <span

@@ -7,7 +7,7 @@ import { useLanguage } from "@/providers/LanguageProvider";
 import type { PortfolioData, Certification } from "@/lib/admin-types";
 
 function CertModal({ cert, onClose }: { cert: Certification; onClose: () => void }) {
-  const { t } = useLanguage();
+  const { t, td } = useLanguage();
 
   // Fermer avec Escape
   useEffect(() => {
@@ -63,7 +63,7 @@ function CertModal({ cert, onClose }: { cert: Certification; onClose: () => void
 
           {cert.description && (
             <p className="text-sm text-muted-foreground leading-relaxed">
-              {cert.description}
+              {td(cert.description, cert.description_en)}
             </p>
           )}
 
@@ -104,7 +104,7 @@ function CertModal({ cert, onClose }: { cert: Certification; onClose: () => void
 
 export default function CertificationsSection({ data }: { data: PortfolioData }) {
   const { certifications } = data;
-  const { t } = useLanguage();
+  const { t, td } = useLanguage();
   const headerRef = useScrollReveal<HTMLDivElement>();
   const gridRef = useScrollReveal<HTMLDivElement>(0.05);
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
@@ -164,7 +164,7 @@ export default function CertificationsSection({ data }: { data: PortfolioData })
 
                   {cert.description && (
                     <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
-                      {cert.description}
+                      {td(cert.description, cert.description_en)}
                     </p>
                   )}
 

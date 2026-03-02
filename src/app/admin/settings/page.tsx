@@ -125,23 +125,31 @@ export default function SettingsPage() {
       <div className="admin-card p-4 sm:p-6 space-y-4">
         <h2 className="font-semibold">🔍 SEO & Métadonnées</h2>
         <div className="space-y-3">
-          <div className="space-y-1.5">
-            <label className="text-xs text-muted-foreground font-medium">Titre du site (balise title)</label>
-            <input
-              type="text"
-              value={settings.siteTitle}
-              onChange={(e) => setSettings({ ...settings, siteTitle: e.target.value })}
-              className="admin-input"
-            />
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="space-y-1.5">
+              <label className="text-xs text-muted-foreground font-medium">🇫🇷 Titre du site</label>
+              <input type="text" value={settings.siteTitle}
+                onChange={(e) => setSettings({ ...settings, siteTitle: e.target.value })} className="admin-input" />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-xs text-muted-foreground font-medium">🇬🇧 Site title</label>
+              <input type="text" value={settings.siteTitle_en || ""} placeholder="English site title"
+                onChange={(e) => setSettings({ ...settings, siteTitle_en: e.target.value })} className="admin-input border-blue-500/30" />
+            </div>
           </div>
-          <div className="space-y-1.5">
-            <label className="text-xs text-muted-foreground font-medium">Description du site (meta description)</label>
-            <textarea
-              value={settings.siteDescription}
-              onChange={(e) => setSettings({ ...settings, siteDescription: e.target.value })}
-              rows={2}
-              className="admin-input resize-none"
-            />
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="space-y-1.5">
+              <label className="text-xs text-muted-foreground font-medium">🇫🇷 Description (meta)</label>
+              <textarea value={settings.siteDescription}
+                onChange={(e) => setSettings({ ...settings, siteDescription: e.target.value })}
+                rows={2} className="admin-input resize-none" />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-xs text-muted-foreground font-medium">🇬🇧 Description (meta)</label>
+              <textarea value={settings.siteDescription_en || ""} placeholder="English meta description"
+                onChange={(e) => setSettings({ ...settings, siteDescription_en: e.target.value })}
+                rows={2} className="admin-input resize-none border-blue-500/30" />
+            </div>
           </div>
         </div>
       </div>
@@ -209,23 +217,31 @@ export default function SettingsPage() {
               className="admin-input"
             />
           </div>
-          <div className="space-y-1.5">
-            <label className="text-xs text-muted-foreground font-medium">Sous-titre</label>
-            <input
-              type="text"
-              value={settings.heroSubtitle}
-              onChange={(e) => setSettings({ ...settings, heroSubtitle: e.target.value })}
-              className="admin-input"
-            />
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="space-y-1.5">
+              <label className="text-xs text-muted-foreground font-medium">🇫🇷 Sous-titre</label>
+              <input type="text" value={settings.heroSubtitle}
+                onChange={(e) => setSettings({ ...settings, heroSubtitle: e.target.value })} className="admin-input" />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-xs text-muted-foreground font-medium">🇬🇧 Subtitle</label>
+              <input type="text" value={settings.heroSubtitle_en || ""} placeholder="English subtitle"
+                onChange={(e) => setSettings({ ...settings, heroSubtitle_en: e.target.value })} className="admin-input border-blue-500/30" />
+            </div>
           </div>
-          <div className="space-y-1.5">
-            <label className="text-xs text-muted-foreground font-medium">Description</label>
-            <textarea
-              value={settings.heroDescription}
-              onChange={(e) => setSettings({ ...settings, heroDescription: e.target.value })}
-              rows={3}
-              className="admin-input resize-none"
-            />
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="space-y-1.5">
+              <label className="text-xs text-muted-foreground font-medium">🇫🇷 Description</label>
+              <textarea value={settings.heroDescription}
+                onChange={(e) => setSettings({ ...settings, heroDescription: e.target.value })}
+                rows={3} className="admin-input resize-none" />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-xs text-muted-foreground font-medium">🇬🇧 Description</label>
+              <textarea value={settings.heroDescription_en || ""} placeholder="English description"
+                onChange={(e) => setSettings({ ...settings, heroDescription_en: e.target.value })}
+                rows={3} className="admin-input resize-none border-blue-500/30" />
+            </div>
           </div>
         </div>
       </div>
@@ -267,14 +283,17 @@ export default function SettingsPage() {
       {/* Footer */}
       <div className="admin-card p-4 sm:p-6 space-y-4">
         <h2 className="font-semibold">📄 Footer</h2>
-        <div className="space-y-1.5">
-          <label className="text-xs text-muted-foreground font-medium">Texte du footer</label>
-          <input
-            type="text"
-            value={settings.footerText}
-            onChange={(e) => setSettings({ ...settings, footerText: e.target.value })}
-            className="admin-input"
-          />
+        <div className="grid sm:grid-cols-2 gap-3">
+          <div className="space-y-1.5">
+            <label className="text-xs text-muted-foreground font-medium">🇫🇷 Texte du footer</label>
+            <input type="text" value={settings.footerText}
+              onChange={(e) => setSettings({ ...settings, footerText: e.target.value })} className="admin-input" />
+          </div>
+          <div className="space-y-1.5">
+            <label className="text-xs text-muted-foreground font-medium">🇬🇧 Footer text</label>
+            <input type="text" value={settings.footerText_en || ""} placeholder="English footer text"
+              onChange={(e) => setSettings({ ...settings, footerText_en: e.target.value })} className="admin-input border-blue-500/30" />
+          </div>
         </div>
       </div>
     </div>

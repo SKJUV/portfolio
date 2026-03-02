@@ -12,12 +12,17 @@ type ProjectForm = Omit<Project, "badgeType"> & {
 const emptyProject: ProjectForm = {
   id: "",
   title: "",
+  title_en: "",
   subtitle: "",
+  subtitle_en: "",
   description: "",
+  description_en: "",
   badge: "",
+  badge_en: "",
   badgeType: "academic",
   stack: [],
   securityPoints: [],
+  securityPoints_en: [],
   githubUrl: "",
   liveUrl: "",
   status: "in-progress",
@@ -32,6 +37,7 @@ export default function ProjectsPage() {
   const [saving, setSaving] = useState(false);
   const [stackInput, setStackInput] = useState("");
   const [securityInput, setSecurityInput] = useState("");
+  const [securityInputEn, setSecurityInputEn] = useState("");
 
   const loadProjects = async () => {
     const res = await fetch("/api/admin/projects");
@@ -61,6 +67,7 @@ export default function ProjectsPage() {
     setForm(emptyProject);
     setStackInput("");
     setSecurityInput("");
+    setSecurityInputEn("");
     setSaving(false);
   };
 
@@ -80,6 +87,7 @@ export default function ProjectsPage() {
     setForm(project);
     setStackInput(project.stack.join(", "));
     setSecurityInput(project.securityPoints.join(", "));
+    setSecurityInputEn((project.securityPoints_en || []).join(", "));
     setAdding(false);
   };
 
@@ -89,6 +97,7 @@ export default function ProjectsPage() {
     setForm(emptyProject);
     setStackInput("");
     setSecurityInput("");
+    setSecurityInputEn("");
   };
 
   const updateStack = (value: string) => {
@@ -107,6 +116,17 @@ export default function ProjectsPage() {
     setForm({
       ...form,
       securityPoints: value
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean),
+    });
+  };
+
+  const updateSecurityEn = (value: string) => {
+    setSecurityInputEn(value);
+    setForm({
+      ...form,
+      securityPoints_en: value
         .split(",")
         .map((s) => s.trim())
         .filter(Boolean),
@@ -145,11 +165,13 @@ export default function ProjectsPage() {
 
       {/* Form */}
       {isFormOpen && (
-        <div className="admin-card p-4 sm:p-6 space-y-4">
+        <div className="admin-card p-4 sm:p-6 space-y-5">
           <h3 className="font-semibold">
             {adding ? "Nouveau projet" : `Modifier : ${form.title}`}
           </h3>
-          <div className="grid sm:grid-cols-2 gap-3">
+
+          {/* Metadata (non-translatable) */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <div className="space-y-1.5">
               <label className="text-xs text-muted-foreground font-medium">ID (slug)</label>
               <input
@@ -159,36 +181,6 @@ export default function ProjectsPage() {
                 onChange={(e) => setForm({ ...form, id: e.target.value })}
                 disabled={!!editing}
                 className="admin-input disabled:opacity-50"
-              />
-            </div>
-            <div className="space-y-1.5">
-              <label className="text-xs text-muted-foreground font-medium">Titre</label>
-              <input
-                type="text"
-                placeholder="Mon Projet"
-                value={form.title}
-                onChange={(e) => setForm({ ...form, title: e.target.value })}
-                className="admin-input"
-              />
-            </div>
-            <div className="space-y-1.5">
-              <label className="text-xs text-muted-foreground font-medium">Sous-titre</label>
-              <input
-                type="text"
-                placeholder="Description courte"
-                value={form.subtitle}
-                onChange={(e) => setForm({ ...form, subtitle: e.target.value })}
-                className="admin-input"
-              />
-            </div>
-            <div className="space-y-1.5">
-              <label className="text-xs text-muted-foreground font-medium">Badge</label>
-              <input
-                type="text"
-                placeholder="EdTech, Sécurité..."
-                value={form.badge}
-                onChange={(e) => setForm({ ...form, badge: e.target.value })}
-                className="admin-input"
               />
             </div>
             <div className="space-y-1.5">
@@ -216,43 +208,7 @@ export default function ProjectsPage() {
               </select>
             </div>
             <div className="space-y-1.5">
-              <label className="text-xs text-muted-foreground font-medium">Lien GitHub</label>
-              <input
-                type="url"
-                placeholder="https://github.com/..."
-                value={form.githubUrl}
-                onChange={(e) => setForm({ ...form, githubUrl: e.target.value })}
-                className="admin-input"
-              />
-            </div>
-            <div className="space-y-1.5">
-              <label className="text-xs text-muted-foreground font-medium">Lien démo (optionnel)</label>
-              <input
-                type="url"
-                placeholder="https://demo.example.com"
-                value={form.liveUrl || ""}
-                onChange={(e) => setForm({ ...form, liveUrl: e.target.value })}
-                className="admin-input"
-              />
-            </div>
-          </div>
-
-          <div className="space-y-1.5">
-            <label className="text-xs text-muted-foreground font-medium">Description</label>
-            <textarea
-              placeholder="Description complète du projet..."
-              value={form.description}
-              onChange={(e) => setForm({ ...form, description: e.target.value })}
-              rows={3}
-              className="admin-input resize-none"
-            />
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-3">
-            <div className="space-y-1.5">
-              <label className="text-xs text-muted-foreground font-medium">
-                Stack (séparées par des virgules)
-              </label>
+              <label className="text-xs text-muted-foreground font-medium">Stack (virgules)</label>
               <input
                 type="text"
                 placeholder="Next.js, TypeScript, Firebase"
@@ -260,27 +216,97 @@ export default function ProjectsPage() {
                 onChange={(e) => updateStack(e.target.value)}
                 className="admin-input"
               />
-              {form.stack.length > 0 && (
-                <div className="flex flex-wrap gap-1 mt-1">
-                  {form.stack.map((s) => (
-                    <span key={s} className="text-xs px-2 py-0.5 bg-primary/10 text-primary rounded-lg">
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              )}
+            </div>
+          </div>
+          {form.stack.length > 0 && (
+            <div className="flex flex-wrap gap-1">
+              {form.stack.map((s) => (
+                <span key={s} className="text-xs px-2 py-0.5 bg-primary/10 text-primary rounded-lg">{s}</span>
+              ))}
+            </div>
+          )}
+
+          {/* Links */}
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="space-y-1.5">
+              <label className="text-xs text-muted-foreground font-medium">Lien GitHub</label>
+              <input type="url" placeholder="https://github.com/..." value={form.githubUrl}
+                onChange={(e) => setForm({ ...form, githubUrl: e.target.value })} className="admin-input" />
             </div>
             <div className="space-y-1.5">
-              <label className="text-xs text-muted-foreground font-medium">
-                Points sécurité (séparés par des virgules)
-              </label>
-              <input
-                type="text"
-                placeholder="Firebase Auth, RBAC, Validation serveur"
-                value={securityInput}
-                onChange={(e) => updateSecurity(e.target.value)}
-                className="admin-input"
-              />
+              <label className="text-xs text-muted-foreground font-medium">Lien démo (optionnel)</label>
+              <input type="url" placeholder="https://demo.example.com" value={form.liveUrl || ""}
+                onChange={(e) => setForm({ ...form, liveUrl: e.target.value })} className="admin-input" />
+            </div>
+          </div>
+
+          {/* ===== BILINGUAL SECTION ===== */}
+          <div className="border-t border-border pt-4">
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+              Contenu bilingue — Les champs 🇬🇧 sont optionnels
+            </p>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {/* Title FR / EN */}
+              <div className="space-y-1.5">
+                <label className="text-xs text-muted-foreground font-medium">🇫🇷 Titre</label>
+                <input type="text" placeholder="Mon Projet" value={form.title}
+                  onChange={(e) => setForm({ ...form, title: e.target.value })} className="admin-input" />
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-xs text-muted-foreground font-medium">🇬🇧 Title</label>
+                <input type="text" placeholder="My Project" value={form.title_en || ""}
+                  onChange={(e) => setForm({ ...form, title_en: e.target.value })} className="admin-input border-blue-500/30" />
+              </div>
+
+              {/* Subtitle FR / EN */}
+              <div className="space-y-1.5">
+                <label className="text-xs text-muted-foreground font-medium">🇫🇷 Sous-titre</label>
+                <input type="text" placeholder="Description courte" value={form.subtitle}
+                  onChange={(e) => setForm({ ...form, subtitle: e.target.value })} className="admin-input" />
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-xs text-muted-foreground font-medium">🇬🇧 Subtitle</label>
+                <input type="text" placeholder="Short description" value={form.subtitle_en || ""}
+                  onChange={(e) => setForm({ ...form, subtitle_en: e.target.value })} className="admin-input border-blue-500/30" />
+              </div>
+
+              {/* Badge FR / EN */}
+              <div className="space-y-1.5">
+                <label className="text-xs text-muted-foreground font-medium">🇫🇷 Badge</label>
+                <input type="text" placeholder="EdTech, Sécurité..." value={form.badge}
+                  onChange={(e) => setForm({ ...form, badge: e.target.value })} className="admin-input" />
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-xs text-muted-foreground font-medium">🇬🇧 Badge</label>
+                <input type="text" placeholder="EdTech, Security..." value={form.badge_en || ""}
+                  onChange={(e) => setForm({ ...form, badge_en: e.target.value })} className="admin-input border-blue-500/30" />
+              </div>
+
+              {/* Description FR / EN */}
+              <div className="space-y-1.5">
+                <label className="text-xs text-muted-foreground font-medium">🇫🇷 Description</label>
+                <textarea placeholder="Description complète du projet..."
+                  value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })}
+                  rows={3} className="admin-input resize-none" />
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-xs text-muted-foreground font-medium">🇬🇧 Description</label>
+                <textarea placeholder="Full project description..."
+                  value={form.description_en || ""} onChange={(e) => setForm({ ...form, description_en: e.target.value })}
+                  rows={3} className="admin-input resize-none border-blue-500/30" />
+              </div>
+
+              {/* Security points FR / EN */}
+              <div className="space-y-1.5">
+                <label className="text-xs text-muted-foreground font-medium">🇫🇷 Points sécurité (virgules)</label>
+                <input type="text" placeholder="Firebase Auth, RBAC, Validation serveur"
+                  value={securityInput} onChange={(e) => updateSecurity(e.target.value)} className="admin-input" />
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-xs text-muted-foreground font-medium">🇬🇧 Security points (commas)</label>
+                <input type="text" placeholder="Firebase Auth, RBAC, Server validation"
+                  value={securityInputEn} onChange={(e) => updateSecurityEn(e.target.value)} className="admin-input border-blue-500/30" />
+              </div>
             </div>
           </div>
 

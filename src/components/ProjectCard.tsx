@@ -20,7 +20,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         <span
           className={`inline-block text-xs px-2.5 py-1 rounded-lg font-medium ${badgeStyles[project.badgeType]}`}
         >
-          {td(project.badge)}
+          {td(project.badge, project.badge_en)}
         </span>
         <a
           href={project.githubUrl}
@@ -33,9 +33,9 @@ export default function ProjectCard({ project }: { project: Project }) {
         </a>
       </div>
 
-      <h3 className="font-semibold mb-1">{td(project.title)}</h3>
-      <p className="text-sm text-primary mb-2">{td(project.subtitle)}</p>
-      <p className="text-sm text-muted-foreground mb-4 flex-1">{td(project.description)}</p>
+      <h3 className="font-semibold mb-1">{td(project.title, project.title_en)}</h3>
+      <p className="text-sm text-primary mb-2">{td(project.subtitle, project.subtitle_en)}</p>
+      <p className="text-sm text-muted-foreground mb-4 flex-1">{td(project.description, project.description_en)}</p>
 
       {/* Stack */}
       <div className="flex flex-wrap gap-1.5 mb-3">
@@ -52,10 +52,10 @@ export default function ProjectCard({ project }: { project: Project }) {
       {/* Security points */}
       {project.securityPoints.length > 0 && (
         <ul className="space-y-1">
-          {project.securityPoints.map((point) => (
+          {project.securityPoints.map((point, idx) => (
             <li key={point} className="text-xs text-muted-foreground flex items-start gap-1.5">
               <span className="text-primary">▸</span>
-              <span>{td(point)}</span>
+              <span>{td(point, project.securityPoints_en?.[idx])}</span>
             </li>
           ))}
         </ul>

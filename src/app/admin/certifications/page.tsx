@@ -236,15 +236,27 @@ export default function CertificationsPage() {
               </div>
             </div>
           </div>
-          <div className="space-y-1.5">
-            <label className="text-xs text-muted-foreground font-medium">Description</label>
-            <textarea
-              placeholder="Description de la certification..."
-              value={form.description}
-              onChange={(e) => setForm({ ...form, description: e.target.value })}
-              rows={3}
-              className="admin-input resize-none"
-            />
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="space-y-1.5">
+              <label className="text-xs text-muted-foreground font-medium">🇫🇷 Description</label>
+              <textarea
+                placeholder="Description de la certification..."
+                value={form.description}
+                onChange={(e) => setForm({ ...form, description: e.target.value })}
+                rows={3}
+                className="admin-input resize-none"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-xs text-muted-foreground font-medium">🇬🇧 Description</label>
+              <textarea
+                placeholder="Certification description..."
+                value={form.description_en || ""}
+                onChange={(e) => setForm({ ...form, description_en: e.target.value })}
+                rows={3}
+                className="admin-input resize-none border-blue-500/30"
+              />
+            </div>
           </div>
           <div className="flex gap-2 pt-2">
             <button

@@ -8,7 +8,7 @@ interface LanguageContextType {
   locale: Locale;
   setLocale: (locale: Locale) => void;
   t: (key: string) => string;
-  td: (text: string) => string;
+  td: (text: string, enOverride?: string) => string;
 }
 
 // ================================================
@@ -398,10 +398,13 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     [locale]
   );
 
-  /** Translate data content: returns English for FR text when locale=en */
+  /** Translate data content: prefers _en field from data, falls back to dictionary, then original text */
   const td = useCallback(
-    (text: string) => {
+    (text: string, enOverride?: string) => {
       if (!text || locale === "fr") return text;
+      // Priority 1: explicit _en field from data model
+      if (enOverride) return enOverride;
+      // Priority 2: hardcoded dictionary (legacy fallback)
       return dataTranslationsEN[text] || text;
     },
     [locale]

@@ -66,13 +66,13 @@ export default function Hero({ data }: { data: PortfolioData }) {
                 {firstParts} <span className="text-primary">{lastName}</span>
               </h1>
               <p className="text-sm sm:text-base text-muted-foreground mt-1">
-                {settings.heroSubtitle}
+                {td(settings.heroSubtitle, settings.heroSubtitle_en)}
               </p>
             </div>
           </div>
 
           <p className="hero-animate opacity-0 text-muted-foreground leading-relaxed text-sm sm:text-base">
-            {settings.heroDescription}
+            {td(settings.heroDescription, settings.heroDescription_en)}
           </p>
 
           <div className="hero-animate opacity-0 flex flex-wrap gap-3">

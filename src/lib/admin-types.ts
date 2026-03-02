@@ -4,12 +4,17 @@
 
 export interface SiteSettings {
   siteTitle: string;
+  siteTitle_en?: string;
   siteDescription: string;
+  siteDescription_en?: string;
   heroTitle: string;
   heroSubtitle: string;
+  heroSubtitle_en?: string;
   heroDescription: string;
+  heroDescription_en?: string;
   profileImageUrl?: string;
   footerText: string;
+  footerText_en?: string;
   contactEmail: string;
   contactGithub: string;
   contactLinkedin: string;
@@ -30,6 +35,7 @@ export interface Certification {
   platform: string;
   date: string;
   description: string;
+  description_en?: string;
   verificationUrl?: string;
   imageUrl?: string;
 }

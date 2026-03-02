@@ -1,11 +1,16 @@
 {
   "settings": {
     "siteTitle": "SINENG KENGNI Juvenal — Cybersecurity & Full-Stack",
+    "siteTitle_en": "SINENG KENGNI Juvenal — Cybersecurity & Full-Stack",
     "siteDescription": "Portfolio de SINENG KENGNI Juvenal, passionné de cybersécurité et développeur Full-Stack.",
+    "siteDescription_en": "Portfolio of SINENG KENGNI Juvenal, cybersecurity enthusiast and Full-Stack developer.",
     "heroTitle": "SINENG KENGNI Juvenal",
     "heroSubtitle": "🛡️ Cybersecurity Enthusiast & Full-Stack Developer",
+    "heroSubtitle_en": "🛡️ Cybersecurity Enthusiast & Full-Stack Developer",
     "heroDescription": "Passionné par la sécurité applicative, l'architecture sécurisée et le développement de systèmes robustes pour l'Afrique francophone.",
+    "heroDescription_en": "Passionate about application security, secure architecture and building robust systems for francophone Africa.",
     "footerText": "© 2026 SINENG KENGNI Juvenal",
+    "footerText_en": "© 2026 SINENG KENGNI Juvenal",
     "contactEmail": "sinengjuvenal@gmail.com",
     "contactGithub": "https://github.com/SKJUV",
     "contactLinkedin": "https://cm.linkedin.com/in/juvenal-sineng-kengni"
@@ -64,9 +69,13 @@
     {
       "id": "portfolio",
       "title": "Portfolio Personnel",
+      "title_en": "Personal Portfolio",
       "subtitle": "Site portfolio moderne avec CMS admin et chatbot IA",
+      "subtitle_en": "Modern portfolio with admin CMS and AI chatbot",
       "description": "Portfolio full-stack avec panneau d'administration complet, chatbot IA (Google Gemini), système i18n FR/EN, thème jour/nuit, stockage Supabase, déploiement Vercel avec domaine personnalisé.",
+      "description_en": "Full-stack portfolio with complete admin panel, AI chatbot (Google Gemini), FR/EN i18n system, day/night theme, Supabase storage, Vercel deployment with custom domain.",
       "badge": "Full-Stack + IA",
+      "badge_en": "Full-Stack + AI",
       "badgeType": "security",
       "stack": [
         "Next.js 15",
@@ -82,6 +91,12 @@
         "Supabase RLS",
         "CORS strict"
       ],
+      "securityPoints_en": [
+        "HMAC-SHA256 Auth",
+        "Edge Middleware",
+        "Supabase RLS",
+        "Strict CORS"
+      ],
       "githubUrl": "https://github.com/SKJUV/portfolio",
       "liveUrl": "https://sineng-juvenal.me"
     },
@@ -89,8 +104,11 @@
       "id": "educonverse",
       "title": "EduConverse",
       "subtitle": "Plateforme éducative multilingue avec IA",
+      "subtitle_en": "Multilingual educational platform with AI",
       "description": "Plateforme e-learning pour la Digital Innovation Week Cameroun. Cours en français et langues nationales, système de rôles, assistant IA via Google Genkit, dashboards par rôle.",
+      "description_en": "E-learning platform for Digital Innovation Week Cameroon. Courses in French and national languages, role system, AI assistant via Google Genkit, role-based dashboards.",
       "badge": "EdTech + IA",
+      "badge_en": "EdTech + AI",
       "badgeType": "education",
       "stack": [
         "Next.js",
@@ -106,13 +124,21 @@
         "IA contrôlée",
         "Server Actions Zod"
       ],
+      "securityPoints_en": [
+        "Teacher/student/admin roles",
+        "Firebase Auth",
+        "Controlled AI",
+        "Zod Server Actions"
+      ],
       "githubUrl": "https://github.com/SKJUV/EduConverse"
     },
     {
       "id": "eduafrique",
       "title": "EduAfrique",
       "subtitle": "E-learning africain avec tuteur IA",
+      "subtitle_en": "African e-learning with AI tutor",
       "description": "Plateforme de cours en ligne pour l'Afrique avec tuteur IA intelligent, parcours personnalisés, quiz/évaluations, catalogue de cours (Business, Agriculture, Tech, Arts & Culture).",
+      "description_en": "Online course platform for Africa with intelligent AI tutor, personalized learning paths, quizzes/assessments, course catalog (Business, Agriculture, Tech, Arts & Culture).",
       "badge": "AI-Powered Learning",
       "badgeType": "education",
       "stack": [
@@ -129,14 +155,23 @@
         "Server Actions Zod",
         "Validation serveur"
       ],
+      "securityPoints_en": [
+        "Firebase Auth",
+        "Controlled AI Tutor",
+        "Zod Server Actions",
+        "Server-side validation"
+      ],
       "githubUrl": "https://github.com/SKJUV/EduAfrique"
     },
     {
       "id": "hrms",
       "title": "HRMS",
       "subtitle": "Système de gestion des ressources humaines",
+      "subtitle_en": "Human Resources Management System",
       "description": "Application Java complète pour la gestion RH : suivi des employés, gestion des départements, administration du personnel avec base de données PostgreSQL.",
+      "description_en": "Complete Java application for HR management: employee tracking, department management, personnel administration with PostgreSQL database.",
       "badge": "Gestion RH",
+      "badge_en": "HR Management",
       "badgeType": "university",
       "stack": [
         "Java",
@@ -147,14 +182,22 @@
         "Gestion des rôles",
         "Requêtes préparées"
       ],
+      "securityPoints_en": [
+        "Role management",
+        "Prepared statements"
+      ],
       "githubUrl": "https://github.com/SKJUV/HRMS"
     },
     {
       "id": "gestion-employes",
       "title": "Gestion des Employés",
+      "title_en": "Employee Management",
       "subtitle": "Application Java de gestion du personnel",
+      "subtitle_en": "Java personnel management application",
       "description": "Système de gestion des employés en Java permettant le CRUD complet, l'organisation par départements et le suivi administratif.",
+      "description_en": "Java employee management system with full CRUD, department organization and administrative tracking.",
       "badge": "Gestion",
+      "badge_en": "Management",
       "badgeType": "university",
       "stack": [
         "Java"
@@ -165,8 +208,11 @@
     {
       "id": "tp108f",
       "title": "Gestion de Bibliothèque",
+      "title_en": "Library Management",
       "subtitle": "Application web PHP pour la gestion de bibliothèque",
+      "subtitle_en": "PHP web app for library management",
       "description": "Application web pour la gestion d'une bibliothèque : catalogue de livres, emprunts, retours, gestion des adhérents avec PHP et MySQL.",
+      "description_en": "Web application for library management: book catalog, borrowing, returns, member management with PHP and MySQL.",
       "badge": "Web App",
       "badgeType": "academic",
       "stack": [
@@ -180,14 +226,22 @@
         "Requêtes préparées PDO",
         "Validation entrées"
       ],
+      "securityPoints_en": [
+        "PDO prepared statements",
+        "Input validation"
+      ],
       "githubUrl": "https://github.com/SKJUV/tp108f"
     },
     {
       "id": "botwha",
       "title": "Bot WhatsApp",
+      "title_en": "WhatsApp Bot",
       "subtitle": "Bot d'automatisation WhatsApp en Python",
+      "subtitle_en": "Python WhatsApp automation bot",
       "description": "Bot WhatsApp développé en Python pour automatiser les interactions et l'envoi de messages sur la plateforme de messagerie.",
+      "description_en": "WhatsApp bot developed in Python to automate interactions and message sending on the messaging platform.",
       "badge": "Automatisation",
+      "badge_en": "Automation",
       "badgeType": "academic",
       "stack": [
         "Python"
@@ -198,8 +252,11 @@
     {
       "id": "tp1ct203",
       "title": "TP203 — Emplois du Temps",
+      "title_en": "TP203 — Schedule Management",
       "subtitle": "Application desktop multiplateforme de gestion des emplois du temps universitaires",
+      "subtitle_en": "Cross-platform desktop application for university schedule management",
       "description": "Application desktop Avalonia UI (.NET 9) avec architecture MVVM, 4 rôles (Admin, Enseignant, Étudiant, Délégué), gestion des séances/salles/UE, suivi pédagogique, API REST backend, thème sombre Glass Card.",
+      "description_en": "Avalonia UI desktop application (.NET 9) with MVVM architecture, 4 roles (Admin, Teacher, Student, Delegate), session/room/course management, pedagogical tracking, REST API backend, dark Glass Card theme.",
       "badge": "Desktop MVVM",
       "badgeType": "university",
       "stack": [
@@ -214,6 +271,11 @@
         "RBAC 4 rôles",
         "API REST sécurisée"
       ],
+      "securityPoints_en": [
+        "Login/password authentication",
+        "4-role RBAC",
+        "Secure REST API"
+      ],
       "githubUrl": "https://github.com/SKJUV/tp1ct203"
     }
   ],
@@ -221,7 +283,9 @@
     {
       "icon": "🔐",
       "title": "Authentification & Autorisation",
+      "title_en": "Authentication & Authorization",
       "description": "JWT avec rotation de tokens, RBAC granulaire, multi-tenancy sécurisé, OAuth PKCE flow, Firebase Auth.",
+      "description_en": "JWT with token rotation, granular RBAC, secure multi-tenancy, OAuth PKCE flow, Firebase Auth.",
       "tags": [
         "JWT Custom Claims",
         "Token Rotation",
@@ -234,6 +298,7 @@
     {
       "icon": "🛡️",
       "title": "Hardening Web & HTTP",
+      "title_en": "Web & HTTP Hardening",
       "description": "HSTS preload, X-Frame-Options DENY, XSS Filter, CSRF protection, Content Security Policy.",
       "tags": [
         "HSTS 1 an",
@@ -247,7 +312,9 @@
     {
       "icon": "🐳",
       "title": "Sécurité Infrastructure",
+      "title_en": "Infrastructure Security",
       "description": "Dockerfiles multi-stage, exécution non-root, healthchecks, monitoring Sentry, CORS strict.",
+      "description_en": "Multi-stage Dockerfiles, non-root execution, healthchecks, Sentry monitoring, strict CORS.",
       "tags": [
         "Docker Non-Root",
         "Multi-Stage Build",
@@ -261,6 +328,7 @@
       "icon": "☁️",
       "title": "Cloud Security",
       "description": "Principes de sécurité cloud (Google Cloud), gestion des risques, identification et protection contre les menaces.",
+      "description_en": "Cloud security principles (Google Cloud), risk management, threat identification and protection.",
       "tags": [
         "Google Cloud",
         "Risk Management",
@@ -272,7 +340,9 @@
     {
       "icon": "🗄️",
       "title": "Sécurité BDD & Crypto",
+      "title_en": "Database Security & Crypto",
       "description": "Row Level Security, requêtes préparées, BCrypt hashing, chiffrement/déchiffrement C++.",
+      "description_en": "Row Level Security, prepared queries, BCrypt hashing, C++ encryption/decryption.",
       "tags": [
         "RLS",
         "Prepared Statements",
@@ -286,6 +356,7 @@
       "icon": "🔍",
       "title": "OWASP & Pentesting",
       "description": "OWASP Top 10, Hack The Box (CTF), OverTheWire, tests d'intrusion IBM, culture cybersécurité active.",
+      "description_en": "OWASP Top 10, Hack The Box (CTF), OverTheWire, IBM penetration testing, active cybersecurity culture.",
       "tags": [
         "OWASP Top 10",
         "Hack The Box",
@@ -300,6 +371,7 @@
     {
       "icon": "🛡️",
       "title": "Cybersécurité (Passion #1)",
+      "title_en": "Cybersecurity (Passion #1)",
       "items": [
         "OWASP Top 10",
         "Hack The Box",
@@ -375,6 +447,7 @@
     {
       "icon": "🐧",
       "title": "Systèmes & Administration",
+      "title_en": "Systems & Administration",
       "items": [
         "Manjaro Linux (KDE)",
         "Zorin OS Pro",
@@ -389,6 +462,7 @@
     {
       "icon": "🤖",
       "title": "IA & Data",
+      "title_en": "AI & Data",
       "items": [
         "Google Gemini",
         "Google Genkit AI",
@@ -406,6 +480,7 @@
     {
       "icon": "🎓",
       "title": "Formation & Communautés",
+      "title_en": "Education & Communities",
       "points": [
         "Étudiant à l'Université de Yaoundé 1",
         "GDSC Université de Yaoundé 1",
@@ -413,16 +488,31 @@
         "Django Cameroon (Hacktoberfest 2025)",
         "Women TechMakers Yaoundé",
         "17 certifications Coursera (IBM, Google Cloud)"
+      ],
+      "points_en": [
+        "Student at University of Yaoundé 1",
+        "GDSC University of Yaoundé 1",
+        "GDG Yaoundé — Google Developer Groups",
+        "Django Cameroon (Hacktoberfest 2025)",
+        "Women TechMakers Yaoundé",
+        "17 Coursera certifications (IBM, Google Cloud)"
       ]
     },
     {
       "icon": "🐧",
       "title": "Systèmes Linux",
+      "title_en": "Linux Systems",
       "points": [
         "Manjaro KDE avec pacman/yay",
         "Zorin OS Pro",
         "Terminal avancé (ps, pkill, find, ~/.config)",
         "Installation/désinstallation propre"
+      ],
+      "points_en": [
+        "Manjaro KDE with pacman/yay",
+        "Zorin OS Pro",
+        "Advanced terminal (ps, pkill, find, ~/.config)",
+        "Clean install/uninstall"
       ]
     },
     {
@@ -433,6 +523,12 @@
         "DNS Google 8.8.8.8/8.8.4.4",
         "Diagnostic réseau",
         "Diagnostic BIOS (CMOS checksum, bips système)"
+      ],
+      "points_en": [
+        "Windows 11 Pro",
+        "DNS Google 8.8.8.8/8.8.4.4",
+        "Network diagnostics",
+        "BIOS diagnostics (CMOS checksum, system beeps)"
       ]
     },
     {
@@ -443,35 +539,63 @@
         "OAuth PKCE flow",
         "Token API & intégrations",
         "Google Gemini AI API"
+      ],
+      "points_en": [
+        "Python WhatsApp bot",
+        "OAuth PKCE flow",
+        "API Token & integrations",
+        "Google Gemini AI API"
       ]
     },
     {
       "icon": "📊",
       "title": "Data Science & Visualisation",
+      "title_en": "Data Science & Visualization",
       "points": [
         "Python Matplotlib & Seaborn",
         "Traitement JSON avec Python",
         "Kaggle — nettoyage de données",
         "Progression structurée en ML"
+      ],
+      "points_en": [
+        "Python Matplotlib & Seaborn",
+        "JSON processing with Python",
+        "Kaggle — data cleaning",
+        "Structured ML progression"
       ]
     },
     {
       "icon": "🔧",
       "title": "Résolution de Problèmes",
+      "title_en": "Problem Solving",
       "points": [
         "Diagnostic système et lecture logs",
         "Analyse bips BIOS",
         "CTF Hack The Box & OverTheWire",
         "Correction erreurs JavaScript/TypeScript",
         "Nettoyage apps corrompues"
+      ],
+      "points_en": [
+        "System diagnostics and log reading",
+        "BIOS beep analysis",
+        "CTF Hack The Box & OverTheWire",
+        "JavaScript/TypeScript error fixing",
+        "Corrupted app cleanup"
       ]
     },
     {
       "icon": "🛠️",
       "title": "Outils Dev",
+      "title_en": "Dev Tools",
       "points": [
         "Git CLI (branches, commits, merge)",
         "VS Code avec extensions",
+        "GitHub Education Pack",
+        "Vercel, Supabase, Firebase"
+      ],
+      "points_en": [
+        "Git CLI (branches, commits, merge)",
+        "VS Code with extensions",
         "GitHub Education Pack",
         "Vercel, Supabase, Firebase"
       ]
@@ -485,7 +609,8 @@
       "date": "2025",
       "description": "Fondamentaux de Python : variables, structures de contrôle, fonctions et premier programme complet.",
       "verificationUrl": "https://coursera.org/share/cf73e83a4ff5331807af194af6273abe",
-      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~ZLJ40S847XFE/CERTIFICATE_LANDING_PAGE~ZLJ40S847XFE.jpeg"
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~ZLJ40S847XFE/CERTIFICATE_LANDING_PAGE~ZLJ40S847XFE.jpeg",
+      "description_en": "Python fundamentals: variables, control structures, functions and first complete program."
     },
     {
       "id": "coursera-intro-javascript",
@@ -494,7 +619,8 @@
       "date": "2025",
       "description": "Bases de JavaScript : syntaxe, DOM, événements, fonctions et programmation orientée objet.",
       "verificationUrl": "https://coursera.org/share/80424b0eb18a75101aca3777adc10ec7",
-      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~TCH488GRHOPC/CERTIFICATE_LANDING_PAGE~TCH488GRHOPC.jpeg"
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~TCH488GRHOPC/CERTIFICATE_LANDING_PAGE~TCH488GRHOPC.jpeg",
+      "description_en": "JavaScript basics: syntax, DOM, events, functions and object-oriented programming."
     },
     {
       "id": "coursera-python-dataviz",
@@ -503,7 +629,8 @@
       "date": "2025",
       "description": "Visualisation de données avec Python, création de graphiques avec Matplotlib et Seaborn.",
       "verificationUrl": "https://coursera.org/share/bb31227e5f3d4a182ca457cb07139ea3",
-      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~Y4OIJU25O7RR/CERTIFICATE_LANDING_PAGE~Y4OIJU25O7RR.jpeg"
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~Y4OIJU25O7RR/CERTIFICATE_LANDING_PAGE~Y4OIJU25O7RR.jpeg",
+      "description_en": "Data visualization with Python, creating charts with Matplotlib and Seaborn."
     },
     {
       "id": "coursera-json-python",
@@ -512,7 +639,8 @@
       "date": "2025",
       "description": "Manipulation de données JSON avec Python : lecture, écriture, parsing et traitement de fichiers JSON.",
       "verificationUrl": "https://coursera.org/share/74c2c9f88b3cac314e708c5abe102e91",
-      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~VRNGBDHYC99H/CERTIFICATE_LANDING_PAGE~VRNGBDHYC99H.jpeg"
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~VRNGBDHYC99H/CERTIFICATE_LANDING_PAGE~VRNGBDHYC99H.jpeg",
+      "description_en": "JSON data manipulation with Python: reading, writing, parsing and processing JSON files."
     },
     {
       "id": "coursera-encryption-cpp",
@@ -521,7 +649,8 @@
       "date": "2025",
       "description": "Algorithmes de chiffrement et déchiffrement en C++ : concepts cryptographiques appliqués.",
       "verificationUrl": "https://coursera.org/share/36411f51d0237f3601455363b7fc7a04",
-      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~PM90OKB2UM0C/CERTIFICATE_LANDING_PAGE~PM90OKB2UM0C.jpeg"
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~PM90OKB2UM0C/CERTIFICATE_LANDING_PAGE~PM90OKB2UM0C.jpeg",
+      "description_en": "Encryption and decryption algorithms in C++: applied cryptographic concepts."
     },
     {
       "id": "coursera-mysql-workbench",
@@ -530,7 +659,8 @@
       "date": "2025",
       "description": "Conception et modélisation de bases de données relationnelles avec MySQL Workbench.",
       "verificationUrl": "https://coursera.org/share/4b971747279a13fae94f8e24622c3776",
-      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~IP9OB3XBA88X/CERTIFICATE_LANDING_PAGE~IP9OB3XBA88X.jpeg"
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~IP9OB3XBA88X/CERTIFICATE_LANDING_PAGE~IP9OB3XBA88X.jpeg",
+      "description_en": "Design and modeling of relational databases with MySQL Workbench."
     },
     {
       "id": "coursera-mysql-php",
@@ -539,7 +669,8 @@
       "date": "2025",
       "description": "Intégration de bases de données MySQL avec PHP : CRUD, requêtes préparées et sécurité.",
       "verificationUrl": "https://coursera.org/share/e9293e2387f63beecbf871db948b8d65",
-      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~JB0YFQGFV3ZG/CERTIFICATE_LANDING_PAGE~JB0YFQGFV3ZG.jpeg"
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~JB0YFQGFV3ZG/CERTIFICATE_LANDING_PAGE~JB0YFQGFV3ZG.jpeg",
+      "description_en": "MySQL database integration with PHP: CRUD, prepared queries and security."
     },
     {
       "id": "coursera-pentest-cryptography",
@@ -548,7 +679,8 @@
       "date": "2025",
       "description": "Tests d'intrusion, chasse aux menaces et cryptographie appliquée — formation IBM en cybersécurité.",
       "verificationUrl": "https://coursera.org/share/7d8286f6edc8a2b50bc65f0acb2c497e",
-      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~ZQERTJSHU56B/CERTIFICATE_LANDING_PAGE~ZQERTJSHU56B.jpeg"
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~ZQERTJSHU56B/CERTIFICATE_LANDING_PAGE~ZQERTJSHU56B.jpeg",
+      "description_en": "Penetration testing, threat hunting and applied cryptography — IBM cybersecurity training."
     },
     {
       "id": "coursera-cloud-security-intro",
@@ -557,7 +689,8 @@
       "date": "2025",
       "description": "Principes fondamentaux de sécurité dans le cloud computing — formation Google Cloud.",
       "verificationUrl": "https://coursera.org/share/97fa6f6b82f644b398c0d5830d9e1863",
-      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~K7RXKU3KRQ8X/CERTIFICATE_LANDING_PAGE~K7RXKU3KRQ8X.jpeg"
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~K7RXKU3KRQ8X/CERTIFICATE_LANDING_PAGE~K7RXKU3KRQ8X.jpeg",
+      "description_en": "Fundamental security principles in cloud computing — Google Cloud training."
     },
     {
       "id": "coursera-cloud-security-risk",
@@ -566,7 +699,8 @@
       "date": "2025",
       "description": "Stratégies de gestion des risques de sécurité cloud — formation Google Cloud.",
       "verificationUrl": "https://coursera.org/share/00a19ebb2d2bedbb956abe9d1904eab9",
-      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~EDN83WUYGY90/CERTIFICATE_LANDING_PAGE~EDN83WUYGY90.jpeg"
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~EDN83WUYGY90/CERTIFICATE_LANDING_PAGE~EDN83WUYGY90.jpeg",
+      "description_en": "Cloud security risk management strategies — Google Cloud training."
     },
     {
       "id": "coursera-cloud-security-threats",
@@ -575,7 +709,8 @@
       "date": "2025",
       "description": "Identification et protection contre les menaces de sécurité cloud — formation Google Cloud.",
       "verificationUrl": "https://coursera.org/share/fef5118ee94999b90e54498a630e5c5c",
-      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~2IH1SNCHOW7S/CERTIFICATE_LANDING_PAGE~2IH1SNCHOW7S.jpeg"
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~2IH1SNCHOW7S/CERTIFICATE_LANDING_PAGE~2IH1SNCHOW7S.jpeg",
+      "description_en": "Identification and protection against cloud security threats — Google Cloud training."
     },
     {
       "id": "coursera-agile-user-stories",
@@ -584,7 +719,8 @@
       "date": "2025",
       "description": "Méthodologie Agile : création de user stories à forte valeur ajoutée avec l'outil Taiga.",
       "verificationUrl": "https://coursera.org/share/5789e9938820faf5be554be35ed4bee8",
-      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~SGH67700J9CC/CERTIFICATE_LANDING_PAGE~SGH67700J9CC.jpeg"
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~SGH67700J9CC/CERTIFICATE_LANDING_PAGE~SGH67700J9CC.jpeg",
+      "description_en": "Agile methodology: creating high-value user stories with the Taiga tool."
     },
     {
       "id": "coursera-excel",
@@ -593,7 +729,8 @@
       "date": "2025",
       "description": "Maîtrise des fondamentaux de Microsoft Excel : tableaux, formules, graphiques et analyse de données.",
       "verificationUrl": "https://coursera.org/share/95926d468abbe6c17bcaacaa567607ab",
-      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~BZFQ0COWMWZO/CERTIFICATE_LANDING_PAGE~BZFQ0COWMWZO.jpeg"
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~BZFQ0COWMWZO/CERTIFICATE_LANDING_PAGE~BZFQ0COWMWZO.jpeg",
+      "description_en": "Mastering Microsoft Excel fundamentals: tables, formulas, charts and data analysis."
     },
     {
       "id": "coursera-ms-forms",
@@ -602,7 +739,8 @@
       "date": "2025",
       "description": "Création de formulaires d'enquête de satisfaction client avec Microsoft Forms.",
       "verificationUrl": "https://coursera.org/share/a0d48788762a9ed32b8236860a54e70c",
-      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~3JOOT559SW0A/CERTIFICATE_LANDING_PAGE~3JOOT559SW0A.jpeg"
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~3JOOT559SW0A/CERTIFICATE_LANDING_PAGE~3JOOT559SW0A.jpeg",
+      "description_en": "Creating customer satisfaction survey forms with Microsoft Forms."
     },
     {
       "id": "coursera-ife-efe-matrix",
@@ -611,7 +749,8 @@
       "date": "2025",
       "description": "Analyse stratégique avec les matrices IFE-EFE pour la prise de décision en entreprise.",
       "verificationUrl": "https://coursera.org/share/aabf5d9fe4c358f55aee4aac0bd62bb8",
-      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~EVZH8J4OEAJ5/CERTIFICATE_LANDING_PAGE~EVZH8J4OEAJ5.jpeg"
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~EVZH8J4OEAJ5/CERTIFICATE_LANDING_PAGE~EVZH8J4OEAJ5.jpeg",
+      "description_en": "Strategic analysis with IFE-EFE matrices for business decision-making."
     },
     {
       "id": "coursera-satisfaction-process",
@@ -620,7 +759,8 @@
       "date": "2025",
       "description": "Mise en place d'un processus de satisfaction client pour les services.",
       "verificationUrl": "https://coursera.org/share/2474d47ee90c7457c186ee53bcc2a5ba",
-      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~G2I9U16XZO96/CERTIFICATE_LANDING_PAGE~G2I9U16XZO96.jpeg"
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~G2I9U16XZO96/CERTIFICATE_LANDING_PAGE~G2I9U16XZO96.jpeg",
+      "description_en": "Setting up a customer satisfaction process for services."
     },
     {
       "id": "coursera-facebook-ads",
@@ -629,7 +769,8 @@
       "date": "2025",
       "description": "Gestion de campagnes publicitaires avec Facebook Ads Manager.",
       "verificationUrl": "https://coursera.org/share/140ef18a37fb3fa6bec4a50130b36f69",
-      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~CISOEGV6N8OL/CERTIFICATE_LANDING_PAGE~CISOEGV6N8OL.jpeg"
+      "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~CISOEGV6N8OL/CERTIFICATE_LANDING_PAGE~CISOEGV6N8OL.jpeg",
+      "description_en": "Managing advertising campaigns with Facebook Ads Manager."
     }
   ],
   "technologies": [

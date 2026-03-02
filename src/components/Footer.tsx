@@ -8,7 +8,7 @@ import type { PortfolioData } from "@/lib/admin-types";
 
 export default function Footer({ data }: { data: PortfolioData }) {
   const { settings } = data;
-  const { t } = useLanguage();
+  const { t, td } = useLanguage();
   const headerRef = useScrollReveal<HTMLDivElement>();
   const formRef = useScrollReveal<HTMLDivElement>(0.1);
   const infoRef = useScrollReveal<HTMLDivElement>(0.1);
@@ -206,7 +206,7 @@ export default function Footer({ data }: { data: PortfolioData }) {
             </div>
 
             <div className="text-center space-y-1 text-sm text-muted-foreground">
-              <p>{settings.footerText}</p>
+              <p>{td(settings.footerText, settings.footerText_en)}</p>
               <p className="font-mono text-xs opacity-60">github.com/SKJUV</p>
             </div>
           </div>

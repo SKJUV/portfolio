@@ -26,7 +26,7 @@ export default function SkillsSection({ data }: { data: PortfolioData }) {
             <div key={i} className="w-[80vw] max-w-[300px] flex-none snap-start sm:w-auto sm:max-w-none sm:flex-auto p-5 glass-card rounded-2xl">
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-xl">{category.icon}</span>
-                <h3 className="font-semibold">{td(category.title)}</h3>
+                <h3 className="font-semibold">{td(category.title, category.title_en)}</h3>
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {category.items.map((item) => (
