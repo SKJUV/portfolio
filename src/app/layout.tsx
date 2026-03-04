@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import PageViewTracker from "@/components/PageViewTracker";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://sineng-juvenal.me";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.sineng-juvenal.me";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {

@@ -33,6 +33,6 @@ jobs:
         run: npx next build
         env:
           # Variables factices pour le build CI (pas besoin des vrais secrets)
-          NEXT_PUBLIC_SITE_URL: https://sineng-juvenal.me
+          NEXT_PUBLIC_SITE_URL: https://www.sineng-juvenal.me
           ADMIN_PASSWORD: ci-build-only
           ADMIN_SECRET: ci-build-secret-key
