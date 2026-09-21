@@ -1,163 +1,66 @@
 import { promises as fs } from "fs";
 import path from "path";
 import type { PortfolioData } from "./admin-types";
-import { supabaseAdmin, isSupabaseConfigured } from "./supabase";
 
 const DATA_FILE_PATH = path.join(process.cwd(), "src/data/portfolio-data.json");
-const IS_VERCEL = !!process.env.VERCEL;
+const MESSAGES_FILE_PATH = path.join(process.cwd(), "src/data/messages.json");
 
-// Cache en mémoire avec TTL pour éviter les requêtes Supabase à chaque rendu
-const CACHE_TTL_MS = 60 * 1000; // 60 secondes
 let cachedData: PortfolioData | null = null;
-let cacheTimestamp = 0;
-
-function getCachedData(): PortfolioData | null {
-  if (cachedData && Date.now() - cacheTimestamp < CACHE_TTL_MS) {
-    return cachedData;
-  }
-  return null;
-}
-
-function setCachedData(data: PortfolioData): void {
-  cachedData = data;
-  cacheTimestamp = Date.now();
-}
-
-function invalidateCache(): void {
-  cachedData = null;
-  cacheTimestamp = 0;
-}
-
-// Cache pour éviter de retenter Supabase à chaque requête quand il échoue
-let supabaseAvailable: boolean | null = null; // null = pas encore testé
-
-function shouldUseSupabase(): boolean {
-  if (!isSupabaseConfigured()) return false;
-  if (supabaseAvailable === false) return false;
-  return true;
-}
-
-// ============================================
-// Supabase storage (production / Vercel)
-// ============================================
-
-async function getDataFromSupabase(): Promise<PortfolioData | null> {
-  if (!supabaseAdmin) return null;
-  try {
-    const { data, error } = await supabaseAdmin
-      .from("portfolio_data")
-      .select("data")
-      .eq("id", 1)
-      .single();
-    if (error) {
-      console.error("[data-manager] Supabase SELECT error:", error.message, error.code);
-      return null;
-    }
-    if (!data) return null;
-    supabaseAvailable = true;
-    return data.data as PortfolioData;
-  } catch (err) {
-    console.error("[data-manager] Supabase exception:", err);
-    supabaseAvailable = false;
-    return null;
-  }
-}
-
-async function saveDataToSupabase(portfolioData: PortfolioData): Promise<void> {
-  if (!supabaseAdmin) throw new Error("Supabase non configuré");
-  const { error } = await supabaseAdmin
-    .from("portfolio_data")
-    .upsert({ id: 1, data: portfolioData, updated_at: new Date().toISOString() });
-  if (error) {
-    console.error("[data-manager] Supabase UPSERT error:", error.message, error.code);
-    supabaseAvailable = false;
-    throw new Error(`Supabase write error: ${error.message}`);
-  }
-  supabaseAvailable = true;
-}
-
-// ============================================
-// Local JSON storage (développement)
-// ============================================
-
-async function getDataFromFile(): Promise<PortfolioData> {
-  const raw = await fs.readFile(DATA_FILE_PATH, "utf-8");
-  return JSON.parse(raw) as PortfolioData;
-}
-
-async function saveDataToFile(data: PortfolioData): Promise<void> {
-  if (IS_VERCEL) {
-    throw new Error("Impossible d'écrire sur le filesystem Vercel (read-only). Vérifiez votre configuration Supabase.");
-  }
-  await fs.writeFile(DATA_FILE_PATH, JSON.stringify(data, null, 2), "utf-8");
-}
-
-// ============================================
-// API publique
-// ============================================
 
 export async function getPortfolioData(): Promise<PortfolioData> {
-  // Vérifier le cache en mémoire d'abord
-  const cached = getCachedData();
-  if (cached) return cached;
+  if (cachedData) return cachedData;
 
-  let result: PortfolioData;
-
-  if (shouldUseSupabase()) {
-    try {
-      const data = await getDataFromSupabase();
-      if (data) {
-        setCachedData(data);
-        return data;
-      }
-      // Table vide → seeder depuis le JSON local
-      if (supabaseAvailable !== false) {
-        console.info("[data-manager] Supabase vide, seed depuis le JSON local...");
-        const localData = await getDataFromFile();
-        try {
-          await saveDataToSupabase(localData);
-          console.info("[data-manager] Seed Supabase réussi ✓");
-        } catch (err) {
-          console.error("[data-manager] Seed Supabase échoué:", err);
-        }
-        setCachedData(localData);
-        return localData;
-      }
-    } catch {
-      supabaseAvailable = false;
-    }
+  try {
+    const raw = await fs.readFile(DATA_FILE_PATH, "utf-8");
+    cachedData = JSON.parse(raw);
+    return cachedData!;
+  } catch (error) {
+    console.error("[data-manager] Failed to read portfolio-data.json:", error);
+    // Return empty fallback structure
+    return {
+      settings: {
+        siteTitle: "SINENG KENGNI Juvenal",
+        siteDescription: "Cybersecurity & Full-Stack",
+        heroTitle: "SINENG KENGNI Juvenal",
+        heroSubtitle: "Cybersecurity & Full-Stack",
+        contactEmail: "sinengjuvenal@gmail.com",
+        contactGithub: "https://github.com/SKJUV",
+        contactLinkedin: "https://cm.linkedin.com/in/juvenal-sineng-kengni",
+      },
+      sections: [],
+      projects: [],
+      securitySkills: [],
+      skillCategories: [],
+      profileCategories: [],
+      certifications: [],
+      technologies: [],
+      terminalLines: [],
+      messages: [],
+    } as unknown as PortfolioData;
   }
-
-  result = await getDataFromFile();
-  setCachedData(result);
-  return result;
 }
 
-export async function savePortfolioData(data: PortfolioData): Promise<void> {
-  invalidateCache(); // Invalider le cache lors de l'écriture
-  if (shouldUseSupabase()) {
-    try {
-      await saveDataToSupabase(data);
-      return;
-    } catch (err) {
-      // Sur Vercel, on ne peut pas fallback sur le filesystem
-      if (IS_VERCEL) {
-        throw new Error(`Écriture Supabase échouée et filesystem Vercel read-only. ${err instanceof Error ? err.message : err}`);
-      }
-      console.warn("[data-manager] Supabase write échoué, fallback fichier local");
-    }
-  }
-  await saveDataToFile(data);
-}
-
-/**
- * Mettre à jour partiellement les données du portfolio
- */
 export async function updatePortfolioData(
-  updater: (data: PortfolioData) => PortfolioData
+  updater: (data: PortfolioData) => PortfolioData | Promise<PortfolioData>
 ): Promise<PortfolioData> {
-  const data = await getPortfolioData();
-  const updated = updater(data);
-  await savePortfolioData(updated);
+  const current = await getPortfolioData();
+  const updated = await updater(current);
+  cachedData = updated;
+
+  try {
+    await fs.writeFile(DATA_FILE_PATH, JSON.stringify(updated, null, 2), "utf-8");
+  } catch (err) {
+    console.error("[data-manager] Could not write to disk (likely read-only serverless):", err);
+  }
+
   return updated;
+}
+
+export async function getContactMessages(): Promise<Array<Record<string, unknown>>> {
+  try {
+    const raw = await fs.readFile(MESSAGES_FILE_PATH, "utf-8");
+    return JSON.parse(raw);
+  } catch {
+    return [];
+  }
 }
