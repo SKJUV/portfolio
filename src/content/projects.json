@@ -1,0 +1,214 @@
+[
+  {
+    "id": "portfolio",
+    "title": "Portfolio Personnel",
+    "title_en": "Personal Portfolio",
+    "subtitle": "Site portfolio moderne avec CMS admin et chatbot IA",
+    "subtitle_en": "Modern portfolio with admin CMS and AI chatbot",
+    "description": "Portfolio full-stack avec panneau d'administration complet, chatbot IA (Google Gemini), système i18n FR/EN, thème jour/nuit, stockage Supabase, déploiement Vercel avec domaine personnalisé.",
+    "description_en": "Full-stack portfolio with complete admin panel, AI chatbot (Google Gemini), FR/EN i18n system, day/night theme, Supabase storage, Vercel deployment with custom domain.",
+    "badge": "Full-Stack + IA",
+    "badge_en": "Full-Stack + AI",
+    "badgeType": "security",
+    "stack": [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "Google Gemini",
+      "Vercel"
+    ],
+    "securityPoints": [
+      "Auth HMAC-SHA256",
+      "Edge Middleware",
+      "Supabase RLS",
+      "CORS strict"
+    ],
+    "securityPoints_en": [
+      "HMAC-SHA256 Auth",
+      "Edge Middleware",
+      "Supabase RLS",
+      "Strict CORS"
+    ],
+    "githubUrl": "https://github.com/SKJUV/portfolio",
+    "liveUrl": "https://sineng-juvenal.me"
+  },
+  {
+    "id": "educonverse",
+    "title": "EduConverse",
+    "subtitle": "Plateforme éducative multilingue avec IA",
+    "subtitle_en": "Multilingual educational platform with AI",
+    "description": "Plateforme e-learning pour la Digital Innovation Week Cameroun. Cours en français et langues nationales, système de rôles, assistant IA via Google Genkit, dashboards par rôle.",
+    "description_en": "E-learning platform for Digital Innovation Week Cameroon. Courses in French and national languages, role system, AI assistant via Google Genkit, role-based dashboards.",
+    "badge": "EdTech + IA",
+    "badge_en": "EdTech + AI",
+    "badgeType": "education",
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "Firebase",
+      "Google Genkit AI",
+      "shadcn/ui",
+      "Tailwind CSS"
+    ],
+    "securityPoints": [
+      "Rôles teacher/student/admin",
+      "Firebase Auth",
+      "IA contrôlée",
+      "Server Actions Zod"
+    ],
+    "securityPoints_en": [
+      "Teacher/student/admin roles",
+      "Firebase Auth",
+      "Controlled AI",
+      "Zod Server Actions"
+    ],
+    "githubUrl": "https://github.com/SKJUV/EduConverse"
+  },
+  {
+    "id": "eduafrique",
+    "title": "EduAfrique",
+    "subtitle": "E-learning africain avec tuteur IA",
+    "subtitle_en": "African e-learning with AI tutor",
+    "description": "Plateforme de cours en ligne pour l'Afrique avec tuteur IA intelligent, parcours personnalisés, quiz/évaluations, catalogue de cours (Business, Agriculture, Tech, Arts & Culture).",
+    "description_en": "Online course platform for Africa with intelligent AI tutor, personalized learning paths, quizzes/assessments, course catalog (Business, Agriculture, Tech, Arts & Culture).",
+    "badge": "AI-Powered Learning",
+    "badgeType": "education",
+    "stack": [
+      "Next.js 15",
+      "TypeScript",
+      "Firebase",
+      "Google Genkit AI",
+      "Tailwind CSS",
+      "Recharts"
+    ],
+    "securityPoints": [
+      "Firebase Auth",
+      "IA Tutor contrôlée",
+      "Server Actions Zod",
+      "Validation serveur"
+    ],
+    "securityPoints_en": [
+      "Firebase Auth",
+      "Controlled AI Tutor",
+      "Zod Server Actions",
+      "Server-side validation"
+    ],
+    "githubUrl": "https://github.com/SKJUV/EduAfrique"
+  },
+  {
+    "id": "hrms",
+    "title": "HRMS",
+    "subtitle": "Système de gestion des ressources humaines",
+    "subtitle_en": "Human Resources Management System",
+    "description": "Application Java complète pour la gestion RH : suivi des employés, gestion des départements, administration du personnel avec base de données PostgreSQL.",
+    "description_en": "Complete Java application for HR management: employee tracking, department management, personnel administration with PostgreSQL database.",
+    "badge": "Gestion RH",
+    "badge_en": "HR Management",
+    "badgeType": "university",
+    "stack": [
+      "Java",
+      "PostgreSQL",
+      "CSS"
+    ],
+    "securityPoints": [
+      "Gestion des rôles",
+      "Requêtes préparées"
+    ],
+    "securityPoints_en": [
+      "Role management",
+      "Prepared statements"
+    ],
+    "githubUrl": "https://github.com/SKJUV/HRMS"
+  },
+  {
+    "id": "gestion-employes",
+    "title": "Gestion des Employés",
+    "title_en": "Employee Management",
+    "subtitle": "Application Java de gestion du personnel",
+    "subtitle_en": "Java personnel management application",
+    "description": "Système de gestion des employés en Java permettant le CRUD complet, l'organisation par départements et le suivi administratif.",
+    "description_en": "Java employee management system with full CRUD, department organization and administrative tracking.",
+    "badge": "Gestion",
+    "badge_en": "Management",
+    "badgeType": "university",
+    "stack": [
+      "Java"
+    ],
+    "securityPoints": [],
+    "githubUrl": "https://github.com/SKJUV/gestion_des_employes"
+  },
+  {
+    "id": "tp108f",
+    "title": "Gestion de Bibliothèque",
+    "title_en": "Library Management",
+    "subtitle": "Application web PHP pour la gestion de bibliothèque",
+    "subtitle_en": "PHP web app for library management",
+    "description": "Application web pour la gestion d'une bibliothèque : catalogue de livres, emprunts, retours, gestion des adhérents avec PHP et MySQL.",
+    "description_en": "Web application for library management: book catalog, borrowing, returns, member management with PHP and MySQL.",
+    "badge": "Web App",
+    "badgeType": "academic",
+    "stack": [
+      "PHP",
+      "MySQL",
+      "JavaScript",
+      "CSS",
+      "HTML"
+    ],
+    "securityPoints": [
+      "Requêtes préparées PDO",
+      "Validation entrées"
+    ],
+    "securityPoints_en": [
+      "PDO prepared statements",
+      "Input validation"
+    ],
+    "githubUrl": "https://github.com/SKJUV/tp108f"
+  },
+  {
+    "id": "botwha",
+    "title": "Bot WhatsApp",
+    "title_en": "WhatsApp Bot",
+    "subtitle": "Bot d'automatisation WhatsApp en Python",
+    "subtitle_en": "Python WhatsApp automation bot",
+    "description": "Bot WhatsApp développé en Python pour automatiser les interactions et l'envoi de messages sur la plateforme de messagerie.",
+    "description_en": "WhatsApp bot developed in Python to automate interactions and message sending on the messaging platform.",
+    "badge": "Automatisation",
+    "badge_en": "Automation",
+    "badgeType": "academic",
+    "stack": [
+      "Python"
+    ],
+    "securityPoints": [],
+    "githubUrl": "https://github.com/SKJUV/botwha"
+  },
+  {
+    "id": "tp1ct203",
+    "title": "TP203 — Emplois du Temps",
+    "title_en": "TP203 — Schedule Management",
+    "subtitle": "Application desktop multiplateforme de gestion des emplois du temps universitaires",
+    "subtitle_en": "Cross-platform desktop application for university schedule management",
+    "description": "Application desktop Avalonia UI (.NET 9) avec architecture MVVM, 4 rôles (Admin, Enseignant, Étudiant, Délégué), gestion des séances/salles/UE, suivi pédagogique, API REST backend, thème sombre Glass Card.",
+    "description_en": "Avalonia UI desktop application (.NET 9) with MVVM architecture, 4 roles (Admin, Teacher, Student, Delegate), session/room/course management, pedagogical tracking, REST API backend, dark Glass Card theme.",
+    "badge": "Desktop MVVM",
+    "badgeType": "university",
+    "stack": [
+      "C#",
+      ".NET 9",
+      "Avalonia UI",
+      "CommunityToolkit MVVM",
+      "Newtonsoft.Json"
+    ],
+    "securityPoints": [
+      "Authentification login/password",
+      "RBAC 4 rôles",
+      "API REST sécurisée"
+    ],
+    "securityPoints_en": [
+      "Login/password authentication",
+      "4-role RBAC",
+      "Secure REST API"
+    ],
+    "githubUrl": "https://github.com/SKJUV/tp1ct203"
+  }
+]
