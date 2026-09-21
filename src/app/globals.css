@@ -2,333 +2,166 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: 210 20% 98%;
-  --foreground: 220 20% 10%;
-  --card: 0 0% 100%;
-  --card-foreground: 220 20% 10%;
-  --primary: 152 70% 35%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 210 15% 93%;
-  --secondary-foreground: 220 15% 20%;
-  --muted: 210 15% 93%;
-  --muted-foreground: 220 10% 45%;
-  --accent: 200 80% 45%;
-  --accent-foreground: 0 0% 100%;
-  --destructive: 0 72% 50%;
-  --destructive-foreground: 0 0% 100%;
-  --border: 210 15% 88%;
-  --ring: 152 70% 35%;
-  --radius: 0.75rem;
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", Consolas, "Courier New", monospace;
-  --glass-bg: rgba(255, 255, 255, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.3);
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 240 10% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 4%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 217.2 91.2% 59.8%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+    --font-sans: var(--font-inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+    --font-mono: var(--font-jetbrains-mono, "JetBrains Mono", monospace);
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 6% 7%;
+    --card-foreground: 0 0% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 4% 12%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 213.1 93.9% 67.8%;
+    --accent-foreground: 240 10% 3.9%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 4% 16%;
+    --ring: 217.2 91.2% 59.8%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
-.dark {
-  --background: 240 15% 5%;
-  --foreground: 0 0% 90%;
-  --card: 240 12% 8%;
-  --card-foreground: 0 0% 90%;
-  --primary: 152 100% 50%;
-  --primary-foreground: 240 15% 5%;
-  --secondary: 240 10% 12%;
-  --secondary-foreground: 0 0% 85%;
-  --muted: 240 10% 15%;
-  --muted-foreground: 0 0% 55%;
-  --accent: 195 90% 55%;
-  --accent-foreground: 240 15% 5%;
-  --destructive: 0 72% 55%;
-  --destructive-foreground: 0 0% 100%;
-  --border: 240 10% 15%;
-  --ring: 152 100% 50%;
-  --glass-bg: rgba(15, 15, 25, 0.5);
-  --glass-border: rgba(255, 255, 255, 0.08);
-}
-
-* {
-  border-color: hsl(var(--border));
-}
-
-body {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
-  font-family: var(--font-sans);
-}
-
-.font-mono, code, pre {
-  font-family: var(--font-mono);
-}
-
-/* Glassmorphism utility */
-.glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid var(--glass-border);
-}
-
-.glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px) saturate(160%);
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.dark .glass-card {
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-}
-
-.glass-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
-  border-color: hsl(var(--primary) / 0.4);
-}
-
-.dark .glass-card:hover {
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
-}
-
-/* Shell prompt styling */
-.shell-prompt::before {
-  content: "❯ ";
-  color: hsl(var(--primary));
-  font-weight: bold;
-}
-
-/* Subtle glow effect */
-.glow-primary {
-  box-shadow: 0 0 20px hsl(var(--primary) / 0.15);
-}
-
-.dark .glow-primary {
-  box-shadow: 0 0 30px hsl(var(--primary) / 0.2);
-}
-
-/* Background mesh gradient */
+/* Background Gradients & Mesh */
 .bg-mesh {
-  background-image:
-    radial-gradient(at 20% 20%, hsl(var(--primary) / 0.08) 0px, transparent 50%),
-    radial-gradient(at 80% 80%, hsl(var(--accent) / 0.08) 0px, transparent 50%);
+  background-image: 
+    radial-gradient(at 15% 15%, rgba(59, 130, 246, 0.07) 0px, transparent 40%),
+    radial-gradient(at 85% 25%, rgba(29, 78, 216, 0.05) 0px, transparent 45%),
+    radial-gradient(at 50% 80%, rgba(96, 165, 250, 0.04) 0px, transparent 50%);
+  background-attachment: fixed;
 }
 
 .dark .bg-mesh {
-  background-image:
-    radial-gradient(at 20% 20%, hsl(var(--primary) / 0.12) 0px, transparent 50%),
-    radial-gradient(at 80% 80%, hsl(var(--accent) / 0.1) 0px, transparent 50%);
+  background-image: 
+    radial-gradient(at 20% 10%, rgba(59, 130, 246, 0.12) 0px, transparent 45%),
+    radial-gradient(at 80% 30%, rgba(29, 78, 216, 0.08) 0px, transparent 50%),
+    radial-gradient(at 40% 85%, rgba(37, 99, 235, 0.06) 0px, transparent 40%);
+  background-attachment: fixed;
 }
 
-/* Typing cursor animation */
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+.bg-grid {
+  background-size: 32px 32px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
-.cursor-blink {
-  animation: blink 1s step-end infinite;
+:root:not(.dark) .bg-grid {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
 }
 
-/* ============================================
-   Animations — Hero, sections, scroll
-   ============================================ */
-
-/* Fade-up entry */
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Glow effects */
+.glow-blue {
+  box-shadow: 0 0 35px -5px rgba(59, 130, 246, 0.3);
 }
 
-.animate-fade-up {
-  animation: fade-up 0.6s ease-out forwards;
+.glow-blue-sm {
+  box-shadow: 0 0 15px -3px rgba(59, 130, 246, 0.25);
 }
 
-/* Floating blobs */
-@keyframes float {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-20px) scale(1.05); }
+.text-gradient {
+  background: linear-gradient(135deg, #FAFAFA 0%, #A1A1AA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-@keyframes float-delayed {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-15px) scale(1.03); }
+:root:not(.dark) .text-gradient {
+  background: linear-gradient(135deg, #09090B 0%, #52525B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+.text-gradient-blue {
+  background: linear-gradient(135deg, #60A5FA 0%, #2563EB 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.animate-float-delayed {
-  animation: float-delayed 8s ease-in-out infinite;
-  animation-delay: 2s;
+/* Card hover animation */
+.card-hover {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              box-shadow 0.25s ease;
 }
 
-/* Scroll-triggered reveal */
-@keyframes scroll-reveal {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.card-hover:hover {
+  transform: translateY(-3px);
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.4),
+              0 0 0 1px rgba(59, 130, 246, 0.2);
 }
 
-.scroll-hidden {
-  opacity: 0;
+:root:not(.dark) .card-hover:hover {
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.08),
+              0 0 0 1px rgba(37, 99, 235, 0.2);
 }
 
-.scroll-visible {
-  animation: scroll-reveal 0.7s ease-out forwards;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-/* Stagger children animation for grids */
-.stagger-children > * {
-  opacity: 0;
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.stagger-children.scroll-visible > * {
-  animation: fade-up 0.5s ease-out forwards;
+::-webkit-scrollbar-thumb {
+  background: rgba(161, 161, 170, 0.25);
+  border-radius: 9999px;
 }
 
-.stagger-children.scroll-visible > *:nth-child(1) { animation-delay: 0s; }
-.stagger-children.scroll-visible > *:nth-child(2) { animation-delay: 0.08s; }
-.stagger-children.scroll-visible > *:nth-child(3) { animation-delay: 0.16s; }
-.stagger-children.scroll-visible > *:nth-child(4) { animation-delay: 0.24s; }
-.stagger-children.scroll-visible > *:nth-child(5) { animation-delay: 0.32s; }
-.stagger-children.scroll-visible > *:nth-child(6) { animation-delay: 0.4s; }
-.stagger-children.scroll-visible > *:nth-child(7) { animation-delay: 0.48s; }
-.stagger-children.scroll-visible > *:nth-child(8) { animation-delay: 0.56s; }
-.stagger-children.scroll-visible > *:nth-child(9) { animation-delay: 0.64s; }
-
-/* Pulse ring for "available" dot */
-@keyframes pulse-ring {
-  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
-  70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.5);
 }
 
-.animate-pulse-ring {
-  animation: pulse-ring 2s ease-out infinite;
+/* Code styling */
+code, pre, .font-mono {
+  font-family: var(--font-mono);
 }
 
-/* Loading skeleton shimmer animation */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+/* Selection */
+::selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: #FAFAFA;
 }
-
-.skeleton {
-  background: linear-gradient(
-    90deg,
-    hsl(var(--muted)) 25%,
-    hsl(var(--muted-foreground) / 0.08) 50%,
-    hsl(var(--muted)) 75%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 1.5s ease-in-out infinite;
-}
-
-/* Horizontal scroll containers (mobile) */
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-/* Edge fade hint for scrollable containers */
-.scroll-fade-container {
-  position: relative;
-}
-
-.scroll-fade-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 2.5rem;
-  background: linear-gradient(to right, transparent, hsl(var(--background)));
-  pointer-events: none;
-  z-index: 2;
-}
-
-@media (min-width: 640px) {
-  .scroll-fade-container::after {
-    display: none;
-  }
-}
-
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
-/* ============================================
-   Chatbot message markdown styles
-   ============================================ */
-.chat-message strong {
-  font-weight: 700;
-}
-.chat-message em {
-  font-style: italic;
-}
-.chat-message .inline-code {
-  background: hsl(var(--muted));
-  padding: 0.1em 0.35em;
-  border-radius: 0.25rem;
-  font-size: 0.85em;
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
-}
-.chat-message .chat-link {
-  color: hsl(var(--primary));
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-.chat-message .chat-link:hover {
-  opacity: 0.8;
-}
-.chat-message .chat-list {
-  list-style: none;
-  padding-left: 0.25rem;
-  margin: 0.35rem 0;
-}
-.chat-message .chat-list li {
-  position: relative;
-  padding-left: 1.1em;
-  margin-bottom: 0.15rem;
-}
-.chat-message .chat-list li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: hsl(var(--primary));
-  font-weight: 700;
-}
-/* User messages — code & links override for contrast */
-.chat-message.bg-primary .inline-code {
-  background: rgba(255, 255, 255, 0.15);
-}
-.chat-message.bg-primary .chat-link {
-  color: inherit;
-  opacity: 0.9;
-}
-
