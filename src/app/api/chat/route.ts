@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { getPortfolioData } from "@/lib/data-manager";
+import {
+  getSettings,
+  getProjects,
+  getSkills,
+  getSecuritySkills,
+  getCertifications,
+  getAbout,
+} from "@/lib/content";
 import githubReposData from "@/data/github-repos.json";
 import { createRateLimiter, getClientIP } from "@/lib/rate-limit";
 
@@ -12,12 +19,8 @@ const chatLimiter = createRateLimiter("chat", {
   windowMs: 60 * 1000,
 });
 
-// Modèles à essayer dans l'ordre (le premier disponible sera utilisé)
-const GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-2.0-flash-lite"];
+const GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-1.5-flash"];
 
-// ============================================
-// Repos GitHub chargés depuis le JSON local enrichi
-// ============================================
 interface GitHubRepo {
   name: string;
   description: string | null;
@@ -28,138 +31,90 @@ interface GitHubRepo {
   topics: string[];
   stars: number;
   forks: number;
-  created_at: string;
-  updated_at: string;
-  default_branch: string;
-  is_fork: boolean;
-  readme: string | null;
 }
 
 function getGitHubRepos(): GitHubRepo[] {
-  return githubReposData as unknown as GitHubRepo[];
+  return (githubReposData || []) as unknown as GitHubRepo[];
 }
 
 function formatGitHubRepos(repos: GitHubRepo[]): string {
-  if (repos.length === 0) return "";
-
+  if (!repos || repos.length === 0) return "";
   const repoLines = repos
-    .map((r) => {
-      const parts = [`### ${r.name}`];
-      if (r.description) parts.push(`Description: ${r.description}`);
-      if (r.language) parts.push(`Langage principal: ${r.language}`);
-      const langs = Object.keys(r.languages);
-      if (langs.length > 1) parts.push(`Stack: ${langs.join(", ")}`);
-      if (r.topics.length > 0) parts.push(`Tags: ${r.topics.join(", ")}`);
-      if (r.stars > 0) parts.push(`⭐ ${r.stars} stars`);
-      if (r.forks > 0) parts.push(`🍴 ${r.forks} forks`);
-      if (r.homepage) parts.push(`Demo: ${r.homepage}`);
-      parts.push(`URL: ${r.url}`);
-      if (r.readme && r.readme.length > 20 && !r.readme.includes("\u0000")) {
-        // Inclure un extrait du README nettoyé (max 500 chars)
-        const cleanReadme = r.readme.replace(/[#*`\-=|]/g, "").replace(/\n{3,}/g, "\n\n").trim();
-        if (cleanReadme.length > 20) {
-          parts.push(`README (extrait): ${cleanReadme.substring(0, 500)}${cleanReadme.length > 500 ? "..." : ""}`);
-        }
-      }
-      return parts.join("\n");
-    })
-    .join("\n\n");
-
-  return `\n\n=== REPOS GITHUB PUBLICS (${repos.length}) ===
-Voici TOUS les repos publics de Juvenal sur GitHub. Utilise ces informations pour répondre aux questions sur ses projets, technologies et activité GitHub.\n\n${repoLines}`;
+    .slice(0, 10)
+    .map((r) => `- ${r.name}: ${r.description || "Repo public"}. Langage: ${r.language || "N/A"}. URL: ${r.url}`)
+    .join("\n");
+  return `\n\n=== REPOS GITHUB PUBLICS ===\n${repoLines}`;
 }
 
-/**
- * Construit le contexte du portfolio pour le system prompt de Gemini
- */
-function buildPortfolioContext(data: Awaited<ReturnType<typeof getPortfolioData>>): string {
-  const githubRepos = getGitHubRepos();
-  const { settings, projects, securitySkills, skillCategories, profileCategories, terminalLines, certifications, technologies } = data;
+function buildPortfolioContext(): string {
+  const settings = getSettings();
+  const projects = getProjects();
+  const skills = getSkills();
+  const securitySkills = getSecuritySkills();
+  const certs = getCertifications();
+  const about = getAbout();
+  const repos = getGitHubRepos();
 
   const projectsList = projects
-    .map((p) => `- ${p.title}: ${p.subtitle}. ${p.description}. Stack: ${p.stack.join(", ")}. ${p.securityPoints.length > 0 ? `Sécurité: ${p.securityPoints.join(", ")}` : ""} GitHub: ${p.githubUrl}${p.liveUrl ? ` | Demo: ${p.liveUrl}` : ""}`)
+    .map(
+      (p) =>
+        `- ${p.title}: ${p.subtitle}. ${p.description}. Stack: ${p.stack.join(", ")}. Sécurité: ${p.securityPoints.join(", ")}. GitHub: ${p.githubUrl || "N/A"}`
+    )
     .join("\n");
 
   const securityList = securitySkills
     .map((s) => `- ${s.title}: ${s.description} Tags: ${s.tags.join(", ")}`)
     .join("\n");
 
-  const skillsList = skillCategories
-    .map((c) => `- ${c.icon} ${c.title}: ${c.items.join(", ")}`)
+  const skillsList = skills
+    .map((c) => `- ${c.title}: ${c.items.join(", ")}`)
     .join("\n");
 
-  const profileList = profileCategories
-    .map((c) => `- ${c.icon} ${c.title}: ${c.points.join(", ")}`)
-    .join("\n");
-
-  const terminalInfo = terminalLines
-    .map((l) => `${l.command} → ${l.output}`)
-    .join("\n");
-
-  const certList = certifications
-    .map((c) => `- ${c.name} (${c.platform}, ${c.date}): ${c.description}`)
-    .join("\n");
-
-  const techList = technologies
-    .map((t) => `- ${t.name} [${t.category}]`)
+  const certList = certs
+    .map((c) => `- ${c.name} (${c.platform}, ${c.date}): ${c.description || ""}`)
     .join("\n");
 
   return `
-Tu es l'assistant IA du portfolio de Juvenal SINENG KENGNI (pseudo: SKJUV).
-Tu dois répondre UNIQUEMENT aux questions liées à Juvenal, son parcours, ses compétences, ses projets et son profil professionnel.
-Pour toute question hors-sujet (météo, politique, cuisine, sports, etc.), réponds poliment que tu ne peux répondre qu'aux questions sur le portfolio de Juvenal.
+Tu es l'assistant IA du portfolio professionnel de SINENG KENGNI Juvenal (pseudo: SKJUV).
+Tu réponds UNIQUEMENT aux questions sur Juvenal, ses projets, ses compétences techniques en cybersécurité et full-stack, et son parcours.
+Pour toute question hors-sujet, refuse poliment en indiquant ta spécialisation.
 
-Réponds de manière naturelle, amicale et professionnelle. Utilise des emojis occasionnellement.
-Réponds en français par défaut, sauf si l'utilisateur écrit en anglais.
-Sois concis mais informatif. N'invente JAMAIS d'informations qui ne sont pas dans le contexte ci-dessous.
+Style : Naturel, précis, courtois, professionnel.
+Langue : Réponds dans la langue posée (français ou anglais).
 
-=== INFORMATIONS DU PORTFOLIO ===
+=== PROFIL & BIO ===
+Nom : ${settings.heroTitle}
+Titre : ${settings.heroSubtitle}
+Description : ${settings.heroDescription}
+Contact : Email: ${settings.contactEmail} | GitHub: ${settings.contactGithub} | LinkedIn: ${settings.contactLinkedin}
+Formation : Université de Yaoundé 1, GDSC, GDG Yaoundé, Django Cameroon.
 
-Site: ${settings.siteTitle} — ${settings.siteDescription}
-Contact: Email: ${settings.contactEmail} | GitHub: ${settings.contactGithub} | LinkedIn: ${settings.contactLinkedin}
-
-Présentation:
-${settings.heroTitle}
-${settings.heroSubtitle}
-${settings.heroDescription}
-
-Terminal info:
-${terminalInfo}
-
-=== PROJETS (${projects.length}) ===
+=== PROJETS RÉALISÉS (${projects.length}) ===
 ${projectsList}
 
-=== COMPÉTENCES SÉCURITÉ (Passion #1) ===
+=== STANDARDS & PRATIQUES SÉCURITÉ ===
 ${securityList}
 
-=== COMPÉTENCES TECHNIQUES ===
+=== ARSENAL TECHNIQUE ===
 ${skillsList}
 
-=== PROFIL & SYSTÈMES ===
-${profileList}
-
-=== TECHNOLOGIES MAÎTRISÉES (${technologies.length}) ===
-${techList}
-
-=== CERTIFICATIONS (${certifications.length}) ===
-${certList || "Aucune certification listée pour le moment."}
-${formatGitHubRepos(githubRepos)}
+=== CERTIFICATIONS COURSERA / IBM / GOOGLE CLOUD (${certs.length}) ===
+${certList}
+${formatGitHubRepos(repos)}
 `.trim();
 }
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate limiting
     const ip = getClientIP(request);
-    const { success, remaining, resetAt } = chatLimiter.check(ip);
+    const { success, resetAt } = chatLimiter.check(ip);
     if (!success) {
       return NextResponse.json(
-        { error: "Trop de messages. Veuillez patienter avant de réessayer." },
+        { error: "Trop de requêtes. Veuillez patienter un instant." },
         {
           status: 429,
           headers: {
             "Retry-After": String(Math.ceil((resetAt - Date.now()) / 1000)),
-            "X-RateLimit-Remaining": "0",
           },
         }
       );
@@ -171,33 +126,25 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Message requis" }, { status: 400 });
     }
 
-    // Limiter la longueur du message
     if (message.length > 1000) {
       return NextResponse.json({ error: "Message trop long (max 1000 caractères)" }, { status: 400 });
     }
 
-    // Vérifier que Gemini est configuré
     if (!GEMINI_API_KEY) {
       return NextResponse.json(
-        { error: "API Gemini non configurée", fallback: true },
+        { error: "Clé API Gemini non configurée", fallback: true },
         { status: 503 }
       );
     }
 
-    // Charger les données du portfolio pour le contexte
-    const data = await getPortfolioData();
-    const systemContext = buildPortfolioContext(data);
-
-    // Configurer Gemini
+    const systemContext = buildPortfolioContext();
     const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 
-    // Construire l'historique de conversation pour Gemini
     const chatHistory = (history || []).map((msg: { role: string; content: string }) => ({
       role: msg.role === "assistant" ? "model" : "user",
       parts: [{ text: msg.content }],
     }));
 
-    // Essayer chaque modèle jusqu'à ce qu'un fonctionne
     let lastError: unknown = null;
     for (const modelName of GEMINI_MODELS) {
       try {
@@ -205,9 +152,8 @@ export async function POST(request: NextRequest) {
           model: modelName,
           systemInstruction: systemContext,
           generationConfig: {
-            maxOutputTokens: 2048,
+            maxOutputTokens: 1024,
             temperature: 0.7,
-            topP: 0.9,
           },
         });
 
@@ -217,23 +163,14 @@ export async function POST(request: NextRequest) {
 
         return NextResponse.json({ response, model: modelName });
       } catch (err) {
-        console.warn(`[chat] Modèle ${modelName} échoué:`, err instanceof Error ? err.message : err);
         lastError = err;
-        // Continuer avec le modèle suivant
       }
     }
 
-    // Tous les modèles ont échoué
-    console.error("Tous les modèles Gemini ont échoué:", lastError);
-    return NextResponse.json(
-      { error: "Erreur du service IA", fallback: true },
-      { status: 500 }
-    );
+    console.error("[Chat API] All Gemini models failed:", lastError);
+    return NextResponse.json({ error: "Service IA indisponible", fallback: true }, { status: 500 });
   } catch (error) {
-    console.error("Gemini API error:", error);
-    return NextResponse.json(
-      { error: "Erreur du service IA", fallback: true },
-      { status: 500 }
-    );
+    console.error("[Chat API] Error:", error);
+    return NextResponse.json({ error: "Erreur interne", fallback: true }, { status: 500 });
   }
 }

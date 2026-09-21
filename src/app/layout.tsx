@@ -1,18 +1,31 @@
 import type { Metadata } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
-import { getPortfolioData } from "@/lib/data-manager";
+import { getSettings, getCertifications } from "@/lib/content";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import PageViewTracker from "@/components/PageViewTracker";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.sineng-juvenal.me";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
-    const data = await getPortfolioData();
-    const title = data.settings.siteTitle;
-    const description = data.settings.siteDescription;
+    const settings = getSettings();
+    const title = settings.siteTitle;
+    const description = settings.siteDescription;
 
     return {
       title: {
@@ -27,15 +40,24 @@ export async function generateMetadata(): Promise<Metadata> {
           { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
           { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
         ],
-        apple: [
-          { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
-        ],
+        apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
       },
       keywords: [
-        "Juvenal", "SINENG KENGNI", "SKJUV", "Juvenal SINENG KENGNI",
-        "cybersecurity", "cybersécurité", "full-stack developer",
-        "développeur full-stack", "portfolio", "sécurité informatique",
-        "Next.js", "React", "TypeScript", "Cameroun", "Afrique francophone"
+        "Juvenal",
+        "SINENG KENGNI",
+        "SKJUV",
+        "Juvenal SINENG KENGNI",
+        "cybersecurity",
+        "cybersécurité",
+        "full-stack developer",
+        "développeur full-stack",
+        "portfolio",
+        "sécurité informatique",
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Cameroun",
+        "Afrique francophone",
       ],
       authors: [{ name: "SINENG KENGNI Juvenal", url: SITE_URL }],
       creator: "SINENG KENGNI Juvenal",
@@ -56,7 +78,7 @@ export async function generateMetadata(): Promise<Metadata> {
             url: "/og-image.png",
             width: 1200,
             height: 630,
-            alt: `Portfolio de ${data.settings.heroTitle}`,
+            alt: `Portfolio de ${settings.heroTitle}`,
           },
         ],
       },
@@ -78,31 +100,23 @@ export async function generateMetadata(): Promise<Metadata> {
           "max-snippet": -1,
         },
       },
-      verification: {
-        // Ajouter ton code Google Search Console ici quand tu l'auras
-        // google: "ton-code-verification",
-      },
     };
   } catch {
     return {
       title: "Portfolio — SINENG KENGNI Juvenal",
-      description: "Portfolio de SINENG KENGNI Juvenal, passionné de cybersécurité et développeur Full-Stack.",
+      description:
+        "Portfolio de SINENG KENGNI Juvenal, passionné de cybersécurité et développeur Full-Stack.",
     };
   }
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  let certifications: { name: string; platform: string; description?: string; verificationUrl?: string }[] = [];
-  try {
-    const data = await getPortfolioData();
-    certifications = data.certifications || [];
-  } catch {}
+  const certifications = getCertifications();
 
-  // JSON-LD Schema.org pour le référencement structuré
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -110,15 +124,25 @@ export default async function RootLayout({
     alternateName: ["Juvenal SINENG KENGNI", "SKJUV", "Juvenal Sineng"],
     url: SITE_URL,
     jobTitle: "Full-Stack Developer & Cybersecurity Enthusiast",
-    description: "Passionné par la sécurité applicative, l'architecture sécurisée et le développement de systèmes robustes.",
+    description:
+      "Passionné par la sécurité applicative, l'architecture sécurisée et le développement de systèmes robustes.",
     sameAs: [
       "https://github.com/SKJUV",
       "https://www.linkedin.com/in/juvenal-sineng-kengni",
     ],
     knowsAbout: [
-      "Cybersecurity", "Full-Stack Development", "React", "Next.js",
-      "TypeScript", "Node.js", "Python", "Java", "C#",
-      "Network Security", "OWASP", "Penetration Testing"
+      "Cybersecurity",
+      "Full-Stack Development",
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "Python",
+      "Java",
+      "C#",
+      "Network Security",
+      "OWASP",
+      "Penetration Testing",
     ],
     hasCredential: certifications.map((cert) => ({
       "@type": "EducationalOccupationalCredential",
@@ -128,7 +152,7 @@ export default async function RootLayout({
         "@type": "Organization",
         name: cert.platform,
       },
-      ...(cert.verificationUrl ? { url: cert.verificationUrl } : {}),
+      ...(cert.url ? { url: cert.url } : {}),
     })),
   };
 
@@ -137,7 +161,8 @@ export default async function RootLayout({
     "@type": "WebSite",
     name: "Portfolio — SINENG KENGNI Juvenal",
     url: SITE_URL,
-    description: "Portfolio professionnel de SINENG KENGNI Juvenal — Cybersecurity & Full-Stack Developer",
+    description:
+      "Portfolio professionnel de SINENG KENGNI Juvenal — Cybersecurity & Full-Stack Developer",
     author: {
       "@type": "Person",
       name: "SINENG KENGNI Juvenal",
@@ -155,18 +180,22 @@ export default async function RootLayout({
       item: {
         "@type": "Course",
         name: cert.name,
-        description: cert.description || cert.name,
+        description: cert.name,
         provider: {
           "@type": "Organization",
           name: cert.platform,
         },
-        ...(cert.verificationUrl ? { url: cert.verificationUrl } : {}),
+        ...(cert.url ? { url: cert.url } : {}),
       },
     })),
   };
 
   return (
-    <html lang="fr" suppressHydrationWarning>
+    <html
+      lang="fr"
+      className={`dark ${inter.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <script
           type="application/ld+json"
@@ -183,7 +212,7 @@ export default async function RootLayout({
           />
         )}
       </head>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased selection:bg-blue-600/30 selection:text-white">
         <ThemeProvider>{children}</ThemeProvider>
         <Analytics />
         <SpeedInsights />

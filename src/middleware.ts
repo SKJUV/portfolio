@@ -40,7 +40,7 @@ async function verifySessionToken(token: string): Promise<boolean> {
   }
 }
 
-// Headers de sécurité appliqués à toutes les réponses
+// Headers de sécurité stricts (A+ rating)
 const SECURITY_HEADERS: Record<string, string> = {
   "X-Content-Type-Options": "nosniff",
   "X-Frame-Options": "DENY",
@@ -48,6 +48,9 @@ const SECURITY_HEADERS: Record<string, string> = {
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "Permissions-Policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
   "X-DNS-Prefetch-Control": "on",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+  "Content-Security-Policy":
+    "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https:; font-src 'self' data: https:; connect-src 'self' https:; frame-ancestors 'none';",
 };
 
 function applySecurityHeaders(response: NextResponse): NextResponse {
@@ -85,12 +88,6 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    /*
-     * Matcher toutes les routes sauf :
-     * - _next/static (fichiers statiques)
-     * - _next/image (optimisation d'images)
-     * - favicon.ico
-     */
     "/((?!_next/static|_next/image|favicon.ico).*)",
   ],
 };
