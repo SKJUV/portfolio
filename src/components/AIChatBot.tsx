@@ -53,8 +53,8 @@ function generateLocalResponse(
 
   if (/qui (es[t\-]|est)|présent|c'est qui|who (is|are)/.test(q)) {
     return locale === "fr"
-      ? "SINENG KENGNI Juvenal est un développeur Full-Stack et passionné de cybersécurité, étudiant à l'Université de Yaoundé 1 et détenteur de 17 certifications Coursera (IBM, Google Cloud)."
-      : "SINENG KENGNI Juvenal is a Full-Stack developer and cybersecurity enthusiast, student at University of Yaoundé 1 with 17 professional certifications from IBM and Google Cloud.";
+      ? "SINENG KENGNI Juvenal est un développeur Full-Stack et passionné de cybersécurité, étudiant à l'Université de Yaoundé 1 et détenteur de 8 certifications d'élite (IBM, Google Cloud)."
+      : "SINENG KENGNI Juvenal is a Full-Stack developer and cybersecurity enthusiast, student at University of Yaoundé 1 with 8 elite certifications from IBM and Google Cloud.";
   }
 
   if (/contact|email|mail|linkedin|joindre/.test(q)) {

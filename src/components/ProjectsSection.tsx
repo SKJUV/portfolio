@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { useLanguage } from "@/providers/LanguageProvider";
 import { SectionHeader } from "./ui/SectionHeader";
 import ProjectCard from "./ProjectCard";
@@ -12,73 +11,58 @@ interface ProjectsSectionProps {
 
 export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   const { locale } = useLanguage();
-  const [filter, setFilter] = useState<string>("all");
 
-  const filterOptions = [
-    { id: "all", label: locale === "fr" ? "Tous les projets" : "All Projects" },
-    { id: "security", label: locale === "fr" ? "Sécurité & Full-Stack" : "Security & Full-Stack" },
-    { id: "ai", label: locale === "fr" ? "IA & Systèmes" : "AI & Systems" },
-  ];
-
-  const filteredProjects = projects.filter((project) => {
-    if (filter === "all") return true;
-    if (filter === "security") {
-      return (
-        project.badgeType === "security" ||
-        project.securityPoints.length > 2 ||
-        project.stack.some((s) => /security|auth|supabase|linux/i.test(s))
-      );
-    }
-    if (filter === "ai") {
-      return (
-        project.stack.some((s) => /gemini|ai|python|data|bot/i.test(s)) ||
-        project.badge.toLowerCase().includes("ia")
-      );
-    }
-    return true;
-  });
+  const featuredProject = projects.find((p) => p.layout === "featured" || p.featured);
+  const gridProjects = projects.filter((p) => p.layout === "grid" || (!p.layout && !p.featured));
+  const compactProjects = projects.filter((p) => p.layout === "compact");
 
   return (
-    <section id="projects" className="py-20 sm:py-28 px-4 sm:px-6 relative">
+    <section id="projects" className="py-16 sm:py-24 px-4 sm:px-6 relative">
       <div className="max-w-6xl mx-auto space-y-12">
         <SectionHeader
-          badge={locale === "fr" ? "RÉALISATIONS" : "FEATURED WORK"}
+          badge={locale === "fr" ? "PROJETS SÉLECTIONNÉS" : "CURATED WORK"}
           title={
             locale === "fr"
-              ? "Projets Concrets & Sécurisés"
-              : "Shipped & Secure Projects"
+              ? "Réalisations Concrètes & Sécurisées"
+              : "Shipped & Production-Grade Work"
           }
           description={
             locale === "fr"
-              ? "Chaque projet est conçu avec une attention méticuleuse portée à la sécurité, l'architecture logicielle et l'expérience utilisateur."
-              : "Each project is engineered with meticulous care for application security, software architecture, and user experience."
+              ? "Solutions complètes alliant architecture logicielle, protection des données et intégration IA."
+              : "Full-stack and desktop solutions engineered with data security, system architecture, and AI integration."
           }
         />
 
-        {/* Filter pills */}
-        <div className="flex justify-center">
-          <div className="inline-flex p-1 rounded-xl bg-zinc-900 border border-zinc-800 gap-1">
-            {filterOptions.map((opt) => (
-              <button
-                key={opt.id}
-                onClick={() => setFilter(opt.id)}
-                className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 ${
-                  filter === opt.id
-                    ? "bg-blue-600 text-white shadow-sm"
-                    : "text-zinc-400 hover:text-white"
-                }`}
-              >
-                {opt.label}
-              </button>
-            ))}
-          </div>
-        </div>
+        <div className="space-y-8">
+          {/* 1. Flagship Hero Project (Full-Width) */}
+          {featuredProject && (
+            <div>
+              <ProjectCard project={featuredProject} />
+            </div>
+          )}
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+          {/* 2. Main Web & AI Applications (2-Columns Grid) */}
+          {gridProjects.length > 0 && (
+            <div className="grid md:grid-cols-2 gap-6">
+              {gridProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+          )}
+
+          {/* 3. Specialized & Desktop Systems (Compact Horizontal Ribbons) */}
+          {compactProjects.length > 0 && (
+            <div className="pt-4 space-y-3">
+              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-zinc-400 dark:text-zinc-500 pb-1">
+                <span>{locale === "fr" ? "Applications Systèmes & Desktop" : "System & Desktop Applications"}</span>
+              </div>
+              <div className="space-y-3">
+                {compactProjects.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -221,15 +221,15 @@ export async function verifyRequest(req: Request) {
           {/* Quick Metrics */}
           <div className="pt-6 grid grid-cols-3 gap-4 border-t border-zinc-200 dark:border-zinc-800/80 max-w-lg">
             <div>
-              <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 font-mono">17+</div>
+              <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 font-mono">8</div>
               <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-                {locale === "fr" ? "Certifications Pro" : "Certifications"}
+                {locale === "fr" ? "Certifs (IBM · Google)" : "Certifications (IBM · Google)"}
               </div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 font-mono">8+</div>
+              <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 font-mono">5</div>
               <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-                {locale === "fr" ? "Projets Concrets" : "Shipped Projects"}
+                {locale === "fr" ? "Projets Phares" : "Featured Projects"}
               </div>
             </div>
             <div>

@@ -2,15 +2,16 @@
 
 import { useLanguage } from "@/providers/LanguageProvider";
 import { SectionHeader } from "./ui/SectionHeader";
-import { Card } from "./ui/Card";
-import { 
-  GraduationCap, 
-  Terminal, 
-  ShieldCheck, 
-  Cpu, 
-  Sparkles, 
-  Target, 
-  CheckCircle2 
+import {
+  GraduationCap,
+  Terminal,
+  ShieldCheck,
+  CheckCircle2,
+  Award,
+  MapPin,
+  Sparkles,
+  ArrowRight,
+  Code2,
 } from "lucide-react";
 import type { AboutData } from "@/lib/content";
 
@@ -19,76 +20,20 @@ interface AboutSectionProps {
 }
 
 export default function AboutSection({ data }: AboutSectionProps) {
-  const { locale, td } = useLanguage();
+  const { locale } = useLanguage();
 
-  const visionPillars = [
-    {
-      icon: Target,
-      title: locale === "fr" ? "Vision Technique" : "Technical Vision",
-      points: locale === "fr"
-        ? [
-            "Concevoir des systèmes résilients et sécurisés pour l'Afrique francophone",
-            "Démocratiser l'accès aux technologies modernes via l'open-source",
-            "Bâtir des architectures robustes et pérennes",
-          ]
-        : [
-            "Design resilient and secure systems for francophone Africa",
-            "Democratize access to modern technologies through open-source",
-            "Build robust and long-lasting architectures",
-          ],
-    },
-    {
-      icon: ShieldCheck,
-      title: locale === "fr" ? "Culture Cybersécurité" : "Cybersecurity Culture",
-      points: locale === "fr"
-        ? [
-            "Approfondir les audits OWASP, ISO 27001 et pentesting",
-            "Adopter la philosophie Zero Trust dès la première ligne de code",
-            "Sensibiliser les développeurs à la sécurité proactive",
-          ]
-        : [
-            "Deepen OWASP audits, ISO 27001, and penetration testing",
-            "Adopt Zero Trust mindset from the first line of code",
-            "Educate and empower developers towards proactive security",
-          ],
-    },
-    {
-      icon: Cpu,
-      title: locale === "fr" ? "Intelligence Artificielle" : "Artificial Intelligence",
-      points: locale === "fr"
-        ? [
-            "Exploiter les capacités des LLMs (Google Gemini) en production",
-            "Intégrer des agents et flux d'IA pratiques et performants",
-            "Créer des solutions augmentées adaptées aux besoins concrets",
-          ]
-        : [
-            "Leverage production LLM capabilities (Google Gemini)",
-            "Integrate practical, high-performance AI workflows & agents",
-            "Create augmented solutions tailored to real-world needs",
-          ],
-    },
-    {
-      icon: Sparkles,
-      title: locale === "fr" ? "Philosophie de Travail" : "Work Philosophy",
-      points: locale === "fr"
-        ? [
-            "« Code propre, architecture claire, sécurité d'abord »",
-            "Apprentissage continu et partage au sein des communautés",
-            "Chaque ligne de code doit servir une intention mesurable",
-          ]
-        : [
-            "\"Clean code, clear architecture, security first\"",
-            "Continuous learning and active community contribution",
-            "Every line of code must serve a measurable purpose",
-          ],
-    },
-  ];
+  const bioText =
+    locale === "fr"
+      ? data.bio?.fr ||
+        "Étudiant en Informatique à l'Université de Yaoundé 1 et développeur passionné par la cybersécurité. Je conçois des applications web et logicielles robustes en alliant rigueur d'ingénierie, architecture résiliente et protection proactive contre les vulnérabilités."
+      : data.bio?.en ||
+        "Computer Science student at University of Yaounde 1 and cybersecurity enthusiast. I build robust web and software applications by combining engineering rigor, resilient architecture, and proactive vulnerability protection.";
 
   return (
-    <section id="about" className="py-20 sm:py-28 px-4 sm:px-6 relative">
-      <div className="max-w-6xl mx-auto space-y-16">
+    <section id="about" className="py-16 sm:py-24 px-4 sm:px-6 relative">
+      <div className="max-w-6xl mx-auto space-y-10">
         <SectionHeader
-          badge={locale === "fr" ? "À PROPOS" : "ABOUT ME"}
+          badge={locale === "fr" ? "PROFIL & FONDATIONS" : "PROFILE & FOUNDATIONS"}
           title={
             locale === "fr"
               ? "Architecturer avec Rigueur, Construire pour l'Impact"
@@ -96,155 +41,188 @@ export default function AboutSection({ data }: AboutSectionProps) {
           }
           description={
             locale === "fr"
-              ? "Étudiant à l'Université de Yaoundé 1 et développeur passionné, j'allie la rigueur de l'ingénierie logicielle aux impératifs critiques de la sécurité applicative."
-              : "Student at University of Yaounde 1 and passionate engineer, bridging software engineering excellence with critical application security standards."
+              ? "Alliant formation académique d'excellence et audits de sécurité proactifs pour des applications fiables et durables."
+              : "Bridging academic computer science rigor with proactive security auditing for resilient, high-grade applications."
           }
         />
 
-        {/* Profile & Journey Highlights */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {/* Card 1: Education & Community */}
-          <div className="p-6 space-y-4 rounded-xl border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
-            <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
-              <GraduationCap className="w-5 h-5" />
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-                {locale === "fr" ? "Formation & Communautés" : "Education & Ecosystem"}
-              </h3>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+        {/* Asymmetrical Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
+          {/* Bento Item 1: Primary Narrative (8 cols) */}
+          <div className="md:col-span-8 p-7 sm:p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/50 shadow-sm flex flex-col justify-between relative overflow-hidden group">
+            {/* Subtle corner highlight */}
+            <div className="absolute top-0 right-0 w-48 h-48 bg-blue-500/5 rounded-full blur-2xl pointer-events-none" />
+
+            <div className="space-y-5">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 text-xs font-mono">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>{locale === "fr" ? "Démarche d'ingénierie" : "Engineering Mindset"}</span>
+              </div>
+
+              <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight leading-snug">
                 {locale === "fr"
-                  ? "Ancrage académique et contribution active"
-                  : "Academic roots and community leadership"}
+                  ? "« La sécurité n'est pas une surcouche, c'est l'essence même de l'architecture. »"
+                  : "“Security is not an afterthought, it is the bedrock of architecture.”"}
+              </h3>
+
+              <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                {bioText}
               </p>
             </div>
-            <ul className="space-y-2 text-xs text-zinc-700 dark:text-zinc-300">
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                <span>Université de Yaoundé 1</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                <span>Google Developer Groups (GDSC & GDG Yaoundé)</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                <span>Django Cameroon (Hacktoberfest)</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                <span>Women TechMakers Yaoundé</span>
-              </li>
-            </ul>
+
+            {/* Academic & Community Pills */}
+            <div className="pt-6 mt-6 border-t border-zinc-200 dark:border-zinc-800/60">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-400 block mb-3">
+                {locale === "fr" ? "Écosystème & Communautés Actives" : "Ecosystem & Active Communities"}
+              </span>
+              <div className="flex flex-wrap gap-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/60 text-xs text-zinc-800 dark:text-zinc-200">
+                  <GraduationCap className="w-3.5 h-3.5 text-blue-500" />
+                  Université de Yaoundé 1
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/60 text-xs text-zinc-800 dark:text-zinc-200">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+                  GDG Yaoundé & GDSC
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/60 text-xs text-zinc-800 dark:text-zinc-200">
+                  <Code2 className="w-3.5 h-3.5 text-blue-500" />
+                  Django Cameroon
+                </span>
+              </div>
+            </div>
           </div>
 
-          {/* Card 2: Environment & Systems */}
-          <div className="p-6 space-y-4 rounded-xl border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
-            <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
-              <Terminal className="w-5 h-5" />
-            </div>
+          {/* Bento Item 2: Quick Metrics & Credentials (4 cols) */}
+          <div className="md:col-span-4 p-7 rounded-2xl border border-zinc-200 dark:border-zinc-800/80 bg-gradient-to-b from-zinc-50 to-zinc-100 dark:from-zinc-900/80 dark:to-zinc-950/90 shadow-sm flex flex-col justify-between space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-                {locale === "fr" ? "Environnement & Systèmes" : "Systems & Linux"}
-              </h3>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
-                {locale === "fr"
-                  ? "Maîtrise des environnements d'ingénierie"
-                  : "Engineering environment proficiency"}
-              </p>
-            </div>
-            <ul className="space-y-2 text-xs text-zinc-700 dark:text-zinc-300">
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                <span>Manjaro Linux KDE (pacman/yay) & Zorin OS</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                <span>Terminal avancé (process, sockets, config Unix)</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                <span>Diagnostic réseau & BIOS hardware</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                <span>Git CLI & workflows de collaboration</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Card 3: Security & CTF */}
-          <div className="p-6 space-y-4 rounded-xl border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
-            <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-                {locale === "fr" ? "Sécurité & Pratique CTF" : "Security & Hands-on CTF"}
-              </h3>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
-                {locale === "fr"
-                  ? "Confrontation continue aux défis de sécurité"
-                  : "Continuous challenge and testing"}
-              </p>
-            </div>
-            <ul className="space-y-2 text-xs text-zinc-700 dark:text-zinc-300">
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                <span>Hack The Box & OverTheWire (CTF)</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                <span>Audit vulnérabilités web (OWASP Top 10)</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                <span>Chiffrement C++ & hashing BCrypt</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                <span>Sécurité des flux OAuth PKCE & JWT</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Vision Pillars Grid */}
-        <div className="space-y-6">
-          <div className="text-center max-w-xl mx-auto">
-            <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-              {locale === "fr" ? "Piliers & Vision Stratégique" : "Pillars & Vision"}
-            </h3>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
-              {locale === "fr"
-                ? "Ce qui guide mes choix architecturaux et mes projets au quotidien"
-                : "What drives my architectural decisions and daily projects"}
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {visionPillars.map((pillar, i) => {
-              const Icon = pillar.icon;
-              return (
-                <div
-                  key={i}
-                  className="p-5 rounded-xl border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/30 card-hover space-y-3"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
-                    <Icon className="w-4 h-4" />
-                  </div>
-                  <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">{pillar.title}</h4>
-                  <ul className="space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
-                    {pillar.points.map((pt, j) => (
-                      <li key={j} className="leading-relaxed flex items-start gap-1.5">
-                        <span className="text-blue-500 shrink-0 mt-0.5">▪</span>
-                        <span>{pt}</span>
-                      </li>
-                    ))}
-                  </ul>
+              <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-800">
+                <span className="text-xs font-mono text-zinc-500 uppercase tracking-wider">
+                  {locale === "fr" ? "Indicateurs Clés" : "Key Signals"}
+                </span>
+                <div className="flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-medium">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  {locale === "fr" ? "Disponible" : "Available"}
                 </div>
-              );
-            })}
+              </div>
+
+              <div className="divide-y divide-zinc-200 dark:divide-zinc-800/60 mt-2">
+                <div className="py-3.5 flex items-center justify-between">
+                  <span className="text-xs text-zinc-600 dark:text-zinc-400">
+                    {locale === "fr" ? "Accréditations certifiées" : "Certified Credentials"}
+                  </span>
+                  <span className="text-sm font-bold font-mono text-zinc-900 dark:text-zinc-100 flex items-center gap-1">
+                    <Award className="w-4 h-4 text-blue-500" />
+                    8 (IBM, Google)
+                  </span>
+                </div>
+
+                <div className="py-3.5 flex items-center justify-between">
+                  <span className="text-xs text-zinc-600 dark:text-zinc-400">
+                    {locale === "fr" ? "Posture sécurité" : "Security Posture"}
+                  </span>
+                  <span className="text-sm font-bold font-mono text-blue-600 dark:text-blue-400">
+                    Zero Trust
+                  </span>
+                </div>
+
+                <div className="py-3.5 flex items-center justify-between">
+                  <span className="text-xs text-zinc-600 dark:text-zinc-400">
+                    {locale === "fr" ? "Localisation" : "Location"}
+                  </span>
+                  <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200 flex items-center gap-1">
+                    <MapPin className="w-3.5 h-3.5 text-zinc-400" />
+                    Yaoundé, CM
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-blue-500/10 border border-blue-500/20 text-xs text-blue-700 dark:text-blue-300 flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 shrink-0" />
+              <span>
+                {locale === "fr"
+                  ? "Audit en profondeur & conformité OWASP Top 10"
+                  : "Deep application audits & OWASP Top 10 standards"}
+              </span>
+            </div>
+          </div>
+
+          {/* Bento Item 3: Practical Security & CTF (6 cols) */}
+          <div className="md:col-span-6 p-6 sm:p-7 rounded-2xl border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="text-base font-bold text-zinc-900 dark:text-zinc-100">
+                  {locale === "fr" ? "Cybersécurité & Audits Offensifs" : "Cybersecurity & Hands-on CTF"}
+                </h4>
+                <p className="text-xs text-zinc-500">
+                  {locale === "fr" ? "Entraînement CTF et défense active" : "CTF challenges & proactive defense"}
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-2 pt-2">
+              <div className="p-3 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200/80 dark:border-zinc-700/50 text-xs text-zinc-700 dark:text-zinc-300 flex items-start gap-2.5">
+                <span className="text-blue-500 font-mono font-bold mt-0.5">01</span>
+                <span>
+                  <strong>Hack The Box & OverTheWire CTFs :</strong>{" "}
+                  {locale === "fr"
+                    ? "Exploitation méthodique, élévation de privilèges et durcissement système."
+                    : "Methodical exploitation, privilege escalation, and system hardening."}
+                </span>
+              </div>
+
+              <div className="p-3 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200/80 dark:border-zinc-700/50 text-xs text-zinc-700 dark:text-zinc-300 flex items-start gap-2.5">
+                <span className="text-blue-500 font-mono font-bold mt-0.5">02</span>
+                <span>
+                  <strong>OWASP Top 10 & Crypto :</strong>{" "}
+                  {locale === "fr"
+                    ? "Revue de code anti-XSS, CSRF, injections SQL, chiffrement C++ et hashing BCrypt."
+                    : "Code review protecting against XSS, CSRF, SQLi, C++ encryption & BCrypt hashing."}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Bento Item 4: Engineering & Systems (6 cols) */}
+          <div className="md:col-span-6 p-6 sm:p-7 rounded-2xl border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
+                <Terminal className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="text-base font-bold text-zinc-900 dark:text-zinc-100">
+                  {locale === "fr" ? "Ingénierie Systèmes & Production" : "Systems Engineering & Delivery"}
+                </h4>
+                <p className="text-xs text-zinc-500">
+                  {locale === "fr" ? "Environnements fiables et architecture scalable" : "Reliable environments & scalable builds"}
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-2 pt-2">
+              <div className="p-3 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200/80 dark:border-zinc-700/50 text-xs text-zinc-700 dark:text-zinc-300 flex items-start gap-2.5">
+                <span className="text-blue-500 font-mono font-bold mt-0.5">03</span>
+                <span>
+                  <strong>Maîtrise POSIX & Linux :</strong>{" "}
+                  {locale === "fr"
+                    ? "Process, gestion mémoire, sockets, scripting Shell et diagnostics réseau avancés."
+                    : "Process inspection, memory management, sockets, shell scripting & network diagnostics."}
+                </span>
+              </div>
+
+              <div className="p-3 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200/80 dark:border-zinc-700/50 text-xs text-zinc-700 dark:text-zinc-300 flex items-start gap-2.5">
+                <span className="text-blue-500 font-mono font-bold mt-0.5">04</span>
+                <span>
+                  <strong>Clean Architecture & CI/CD :</strong>{" "}
+                  {locale === "fr"
+                    ? "Next.js 15, TypeScript strict, Docker multi-stage, pipelines d'intégration continue."
+                    : "Next.js 15, strict TypeScript, multi-stage Docker builds, automated CI/CD pipelines."}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
