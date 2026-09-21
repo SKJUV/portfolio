@@ -5,8 +5,8 @@
     "siteDescription": "Portfolio de John Doe, développeur Full-Stack passionné.",
     "siteDescription_en": "Portfolio of John Doe, passionate Full-Stack developer.",
     "heroTitle": "John Doe",
-    "heroSubtitle": "🚀 Full-Stack Developer",
-    "heroSubtitle_en": "🚀 Full-Stack Developer",
+    "heroSubtitle": "Rocket Full-Stack Developer",
+    "heroSubtitle_en": "Rocket Full-Stack Developer",
     "heroDescription": "Passionné par le développement web moderne et la création d'expériences utilisateur exceptionnelles.",
     "heroDescription_en": "Passionate about modern web development and creating exceptional user experiences.",
     "footerText": "© 2026 John Doe",
@@ -20,7 +20,7 @@
       "id": "security",
       "title": "Pratiques Sécurité",
       "title_en": "Security Practices",
-      "icon": "🔒",
+      "icon": "Lock",
       "enabled": true,
       "order": 0,
       "component": "SecuritySection"
@@ -29,7 +29,7 @@
       "id": "projects",
       "title": "Projets",
       "title_en": "Projects",
-      "icon": "💼",
+      "icon": "Briefcase",
       "enabled": true,
       "order": 1,
       "component": "ProjectsSection"
@@ -38,7 +38,7 @@
       "id": "certifications",
       "title": "Certifications",
       "title_en": "Certifications",
-      "icon": "🏆",
+      "icon": "Trophy",
       "enabled": true,
       "order": 2,
       "component": "CertificationsSection"
@@ -47,7 +47,7 @@
       "id": "skills",
       "title": "Compétences",
       "title_en": "Skills",
-      "icon": "🧠",
+      "icon": "Brain",
       "enabled": true,
       "order": 3,
       "component": "SkillsSection"
@@ -56,7 +56,7 @@
       "id": "profile",
       "title": "Profil",
       "title_en": "Profile",
-      "icon": "👤",
+      "icon": "User",
       "enabled": true,
       "order": 4,
       "component": "ProfileSection"
@@ -65,7 +65,7 @@
       "id": "vision",
       "title": "Vision et Passions",
       "title_en": "Vision & Passions",
-      "icon": "🔮",
+      "icon": "Sparkles",
       "enabled": true,
       "order": 5,
       "component": "VisionSection"
@@ -124,7 +124,7 @@
   ],
   "securitySkills": [
     {
-      "icon": "🔐",
+      "icon": "KeyRound",
       "title": "Authentification & Autorisation",
       "title_en": "Authentication & Authorization",
       "description": "JWT, OAuth 2.0, RBAC, sessions sécurisées et multi-factor authentication.",
@@ -132,7 +132,7 @@
       "tags": ["JWT", "OAuth 2.0", "RBAC", "MFA", "Session Security"]
     },
     {
-      "icon": "🛡️",
+      "icon": "ShieldCheck",
       "title": "Sécurité Web",
       "title_en": "Web Security",
       "description": "OWASP Top 10, CSP, CORS, prévention XSS/CSRF, headers de sécurité.",
@@ -140,7 +140,7 @@
       "tags": ["OWASP", "CSP", "CORS", "XSS Prevention", "CSRF", "HSTS"]
     },
     {
-      "icon": "🗄️",
+      "icon": "Database",
       "title": "Sécurité Base de Données",
       "title_en": "Database Security",
       "description": "Requêtes préparées, RLS, chiffrement des données, backup sécurisé.",
@@ -150,22 +150,22 @@
   ],
   "skillCategories": [
     {
-      "icon": "🎨",
+      "icon": "Layout",
       "title": "Frontend",
       "items": ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3"]
     },
     {
-      "icon": "⚙️",
+      "icon": "Server",
       "title": "Backend",
       "items": ["Node.js", "Python", "PostgreSQL", "MongoDB", "Redis", "Express"]
     },
     {
-      "icon": "🐳",
+      "icon": "Boxes",
       "title": "DevOps & Cloud",
       "items": ["Docker", "CI/CD", "Vercel", "AWS", "Nginx", "GitHub Actions"]
     },
     {
-      "icon": "🧪",
+      "icon": "FlaskConical",
       "title": "Testing & Qualité",
       "title_en": "Testing & Quality",
       "items": ["Jest", "Cypress", "ESLint", "Prettier", "Husky", "TypeScript Strict"]
@@ -173,7 +173,7 @@
   ],
   "profileCategories": [
     {
-      "icon": "🎓",
+      "icon": "GraduationCap",
       "title": "Formation",
       "title_en": "Education",
       "points": [
@@ -188,7 +188,7 @@
       ]
     },
     {
-      "icon": "💼",
+      "icon": "Briefcase",
       "title": "Expérience",
       "title_en": "Experience",
       "points": [
@@ -203,7 +203,7 @@
       ]
     },
     {
-      "icon": "🛠️",
+      "icon": "Sliders",
       "title": "Outils Dev",
       "title_en": "Dev Tools",
       "points": [
@@ -265,7 +265,7 @@
     },
     {
       "command": "$ echo $PASSION",
-      "output": "Building beautiful, performant and secure web applications 🚀"
+      "output": "Building beautiful, performant and secure web applications Rocket"
     },
     {
       "command": "$ uptime",
@@ -277,8 +277,8 @@
     "enabled": true,
     "botName": "Assistant IA",
     "botDescription": "Ask me anything about John",
-    "welcomeMessage": "Hello! 👋 I'm John's AI assistant. Ask me about his skills, projects or anything else!",
-    "fallbackMessage": "I can only answer questions about John Doe. Feel free to ask about his skills, projects or how to contact him! 😊",
+    "welcomeMessage": "Hello!  I'm John's AI assistant. Ask me about his skills, projects or anything else!",
+    "fallbackMessage": "I can only answer questions about John Doe. Feel free to ask about his skills, projects or how to contact him! ",
     "inputPlaceholder": "Ask a question about John...",
     "customResponses": []
   }

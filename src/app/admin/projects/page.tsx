@@ -243,54 +243,54 @@ export default function ProjectsPage() {
           {/* ===== BILINGUAL SECTION ===== */}
           <div className="border-t border-border pt-4">
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
-              Contenu bilingue — Les champs 🇬🇧 sont optionnels
+              Contenu bilingue — Les champs [EN] sont optionnels
             </p>
             <div className="grid sm:grid-cols-2 gap-4">
               {/* Title FR / EN */}
               <div className="space-y-1.5">
-                <label className="text-xs text-muted-foreground font-medium">🇫🇷 Titre</label>
+                <label className="text-xs text-muted-foreground font-medium">[FR] Titre</label>
                 <input type="text" placeholder="Mon Projet" value={form.title}
                   onChange={(e) => setForm({ ...form, title: e.target.value })} className="admin-input" />
               </div>
               <div className="space-y-1.5">
-                <label className="text-xs text-muted-foreground font-medium">🇬🇧 Title</label>
+                <label className="text-xs text-muted-foreground font-medium">[EN] Title</label>
                 <input type="text" placeholder="My Project" value={form.title_en || ""}
                   onChange={(e) => setForm({ ...form, title_en: e.target.value })} className="admin-input border-blue-500/30" />
               </div>
 
               {/* Subtitle FR / EN */}
               <div className="space-y-1.5">
-                <label className="text-xs text-muted-foreground font-medium">🇫🇷 Sous-titre</label>
+                <label className="text-xs text-muted-foreground font-medium">[FR] Sous-titre</label>
                 <input type="text" placeholder="Description courte" value={form.subtitle}
                   onChange={(e) => setForm({ ...form, subtitle: e.target.value })} className="admin-input" />
               </div>
               <div className="space-y-1.5">
-                <label className="text-xs text-muted-foreground font-medium">🇬🇧 Subtitle</label>
+                <label className="text-xs text-muted-foreground font-medium">[EN] Subtitle</label>
                 <input type="text" placeholder="Short description" value={form.subtitle_en || ""}
                   onChange={(e) => setForm({ ...form, subtitle_en: e.target.value })} className="admin-input border-blue-500/30" />
               </div>
 
               {/* Badge FR / EN */}
               <div className="space-y-1.5">
-                <label className="text-xs text-muted-foreground font-medium">🇫🇷 Badge</label>
+                <label className="text-xs text-muted-foreground font-medium">[FR] Badge</label>
                 <input type="text" placeholder="EdTech, Sécurité..." value={form.badge}
                   onChange={(e) => setForm({ ...form, badge: e.target.value })} className="admin-input" />
               </div>
               <div className="space-y-1.5">
-                <label className="text-xs text-muted-foreground font-medium">🇬🇧 Badge</label>
+                <label className="text-xs text-muted-foreground font-medium">[EN] Badge</label>
                 <input type="text" placeholder="EdTech, Security..." value={form.badge_en || ""}
                   onChange={(e) => setForm({ ...form, badge_en: e.target.value })} className="admin-input border-blue-500/30" />
               </div>
 
               {/* Description FR / EN */}
               <div className="space-y-1.5">
-                <label className="text-xs text-muted-foreground font-medium">🇫🇷 Description</label>
+                <label className="text-xs text-muted-foreground font-medium">[FR] Description</label>
                 <textarea placeholder="Description complète du projet..."
                   value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })}
                   rows={3} className="admin-input resize-none" />
               </div>
               <div className="space-y-1.5">
-                <label className="text-xs text-muted-foreground font-medium">🇬🇧 Description</label>
+                <label className="text-xs text-muted-foreground font-medium">[EN] Description</label>
                 <textarea placeholder="Full project description..."
                   value={form.description_en || ""} onChange={(e) => setForm({ ...form, description_en: e.target.value })}
                   rows={3} className="admin-input resize-none border-blue-500/30" />
@@ -298,12 +298,12 @@ export default function ProjectsPage() {
 
               {/* Security points FR / EN */}
               <div className="space-y-1.5">
-                <label className="text-xs text-muted-foreground font-medium">🇫🇷 Points sécurité (virgules)</label>
+                <label className="text-xs text-muted-foreground font-medium">[FR] Points sécurité (virgules)</label>
                 <input type="text" placeholder="Firebase Auth, RBAC, Validation serveur"
                   value={securityInput} onChange={(e) => updateSecurity(e.target.value)} className="admin-input" />
               </div>
               <div className="space-y-1.5">
-                <label className="text-xs text-muted-foreground font-medium">🇬🇧 Security points (commas)</label>
+                <label className="text-xs text-muted-foreground font-medium">[EN] Security points (commas)</label>
                 <input type="text" placeholder="Firebase Auth, RBAC, Server validation"
                   value={securityInputEn} onChange={(e) => updateSecurityEn(e.target.value)} className="admin-input border-blue-500/30" />
               </div>

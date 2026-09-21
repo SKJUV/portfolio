@@ -1,7 +1,7 @@
 [
   {
     "name": "portfolio",
-    "description": "🛡️ Portfolio — Cybersecurity Enthusiast & Full-Stack Developer",
+    "description": "Portfolio — Cybersecurity Enthusiast & Full-Stack Developer",
     "language": "TypeScript",
     "languages": {
       "TypeScript": 182434,
@@ -18,7 +18,7 @@
     "updated_at": "2026-02-27T14:30:02Z",
     "default_branch": "main",
     "is_fork": false,
-    "readme": "# portfolio\n🛡️ Portfolio — Cybersecurity Enthusiast &amp; Full-Stack Developer\n"
+    "readme": "# portfolio\nPortfolio — Cybersecurity Enthusiast &amp; Full-Stack Developer\n"
   },
   {
     "name": "projet-console",

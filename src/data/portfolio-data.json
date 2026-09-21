@@ -5,8 +5,8 @@
     "siteDescription": "Portfolio de SINENG KENGNI Juvenal, passionné de cybersécurité et développeur Full-Stack.",
     "siteDescription_en": "Portfolio of SINENG KENGNI Juvenal, cybersecurity enthusiast and Full-Stack developer.",
     "heroTitle": "SINENG KENGNI Juvenal",
-    "heroSubtitle": "🛡️ Cybersecurity Enthusiast & Full-Stack Developer",
-    "heroSubtitle_en": "🛡️ Cybersecurity Enthusiast & Full-Stack Developer",
+    "heroSubtitle": "ShieldCheck Cybersecurity Enthusiast & Full-Stack Developer",
+    "heroSubtitle_en": "ShieldCheck Cybersecurity Enthusiast & Full-Stack Developer",
     "heroDescription": "Passionné par la sécurité applicative, l'architecture sécurisée et le développement de systèmes robustes pour l'Afrique francophone.",
     "heroDescription_en": "Passionate about application security, secure architecture and building robust systems for francophone Africa.",
     "footerText": "© 2026 SINENG KENGNI Juvenal",
@@ -19,7 +19,7 @@
     {
       "id": "security",
       "title": "Pratiques Sécurité",
-      "icon": "🔒",
+      "icon": "Lock",
       "enabled": true,
       "order": 0,
       "component": "SecuritySection"
@@ -27,7 +27,7 @@
     {
       "id": "projects",
       "title": "Projets",
-      "icon": "💼",
+      "icon": "Briefcase",
       "enabled": true,
       "order": 1,
       "component": "ProjectsSection"
@@ -35,7 +35,7 @@
     {
       "id": "certifications",
       "title": "Certifications",
-      "icon": "🏆",
+      "icon": "Trophy",
       "enabled": true,
       "order": 2,
       "component": "CertificationsSection"
@@ -43,7 +43,7 @@
     {
       "id": "skills",
       "title": "Compétences",
-      "icon": "🧠",
+      "icon": "Brain",
       "enabled": true,
       "order": 3,
       "component": "SkillsSection"
@@ -51,7 +51,7 @@
     {
       "id": "profile",
       "title": "Profil Informatique",
-      "icon": "👤",
+      "icon": "User",
       "enabled": true,
       "order": 4,
       "component": "ProfileSection"
@@ -59,7 +59,7 @@
     {
       "id": "vision",
       "title": "Vision et Passions",
-      "icon": "🔮",
+      "icon": "Sparkles",
       "enabled": true,
       "order": 5,
       "component": "VisionSection"
@@ -281,7 +281,7 @@
   ],
   "securitySkills": [
     {
-      "icon": "🔐",
+      "icon": "KeyRound",
       "title": "Authentification & Autorisation",
       "title_en": "Authentication & Authorization",
       "description": "JWT avec rotation de tokens, RBAC granulaire, multi-tenancy sécurisé, OAuth PKCE flow, Firebase Auth.",
@@ -296,7 +296,7 @@
       ]
     },
     {
-      "icon": "🛡️",
+      "icon": "ShieldCheck",
       "title": "Hardening Web & HTTP",
       "title_en": "Web & HTTP Hardening",
       "description": "HSTS preload, X-Frame-Options DENY, XSS Filter, CSRF protection, Content Security Policy.",
@@ -310,7 +310,7 @@
       ]
     },
     {
-      "icon": "🐳",
+      "icon": "Boxes",
       "title": "Sécurité Infrastructure",
       "title_en": "Infrastructure Security",
       "description": "Dockerfiles multi-stage, exécution non-root, healthchecks, monitoring Sentry, CORS strict.",
@@ -325,7 +325,7 @@
       ]
     },
     {
-      "icon": "☁️",
+      "icon": "Cloud",
       "title": "Cloud Security",
       "description": "Principes de sécurité cloud (Google Cloud), gestion des risques, identification et protection contre les menaces.",
       "description_en": "Cloud security principles (Google Cloud), risk management, threat identification and protection.",
@@ -338,7 +338,7 @@
       ]
     },
     {
-      "icon": "🗄️",
+      "icon": "Database",
       "title": "Sécurité BDD & Crypto",
       "title_en": "Database Security & Crypto",
       "description": "Row Level Security, requêtes préparées, BCrypt hashing, chiffrement/déchiffrement C++.",
@@ -353,7 +353,7 @@
       ]
     },
     {
-      "icon": "🔍",
+      "icon": "ShieldAlert",
       "title": "OWASP & Pentesting",
       "description": "OWASP Top 10, Hack The Box (CTF), OverTheWire, tests d'intrusion IBM, culture cybersécurité active.",
       "description_en": "OWASP Top 10, Hack The Box (CTF), OverTheWire, IBM penetration testing, active cybersecurity culture.",
@@ -369,7 +369,7 @@
   ],
   "skillCategories": [
     {
-      "icon": "🛡️",
+      "icon": "ShieldCheck",
       "title": "Cybersécurité (Passion #1)",
       "title_en": "Cybersecurity (Passion #1)",
       "items": [
@@ -391,7 +391,7 @@
       ]
     },
     {
-      "icon": "⚙️",
+      "icon": "Server",
       "title": "Backend",
       "items": [
         "Python",
@@ -411,7 +411,7 @@
       ]
     },
     {
-      "icon": "🎨",
+      "icon": "Layout",
       "title": "Frontend",
       "items": [
         "React",
@@ -429,7 +429,7 @@
       ]
     },
     {
-      "icon": "🐳",
+      "icon": "Boxes",
       "title": "DevOps & Cloud",
       "items": [
         "Docker",
@@ -445,7 +445,7 @@
       ]
     },
     {
-      "icon": "🐧",
+      "icon": "Terminal",
       "title": "Systèmes & Administration",
       "title_en": "Systems & Administration",
       "items": [
@@ -460,7 +460,7 @@
       ]
     },
     {
-      "icon": "🤖",
+      "icon": "Bot",
       "title": "IA & Data",
       "title_en": "AI & Data",
       "items": [
@@ -478,7 +478,7 @@
   ],
   "profileCategories": [
     {
-      "icon": "🎓",
+      "icon": "GraduationCap",
       "title": "Formation & Communautés",
       "title_en": "Education & Communities",
       "points": [
@@ -499,7 +499,7 @@
       ]
     },
     {
-      "icon": "🐧",
+      "icon": "Terminal",
       "title": "Systèmes Linux",
       "title_en": "Linux Systems",
       "points": [
@@ -516,7 +516,7 @@
       ]
     },
     {
-      "icon": "🪟",
+      "icon": "Laptop",
       "title": "Windows",
       "points": [
         "Windows 11 Pro",
@@ -532,7 +532,7 @@
       ]
     },
     {
-      "icon": "🟢",
+      "icon": "Bot",
       "title": "Bots & APIs",
       "points": [
         "Bot WhatsApp Python",
@@ -548,7 +548,7 @@
       ]
     },
     {
-      "icon": "📊",
+      "icon": "BarChart3",
       "title": "Data Science & Visualisation",
       "title_en": "Data Science & Visualization",
       "points": [
@@ -565,7 +565,7 @@
       ]
     },
     {
-      "icon": "🔧",
+      "icon": "Wrench",
       "title": "Résolution de Problèmes",
       "title_en": "Problem Solving",
       "points": [
@@ -584,7 +584,7 @@
       ]
     },
     {
-      "icon": "🛠️",
+      "icon": "Sliders",
       "title": "Outils Dev",
       "title_en": "Dev Tools",
       "points": [
@@ -935,7 +935,7 @@
     },
     {
       "command": "$ nmap --top-ports passion",
-      "output": "PORT 443/tcp — Sécuriser chaque ligne de code 🔐"
+      "output": "PORT 443/tcp — Sécuriser chaque ligne de code KeyRound"
     },
     {
       "command": "$ cat /etc/certifications | wc -l",
@@ -947,7 +947,7 @@
     },
     {
       "command": "$ echo $LEVEL",
-      "output": "Étudiant Université de Yaoundé 1 → En progression rapide 🚀"
+      "output": "Étudiant Université de Yaoundé 1 → En progression rapide Rocket"
     }
   ],
   "messages": [
@@ -965,8 +965,8 @@
     "enabled": true,
     "botName": "Assistant IA",
     "botDescription": "Tout savoir sur Juvenal",
-    "welcomeMessage": "Bonjour ! 👋 Je suis l'assistant IA de Juvenal. Posez-moi vos questions sur son parcours, ses compétences ou ses projets !",
-    "fallbackMessage": "Je suis spécialisé uniquement sur Juvenal SINENG KENGNI. Vous pouvez me demander ses compétences, projets, outils, ou comment le contacter ! 😊",
+    "welcomeMessage": "Bonjour !  Je suis l'assistant IA de Juvenal. Posez-moi vos questions sur son parcours, ses compétences ou ses projets !",
+    "fallbackMessage": "Je suis spécialisé uniquement sur Juvenal SINENG KENGNI. Vous pouvez me demander ses compétences, projets, outils, ou comment le contacter ! ",
     "inputPlaceholder": "Posez une question sur Juvenal...",
     "customResponses": []
   }

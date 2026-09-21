@@ -1,6 +1,6 @@
 [
   {
-    "icon": "🛡️",
+    "icon": "ShieldCheck",
     "title": "Cybersécurité (Passion #1)",
     "title_en": "Cybersecurity (Passion #1)",
     "items": [
@@ -22,7 +22,7 @@
     ]
   },
   {
-    "icon": "⚙️",
+    "icon": "Server",
     "title": "Backend",
     "items": [
       "Python",
@@ -42,7 +42,7 @@
     ]
   },
   {
-    "icon": "🎨",
+    "icon": "Layout",
     "title": "Frontend",
     "items": [
       "React",
@@ -60,7 +60,7 @@
     ]
   },
   {
-    "icon": "🐳",
+    "icon": "Boxes",
     "title": "DevOps & Cloud",
     "items": [
       "Docker",
@@ -76,7 +76,7 @@
     ]
   },
   {
-    "icon": "🐧",
+    "icon": "Terminal",
     "title": "Systèmes & Administration",
     "title_en": "Systems & Administration",
     "items": [
@@ -91,7 +91,7 @@
     ]
   },
   {
-    "icon": "🤖",
+    "icon": "Bot",
     "title": "IA & Data",
     "title_en": "AI & Data",
     "items": [

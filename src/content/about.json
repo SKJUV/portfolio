@@ -1,7 +1,7 @@
 {
   "profileCategories": [
     {
-      "icon": "🎓",
+      "icon": "GraduationCap",
       "title": "Formation & Communautés",
       "title_en": "Education & Communities",
       "points": [
@@ -22,7 +22,7 @@
       ]
     },
     {
-      "icon": "🐧",
+      "icon": "Terminal",
       "title": "Systèmes Linux",
       "title_en": "Linux Systems",
       "points": [
@@ -39,7 +39,7 @@
       ]
     },
     {
-      "icon": "🪟",
+      "icon": "Laptop",
       "title": "Windows",
       "points": [
         "Windows 11 Pro",
@@ -55,7 +55,7 @@
       ]
     },
     {
-      "icon": "🟢",
+      "icon": "Bot",
       "title": "Bots & APIs",
       "points": [
         "Bot WhatsApp Python",
@@ -71,7 +71,7 @@
       ]
     },
     {
-      "icon": "📊",
+      "icon": "BarChart3",
       "title": "Data Science & Visualisation",
       "title_en": "Data Science & Visualization",
       "points": [
@@ -88,7 +88,7 @@
       ]
     },
     {
-      "icon": "🔧",
+      "icon": "Wrench",
       "title": "Résolution de Problèmes",
       "title_en": "Problem Solving",
       "points": [
@@ -107,7 +107,7 @@
       ]
     },
     {
-      "icon": "🛠️",
+      "icon": "Sliders",
       "title": "Outils Dev",
       "title_en": "Dev Tools",
       "points": [
@@ -139,7 +139,7 @@
     },
     {
       "command": "$ nmap --top-ports passion",
-      "output": "PORT 443/tcp — Sécuriser chaque ligne de code 🔐"
+      "output": "PORT 443/tcp — Sécuriser chaque ligne de code"
     },
     {
       "command": "$ cat /etc/certifications | wc -l",
@@ -151,7 +151,7 @@
     },
     {
       "command": "$ echo $LEVEL",
-      "output": "Étudiant Université de Yaoundé 1 → En progression rapide 🚀"
+      "output": "Étudiant Université de Yaoundé 1 → En progression rapide"
     }
   ],
   "bio": {

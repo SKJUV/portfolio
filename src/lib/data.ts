@@ -4,45 +4,45 @@ export const terminalLines = [
   { command: "$ whoami", output: "juvenal_sineng — cybersecurity enthusiast && full-stack developer" },
   { command: "$ uname -a", output: "Manjaro Linux (KDE) | Zorin OS Pro | Windows 11 Pro" },
   { command: "$ cat /etc/skills", output: "Pentest · OWASP Top 10 · JWT · RBAC · Docker Hardening · Cloud Security" },
-  { command: "$ nmap --top-ports passion", output: "PORT 443/tcp — Sécuriser chaque ligne de code 🔐" },
+  { command: "$ nmap --top-ports passion", output: "PORT 443/tcp — Sécuriser chaque ligne de code" },
   { command: "$ cat /etc/certifications | wc -l", output: "17 certifications Coursera (IBM, Google Cloud, Python, Security)" },
   { command: "$ echo $COMMUNITIES", output: "GDG Yaoundé · Django Cameroon · Women TechMakers · GDSC UY1" },
-  { command: "$ echo $LEVEL", output: "Étudiant Université de Yaoundé 1 → En progression rapide 🚀" },
+  { command: "$ echo $LEVEL", output: "Étudiant Université de Yaoundé 1 → En progression rapide" },
 ];
 
 export const securitySkills: SecuritySkill[] = [
   {
-    icon: "🔐",
+    icon: "KeyRound",
     title: "Authentification & Autorisation",
     description: "JWT avec rotation de tokens, RBAC granulaire, multi-tenancy sécurisé, OAuth PKCE flow, Firebase Auth.",
     tags: ["JWT Custom Claims", "Token Rotation", "RBAC", "Multi-tenant", "OAuth PKCE", "Firebase Auth"],
   },
   {
-    icon: "🛡️",
+    icon: "ShieldCheck",
     title: "Hardening Web & HTTP",
     description: "HSTS preload, X-Frame-Options DENY, XSS Filter, CSRF protection, Content Security Policy.",
     tags: ["HSTS 1 an", "X-Frame DENY", "XSS Filter", "CSRF Secure", "Content-Type Nosniff", "SSL Redirect"],
   },
   {
-    icon: "🐳",
+    icon: "Boxes",
     title: "Sécurité Infrastructure",
     description: "Dockerfiles multi-stage, exécution non-root, healthchecks, monitoring Sentry, CORS strict.",
     tags: ["Docker Non-Root", "Multi-Stage Build", "Sentry", "CORS Strict", "Gunicorn", "Healthcheck"],
   },
   {
-    icon: "☁️",
+    icon: "Cloud",
     title: "Cloud Security",
     description: "Principes de sécurité cloud (Google Cloud), gestion des risques, identification et protection contre les menaces.",
     tags: ["Google Cloud", "Risk Management", "Threat Protection", "Cloud Principles", "IAM"],
   },
   {
-    icon: "🗄️",
+    icon: "Database",
     title: "Sécurité BDD & Crypto",
     description: "Row Level Security, requêtes préparées, BCrypt hashing, chiffrement/déchiffrement C++.",
     tags: ["RLS", "Prepared Statements", "BCrypt", "Encryption C++", "PDO", "Supabase RLS"],
   },
   {
-    icon: "🔍",
+    icon: "ShieldAlert",
     title: "OWASP & Pentesting",
     description: "OWASP Top 10, Hack The Box (CTF), OverTheWire, tests d'intrusion IBM, culture cybersécurité active.",
     tags: ["OWASP Top 10", "Hack The Box", "OverTheWire CTF", "Pentest IBM", "Input Validation", "Least Privilege"],
@@ -170,7 +170,7 @@ export const projects: Project[] = [
 
 export const skillCategories: SkillCategory[] = [
   {
-    icon: "🛡️",
+    icon: "ShieldCheck",
     title: "Cybersécurité (Passion #1)",
     items: [
       "OWASP Top 10", "Hack The Box", "OverTheWire CTF", "Pentest",
@@ -180,7 +180,7 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    icon: "⚙️",
+    icon: "Server",
     title: "Backend",
     items: [
       "Python", "Django", "DRF", "PHP", "MySQL", "Java",
@@ -189,7 +189,7 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    icon: "🎨",
+    icon: "Layout",
     title: "Frontend",
     items: [
       "React", "Next.js 15", "TypeScript", "JavaScript",
@@ -198,7 +198,7 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    icon: "🐳",
+    icon: "Boxes",
     title: "DevOps & Cloud",
     items: [
       "Docker", "Docker Compose", "Gunicorn", "Vercel",
@@ -207,7 +207,7 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    icon: "🐧",
+    icon: "Terminal",
     title: "Systèmes & Administration",
     items: [
       "Manjaro Linux (KDE)", "Zorin OS Pro", "Windows 11 Pro",
@@ -216,7 +216,7 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    icon: "🤖",
+    icon: "Bot",
     title: "IA & Data",
     items: [
       "Google Gemini", "Google Genkit AI", "Firebase AI",
@@ -228,7 +228,7 @@ export const skillCategories: SkillCategory[] = [
 
 export const profileCategories: ProfileCategory[] = [
   {
-    icon: "🎓",
+    icon: "GraduationCap",
     title: "Formation & Communautés",
     points: [
       "Étudiant à l'Université de Yaoundé 1",
@@ -240,7 +240,7 @@ export const profileCategories: ProfileCategory[] = [
     ],
   },
   {
-    icon: "🐧",
+    icon: "Terminal",
     title: "Systèmes Linux",
     points: [
       "Manjaro KDE avec pacman/yay",
@@ -250,7 +250,7 @@ export const profileCategories: ProfileCategory[] = [
     ],
   },
   {
-    icon: "🪟",
+    icon: "Laptop",
     title: "Windows",
     points: [
       "Windows 11 Pro",
@@ -260,7 +260,7 @@ export const profileCategories: ProfileCategory[] = [
     ],
   },
   {
-    icon: "🟢",
+    icon: "Bot",
     title: "Bots & APIs",
     points: [
       "Bot WhatsApp Python",
@@ -270,7 +270,7 @@ export const profileCategories: ProfileCategory[] = [
     ],
   },
   {
-    icon: "📊",
+    icon: "BarChart3",
     title: "Data Science & Visualisation",
     points: [
       "Python Matplotlib & Seaborn",
@@ -280,7 +280,7 @@ export const profileCategories: ProfileCategory[] = [
     ],
   },
   {
-    icon: "🔧",
+    icon: "Wrench",
     title: "Résolution de Problèmes",
     points: [
       "Diagnostic système et lecture logs",
@@ -291,7 +291,7 @@ export const profileCategories: ProfileCategory[] = [
     ],
   },
   {
-    icon: "🛠️",
+    icon: "Sliders",
     title: "Outils Dev",
     points: [
       "Git CLI (branches, commits, merge)",

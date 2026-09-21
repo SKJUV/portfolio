@@ -109,7 +109,7 @@ export default function ChatBotAdminPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold">🤖 Chatbot IA</h1>
+          <h1 className="text-2xl font-bold"> Chatbot IA</h1>
           <p className="text-sm text-muted-foreground mt-1">
             Configurez l&apos;assistant IA du portfolio
           </p>
@@ -130,7 +130,7 @@ export default function ChatBotAdminPage() {
             className="admin-btn-primary px-4 py-2.5"
           >
             <Save className="h-4 w-4" />
-            {saving ? "Sauvegarde..." : saved ? "Sauvegardé ✓" : "Enregistrer"}
+            {saving ? "Sauvegarde..." : saved ? "Sauvegardé " : "Enregistrer"}
           </button>
         </div>
       </div>
@@ -196,14 +196,14 @@ export default function ChatBotAdminPage() {
 
       {/* Messages */}
       <div className="admin-card p-5 space-y-4">
-        <h2 className="font-semibold">💬 Messages</h2>
+        <h2 className="font-semibold"> Messages</h2>
         <div className="space-y-4">
           <div className="space-y-1.5">
             <label className="text-xs text-muted-foreground font-medium">Message d&apos;accueil</label>
             <textarea
               value={settings.welcomeMessage}
               onChange={(e) => setSettings({ ...settings, welcomeMessage: e.target.value })}
-              placeholder="Bonjour ! 👋 Comment puis-je vous aider ?"
+              placeholder="Bonjour !  Comment puis-je vous aider ?"
               rows={3}
               className="admin-input resize-none"
             />
@@ -235,7 +235,7 @@ export default function ChatBotAdminPage() {
       <div className="admin-card p-5 space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="font-semibold">🎯 Réponses personnalisées</h2>
+            <h2 className="font-semibold"> Réponses personnalisées</h2>
             <p className="text-xs text-muted-foreground mt-1">
               Définissez des mots-clés et la réponse associée. Prioritaires sur les réponses auto.
             </p>

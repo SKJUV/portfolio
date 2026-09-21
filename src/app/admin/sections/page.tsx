@@ -160,7 +160,7 @@ export default function SectionsPage() {
                       value={form.icon || ""}
                       onChange={(e) => setForm({ ...form, icon: e.target.value })}
                       className="admin-input"
-                      placeholder="🔒"
+                      placeholder=""
                     />
                   </div>
                 </div>

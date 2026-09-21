@@ -238,7 +238,7 @@ export default function CertificationsPage() {
           </div>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="space-y-1.5">
-              <label className="text-xs text-muted-foreground font-medium">🇫🇷 Description</label>
+              <label className="text-xs text-muted-foreground font-medium">[FR] Description</label>
               <textarea
                 placeholder="Description de la certification..."
                 value={form.description}
@@ -248,7 +248,7 @@ export default function CertificationsPage() {
               />
             </div>
             <div className="space-y-1.5">
-              <label className="text-xs text-muted-foreground font-medium">🇬🇧 Description</label>
+              <label className="text-xs text-muted-foreground font-medium">[EN] Description</label>
               <textarea
                 placeholder="Certification description..."
                 value={form.description_en || ""}

@@ -10,7 +10,7 @@ export async function GET() {
       enabled: true,
       botName: "Assistant IA",
       botDescription: "Tout savoir sur Juvenal",
-      welcomeMessage: "Bonjour ! 👋",
+      welcomeMessage: "Bonjour ! ",
       fallbackMessage: "Je ne peux répondre qu'aux questions sur ce portfolio.",
       inputPlaceholder: "Posez une question...",
       customResponses: [],

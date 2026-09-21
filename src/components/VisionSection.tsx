@@ -3,6 +3,8 @@
 import { useMemo } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useLanguage } from "@/providers/LanguageProvider";
+import { Sparkles } from "lucide-react";
+import { DynamicIcon } from "./ui/DynamicIcon";
 import type { PortfolioData } from "@/lib/admin-types";
 
 export default function VisionSection({ data }: { data: PortfolioData }) {
@@ -12,19 +14,22 @@ export default function VisionSection({ data }: { data: PortfolioData }) {
   const gridRef = useScrollReveal<HTMLDivElement>(0.1);
 
   const visionItems = useMemo(() => [
-    { icon: "🔮", title: t("vision.tech.title"), points: [t("vision.tech.0"), t("vision.tech.1"), t("vision.tech.2")] },
-    { icon: "🛡️", title: t("vision.cyber.title"), points: [t("vision.cyber.0"), t("vision.cyber.1"), t("vision.cyber.2")] },
-    { icon: "🤖", title: t("vision.ai.title"), points: [t("vision.ai.0"), t("vision.ai.1"), t("vision.ai.2")] },
-    { icon: "🌍", title: t("vision.impact.title"), points: [t("vision.impact.0"), t("vision.impact.1"), t("vision.impact.2")] },
-    { icon: "🚀", title: t("vision.goals.title"), points: [t("vision.goals.0"), t("vision.goals.1"), t("vision.goals.2")] },
-    { icon: "💡", title: t("vision.philosophy.title"), points: [t("vision.philosophy.0"), t("vision.philosophy.1"), t("vision.philosophy.2")] },
+    { icon: "Sparkles", title: t("vision.tech.title"), points: [t("vision.tech.0"), t("vision.tech.1"), t("vision.tech.2")] },
+    { icon: "ShieldCheck", title: t("vision.cyber.title"), points: [t("vision.cyber.0"), t("vision.cyber.1"), t("vision.cyber.2")] },
+    { icon: "Bot", title: t("vision.ai.title"), points: [t("vision.ai.0"), t("vision.ai.1"), t("vision.ai.2")] },
+    { icon: "Globe", title: t("vision.impact.title"), points: [t("vision.impact.0"), t("vision.impact.1"), t("vision.impact.2")] },
+    { icon: "Rocket", title: t("vision.goals.title"), points: [t("vision.goals.0"), t("vision.goals.1"), t("vision.goals.2")] },
+    { icon: "Lightbulb", title: t("vision.philosophy.title"), points: [t("vision.philosophy.0"), t("vision.philosophy.1"), t("vision.philosophy.2")] },
   ], [t]);
 
   return (
     <section id="vision" className="py-16 px-4">
       <div className="max-w-6xl mx-auto space-y-10">
         <div ref={headerRef} className="space-y-3">
-          <h2 className="text-2xl sm:text-3xl font-bold">🔮 {t("section.vision")}</h2>
+          <div className="flex items-center gap-2">
+            <Sparkles className="w-6 h-6 text-blue-500" />
+            <h2 className="text-2xl sm:text-3xl font-bold">{t("section.vision")}</h2>
+          </div>
           <p className="text-sm sm:text-base text-muted-foreground max-w-2xl">
             {t("section.vision.desc")}
           </p>
@@ -40,7 +45,7 @@ export default function VisionSection({ data }: { data: PortfolioData }) {
           {visionItems.map((item, i) => (
             <div key={i} className="w-[80vw] max-w-[300px] flex-none snap-start sm:w-auto sm:max-w-none sm:flex-auto p-5 glass-card rounded-2xl">
               <div className="flex items-center gap-2 mb-3">
-                <span className="text-xl">{item.icon}</span>
+                <DynamicIcon name={item.icon} className="w-5 h-5 text-blue-500" />
                 <h3 className="font-semibold">{item.title}</h3>
               </div>
               <ul className="space-y-1.5">

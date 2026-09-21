@@ -8,6 +8,7 @@ import {
   ShieldAlert, 
   Layers, 
 } from "lucide-react";
+import { DynamicIcon } from "./ui/DynamicIcon";
 import type { SkillCategory, SecuritySkill } from "@/lib/content";
 
 interface SkillsSectionProps {
@@ -73,9 +74,9 @@ export default function SkillsSection({ skills, securitySkills }: SkillsSectionP
                 className="p-6 space-y-4 rounded-xl border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 card-hover shadow-sm"
               >
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50 inline-flex">
-                    {category.icon}
-                  </span>
+                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
+                    <DynamicIcon name={category.icon} className="w-5 h-5" />
+                  </div>
                   <div>
                     <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
                       {td(category.title, category.title_en)}
@@ -111,9 +112,9 @@ export default function SkillsSection({ skills, securitySkills }: SkillsSectionP
               >
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
-                    <span className="text-2xl p-2 rounded-lg bg-blue-500/10 border border-blue-500/20 inline-flex">
-                      {sec.icon}
-                    </span>
+                    <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
+                      <DynamicIcon name={sec.icon} className="w-5 h-5" />
+                    </div>
                     <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
                       {td(sec.title, sec.title_en)}
                     </h3>

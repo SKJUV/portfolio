@@ -2,6 +2,8 @@
 
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useLanguage } from "@/providers/LanguageProvider";
+import { User } from "lucide-react";
+import { DynamicIcon } from "./ui/DynamicIcon";
 import type { PortfolioData } from "@/lib/admin-types";
 
 export default function ProfileSection({ data }: { data: PortfolioData }) {
@@ -14,7 +16,10 @@ export default function ProfileSection({ data }: { data: PortfolioData }) {
     <section id="profile" className="py-16 px-4">
       <div className="max-w-6xl mx-auto space-y-10">
         <div ref={headerRef} className="space-y-3">
-          <h2 className="text-2xl sm:text-3xl font-bold">👤 {t("section.profile")}</h2>
+          <div className="flex items-center gap-2">
+            <User className="w-6 h-6 text-blue-500" />
+            <h2 className="text-2xl sm:text-3xl font-bold">{t("section.profile")}</h2>
+          </div>
           <p className="text-sm sm:text-base text-muted-foreground">
             {t("profile.desc")}
           </p>
@@ -30,7 +35,7 @@ export default function ProfileSection({ data }: { data: PortfolioData }) {
           {profileCategories.map((category, i) => (
             <div key={i} className="w-[80vw] max-w-[300px] flex-none snap-start sm:w-auto sm:max-w-none sm:flex-auto p-5 glass-card rounded-2xl">
               <div className="flex items-center gap-2 mb-3">
-                <span className="text-xl">{category.icon}</span>
+                <DynamicIcon name={category.icon} className="w-5 h-5 text-blue-500" />
                 <h3 className="font-semibold">{td(category.title, category.title_en)}</h3>
               </div>
               <ul className="space-y-1.5">
