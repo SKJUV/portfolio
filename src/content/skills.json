@@ -1,0 +1,109 @@
+[
+  {
+    "icon": "🛡️",
+    "title": "Cybersécurité (Passion #1)",
+    "title_en": "Cybersecurity (Passion #1)",
+    "items": [
+      "OWASP Top 10",
+      "Hack The Box",
+      "OverTheWire CTF",
+      "Pentest",
+      "JWT",
+      "RBAC",
+      "HSTS",
+      "XSS Prevention",
+      "CSRF",
+      "RLS",
+      "Encryption C++",
+      "Cloud Security (Google)",
+      "BCrypt",
+      "OAuth PKCE",
+      "Docker Hardening"
+    ]
+  },
+  {
+    "icon": "⚙️",
+    "title": "Backend",
+    "items": [
+      "Python",
+      "Django",
+      "DRF",
+      "PHP",
+      "MySQL",
+      "Java",
+      "Node.js",
+      "PostgreSQL",
+      "Redis",
+      "Celery",
+      "Supabase",
+      "Firebase",
+      "C#",
+      ".NET"
+    ]
+  },
+  {
+    "icon": "🎨",
+    "title": "Frontend",
+    "items": [
+      "React",
+      "Next.js 15",
+      "TypeScript",
+      "JavaScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Vite",
+      "Bootstrap",
+      "Chart.js",
+      "Recharts",
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "icon": "🐳",
+    "title": "DevOps & Cloud",
+    "items": [
+      "Docker",
+      "Docker Compose",
+      "Gunicorn",
+      "Vercel",
+      "Sentry",
+      "Google Cloud Security",
+      "S3/boto3",
+      "WhiteNoise",
+      "Multi-stage Builds",
+      "CI/CD"
+    ]
+  },
+  {
+    "icon": "🐧",
+    "title": "Systèmes & Administration",
+    "title_en": "Systems & Administration",
+    "items": [
+      "Manjaro Linux (KDE)",
+      "Zorin OS Pro",
+      "Windows 11 Pro",
+      "Terminal avancé",
+      "pacman/yay",
+      "DNS Config",
+      "Diagnostic BIOS",
+      "Troubleshooting réseau"
+    ]
+  },
+  {
+    "icon": "🤖",
+    "title": "IA & Data",
+    "title_en": "AI & Data",
+    "items": [
+      "Google Gemini",
+      "Google Genkit AI",
+      "Firebase AI",
+      "Matplotlib",
+      "Seaborn",
+      "Kaggle",
+      "Data Visualization",
+      "JSON Processing",
+      "Zod Validation"
+    ]
+  }
+]

@@ -1,0 +1,88 @@
+[
+  {
+    "icon": "🔐",
+    "title": "Authentification & Autorisation",
+    "title_en": "Authentication & Authorization",
+    "description": "JWT avec rotation de tokens, RBAC granulaire, multi-tenancy sécurisé, OAuth PKCE flow, Firebase Auth.",
+    "description_en": "JWT with token rotation, granular RBAC, secure multi-tenancy, OAuth PKCE flow, Firebase Auth.",
+    "tags": [
+      "JWT Custom Claims",
+      "Token Rotation",
+      "RBAC",
+      "Multi-tenant",
+      "OAuth PKCE",
+      "Firebase Auth"
+    ]
+  },
+  {
+    "icon": "🛡️",
+    "title": "Hardening Web & HTTP",
+    "title_en": "Web & HTTP Hardening",
+    "description": "HSTS preload, X-Frame-Options DENY, XSS Filter, CSRF protection, Content Security Policy.",
+    "tags": [
+      "HSTS 1 an",
+      "X-Frame DENY",
+      "XSS Filter",
+      "CSRF Secure",
+      "Content-Type Nosniff",
+      "SSL Redirect"
+    ]
+  },
+  {
+    "icon": "🐳",
+    "title": "Sécurité Infrastructure",
+    "title_en": "Infrastructure Security",
+    "description": "Dockerfiles multi-stage, exécution non-root, healthchecks, monitoring Sentry, CORS strict.",
+    "description_en": "Multi-stage Dockerfiles, non-root execution, healthchecks, Sentry monitoring, strict CORS.",
+    "tags": [
+      "Docker Non-Root",
+      "Multi-Stage Build",
+      "Sentry",
+      "CORS Strict",
+      "Gunicorn",
+      "Healthcheck"
+    ]
+  },
+  {
+    "icon": "☁️",
+    "title": "Cloud Security",
+    "description": "Principes de sécurité cloud (Google Cloud), gestion des risques, identification et protection contre les menaces.",
+    "description_en": "Cloud security principles (Google Cloud), risk management, threat identification and protection.",
+    "tags": [
+      "Google Cloud",
+      "Risk Management",
+      "Threat Protection",
+      "Cloud Principles",
+      "IAM"
+    ]
+  },
+  {
+    "icon": "🗄️",
+    "title": "Sécurité BDD & Crypto",
+    "title_en": "Database Security & Crypto",
+    "description": "Row Level Security, requêtes préparées, BCrypt hashing, chiffrement/déchiffrement C++.",
+    "description_en": "Row Level Security, prepared queries, BCrypt hashing, C++ encryption/decryption.",
+    "tags": [
+      "RLS",
+      "Prepared Statements",
+      "BCrypt",
+      "Encryption C++",
+      "PDO",
+      "Supabase RLS"
+    ]
+  },
+  {
+    "icon": "🔍",
+    "title": "OWASP & Pentesting",
+    "description": "OWASP Top 10, Hack The Box (CTF), OverTheWire, tests d'intrusion IBM, culture cybersécurité active.",
+    "description_en": "OWASP Top 10, Hack The Box (CTF), OverTheWire, IBM penetration testing, active cybersecurity culture.",
+    "tags": [
+      "OWASP Top 10",
+      "Hack The Box",
+      "OverTheWire CTF",
+      "Pentest IBM",
+      "Input Validation",
+      "Least Privilege"
+    ]
+  }
+]
