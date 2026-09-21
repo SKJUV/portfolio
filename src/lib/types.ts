@@ -8,7 +8,9 @@ export interface Project {
   description_en?: string;
   badge: string;
   badge_en?: string;
-  badgeType: "security" | "education" | "university" | "academic";
+  badgeType: "security" | "education" | "university" | "academic" | string;
+  layout?: "featured" | "grid" | "compact";
+  featured?: boolean;
   stack: string[];
   securityPoints: string[];
   securityPoints_en?: string[];

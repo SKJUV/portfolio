@@ -16,6 +16,7 @@ export interface Project {
   badge: string;
   badge_en?: string;
   badgeType: "security" | "featured" | "arch" | "fullstack" | string;
+  layout?: "featured" | "grid" | "compact";
   stack: string[];
   securityPoints: string[];
   securityPoints_en?: string[];

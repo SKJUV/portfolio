@@ -1,109 +1,57 @@
 [
   {
     "icon": "ShieldCheck",
-    "title": "Cybersécurité (Passion #1)",
-    "title_en": "Cybersecurity (Passion #1)",
+    "title": "Cybersécurité & Audits",
+    "title_en": "Cybersecurity & Auditing",
     "items": [
       "OWASP Top 10",
-      "Hack The Box",
-      "OverTheWire CTF",
-      "Pentest",
-      "JWT",
-      "RBAC",
-      "HSTS",
-      "XSS Prevention",
-      "CSRF",
-      "RLS",
-      "Encryption C++",
-      "Cloud Security (Google)",
-      "BCrypt",
-      "OAuth PKCE",
+      "Hack The Box (CTF)",
+      "Pentesting Web",
+      "Cryptographie & Chiffrement",
+      "JWT & RBAC",
+      "Google Cloud Security",
       "Docker Hardening"
     ]
   },
   {
     "icon": "Server",
-    "title": "Backend",
+    "title": "Backend & Architecture",
+    "title_en": "Backend & Architecture",
     "items": [
-      "Python",
-      "Django",
-      "DRF",
-      "PHP",
-      "MySQL",
-      "Java",
+      "Python / Django",
       "Node.js",
       "PostgreSQL",
-      "Redis",
-      "Celery",
       "Supabase",
       "Firebase",
-      "C#",
-      ".NET"
+      "C# / .NET",
+      "APIs RESTful"
     ]
   },
   {
     "icon": "Layout",
-    "title": "Frontend",
+    "title": "Frontend & Interfaces",
+    "title_en": "Frontend & Interfaces",
     "items": [
       "React",
       "Next.js 15",
       "TypeScript",
-      "JavaScript",
       "Tailwind CSS",
       "shadcn/ui",
-      "Vite",
-      "Bootstrap",
-      "Chart.js",
-      "Recharts",
-      "HTML5",
-      "CSS3"
+      "State Management",
+      "Responsive UI/UX"
     ]
   },
   {
     "icon": "Boxes",
     "title": "DevOps & Cloud",
+    "title_en": "DevOps & Cloud",
     "items": [
-      "Docker",
-      "Docker Compose",
-      "Gunicorn",
-      "Vercel",
-      "Sentry",
-      "Google Cloud Security",
-      "S3/boto3",
-      "WhiteNoise",
-      "Multi-stage Builds",
-      "CI/CD"
-    ]
-  },
-  {
-    "icon": "Terminal",
-    "title": "Systèmes & Administration",
-    "title_en": "Systems & Administration",
-    "items": [
-      "Manjaro Linux (KDE)",
-      "Zorin OS Pro",
-      "Windows 11 Pro",
-      "Terminal avancé",
-      "pacman/yay",
-      "DNS Config",
-      "Diagnostic BIOS",
-      "Troubleshooting réseau"
-    ]
-  },
-  {
-    "icon": "Bot",
-    "title": "IA & Data",
-    "title_en": "AI & Data",
-    "items": [
-      "Google Gemini",
-      "Google Genkit AI",
-      "Firebase AI",
-      "Matplotlib",
-      "Seaborn",
-      "Kaggle",
-      "Data Visualization",
-      "JSON Processing",
-      "Zod Validation"
+      "Docker & Compose",
+      "CI/CD Pipelines",
+      "Google Cloud Platform",
+      "Vercel Edge",
+      "Sentry Monitoring",
+      "Linux Admin (POSIX)"
     ]
   }
 ]
