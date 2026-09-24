@@ -28,7 +28,7 @@ export default function Home() {
   const credlyBadges = getCredlyBadges();
 
   return (
-    <main className="min-h-screen bg-background text-foreground bg-mesh selection:bg-blue-600/30 selection:text-white">
+    <main className="min-h-screen bg-background text-foreground bg-mesh">
       <Navbar />
       <Hero settings={settings} />
       <AboutSection data={about} />

@@ -4,44 +4,44 @@
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
-    --foreground: 240 10% 4%;
+    --background: 0 0% 99%;
+    --foreground: 240 6% 20%;
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 4%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 217.2 91.2% 59.8%;
+    --card-foreground: 240 6% 20%;
+    --primary: 220 70% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 4% 16%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+    --accent: 220 60% 55%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 60% 55%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.75rem;
+    --border: 240 6% 92%;
+    --ring: 220 70% 50%;
+    --radius: 0.625rem;
     --font-sans: var(--font-inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
     --font-mono: var(--font-jetbrains-mono, "JetBrains Mono", monospace);
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 6% 7%;
-    --card-foreground: 0 0% 98%;
-    --primary: 217.2 91.2% 59.8%;
+    --background: 240 6% 7%;
+    --foreground: 0 0% 93%;
+    --card: 240 5% 10%;
+    --card-foreground: 0 0% 93%;
+    --primary: 220 65% 60%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 4% 12%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 213.1 93.9% 67.8%;
-    --accent-foreground: 240 10% 3.9%;
-    --destructive: 0 62.8% 30.6%;
+    --secondary: 240 4% 14%;
+    --secondary-foreground: 0 0% 93%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 4% 55%;
+    --accent: 220 60% 62%;
+    --accent-foreground: 240 6% 7%;
+    --destructive: 0 50% 40%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 4% 16%;
-    --ring: 217.2 91.2% 59.8%;
+    --border: 240 4% 18%;
+    --ring: 220 65% 60%;
   }
 
   * {
@@ -62,84 +62,58 @@
   }
 }
 
-/* Background Gradients & Mesh */
+/* Subtle ambient background — very soft */
 .bg-mesh {
-  background-image: 
-    radial-gradient(at 15% 15%, rgba(59, 130, 246, 0.07) 0px, transparent 40%),
-    radial-gradient(at 85% 25%, rgba(29, 78, 216, 0.05) 0px, transparent 45%),
-    radial-gradient(at 50% 80%, rgba(96, 165, 250, 0.04) 0px, transparent 50%);
+  background-image:
+    radial-gradient(at 20% 20%, rgba(99, 149, 218, 0.04) 0px, transparent 50%),
+    radial-gradient(at 80% 40%, rgba(99, 149, 218, 0.03) 0px, transparent 50%);
   background-attachment: fixed;
 }
 
 .dark .bg-mesh {
-  background-image: 
-    radial-gradient(at 20% 10%, rgba(59, 130, 246, 0.12) 0px, transparent 45%),
-    radial-gradient(at 80% 30%, rgba(29, 78, 216, 0.08) 0px, transparent 50%),
-    radial-gradient(at 40% 85%, rgba(37, 99, 235, 0.06) 0px, transparent 40%);
+  background-image:
+    radial-gradient(at 20% 15%, rgba(99, 149, 218, 0.06) 0px, transparent 50%),
+    radial-gradient(at 75% 35%, rgba(59, 130, 246, 0.04) 0px, transparent 50%);
   background-attachment: fixed;
 }
 
-.bg-grid {
-  background-size: 32px 32px;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-}
-
-:root:not(.dark) .bg-grid {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-}
-
-/* Glow effects */
-.glow-blue {
-  box-shadow: 0 0 35px -5px rgba(59, 130, 246, 0.3);
-}
-
-.glow-blue-sm {
-  box-shadow: 0 0 15px -3px rgba(59, 130, 246, 0.25);
-}
-
+/* Text gradient — softer contrast */
 .text-gradient {
-  background: linear-gradient(135deg, #FAFAFA 0%, #A1A1AA 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-:root:not(.dark) .text-gradient {
-  background: linear-gradient(135deg, #09090B 0%, #52525B 100%);
+  background: linear-gradient(135deg, hsl(var(--foreground)) 0%, hsl(var(--muted-foreground)) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-blue {
-  background: linear-gradient(135deg, #60A5FA 0%, #2563EB 100%);
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(220, 80%, 45%) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Card hover animation */
+:root:not(.dark) .text-gradient-blue {
+  background: linear-gradient(135deg, hsl(220, 70%, 45%) 0%, hsl(220, 80%, 35%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Card hover — subtle lift */
 .card-hover {
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.25s ease,
-              box-shadow 0.25s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card-hover:hover {
-  transform: translateY(-3px);
-  border-color: rgba(59, 130, 246, 0.35);
-  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.4),
-              0 0 0 1px rgba(59, 130, 246, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.08);
 }
 
-:root:not(.dark) .card-hover:hover {
-  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.08),
-              0 0 0 1px rgba(37, 99, 235, 0.2);
+.dark .card-hover:hover {
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.3);
 }
 
-/* Custom Scrollbar */
+/* Scrollbar — minimal */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -147,12 +121,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(161, 161, 170, 0.25);
+  background: rgba(150, 150, 160, 0.2);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(59, 130, 246, 0.5);
+  background: rgba(150, 150, 160, 0.35);
 }
 
 /* Code styling */
@@ -162,6 +136,22 @@ code, pre, .font-mono {
 
 /* Selection */
 ::selection {
-  background-color: rgba(59, 130, 246, 0.3);
-  color: #FAFAFA;
+  background-color: rgba(99, 149, 218, 0.2);
+  color: inherit;
+}
+
+/* Fade in animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.5s ease-out forwards;
 }
