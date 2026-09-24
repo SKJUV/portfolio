@@ -16,6 +16,8 @@ import {
   getCredlyBadges,
 } from "@/lib/content";
 
+import AnimatedBackground from "@/components/AnimatedBackground";
+
 export const revalidate = 3600;
 
 export default function Home() {
@@ -28,7 +30,8 @@ export default function Home() {
   const credlyBadges = getCredlyBadges();
 
   return (
-    <main className="min-h-screen bg-background text-foreground bg-swiss-grid selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-zinc-950">
+    <main className="min-h-screen bg-background text-foreground relative selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-zinc-950">
+      <AnimatedBackground />
       <Navbar />
       <Hero settings={settings} />
       <AboutSection data={about} />

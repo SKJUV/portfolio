@@ -17,7 +17,7 @@ export default function ProjectCard({ project, index = "01" }: ProjectCardProps)
   /* ===== Featured: Architectural Breakdown Card ===== */
   if (isFeatured) {
     return (
-      <div className="p-6 sm:p-8 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors space-y-6">
+      <div className="p-6 sm:p-8 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white/85 dark:bg-zinc-950/80 backdrop-blur-md hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors space-y-6">
         {/* Top Header */}
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-200 dark:border-zinc-800/80 pb-4">
           <div className="flex items-center gap-2">
@@ -114,7 +114,7 @@ export default function ProjectCard({ project, index = "01" }: ProjectCardProps)
   /* ===== Compact: Minimal Strip ===== */
   if (isCompact) {
     return (
-      <div className="p-4 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="p-4 rounded border border-zinc-200 dark:border-zinc-800 bg-white/85 dark:bg-zinc-950/80 backdrop-blur-md hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">
           <span className="font-mono text-xs text-zinc-400 dark:text-zinc-500">
             //{index}
@@ -158,7 +158,7 @@ export default function ProjectCard({ project, index = "01" }: ProjectCardProps)
 
   /* ===== Grid Project Card ===== */
   return (
-    <div className="p-6 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors flex flex-col justify-between space-y-6">
+    <div className="p-6 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white/85 dark:bg-zinc-950/80 backdrop-blur-md hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors flex flex-col justify-between space-y-6">
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <span className="font-mono text-xs text-zinc-400 dark:text-zinc-500">

@@ -115,7 +115,7 @@ export default function Footer({ settings }: FooterProps) {
             </div>
 
             {/* Direct 1-Click Email Card */}
-            <div className="p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 space-y-2">
+            <div className="p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white/85 dark:bg-zinc-950/80 backdrop-blur-md space-y-2">
               <span className="font-mono text-[10px] text-zinc-400 uppercase tracking-wider">
                 DIRECT_DISPATCH
               </span>
@@ -185,7 +185,7 @@ export default function Footer({ settings }: FooterProps) {
 
           {/* Right Column (7 cols): Minimalist Contact Form */}
           <div className="lg:col-span-7">
-            <div className="p-6 sm:p-8 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 space-y-6">
+            <div className="p-6 sm:p-8 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white/85 dark:bg-zinc-950/80 backdrop-blur-md space-y-6">
               <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800/80 pb-3">
                 <span className="font-mono text-xs text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
                   // DISPATCH_FORM

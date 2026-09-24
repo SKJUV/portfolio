@@ -79,13 +79,13 @@ export default function AboutSection({ data }: AboutSectionProps) {
           </div>
 
           {/* Right Column (7 cols): 3 Hairline Architectural Pillars */}
-          <div className="lg:col-span-7 grid sm:grid-cols-3 gap-px bg-zinc-200 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden">
+          <div className="lg:col-span-7 grid sm:grid-cols-3 gap-px bg-zinc-200/80 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden backdrop-blur-md">
             {pillars.map((p) => {
               const Icon = p.icon;
               return (
                 <div
                   key={p.index}
-                  className="p-5 bg-white dark:bg-zinc-950 flex flex-col justify-between space-y-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors"
+                  className="p-5 bg-white/85 dark:bg-zinc-950/80 flex flex-col justify-between space-y-4 hover:bg-zinc-50/80 dark:hover:bg-zinc-900/60 transition-colors"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">

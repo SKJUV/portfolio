@@ -81,11 +81,11 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
         </div>
 
         {/* Directory Matrix Table */}
-        <div className="border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden divide-y divide-zinc-200 dark:divide-zinc-800 bg-white dark:bg-zinc-950">
+        <div className="border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden divide-y divide-zinc-200 dark:divide-zinc-800 bg-white/85 dark:bg-zinc-950/80 backdrop-blur-md">
           {matrix.map((row) => (
             <div
               key={row.index}
-              className="p-6 sm:p-8 grid md:grid-cols-12 gap-6 items-start hover:bg-zinc-50/50 dark:hover:bg-zinc-900/30 transition-colors"
+              className="p-6 sm:p-8 grid md:grid-cols-12 gap-6 items-start hover:bg-zinc-50/60 dark:hover:bg-zinc-900/40 transition-colors"
             >
               {/* Domain & Meta (4 cols) */}
               <div className="md:col-span-4 space-y-1">
@@ -107,7 +107,7 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
                 {row.items.map((item) => (
                   <span
                     key={item}
-                    className="text-xs font-mono px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors"
+                    className="text-xs font-mono px-2.5 py-1 rounded border border-zinc-200/90 dark:border-zinc-800/90 bg-white/80 dark:bg-zinc-900/60 text-zinc-700 dark:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors"
                   >
                     {item}
                   </span>

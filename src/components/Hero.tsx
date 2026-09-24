@@ -263,8 +263,8 @@ export default function Hero({ settings }: HeroProps) {
         </div>
 
         {/* Swiss Architectural Spec Bar (4 Columns) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-zinc-200 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden">
-          <div className="p-4 bg-white dark:bg-zinc-950 space-y-1">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-zinc-200/80 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden backdrop-blur-md">
+          <div className="p-4 bg-white/85 dark:bg-zinc-950/80 space-y-1">
             <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-400">
               01 // ROLE
             </span>
@@ -273,7 +273,7 @@ export default function Hero({ settings }: HeroProps) {
             </p>
           </div>
 
-          <div className="p-4 bg-white dark:bg-zinc-950 space-y-1">
+          <div className="p-4 bg-white/85 dark:bg-zinc-950/80 space-y-1">
             <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-400">
               02 // SPECIALTIES
             </span>
@@ -282,7 +282,7 @@ export default function Hero({ settings }: HeroProps) {
             </p>
           </div>
 
-          <div className="p-4 bg-white dark:bg-zinc-950 space-y-1">
+          <div className="p-4 bg-white/85 dark:bg-zinc-950/80 space-y-1">
             <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-400">
               03 // RECOGNITION
             </span>
@@ -291,7 +291,7 @@ export default function Hero({ settings }: HeroProps) {
             </p>
           </div>
 
-          <div className="p-4 bg-white dark:bg-zinc-950 space-y-1">
+          <div className="p-4 bg-white/85 dark:bg-zinc-950/80 space-y-1">
             <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-400">
               04 // CLEARANCE
             </span>

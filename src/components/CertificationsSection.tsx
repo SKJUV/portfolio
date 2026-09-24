@@ -72,7 +72,7 @@ export default function CertificationsSection({
 
         {/* Flagship: Professional Specialization */}
         {specialization && (filter === "all" || filter === "coursera") && (
-          <div className="p-6 sm:p-8 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors space-y-6">
+          <div className="p-6 sm:p-8 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white/85 dark:bg-zinc-950/80 backdrop-blur-md hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800/80 pb-4">
               <div className="flex items-center gap-2">
                 <span className="font-mono text-xs text-zinc-400 dark:text-zinc-500">
@@ -154,7 +154,7 @@ export default function CertificationsSection({
                   href={badge.badgeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors flex flex-col justify-between space-y-4 group"
+                  className="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white/85 dark:bg-zinc-950/80 backdrop-blur-md hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors flex flex-col justify-between space-y-4 group"
                 >
                   <div className="space-y-3">
                     <div className="w-16 h-16 mx-auto flex items-center justify-center p-1 bg-zinc-50 dark:bg-zinc-900 rounded border border-zinc-100 dark:border-zinc-800">
@@ -194,7 +194,7 @@ export default function CertificationsSection({
               </span>
             </div>
 
-            <div className="border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden divide-y divide-zinc-200 dark:divide-zinc-800 bg-white dark:bg-zinc-950">
+            <div className="border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden divide-y divide-zinc-200 dark:divide-zinc-800 bg-white/85 dark:bg-zinc-950/80 backdrop-blur-md">
               {otherCerts.map((cert) => (
                 <div
                   key={cert.id}
