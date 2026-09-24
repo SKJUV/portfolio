@@ -6,8 +6,9 @@
     "date": "2025",
     "description": "Tests d'intrusion, chasse aux menaces et cryptographie appliquée — formation IBM en cybersécurité.",
     "verificationUrl": "https://coursera.org/share/7d8286f6edc8a2b50bc65f0acb2c497e",
-    "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~ZQERTJSHU56B/CERTIFICATE_LANDING_PAGE~ZQERTJSHU56B.jpeg",
-    "description_en": "Penetration testing, threat hunting and applied cryptography — IBM cybersecurity training."
+    "imageUrl": "/certificates/coursera-pentest-cryptography.jpeg",
+    "description_en": "Penetration testing, threat hunting and applied cryptography — IBM cybersecurity training.",
+    "remoteImageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~ZQERTJSHU56B/CERTIFICATE_LANDING_PAGE~ZQERTJSHU56B.jpeg"
   },
   {
     "id": "coursera-cloud-security-threats",
@@ -16,8 +17,9 @@
     "date": "2025",
     "description": "Identification et protection contre les menaces de sécurité cloud — formation Google Cloud.",
     "verificationUrl": "https://coursera.org/share/fef5118ee94999b90e54498a630e5c5c",
-    "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~2IH1SNCHOW7S/CERTIFICATE_LANDING_PAGE~2IH1SNCHOW7S.jpeg",
-    "description_en": "Identification and protection against cloud security threats — Google Cloud training."
+    "imageUrl": "/certificates/coursera-cloud-security-threats.jpeg",
+    "description_en": "Identification and protection against cloud security threats — Google Cloud training.",
+    "remoteImageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~2IH1SNCHOW7S/CERTIFICATE_LANDING_PAGE~2IH1SNCHOW7S.jpeg"
   },
   {
     "id": "coursera-cloud-security-risk",
@@ -26,8 +28,9 @@
     "date": "2025",
     "description": "Stratégies de gestion des risques de sécurité cloud — formation Google Cloud.",
     "verificationUrl": "https://coursera.org/share/00a19ebb2d2bedbb956abe9d1904eab9",
-    "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~EDN83WUYGY90/CERTIFICATE_LANDING_PAGE~EDN83WUYGY90.jpeg",
-    "description_en": "Cloud security risk management strategies — Google Cloud training."
+    "imageUrl": "/certificates/coursera-cloud-security-risk.jpeg",
+    "description_en": "Cloud security risk management strategies — Google Cloud training.",
+    "remoteImageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~EDN83WUYGY90/CERTIFICATE_LANDING_PAGE~EDN83WUYGY90.jpeg"
   },
   {
     "id": "coursera-cloud-security-intro",
@@ -36,8 +39,9 @@
     "date": "2025",
     "description": "Principes fondamentaux de sécurité dans le cloud computing — formation Google Cloud.",
     "verificationUrl": "https://coursera.org/share/97fa6f6b82f644b398c0d5830d9e1863",
-    "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~K7RXKU3KRQ8X/CERTIFICATE_LANDING_PAGE~K7RXKU3KRQ8X.jpeg",
-    "description_en": "Fundamental security principles in cloud computing — Google Cloud training."
+    "imageUrl": "/certificates/coursera-cloud-security-intro.jpeg",
+    "description_en": "Fundamental security principles in cloud computing — Google Cloud training.",
+    "remoteImageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~K7RXKU3KRQ8X/CERTIFICATE_LANDING_PAGE~K7RXKU3KRQ8X.jpeg"
   },
   {
     "id": "coursera-encryption-cpp",
@@ -46,8 +50,9 @@
     "date": "2025",
     "description": "Algorithmes de chiffrement et déchiffrement en C++ : concepts cryptographiques appliqués.",
     "verificationUrl": "https://coursera.org/share/36411f51d0237f3601455363b7fc7a04",
-    "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~PM90OKB2UM0C/CERTIFICATE_LANDING_PAGE~PM90OKB2UM0C.jpeg",
-    "description_en": "Encryption and decryption algorithms in C++: applied cryptographic concepts."
+    "imageUrl": "/certificates/coursera-encryption-cpp.jpeg",
+    "description_en": "Encryption and decryption algorithms in C++: applied cryptographic concepts.",
+    "remoteImageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~PM90OKB2UM0C/CERTIFICATE_LANDING_PAGE~PM90OKB2UM0C.jpeg"
   },
   {
     "id": "coursera-mysql-workbench",
@@ -56,8 +61,9 @@
     "date": "2025",
     "description": "Conception et modélisation de bases de données relationnelles avec MySQL Workbench.",
     "verificationUrl": "https://coursera.org/share/4b971747279a13fae94f8e24622c3776",
-    "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~IP9OB3XBA88X/CERTIFICATE_LANDING_PAGE~IP9OB3XBA88X.jpeg",
-    "description_en": "Design and modeling of relational databases with MySQL Workbench."
+    "imageUrl": "/certificates/coursera-mysql-workbench.jpeg",
+    "description_en": "Design and modeling of relational databases with MySQL Workbench.",
+    "remoteImageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~IP9OB3XBA88X/CERTIFICATE_LANDING_PAGE~IP9OB3XBA88X.jpeg"
   },
   {
     "id": "coursera-python-dataviz",
@@ -66,8 +72,9 @@
     "date": "2025",
     "description": "Visualisation de données avec Python, création de graphiques avec Matplotlib et Seaborn.",
     "verificationUrl": "https://coursera.org/share/bb31227e5f3d4a182ca457cb07139ea3",
-    "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~Y4OIJU25O7RR/CERTIFICATE_LANDING_PAGE~Y4OIJU25O7RR.jpeg",
-    "description_en": "Data visualization with Python, creating charts with Matplotlib and Seaborn."
+    "imageUrl": "/certificates/coursera-python-dataviz.jpeg",
+    "description_en": "Data visualization with Python, creating charts with Matplotlib and Seaborn.",
+    "remoteImageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~Y4OIJU25O7RR/CERTIFICATE_LANDING_PAGE~Y4OIJU25O7RR.jpeg"
   },
   {
     "id": "coursera-json-python",
@@ -76,7 +83,8 @@
     "date": "2025",
     "description": "Manipulation de données JSON avec Python : lecture, écriture, parsing et traitement de fichiers JSON.",
     "verificationUrl": "https://coursera.org/share/74c2c9f88b3cac314e708c5abe102e91",
-    "imageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~VRNGBDHYC99H/CERTIFICATE_LANDING_PAGE~VRNGBDHYC99H.jpeg",
-    "description_en": "JSON data manipulation with Python: reading, writing, parsing and processing JSON files."
+    "imageUrl": "/certificates/coursera-json-python.jpeg",
+    "description_en": "JSON data manipulation with Python: reading, writing, parsing and processing JSON files.",
+    "remoteImageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~VRNGBDHYC99H/CERTIFICATE_LANDING_PAGE~VRNGBDHYC99H.jpeg"
   }
 ]
