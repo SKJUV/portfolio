@@ -30,19 +30,21 @@ export default function Home() {
   const credlyBadges = getCredlyBadges();
 
   return (
-    <main className="min-h-screen bg-background text-foreground relative selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-zinc-950">
+    <main className="min-h-screen text-foreground relative selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-zinc-950">
       <AnimatedBackground />
-      <Navbar />
-      <Hero settings={settings} />
-      <AboutSection data={about} />
-      <SkillsSection skills={skills} securitySkills={securitySkills} />
-      <ProjectsSection projects={projects} />
-      <CertificationsSection
-        certifications={certifications}
-        credlyBadges={credlyBadges}
-        credlyProfileUrl={settings.credlyUrl}
-      />
-      <Footer settings={settings} />
+      <div className="relative z-10">
+        <Navbar />
+        <Hero settings={settings} />
+        <AboutSection data={about} />
+        <SkillsSection skills={skills} securitySkills={securitySkills} />
+        <ProjectsSection projects={projects} />
+        <CertificationsSection
+          certifications={certifications}
+          credlyBadges={credlyBadges}
+          credlyProfileUrl={settings.credlyUrl}
+        />
+        <Footer settings={settings} />
+      </div>
       <AIChatBot
         projects={projects}
         skills={skills}

@@ -86,7 +86,7 @@ export default function Footer({ settings }: FooterProps) {
   return (
     <footer
       id="contact"
-      className="pt-20 sm:pt-28 pb-12 px-4 sm:px-6 border-t border-zinc-200 dark:border-zinc-800/80 bg-zinc-50/30 dark:bg-zinc-950"
+      className="pt-20 sm:pt-28 pb-12 px-4 sm:px-6 border-t border-zinc-200 dark:border-zinc-800/80"
     >
       <div className="max-w-6xl mx-auto space-y-16">
         {/* Section Marker */}
