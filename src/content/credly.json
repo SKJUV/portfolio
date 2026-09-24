@@ -1,0 +1,46 @@
+[
+  {
+    "id": "aws-sbg-core-team",
+    "title": "AWS SBG Core Team Member",
+    "title_en": "AWS SBG Core Team Member",
+    "issuer": "AWS Community",
+    "date": "2026",
+    "badgeId": "371c8db5-0302-4477-9080-6d495a2e92ce",
+    "badgeUrl": "https://www.credly.com/badges/371c8db5-0302-4477-9080-6d495a2e92ce",
+    "imageUrl": "https://images.credly.com/images/94475512-f247-408f-9809-9e1f93c60c18/twitter_thumb_201604_blob",
+    "skills": ["Community Building", "Leadership", "Student Engagement"]
+  },
+  {
+    "id": "aws-cloud-club-core-team",
+    "title": "AWS Cloud Club Core Team",
+    "title_en": "AWS Cloud Club Core Team",
+    "issuer": "AWS Community",
+    "date": "2026",
+    "badgeId": "6d7d80b4-64b1-4c5e-9fcd-c7d4fc96c01a",
+    "badgeUrl": "https://www.credly.com/badges/6d7d80b4-64b1-4c5e-9fcd-c7d4fc96c01a",
+    "imageUrl": "https://images.credly.com/images/68fdcd60-3f31-4a24-b87a-90110ab11ee9/twitter_thumb_201604_blob",
+    "skills": ["Cloud Architecture", "Organization", "AWS Cloud"]
+  },
+  {
+    "id": "ibm-pentest-crypto",
+    "title": "Penetration Testing, Threat Hunting, and Cryptography",
+    "title_en": "Penetration Testing, Threat Hunting, and Cryptography",
+    "issuer": "IBM (Coursera)",
+    "date": "2025",
+    "badgeId": "ab4140dc-c894-4708-aef6-af0aef437c24",
+    "badgeUrl": "https://www.credly.com/badges/ab4140dc-c894-4708-aef6-af0aef437c24",
+    "imageUrl": "https://images.credly.com/images/7cb8cab7-476c-4edc-b750-45d64522a782/twitter_thumb_201604_blob",
+    "skills": ["Cryptographic Protocols", "Defensive Security", "Threat Hunting"]
+  },
+  {
+    "id": "ibm-generative-ai",
+    "title": "Generative AI: Prompt Engineering",
+    "title_en": "Generative AI: Prompt Engineering",
+    "issuer": "IBM (Coursera)",
+    "date": "2025",
+    "badgeId": "24c33c7c-1a78-4e47-8abd-45448bbe38b8",
+    "badgeUrl": "https://www.credly.com/badges/24c33c7c-1a78-4e47-8abd-45448bbe38b8",
+    "imageUrl": "https://images.credly.com/images/7fd5a03e-823f-4449-af43-59afe528f4ee/twitter_thumb_201604_image.png",
+    "skills": ["Generative AI", "LLMs", "Prompt Engineering"]
+  }
+]

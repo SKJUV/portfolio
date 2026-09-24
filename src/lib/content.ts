@@ -4,6 +4,7 @@ import skillsData from "@/content/skills.json";
 import securityData from "@/content/security.json";
 import certificationsData from "@/content/certifications.json";
 import aboutData from "@/content/about.json";
+import credlyData from "@/content/credly.json";
 
 export interface Project {
   id: string;
@@ -83,6 +84,18 @@ export interface AboutData {
   vision: VisionItem[];
 }
 
+export interface CredlyBadge {
+  id: string;
+  title: string;
+  title_en?: string;
+  issuer: string;
+  date: string;
+  badgeId: string;
+  badgeUrl: string;
+  imageUrl: string;
+  skills: string[];
+}
+
 export interface Settings {
   siteTitle: string;
   siteTitle_en?: string;
@@ -97,6 +110,7 @@ export interface Settings {
   contactEmail: string;
   contactGithub?: string;
   contactLinkedin?: string;
+  credlyUrl?: string;
   githubUrl?: string;
   linkedinUrl?: string;
   twitterUrl?: string;
@@ -126,4 +140,8 @@ export function getCertifications(): Certification[] {
 
 export function getAbout(): AboutData {
   return aboutData as unknown as AboutData;
+}
+
+export function getCredlyBadges(): CredlyBadge[] {
+  return credlyData as unknown as CredlyBadge[];
 }

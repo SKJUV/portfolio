@@ -13,6 +13,7 @@ import {
   getSecuritySkills,
   getCertifications,
   getAbout,
+  getCredlyBadges,
 } from "@/lib/content";
 
 export const revalidate = 3600;
@@ -24,6 +25,7 @@ export default function Home() {
   const securitySkills = getSecuritySkills();
   const certifications = getCertifications();
   const about = getAbout();
+  const credlyBadges = getCredlyBadges();
 
   return (
     <main className="min-h-screen bg-background text-foreground bg-mesh selection:bg-blue-600/30 selection:text-white">
@@ -32,7 +34,11 @@ export default function Home() {
       <AboutSection data={about} />
       <SkillsSection skills={skills} securitySkills={securitySkills} />
       <ProjectsSection projects={projects} />
-      <CertificationsSection certifications={certifications} />
+      <CertificationsSection
+        certifications={certifications}
+        credlyBadges={credlyBadges}
+        credlyProfileUrl={settings.credlyUrl}
+      />
       <Footer settings={settings} />
       <AIChatBot
         projects={projects}

@@ -12,6 +12,10 @@ const nextConfig: NextConfig = {
         hostname: "s3.amazonaws.com",
         pathname: "/coursera_assets/**",
       },
+      {
+        protocol: "https",
+        hostname: "images.credly.com",
+      },
     ],
   },
 };
