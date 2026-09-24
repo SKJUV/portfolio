@@ -20,40 +20,52 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   const compactProjects = projects.filter((p) => p.layout === "compact");
 
   return (
-    <section id="projects" className="py-20 sm:py-28 px-4 sm:px-6">
-      <div className="max-w-4xl mx-auto space-y-10">
-        <div className="space-y-2">
-          <p className="text-xs font-mono uppercase tracking-widest text-zinc-400">
-            {locale === "fr" ? "Projets" : "Projects"}
-          </p>
-          <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100 tracking-tight">
-            {locale === "fr"
-              ? "Réalisations sélectionnées"
-              : "Selected work"}
-          </h2>
+    <section id="projects" className="py-20 sm:py-28 px-4 sm:px-6 border-t border-zinc-200 dark:border-zinc-800/80">
+      <div className="max-w-6xl mx-auto space-y-12">
+        {/* Section Header */}
+        <div className="flex items-center gap-3">
+          <span className="font-mono text-xs text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">
+            03 // SELECTED WORK & ARTIFACTS
+          </span>
+          <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
         </div>
 
         <div className="space-y-6">
-          {featuredProject && <ProjectCard project={featuredProject} />}
+          {/* Featured Architecture Project */}
+          {featuredProject && (
+            <ProjectCard project={featuredProject} index="01" />
+          )}
 
+          {/* Grid Projects */}
           {gridProjects.length > 0 && (
-            <div className="grid md:grid-cols-2 gap-4">
-              {gridProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
+            <div className="grid md:grid-cols-2 gap-6">
+              {gridProjects.map((project, idx) => (
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  index={`0${idx + 2}`}
+                />
               ))}
             </div>
           )}
 
+          {/* Compact / Desktop Utilities */}
           {compactProjects.length > 0 && (
-            <div className="space-y-2 pt-4">
-              <p className="text-xs font-mono uppercase tracking-wider text-zinc-400 pb-1">
-                {locale === "fr"
-                  ? "Applications Desktop"
-                  : "Desktop Applications"}
-              </p>
-              {compactProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
+            <div className="space-y-3 pt-6 border-t border-zinc-200 dark:border-zinc-800/80">
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-xs text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
+                  // DESKTOP & SYSTEM UTILITIES
+                </span>
+              </div>
+              <div className="space-y-2">
+                {compactProjects.map((project, idx) => (
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                    index={`SYS_0${idx + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           )}
         </div>

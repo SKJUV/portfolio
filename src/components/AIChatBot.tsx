@@ -179,30 +179,29 @@ export default function AIChatBot({ projects, skills, securitySkills }: AIChatBo
       {/* Floating Action Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-white shadow-xl shadow-blue-500/25 border border-blue-400/40 hover:bg-blue-500 transition-all duration-300 hover:scale-105 active:scale-95"
+        className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-zinc-950 dark:bg-white text-white dark:text-zinc-950 shadow-xl border border-zinc-800 dark:border-zinc-200 hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all duration-200 hover:scale-105 active:scale-95"
         aria-label={isOpen ? "Fermer le chat" : "Ouvrir l'assistant IA"}
       >
-        {isOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
+        {isOpen ? <X className="h-5 w-5" /> : <MessageCircle className="h-5 w-5" />}
       </button>
 
       {/* Chat Window */}
       {isOpen && (
         <div
-          className="fixed bottom-24 right-4 sm:right-6 z-50 flex w-[380px] max-w-[calc(100vw-2rem)] flex-col rounded-2xl border border-zinc-800 bg-zinc-950/95 shadow-2xl backdrop-blur-xl overflow-hidden animate-in slide-in-from-bottom-4 duration-300"
+          className="fixed bottom-22 right-4 sm:right-6 z-50 flex w-[380px] max-w-[calc(100vw-2rem)] flex-col rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 shadow-2xl backdrop-blur-xl overflow-hidden animate-in slide-in-from-bottom-4 duration-300"
           style={{ height: "min(520px, calc(100vh - 8rem))" }}
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3.5 bg-zinc-900/90 border-b border-zinc-800">
+          <div className="flex items-center justify-between px-4 py-3 bg-zinc-50 dark:bg-zinc-900/90 border-b border-zinc-200 dark:border-zinc-800">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
-                <Bot className="w-4 h-4" />
+              <div className="w-7 h-7 rounded border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-white">
+                <Bot className="w-3.5 h-3.5" />
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
-                  <h4 className="text-xs font-semibold text-zinc-100">
-                    SKJUV AI Assistant
+                  <h4 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 font-mono">
+                    SKJUV AI // ASSISTANT
                   </h4>
-                  <Sparkles className="w-3 h-3 text-blue-400" />
                 </div>
                 <p className="text-[10px] text-zinc-400 font-mono">
                   {useGemini ? "Google Gemini Powered" : "Local Engine"}
@@ -212,7 +211,7 @@ export default function AIChatBot({ projects, skills, securitySkills }: AIChatBo
 
             <button
               onClick={() => setIsOpen(false)}
-              className="p-1 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors"
+              className="p-1 rounded text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
               aria-label="Fermer"
             >
               <X className="w-4 h-4" />
@@ -220,17 +219,17 @@ export default function AIChatBot({ projects, skills, securitySkills }: AIChatBo
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 text-xs">
+          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 text-xs font-mono">
             {messages.map((msg, i) => (
               <div
                 key={i}
                 className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 leading-relaxed ${
+                  className={`max-w-[85%] rounded px-3.5 py-2.5 leading-relaxed text-xs ${
                     msg.role === "user"
-                      ? "bg-blue-600 text-white rounded-br-sm"
-                      : "bg-zinc-900 border border-zinc-800/90 text-zinc-200 rounded-bl-sm"
+                      ? "bg-zinc-950 dark:bg-white text-white dark:text-zinc-950"
+                      : "bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200"
                   }`}
                   dangerouslySetInnerHTML={
                     msg.role === "assistant"
@@ -245,9 +244,9 @@ export default function AIChatBot({ projects, skills, securitySkills }: AIChatBo
 
             {isTyping && (
               <div className="flex justify-start">
-                <div className="bg-zinc-900 border border-zinc-800 rounded-2xl rounded-bl-sm px-4 py-2.5 flex items-center gap-1.5 text-zinc-400">
-                  <Loader2 className="w-3.5 h-3.5 animate-spin text-blue-400" />
-                  <span className="text-[11px]">En réflexion...</span>
+                <div className="bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded px-3 py-2 flex items-center gap-2 text-zinc-500 font-mono">
+                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                  <span className="text-[11px]">THINKING...</span>
                 </div>
               </div>
             )}
@@ -255,12 +254,12 @@ export default function AIChatBot({ projects, skills, securitySkills }: AIChatBo
           </div>
 
           {/* Quick Prompts */}
-          <div className="px-3 py-2 border-t border-zinc-850 flex gap-1.5 overflow-x-auto hide-scrollbar">
+          <div className="px-3 py-2 border-t border-zinc-200 dark:border-zinc-800 flex gap-1.5 overflow-x-auto">
             {quickPrompts.map((p, idx) => (
               <button
                 key={idx}
                 onClick={() => handleSend(p)}
-                className="shrink-0 text-[10px] px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-blue-300 hover:border-blue-500/40 transition-colors"
+                className="shrink-0 text-[10px] font-mono px-2 py-0.5 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors"
               >
                 {p}
               </button>
@@ -273,23 +272,23 @@ export default function AIChatBot({ projects, skills, securitySkills }: AIChatBo
               e.preventDefault();
               handleSend();
             }}
-            className="p-3 border-t border-zinc-800/80 bg-zinc-900/50 flex items-center gap-2"
+            className="p-3 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 flex items-center gap-2"
           >
             <input
               ref={inputRef}
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder={locale === "fr" ? "Posez votre question..." : "Ask a question..."}
-              className="flex-1 px-3 py-2 rounded-xl bg-zinc-950 border border-zinc-800 text-zinc-100 text-xs placeholder:text-zinc-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/30 transition-all"
+              placeholder={locale === "fr" ? "Poser une question..." : "Ask a question..."}
+              className="flex-1 px-3 py-1.5 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 text-xs font-mono placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 dark:focus:border-zinc-400 transition-all"
             />
             <button
               type="submit"
               disabled={!input.trim() || isTyping}
-              className="p-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white disabled:opacity-40 transition-colors"
+              className="p-2 rounded bg-zinc-950 dark:bg-white text-white dark:text-zinc-950 disabled:opacity-30 transition-colors"
               aria-label="Envoyer"
             >
-              <Send className="w-4 h-4" />
+              <Send className="w-3.5 h-3.5" />
             </button>
           </form>
         </div>
