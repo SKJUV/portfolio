@@ -33,6 +33,39 @@
     "liveUrl": "https://crates.io/crates/skipper-360"
   },
   {
+    "id": "papyrus-backend",
+    "title": "Papyrus Platform — Backend",
+    "title_en": "Papyrus Platform — Backend",
+    "subtitle": "Architecture API transactionnelle, catalogue & intégrité des commandes",
+    "subtitle_en": "Transactional API architecture, catalog & order integrity engine",
+    "description": "Ingénierie du backend de production de Papyrus (papyrus.tech), la marketplace scolaire camerounaise. Conception et maintenance des APIs REST, synchronisation haute disponibilité du catalogue, sécurisation des flux de paiement/commandes et pipeline d'échange de manuels assisté par IA.",
+    "description_en": "Production backend engineering for the Papyrus platform (papyrus.tech), Cameroon's premier school marketplace. Designing and maintaining REST APIs, high-availability catalog indexing, securing payment/order transactions, and AI-assisted textbook buyback & exchange workflows.",
+    "badge": "Production Active · Backend Engine",
+    "badge_en": "Active Production · Backend Engine",
+    "badgeType": "backend",
+    "layout": "grid",
+    "stack": [
+      "Node.js",
+      "TypeScript",
+      "REST APIs",
+      "PostgreSQL",
+      "Transaction Engine",
+      "JWT & RBAC",
+      "Security Audits"
+    ],
+    "securityPoints": [
+      "Contrôle strict des transactions de commandes et validation d'intégrité des paniers",
+      "Protection contre les attaques de type Mass Assignment, injection SQL et Rate-Limiting",
+      "Chiffrement des données sensibles et isolation des flux de paiement"
+    ],
+    "securityPoints_en": [
+      "Strict checkout transaction controls and cart integrity verification",
+      "Defense against Mass Assignment, SQL injections, and Rate-Limiting policies",
+      "Sensitive data encryption and isolated payment transaction flows"
+    ],
+    "liveUrl": "https://papyrus.tech"
+  },
+  {
     "id": "api-quick",
     "title": "api-quick",
     "title_en": "api-quick",

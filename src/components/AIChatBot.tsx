@@ -47,14 +47,20 @@ function generateLocalResponse(
 
   if (/^(salut|hello|hi|hey|bonjour|coucou|yo|bonsoir)/i.test(q)) {
     return locale === "fr"
-      ? "Bonjour ! Je suis l'assistant IA de SINENG KENGNI Juvenal. Comment puis-je vous aider à explorer son travail en cybersécurité et full-stack ?"
-      : "Hello! I am SINENG KENGNI Juvenal's AI assistant. How can I help you explore his work in cybersecurity and full-stack engineering?";
+      ? "Bonjour ! Je suis l'assistant IA de SINENG KENGNI Juvenal. Comment puis-je vous aider à explorer son travail en backend chez Papyrus, ses projets ou sa posture cybersécurité ?"
+      : "Hello! I am SINENG KENGNI Juvenal's AI assistant. How can I help you explore his backend work at Papyrus, his projects, or his cybersecurity posture?";
+  }
+
+  if (/papyrus/i.test(q)) {
+    return locale === "fr"
+      ? "Juvenal est **Développeur Backend** de la plateforme [Papyrus](https://papyrus.tech) (marketplace scolaire et d'échange de livres au Cameroun). Il y conçoit les architectures d'APIs REST, sécurise les flux de commandes et optimise le traitement des transactions."
+      : "Juvenal is **Backend Developer** of the [Papyrus](https://papyrus.tech) platform (Cameroon's school marketplace and book exchange). He architects REST APIs, secures order transactions, and optimizes high-throughput backend services.";
   }
 
   if (/qui (es[t\-]|est)|présent|c'est qui|who (is|are)/.test(q)) {
     return locale === "fr"
-      ? "SINENG KENGNI Juvenal est un développeur Full-Stack et passionné de cybersécurité, étudiant à l'Université de Yaoundé 1 et détenteur de 8 certifications d'élite (IBM, Google Cloud)."
-      : "SINENG KENGNI Juvenal is a Full-Stack developer and cybersecurity enthusiast, student at University of Yaoundé 1 with 8 elite certifications from IBM and Google Cloud.";
+      ? "SINENG KENGNI Juvenal est Développeur Backend de la plateforme [Papyrus](https://papyrus.tech) et passionné de cybersécurité, étudiant à l'Université de Yaoundé 1 et titulaire de 8 certifications d'élite (IBM, Google Cloud)."
+      : "SINENG KENGNI Juvenal is a Backend Developer of the [Papyrus](https://papyrus.tech) platform and cybersecurity enthusiast, studying Computer Science at University of Yaoundé 1 with 8 elite certifications from IBM and Google Cloud.";
   }
 
   if (/contact|email|mail|linkedin|joindre/.test(q)) {

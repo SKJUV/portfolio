@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/providers/LanguageProvider";
-import { ShieldCheck, Code2, Server } from "lucide-react";
+import { ShieldCheck, Server, Terminal, ArrowUpRight } from "lucide-react";
 import type { AboutData } from "@/lib/content";
 
 interface AboutSectionProps {
@@ -14,9 +14,9 @@ export default function AboutSection({ data }: AboutSectionProps) {
   const bioText =
     locale === "fr"
       ? data.bio?.fr ||
-        "Étudiant en informatique à Yaoundé et développeur orienté cybersécurité. Je conçois des systèmes résilients, audités et sécurisés par conception."
+        "Développeur Backend de la plateforme Papyrus (https://papyrus.tech) et étudiant en informatique à Yaoundé. Je conçois des systèmes résilients, audités et sécurisés par conception."
       : data.bio?.en ||
-        "Computer science student in Yaoundé and security-oriented engineer. Designing resilient, audited systems, secured by design.";
+        "Backend Developer of the Papyrus platform (https://papyrus.tech) and computer science student in Yaoundé. Designing resilient, audited systems, secured by design.";
 
   const pillars = [
     {
@@ -30,21 +30,21 @@ export default function AboutSection({ data }: AboutSectionProps) {
     },
     {
       index: "02",
-      icon: Code2,
-      title: locale === "fr" ? "Ingénierie Full-Stack Robuste" : "Robust Full-Stack Engineering",
+      icon: Server,
+      title: locale === "fr" ? "Architecture Backend & APIs" : "Backend & API Architecture",
       desc:
         locale === "fr"
-          ? "Architecture Next.js 15, typage strict TypeScript, Server Actions sécurisées et APIs à haute performance."
-          : "Next.js 15 architecture, strict TypeScript typing, hardened Server Actions, and high-performance APIs.",
+          ? "APIs RESTful de production chez Papyrus, intégrité transactionnelle (commandes, paniers) et modélisation de données haute performance."
+          : "Production RESTful APIs at Papyrus, transactional integrity (orders, carts), and high-performance data modeling.",
     },
     {
       index: "03",
-      icon: Server,
+      icon: Terminal,
       title: locale === "fr" ? "Systèmes Résilients & Données" : "Resilient Systems & Data",
       desc:
         locale === "fr"
-          ? "Conteneurisation Docker, durcissement Linux, bases relationnelles PostgreSQL/MySQL et contrôle d'accès strict (RLS/RBAC)."
-          : "Docker containerization, Linux hardening, PostgreSQL/MySQL relational design, and strict access controls (RLS/RBAC).",
+          ? "Conteneurisation Docker, durcissement Linux, bases relationnelles PostgreSQL et contrôle d'accès strict (RLS/RBAC)."
+          : "Docker containerization, Linux hardening, PostgreSQL relational design, and strict access controls (RLS/RBAC).",
     },
   ];
 
@@ -71,7 +71,34 @@ export default function AboutSection({ data }: AboutSectionProps) {
             <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
               {bioText}
             </p>
-            <div className="pt-2">
+
+            {/* Papyrus Production Spotlight */}
+            <div className="p-4 rounded-lg border border-emerald-500/30 dark:border-emerald-500/30 bg-emerald-500/5 dark:bg-emerald-950/20 space-y-2">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-emerald-700 dark:text-emerald-400 font-semibold">
+                    {locale === "fr" ? "PRODUCTION // PAPYRUS.TECH" : "PRODUCTION // PAPYRUS.TECH"}
+                  </span>
+                </div>
+                <a
+                  href="https://papyrus.tech"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-mono text-[10px] text-emerald-700 dark:text-emerald-400 hover:underline"
+                >
+                  <span>papyrus.tech</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </a>
+              </div>
+              <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                {locale === "fr"
+                  ? "Développeur Backend de la marketplace scolaire camerounaise. Conception d'APIs REST résilientes, intégrité transactionnelle des commandes et sécurisation des flux de données."
+                  : "Backend Developer for Cameroon's school supplies and textbook exchange platform. Designing resilient REST APIs, transactional order integrity, and securing data flows."}
+              </p>
+            </div>
+
+            <div className="pt-1">
               <span className="inline-block text-[11px] font-mono uppercase tracking-wider text-zinc-500">
                 YAOUNDÉ, CAMEROUN · UNIVERSITÉ DE YAOUNDÉ 1
               </span>

@@ -45,10 +45,12 @@ export default function Hero({ settings }: HeroProps) {
             <span>·</span>
             <span>YAOUNDÉ, CM</span>
             <span>·</span>
-            <span>CYBERSECURITY & FULL-STACK</span>
+            <span>BACKEND DEV @ PAPYRUS</span>
+            <span>·</span>
+            <span>CYBERSECURITY</span>
           </div>
           <div className="flex items-center gap-2 text-[11px] font-mono text-zinc-600 dark:text-zinc-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-zinc-900 dark:bg-white animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span className="uppercase tracking-wider">
               {locale === "fr" ? "DISPONIBLE POUR PROJETS" : "AVAILABLE FOR PROJECTS"}
             </span>
@@ -60,22 +62,34 @@ export default function Hero({ settings }: HeroProps) {
           {/* Left Column (7 cols): Bold Headline & Manifesto */}
           <div className="lg:col-span-7 space-y-8">
             <div className="space-y-4">
-              <p className="text-xs font-mono tracking-widest text-zinc-400 dark:text-zinc-500 uppercase">
-                // ARCHITECTURAL PROFILE
-              </p>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <p className="text-xs font-mono tracking-widest text-zinc-400 dark:text-zinc-500 uppercase">
+                  // ARCHITECTURAL PROFILE
+                </p>
+                <a
+                  href="https://papyrus.tech"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 font-mono text-[11px] transition-colors group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>Backend Developer @ papyrus.tech</span>
+                  <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+              </div>
               <h1 className="text-4xl sm:text-6xl font-semibold tracking-tight leading-[1.06] text-zinc-950 dark:text-white">
                 SINENG KENGNI <br className="hidden sm:inline" />
                 <span className="text-zinc-400 dark:text-zinc-500">Juvenal</span>
               </h1>
               <p className="text-lg sm:text-xl font-medium text-zinc-800 dark:text-zinc-200 tracking-tight">
                 {locale === "fr"
-                  ? "Architecte Full-Stack & Chercheur en Sécurité Applicative."
-                  : "Full-Stack Architect & Application Security Researcher."}
+                  ? "Développeur Backend @ Papyrus & Ingénieur Sécurité Systèmes."
+                  : "Backend Developer @ Papyrus & Systems Security Engineer."}
               </p>
               <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-xl">
                 {locale === "fr"
-                  ? "Conception de systèmes distribués résilients, d'applications web Next.js durcies et de mécanismes de défense proactive contre les vecteurs d'attaque modernes."
-                  : "Designing resilient distributed systems, hardened Next.js web platforms, and proactive defense mechanisms against modern attack vectors."}
+                  ? "Développeur Backend de la plateforme Papyrus (marketplace scolaire camerounaise & échanges IA). Conception d'architectures d'APIs résilientes, de flux transactionnels durcis et de systèmes sécurisés par défaut."
+                  : "Backend Developer of the Papyrus platform (Cameroonian EdTech marketplace & AI exchanges). Engineering resilient API architectures, hardened transaction flows, and secure-by-default systems."}
               </p>
             </div>
 
@@ -170,10 +184,39 @@ export default function Hero({ settings }: HeroProps) {
                 <div className="divide-y divide-zinc-200 dark:divide-zinc-800/80 text-xs">
                   <div className="p-3.5 flex items-start justify-between gap-4">
                     <span className="font-mono text-[11px] text-zinc-400 uppercase tracking-wider">
+                      CURRENT ROLE
+                    </span>
+                    <a
+                      href="https://papyrus.tech"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono text-zinc-900 dark:text-zinc-100 text-right flex items-center gap-1.5 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      <span>Backend Developer @ Papyrus ↗</span>
+                    </a>
+                  </div>
+
+                  <div className="p-3.5 flex items-start justify-between gap-4">
+                    <span className="font-mono text-[11px] text-zinc-400 uppercase tracking-wider">
+                      PLATFORM
+                    </span>
+                    <a
+                      href="https://papyrus.tech"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono text-zinc-700 dark:text-zinc-300 text-right hover:underline"
+                    >
+                      papyrus.tech (EdTech & Marketplace)
+                    </a>
+                  </div>
+
+                  <div className="p-3.5 flex items-start justify-between gap-4">
+                    <span className="font-mono text-[11px] text-zinc-400 uppercase tracking-wider">
                       PRIMARY STACK
                     </span>
                     <span className="font-mono text-zinc-800 dark:text-zinc-200 text-right">
-                      Next.js 15 · TypeScript · Edge
+                      Node.js · REST APIs · PostgreSQL · Rust
                     </span>
                   </div>
 
@@ -182,26 +225,7 @@ export default function Hero({ settings }: HeroProps) {
                       SECURITY FOCUS
                     </span>
                     <span className="font-mono text-zinc-800 dark:text-zinc-200 text-right">
-                      OWASP Top 10 · Pentest · Crypto
-                    </span>
-                  </div>
-
-                  <div className="p-3.5 flex items-start justify-between gap-4">
-                    <span className="font-mono text-[11px] text-zinc-400 uppercase tracking-wider">
-                      CREDENTIALS
-                    </span>
-                    <span className="font-mono text-zinc-800 dark:text-zinc-200 text-right">
-                      Google Cloud & IBM (8 Verified)
-                    </span>
-                  </div>
-
-                  <div className="p-3.5 flex items-start justify-between gap-4">
-                    <span className="font-mono text-[11px] text-zinc-400 uppercase tracking-wider">
-                      ENGAGEMENT
-                    </span>
-                    <span className="font-mono text-zinc-800 dark:text-zinc-200 text-right flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                      Full-Stack & Security Roles
+                      OWASP Top 10 · Pentest · Strict RLS
                     </span>
                   </div>
 
@@ -268,35 +292,42 @@ export default function Hero({ settings }: HeroProps) {
             <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-400">
               01 // ROLE
             </span>
-            <p className="text-xs font-medium text-zinc-900 dark:text-zinc-100">
-              Full-Stack & Security
+            <p className="text-xs font-medium text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+              Backend Dev @ Papyrus
             </p>
           </div>
 
           <div className="p-4 bg-white/85 dark:bg-zinc-950/80 space-y-1">
             <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-400">
-              02 // SPECIALTIES
+              02 // PLATFORM
+            </span>
+            <a
+              href="https://papyrus.tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-medium text-zinc-900 dark:text-zinc-100 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors flex items-center gap-1"
+            >
+              <span>papyrus.tech</span>
+              <ArrowUpRight className="w-3 h-3 text-zinc-400" />
+            </a>
+          </div>
+
+          <div className="p-4 bg-white/85 dark:bg-zinc-950/80 space-y-1">
+            <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-400">
+              03 // CORE ARSENAL
             </span>
             <p className="text-xs font-medium text-zinc-900 dark:text-zinc-100">
-              Next.js 15 · Threat Modeling
+              APIs · PostgreSQL · Rust · Security
             </p>
           </div>
 
           <div className="p-4 bg-white/85 dark:bg-zinc-950/80 space-y-1">
             <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-400">
-              03 // RECOGNITION
+              04 // POSTURE & BASE
             </span>
             <p className="text-xs font-medium text-zinc-900 dark:text-zinc-100">
-              8 Verified Certs & Badges
-            </p>
-          </div>
-
-          <div className="p-4 bg-white/85 dark:bg-zinc-950/80 space-y-1">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-400">
-              04 // CLEARANCE
-            </span>
-            <p className="text-xs font-medium text-zinc-900 dark:text-zinc-100">
-              Yaoundé, CM · Worldwide Remote
+              Zero-Trust · Yaoundé, CM
             </p>
           </div>
         </div>

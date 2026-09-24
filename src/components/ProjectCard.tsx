@@ -208,7 +208,13 @@ export default function ProjectCard({ project, index = "01" }: ProjectCardProps)
                 rel="noopener noreferrer"
                 className="text-xs font-mono flex items-center gap-1 text-zinc-900 dark:text-white hover:underline"
               >
-                <span>{project.liveUrl.includes("doc") ? "Docs" : "Live"}</span>
+                <span>
+                  {project.liveUrl.includes("papyrus.tech")
+                    ? "papyrus.tech"
+                    : project.liveUrl.includes("doc")
+                    ? "Docs"
+                    : "Live"}
+                </span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
             )}
