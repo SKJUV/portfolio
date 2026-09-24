@@ -13,30 +13,6 @@
     "isSpecialization": true
   },
   {
-    "id": "coursera-put-it-all-together-prepare-for-a-cloud-security-analyst-job",
-    "name": "Put It All Together: Prepare for a Cloud Security Analyst Job",
-    "platform": "Coursera (Google Cloud)",
-    "date": "2026",
-    "description": "Programme d'intégration des compétences d'analyste en sécurité cloud : architecture défensive et gouvernance sécuritaire.",
-    "description_en": "Capstone program for cloud security analyst skills: defensive architecture and security governance.",
-    "verificationUrl": "https://www.coursera.org/account/accomplishments/verify/7805VQXTZ43I",
-    "imageUrl": "/certificates/coursera-put-it-all-together-prepare-for-a-cloud-security-analyst-job.jpeg",
-    "remoteImageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~7805VQXTZ43I/CERTIFICATE_LANDING_PAGE~7805VQXTZ43I.jpeg",
-    "grade": "97%"
-  },
-  {
-    "id": "coursera-detect-respond-and-recover-from-cloud-cybersecurity-attacks",
-    "name": "Detect, Respond, and Recover from Cloud Cybersecurity Attacks",
-    "platform": "Coursera (Google Cloud)",
-    "date": "2026",
-    "description": "Détection proactive, gestion d'incidents et restauration des infrastructures cloud suite à des cyberattaques (Google Cloud).",
-    "description_en": "Proactive detection, incident handling and cloud infrastructure recovery following cybersecurity attacks (Google Cloud).",
-    "verificationUrl": "https://www.coursera.org/account/accomplishments/verify/PKXY86OTI0RK",
-    "imageUrl": "/certificates/coursera-detect-respond-and-recover-from-cloud-cybersecurity-attacks.jpeg",
-    "remoteImageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~PKXY86OTI0RK/CERTIFICATE_LANDING_PAGE~PKXY86OTI0RK.jpeg",
-    "grade": "96%"
-  },
-  {
     "id": "coursera-storing-retrieving-and-processing-json-data-with-python",
     "name": "Storing, Retrieving, and Processing JSON data with Python",
     "platform": "Coursera",
@@ -47,18 +23,6 @@
     "imageUrl": "/certificates/coursera-storing-retrieving-and-processing-json-data-with-python.jpeg",
     "remoteImageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~VRNGBDHYC99H/CERTIFICATE_LANDING_PAGE~VRNGBDHYC99H.jpeg",
     "grade": "90%"
-  },
-  {
-    "id": "coursera-cloud-security-risks-identify-and-protect-against-threats",
-    "name": "Cloud Security Risks: Identify and Protect Against Threats",
-    "platform": "Coursera (Google Cloud)",
-    "date": "2025",
-    "description": "Identification des vulnérabilités critiques et mise en œuvre des mécanismes de protection dans les environnements cloud.",
-    "description_en": "Critical vulnerability identification and defense mechanism deployment in cloud environments.",
-    "verificationUrl": "https://www.coursera.org/account/accomplishments/verify/2IH1SNCHOW7S",
-    "imageUrl": "/certificates/coursera-cloud-security-risks-identify-and-protect-against-threats.jpeg",
-    "remoteImageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~2IH1SNCHOW7S/CERTIFICATE_LANDING_PAGE~2IH1SNCHOW7S.jpeg",
-    "grade": "97%"
   },
   {
     "id": "coursera-penetration-testing-threat-hunting-and-cryptography",
@@ -119,18 +83,6 @@
     "imageUrl": "/certificates/coursera-python-for-data-visualization-matplotlib-seaborn.jpeg",
     "remoteImageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~Y4OIJU25O7RR/CERTIFICATE_LANDING_PAGE~Y4OIJU25O7RR.jpeg",
     "grade": "100%"
-  },
-  {
-    "id": "coursera-strategies-for-cloud-security-risk-management",
-    "name": "Strategies for Cloud Security Risk Management",
-    "platform": "Coursera (Google Cloud)",
-    "date": "2025",
-    "description": "Gouvernance et stratégies avancées de gestion des risques dans le cloud computing (Google Cloud).",
-    "description_en": "Governance and advanced risk management strategies in cloud computing (Google Cloud).",
-    "verificationUrl": "https://www.coursera.org/account/accomplishments/verify/EDN83WUYGY90",
-    "imageUrl": "/certificates/coursera-strategies-for-cloud-security-risk-management.jpeg",
-    "remoteImageUrl": "https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~EDN83WUYGY90/CERTIFICATE_LANDING_PAGE~EDN83WUYGY90.jpeg",
-    "grade": "94%"
   },
   {
     "id": "coursera-generative-ai-prompt-engineering-basics",

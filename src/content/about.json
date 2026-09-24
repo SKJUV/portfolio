@@ -1,111 +1,34 @@
 {
-  "profileCategories": [
-    {
-      "icon": "GraduationCap",
-      "title": "Formation & Écosystème",
-      "title_en": "Education & Ecosystem",
-      "points": [
-        "Université de Yaoundé 1 (Informatique)",
-        "Google Developer Groups (GDSC & GDG Yaoundé)",
-        "Django Cameroon (Hacktoberfest)",
-        "Women TechMakers Yaoundé"
-      ],
-      "points_en": [
-        "University of Yaounde 1 (Computer Science)",
-        "Google Developer Groups (GDSC & GDG Yaounde)",
-        "Django Cameroon (Hacktoberfest)",
-        "Women TechMakers Yaounde"
-      ]
-    },
+  "bio": {
+    "fr": "Étudiant en Informatique à l'Université de Yaoundé 1 et développeur axé sur la cybersécurité. Je conçois des systèmes résilients, performants et sécurisés par défaut, alliant rigueur d'ingénierie logicielle et culture Zero-Trust.",
+    "en": "Computer Science student at University of Yaounde 1 and security-focused software engineer. I build resilient, high-performance systems secured by design, combining engineering rigor and a Zero-Trust mindset."
+  },
+  "pillars": [
     {
       "icon": "ShieldCheck",
-      "title": "Cybersécurité & Pratique CTF",
-      "title_en": "Cybersecurity & CTF Practice",
-      "points": [
-        "Hack The Box & OverTheWire CTFs",
-        "Audits de vulnérabilités applicatives (OWASP Top 10)",
-        "Cryptographie appliquée et Zero Trust",
-        "Formations avancées IBM & Google Cloud"
-      ],
-      "points_en": [
-        "Hack The Box & OverTheWire CTFs",
-        "Application vulnerability audits (OWASP Top 10)",
-        "Applied cryptography and Zero Trust mindset",
-        "Advanced training from IBM & Google Cloud"
-      ]
+      "title": "Cybersécurité & Défense",
+      "title_en": "Cybersecurity & Defense",
+      "summary": "Audits OWASP Top 10, tests d'intrusion, cryptographie appliquée et pratique CTF.",
+      "summary_en": "OWASP Top 10 audits, penetration testing, applied cryptography, and CTF challenges."
+    },
+    {
+      "icon": "Code2",
+      "title": "Ingénierie Full-Stack",
+      "title_en": "Full-Stack Engineering",
+      "summary": "Next.js 15, TypeScript strict, architectures API résilientes et interfaces modernes.",
+      "summary_en": "Next.js 15, strict TypeScript, resilient API architectures, and modern user experiences."
     },
     {
       "icon": "Terminal",
-      "title": "Ingénierie & Systèmes",
-      "title_en": "Engineering & Systems",
-      "points": [
-        "Environnements Linux & diagnostic système",
-        "Architectures Cloud & Micro-services",
-        "Workflows Git & CI/CD automatisés",
-        "Code résilient, typé et testé"
-      ],
-      "points_en": [
-        "Linux environments & system diagnostics",
-        "Cloud & microservices architectures",
-        "Automated Git workflows & CI/CD",
-        "Resilient, typed, and tested code"
-      ]
+      "title": "Systèmes & Cloud",
+      "title_en": "Systems & Cloud",
+      "summary": "Environnements Linux, conteneurs Docker, modélisation SQL et architectures cloud.",
+      "summary_en": "Linux environments, Docker containers, SQL data modeling, and cloud architecture."
     }
   ],
-  "terminalLines": [
-    {
-      "command": "$ whoami",
-      "output": "juvenal_sineng — cybersecurity enthusiast && full-stack engineer"
-    },
-    {
-      "command": "$ cat /etc/security/philosophy",
-      "output": "Zero Trust by design · Defense in depth · Clean architecture"
-    },
-    {
-      "command": "$ nmap -sV target.local",
-      "output": "443/tcp OPEN — Production-grade security audits & hardened services"
-    },
-    {
-      "command": "$ echo $GOAL",
-      "output": "Bâtir des infrastructures fiables, performantes et sécurisées"
-    }
-  ],
-  "bio": {
-    "fr": "Étudiant en Informatique à l'Université de Yaoundé 1 et développeur passionné par la cybersécurité. Je conçois des applications web et logicielles robustes en alliant rigueur d'ingénierie, architecture résiliente et protection proactive contre les vulnérabilités.",
-    "en": "Computer Science student at University of Yaounde 1 and cybersecurity enthusiast. I build robust web and software applications by combining engineering rigor, resilient architecture, and proactive vulnerability protection."
-  },
-  "vision": [
-    {
-      "id": "tech",
-      "title": "Vision Technique",
-      "title_en": "Technical Vision",
-      "icon": "Target",
-      "points": [
-        "Construire des systèmes sécurisés et scalables",
-        "Démocratiser l'accès aux technologies modernes",
-        "Créer des solutions fiables à fort impact"
-      ],
-      "points_en": [
-        "Build secure and scalable systems",
-        "Democratize access to modern technologies",
-        "Create reliable, high-impact solutions"
-      ]
-    },
-    {
-      "id": "cyber",
-      "title": "Passion Cybersécurité",
-      "title_en": "Cybersecurity Passion",
-      "icon": "ShieldCheck",
-      "points": [
-        "Approfondir l'audit de sécurité et le pentesting",
-        "Maîtriser les standards OWASP et Zero Trust",
-        "Sensibiliser aux bonnes pratiques de sécurité"
-      ],
-      "points_en": [
-        "Deepen security auditing and pentesting",
-        "Master OWASP and Zero Trust standards",
-        "Promote security best practices"
-      ]
-    }
+  "highlights": [
+    { "label": "Université", "label_en": "University", "value": "Yaoundé 1" },
+    { "label": "Posture", "label_en": "Posture", "value": "Zero Trust" },
+    { "label": "Localisation", "label_en": "Location", "value": "Yaoundé, CM" }
   ]
 }

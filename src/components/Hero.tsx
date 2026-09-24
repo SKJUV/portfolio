@@ -171,8 +171,8 @@ export async function verifyRequest(req: Request) {
           {/* Subtitle description */}
           <p className="text-zinc-600 dark:text-zinc-400 text-base sm:text-lg leading-relaxed max-w-xl">
             {locale === "fr"
-              ? "Passionné par la conception de systèmes résilients, l'audit OWASP et l'ingénierie web moderne. Alliant rigueur de sécurité et innovation pour l'écosystème technologique."
-              : "Passionate about designing resilient systems, OWASP security audits, and modern full-stack engineering. Merging security rigor and technological innovation."}
+              ? "Ingénierie logicielle full-stack et cybersécurité appliquée. Conception de systèmes web résilients, performants et conformes aux principes Zero-Trust."
+              : "Full-stack software engineering and applied cybersecurity. Designing resilient, high-performance web systems anchored in Zero-Trust principles."}
           </p>
 
           {/* CTA Buttons */}
@@ -221,9 +221,9 @@ export async function verifyRequest(req: Request) {
           {/* Quick Metrics */}
           <div className="pt-6 grid grid-cols-3 gap-4 border-t border-zinc-200 dark:border-zinc-800/80 max-w-lg">
             <div>
-              <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 font-mono">8</div>
+              <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 font-mono">13</div>
               <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-                {locale === "fr" ? "Certifs (IBM · Google)" : "Certifications (IBM · Google)"}
+                {locale === "fr" ? "Badges & Certifs" : "Badges & Certs"}
               </div>
             </div>
             <div>

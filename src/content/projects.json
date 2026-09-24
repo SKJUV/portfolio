@@ -3,10 +3,10 @@
     "id": "portfolio",
     "title": "Portfolio Personnel & Sécurisé",
     "title_en": "Personal & Secure Portfolio",
-    "subtitle": "Architecture moderne avec CMS admin, IA Gemini & protection stricte",
-    "subtitle_en": "Modern architecture with admin CMS, Gemini AI & strict security",
-    "description": "Portfolio full-stack conçu avec Next.js 15 App Router. Intègre un panneau d'administration sécurisé, un chatbot assistant IA via Google Gemini, support bilingue FR/EN, thème adaptatif et stockage Supabase durci.",
-    "description_en": "Full-stack portfolio built with Next.js 15 App Router. Features a secured admin panel, Google Gemini AI assistant chatbot, dual FR/EN language support, adaptive theme, and hardened Supabase storage.",
+    "subtitle": "Architecture Next.js 15, CMS admin & IA Gemini",
+    "subtitle_en": "Next.js 15 architecture, admin CMS & Gemini AI",
+    "description": "Plateforme web full-stack avec Next.js 15 App Router, CMS d'administration sécurisé, assistant IA Google Gemini et stockage Supabase durci.",
+    "description_en": "Full-stack web platform built with Next.js 15 App Router, secured admin CMS, Google Gemini AI assistant, and hardened Supabase storage.",
     "badge": "Projet Phare · Full-Stack & IA",
     "badge_en": "Flagship · Full-Stack & AI",
     "badgeType": "featured",
@@ -33,10 +33,10 @@
   {
     "id": "educonverse",
     "title": "EduConverse",
-    "subtitle": "Plateforme éducative multilingue propulsée par l'IA",
-    "subtitle_en": "Multilingual AI-powered educational platform",
-    "description": "Plateforme e-learning primée conçue pour la Digital Innovation Week Cameroun. Parcours en français et langues nationales, gestion des rôles avancée et tuteur intelligent Google Genkit.",
-    "description_en": "Award-winning e-learning platform built for Digital Innovation Week Cameroon. Courses in French and national languages, advanced role management, and intelligent Google Genkit tutor.",
+    "subtitle": "Plateforme éducative multilingue & IA",
+    "subtitle_en": "Multilingual AI educational platform",
+    "description": "Plateforme e-learning multilingue primée à la Digital Innovation Week. Support des langues nationales, gestion des rôles et tuteur Google Genkit.",
+    "description_en": "Award-winning multilingual e-learning platform at Digital Innovation Week. National language support, role control, and Google Genkit tutor.",
     "badge": "EdTech & IA · DIW",
     "badge_en": "EdTech & AI · DIW",
     "badgeType": "education",
@@ -49,21 +49,21 @@
     ],
     "securityPoints": [
       "RBAC strict (admin/enseignant/apprenant)",
-      "Server Actions avec validation Zod & IA sandboxée"
+      "Server Actions avec validation Zod"
     ],
     "securityPoints_en": [
       "Strict RBAC (admin/teacher/student)",
-      "Zod Server Actions & sandboxed AI validation"
+      "Zod Server Actions validation"
     ],
     "githubUrl": "https://github.com/SKJUV/EduConverse"
   },
   {
     "id": "eduafrique",
     "title": "EduAfrique",
-    "subtitle": "Plateforme de formation panafricaine avec tuteur IA",
-    "subtitle_en": "Pan-African training platform with AI tutor",
-    "description": "Solution d'apprentissage en ligne adaptée au contexte africain avec tuteur d'apprentissage intelligent, évaluations dynamiques et catalogue de formation ciblé (Tech, Business, Agri).",
-    "description_en": "Online learning solution adapted to African context with intelligent tutor, dynamic assessments, and targeted catalog (Tech, Business, Agriculture).",
+    "subtitle": "Formation panafricaine avec tuteur IA",
+    "subtitle_en": "Pan-African training with AI tutor",
+    "description": "Solution d'apprentissage en ligne adaptée au contexte africain avec tuteur intelligent, évaluations dynamiques et catalogue ciblé.",
+    "description_en": "Online learning platform tailored for the African context with intelligent tutoring, dynamic evaluations, and curated tracks.",
     "badge": "E-Learning Panafricain",
     "badge_en": "Pan-African E-Learning",
     "badgeType": "education",
@@ -75,23 +75,22 @@
       "Google Genkit AI"
     ],
     "securityPoints": [
-      "Authentification Firebase & sessions sécurisées",
-      "Validation stricte des prompts et flux d'évaluation"
+      "Sessions sécurisées & validation stricte des prompts",
+      "Protection contre les dépassements d'injection"
     ],
     "securityPoints_en": [
-      "Firebase Auth & hardened sessions",
-      "Strict prompt validation & evaluation workflows"
+      "Hardened sessions & strict prompt validation",
+      "Protection against injection overflows"
     ],
     "githubUrl": "https://github.com/SKJUV/EduAfrique"
   },
   {
     "id": "tp1ct203",
     "title": "TP203 — Emplois du Temps",
-    "title_en": "TP203 — Schedule Management",
-    "subtitle": "Application desktop multiplateforme MVVM (.NET 9)",
-    "subtitle_en": "Cross-platform MVVM desktop application (.NET 9)",
-    "description": "Application desktop professionnelle pour la gestion universitaire des salles, UE et enseignants avec 4 profils d'accès et backend REST.",
-    "description_en": "Professional desktop application for university room and course management with 4 access profiles and REST backend.",
+    "subtitle": "Application desktop .NET 9 & Avalonia UI",
+    "subtitle_en": ".NET 9 & Avalonia UI desktop application",
+    "description": "Application desktop professionnelle pour la planification universitaire des salles, cours et enseignants avec backend REST.",
+    "description_en": "Professional desktop application for university room and course scheduling with REST backend.",
     "badge": "Desktop · .NET 9 MVVM",
     "badge_en": "Desktop · .NET 9 MVVM",
     "badgeType": "university",
@@ -104,21 +103,20 @@
       "REST API"
     ],
     "securityPoints": [
-      "RBAC 4 rôles et communication API chiffrée"
+      "RBAC 4 rôles et flux API chiffrés"
     ],
     "securityPoints_en": [
-      "4-role RBAC and encrypted API communication"
+      "4-role RBAC and encrypted API streams"
     ],
     "githubUrl": "https://github.com/SKJUV/tp1ct203"
   },
   {
     "id": "hrms",
-    "title": "HRMS — Gestion des Ressources Humaines",
-    "title_en": "HRMS — Human Resources Management",
-    "subtitle": "Application d'administration du personnel Java & PostgreSQL",
-    "subtitle_en": "Java & PostgreSQL personnel management application",
-    "description": "Système d'ingénierie RH pour le suivi des effectifs, contrats, départements et rôles avec persistance relationnelle sécurisée.",
-    "description_en": "HR engineering system for personnel tracking, departments, and roles with secure relational persistence.",
+    "title": "HRMS — Gestion RH",
+    "subtitle": "Gestion du personnel Java & PostgreSQL",
+    "subtitle_en": "Java & PostgreSQL personnel management",
+    "description": "Système d'ingénierie RH pour le suivi des effectifs, contrats et départements avec persistance relationnelle sécurisée.",
+    "description_en": "HR management system for personnel, contract, and department tracking with secure relational persistence.",
     "badge": "Entreprise · Java & SQL",
     "badge_en": "Enterprise · Java & SQL",
     "badgeType": "university",
@@ -129,10 +127,10 @@
       "JDBC"
     ],
     "securityPoints": [
-      "Requêtes préparées anti-injection SQL & contrôle d'accès"
+      "Requêtes préparées anti-injections SQL"
     ],
     "securityPoints_en": [
-      "Prepared statements SQL injection defense & access control"
+      "Prepared statements anti-SQL injection"
     ],
     "githubUrl": "https://github.com/SKJUV/HRMS"
   }

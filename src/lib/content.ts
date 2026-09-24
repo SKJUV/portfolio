@@ -77,14 +77,30 @@ export interface VisionItem {
   points_en?: string[];
 }
 
+export interface AboutPillar {
+  icon: string;
+  title: string;
+  title_en?: string;
+  summary: string;
+  summary_en?: string;
+}
+
+export interface AboutHighlight {
+  label: string;
+  label_en?: string;
+  value: string;
+}
+
 export interface AboutData {
-  profileCategories: ProfileCategory[];
-  terminalLines?: string[];
   bio: {
     fr: string;
     en: string;
   };
-  vision: VisionItem[];
+  pillars?: AboutPillar[];
+  highlights?: AboutHighlight[];
+  profileCategories?: ProfileCategory[];
+  terminalLines?: any[];
+  vision?: VisionItem[];
 }
 
 export interface CredlyBadge {

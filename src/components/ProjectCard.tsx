@@ -233,19 +233,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       {project.securityPoints && project.securityPoints.length > 0 && (
-        <div className="pt-4 mt-5 border-t border-zinc-200 dark:border-zinc-800/60 space-y-1.5">
-          <div className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider flex items-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5 text-blue-500" />
-            <span>{locale === "fr" ? "Sécurité & Robustesse" : "Security Architecture"}</span>
-          </div>
-          <ul className="space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
-            {project.securityPoints.map((point, idx) => (
-              <li key={idx} className="flex items-start gap-1.5">
-                <span className="text-blue-500 mt-0.5">›</span>
-                <span>{td(point, project.securityPoints_en?.[idx])}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="pt-3 mt-4 border-t border-zinc-100 dark:border-zinc-800/50 flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400 font-mono">
+          <ShieldCheck className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+          <span className="truncate">{td(project.securityPoints[0], project.securityPoints_en?.[0])}</span>
         </div>
       )}
     </div>

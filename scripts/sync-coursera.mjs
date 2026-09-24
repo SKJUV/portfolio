@@ -331,6 +331,11 @@ async function main() {
     }
 
     const partner = c.product?.partners?.[0]?.name || "Coursera";
+
+    // User requested: exclude individual Google Cloud sub-courses (keep only the Professional Specialization)
+    if (partner.toLowerCase().includes("google")) {
+      continue;
+    }
     const code = c.verifyCode;
     const year = c.grantedAt ? new Date(c.grantedAt).getFullYear().toString() : "2025";
     const slug = getSlug(name);
