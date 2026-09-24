@@ -55,6 +55,9 @@ export interface Certification {
   imageUrl?: string;
   credentialId?: string;
   badge?: string;
+  isSpecialization?: boolean;
+  grade?: string;
+  remoteImageUrl?: string;
 }
 
 export interface ProfileCategory {

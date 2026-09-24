@@ -183,7 +183,9 @@ export default function CertificationsSection({
                     {locale === "fr" ? "Cybersécurité & Cloud (IBM · Google)" : "Cybersecurity & Cloud (IBM · Google)"}
                   </h4>
                 </div>
-                <span className="text-xs font-mono text-zinc-500">4 vérifiées</span>
+                <span className="text-xs font-mono text-zinc-500">
+                  {securityAndCloud.length} {locale === "fr" ? "vérifiées" : "verified"}
+                </span>
               </div>
 
               <div className="space-y-3">
@@ -195,14 +197,22 @@ export default function CertificationsSection({
                   return (
                     <div
                       key={cert.id || cert.name}
-                      className="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/50 shadow-sm hover:border-blue-500/40 transition-all duration-150 flex items-center justify-between gap-4 group"
+                      className={`p-4 rounded-xl border bg-white dark:bg-zinc-900/50 shadow-sm transition-all duration-150 flex items-center justify-between gap-4 group ${
+                        cert.isSpecialization
+                          ? "border-amber-500/40 bg-gradient-to-r from-amber-500/5 via-transparent to-transparent hover:border-amber-500/70"
+                          : "border-zinc-200 dark:border-zinc-800/80 hover:border-blue-500/40"
+                      }`}
                     >
                       <div className="flex items-center gap-3.5 min-w-0">
                         {/* Certificate Thumbnail Preview Button */}
                         {cert.imageUrl && (
                           <button
                             onClick={() => setSelectedCert(cert)}
-                            className="relative w-14 h-10 rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-700 shrink-0 group/thumb cursor-pointer shadow-sm hover:ring-2 hover:ring-blue-500 transition-all"
+                            className={`relative w-14 h-10 rounded-lg overflow-hidden border shrink-0 group/thumb cursor-pointer shadow-sm hover:ring-2 transition-all ${
+                              cert.isSpecialization
+                                ? "border-amber-500/40 hover:ring-amber-500"
+                                : "border-zinc-200 dark:border-zinc-700 hover:ring-blue-500"
+                            }`}
                             title={locale === "fr" ? "Agrandir le certificat" : "Zoom certificate"}
                           >
                             <img
@@ -219,6 +229,12 @@ export default function CertificationsSection({
 
                         <div className="space-y-1 min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
+                            {cert.isSpecialization && (
+                              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/30 flex items-center gap-1">
+                                <Sparkles className="w-3 h-3 text-amber-500" />
+                                <span>{locale === "fr" ? "Spécialisation d'Élite" : "Specialization"}</span>
+                              </span>
+                            )}
                             <span
                               className={`text-[10px] font-mono font-semibold px-2 py-0.5 rounded ${
                                 isIBM
@@ -231,6 +247,11 @@ export default function CertificationsSection({
                               {cert.platform}
                             </span>
                             <span className="text-[11px] text-zinc-400 font-mono">{cert.date}</span>
+                            {cert.grade && (
+                              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">
+                                {cert.grade}
+                              </span>
+                            )}
                           </div>
 
                           <h5 className="text-xs sm:text-sm font-semibold text-zinc-900 dark:text-zinc-100 leading-snug truncate">
@@ -279,7 +300,9 @@ export default function CertificationsSection({
                     {locale === "fr" ? "Ingénierie Données & Modélisation" : "Data Engineering & Modeling"}
                   </h4>
                 </div>
-                <span className="text-xs font-mono text-zinc-500">4 vérifiées</span>
+                <span className="text-xs font-mono text-zinc-500">
+                  {softwareAndData.length} {locale === "fr" ? "vérifiées" : "verified"}
+                </span>
               </div>
 
               <div className="space-y-3">
@@ -317,6 +340,11 @@ export default function CertificationsSection({
                               {cert.platform}
                             </span>
                             <span className="text-[11px] text-zinc-400 font-mono">{cert.date}</span>
+                            {cert.grade && (
+                              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">
+                                {cert.grade}
+                              </span>
+                            )}
                           </div>
 
                           <h5 className="text-xs sm:text-sm font-semibold text-zinc-900 dark:text-zinc-100 leading-snug truncate">
@@ -372,17 +400,29 @@ export default function CertificationsSection({
             >
               {/* Modal Header */}
               <div className="flex items-start justify-between gap-4">
-                <div>
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
-                    {selectedCert.platform} · {selectedCert.date}
-                  </span>
-                  <h3 className="text-base sm:text-lg font-bold text-zinc-900 dark:text-zinc-100 mt-1">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                      {selectedCert.platform} · {selectedCert.date}
+                    </span>
+                    {selectedCert.grade && (
+                      <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                        {locale === "fr" ? "Score obtenu" : "Score"}: {selectedCert.grade}
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="text-base sm:text-lg font-bold text-zinc-900 dark:text-zinc-100">
                     {td(selectedCert.name, selectedCert.name_en)}
                   </h3>
+                  {(selectedCert.description || selectedCert.description_en) && (
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed pt-1">
+                      {td(selectedCert.description || "", selectedCert.description_en)}
+                    </p>
+                  )}
                 </div>
                 <button
                   onClick={() => setSelectedCert(null)}
-                  className="p-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors"
+                  className="p-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors shrink-0"
                   aria-label="Fermer"
                 >
                   <X className="w-4 h-4" />
