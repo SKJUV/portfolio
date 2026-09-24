@@ -54,7 +54,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
             <div className="space-y-3 pt-6 border-t border-zinc-200 dark:border-zinc-800/80">
               <div className="flex items-center gap-2">
                 <span className="font-mono text-xs text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
-                  // DESKTOP & SYSTEM UTILITIES
+                  {locale === "fr" ? "// LOGICIELS DESKTOP & SYSTÈMES" : "// DESKTOP & SYSTEM UTILITIES"}
                 </span>
               </div>
               <div className="space-y-2">

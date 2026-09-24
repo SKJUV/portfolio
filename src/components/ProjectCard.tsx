@@ -34,7 +34,7 @@ export default function ProjectCard({ project, index = "01" }: ProjectCardProps)
           {project.liveUrl && (
             <div className="flex items-center gap-1.5 font-mono text-[11px] text-zinc-600 dark:text-zinc-400">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              <span>LIVE_DEPLOYMENT</span>
+              <span>{project.liveUrl.includes("crates.io") ? "CRATES.IO_RELEASE" : "PUBLISHED"}</span>
             </div>
           )}
         </div>
@@ -90,7 +90,13 @@ export default function ProjectCard({ project, index = "01" }: ProjectCardProps)
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-zinc-950 dark:bg-white text-white dark:text-zinc-950 text-xs font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors"
               >
-                <span>{locale === "fr" ? "Visiter" : "Live Demo"}</span>
+                <span>
+                  {project.liveUrl.includes("crates.io")
+                    ? "crates.io ↗"
+                    : project.liveUrl.includes("doc")
+                    ? (locale === "fr" ? "Documentation" : "Documentation")
+                    : (locale === "fr" ? "Explorer" : "Explore")}
+                </span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
             )}
@@ -202,7 +208,7 @@ export default function ProjectCard({ project, index = "01" }: ProjectCardProps)
                 rel="noopener noreferrer"
                 className="text-xs font-mono flex items-center gap-1 text-zinc-900 dark:text-white hover:underline"
               >
-                <span>Live</span>
+                <span>{project.liveUrl.includes("doc") ? "Docs" : "Live"}</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
             )}

@@ -1,136 +1,177 @@
 [
   {
-    "id": "portfolio",
-    "title": "Portfolio Personnel & Sécurisé",
-    "title_en": "Personal & Secure Portfolio",
-    "subtitle": "Architecture Next.js 15, CMS admin & IA Gemini",
-    "subtitle_en": "Next.js 15 architecture, admin CMS & Gemini AI",
-    "description": "Plateforme web full-stack avec Next.js 15 App Router, CMS d'administration sécurisé, assistant IA Google Gemini et stockage Supabase durci.",
-    "description_en": "Full-stack web platform built with Next.js 15 App Router, secured admin CMS, Google Gemini AI assistant, and hardened Supabase storage.",
-    "badge": "Projet Phare · Full-Stack & IA",
-    "badge_en": "Flagship · Full-Stack & AI",
+    "id": "skipper-360",
+    "title": "Skipper 360",
+    "title_en": "Skipper 360",
+    "subtitle": "Daemon de sécurité Linux en Rust & injection sécurisée PTY",
+    "subtitle_en": "Linux Security Daemon in Rust & PTY Injection",
+    "description": "Gardien d'arrière-plan intelligent et sécurisé écrit en Rust pour l'interception et l'injection automatique d'identifiants dans les pseudo-terminaux (PTY) Linux. Publié sur crates.io avec pipeline CI/CD automatisé.",
+    "description_en": "Smart and secure background daemon written in Rust for intercepting and automatically injecting credentials into Linux pseudo-terminals (PTYs). Published on crates.io with automated CI/CD pipeline.",
+    "badge": "Projet Phare · Rust & Sécurité Système",
+    "badge_en": "Flagship · Rust & Systems Security",
     "badgeType": "featured",
     "layout": "featured",
     "featured": true,
     "stack": [
-      "Next.js 15",
-      "TypeScript",
-      "Tailwind CSS",
-      "Supabase",
-      "Google Gemini"
+      "Rust 1.75+",
+      "Linux PTY",
+      "System Daemon",
+      "crates.io",
+      "Memory Safety"
     ],
     "securityPoints": [
-      "Authentification HMAC-SHA256 & Edge Middleware",
-      "Supabase RLS & politique CORS stricte"
+      "Gestion mémoire sécurisée sans fuite (Rust Zero-Cost abstractions)",
+      "Protection contre l'exposition d'identifiants en clair dans les logs shell",
+      "Isolation des descripteurs de fichiers et contrôle des accès PTY"
     ],
     "securityPoints_en": [
-      "HMAC-SHA256 Auth & Edge Middleware",
-      "Supabase RLS & Strict CORS policy"
+      "Memory-safe execution without leaks (Rust Zero-Cost abstractions)",
+      "Protection against plaintext credential exposure in shell logs",
+      "File descriptor isolation and PTY access control"
     ],
-    "githubUrl": "https://github.com/SKJUV/portfolio",
-    "liveUrl": "https://sineng-juvenal.me"
+    "githubUrl": "https://github.com/SKJUV/skipper-360",
+    "liveUrl": "https://crates.io/crates/skipper-360"
   },
   {
-    "id": "educonverse",
-    "title": "EduConverse",
-    "subtitle": "Plateforme éducative multilingue & IA",
-    "subtitle_en": "Multilingual AI educational platform",
-    "description": "Plateforme e-learning multilingue primée à la Digital Innovation Week. Support des langues nationales, gestion des rôles et tuteur Google Genkit.",
-    "description_en": "Award-winning multilingual e-learning platform at Digital Innovation Week. National language support, role control, and Google Genkit tutor.",
-    "badge": "EdTech & IA · DIW",
-    "badge_en": "EdTech & AI · DIW",
-    "badgeType": "education",
+    "id": "api-quick",
+    "title": "api-quick",
+    "title_en": "api-quick",
+    "subtitle": "Moteur HTTP haute performance, TUI & Workbench d'automatisation",
+    "subtitle_en": "High-Performance HTTP Engine, TUI & Automation Workbench",
+    "description": "Outil CLI et TUI polyglotte avec démarrage à froid sous les 10ms. Découverte automatique d'endpoints par analyse statique de code (AST parsing Express, NestJS, FastAPI, Go, etc.) et exécution de workflows E2E.",
+    "description_en": "Polyglot CLI and TUI HTTP engine with sub-10ms cold start. Features automatic static endpoint sniffing via AST parsing (Express, NestJS, FastAPI, Go) and automated E2E workflow runner.",
+    "badge": "Outil Développeur & CLI · NPM",
+    "badge_en": "Developer Tool & CLI · NPM",
+    "badgeType": "tools",
     "layout": "grid",
     "stack": [
-      "Next.js",
       "TypeScript",
-      "Firebase Auth",
-      "Google Genkit AI"
+      "Node.js",
+      "AST Parsing",
+      "TUI (Terminal UI)",
+      "OpenAPI 3.0",
+      "NPM Package"
     ],
     "securityPoints": [
-      "RBAC strict (admin/enseignant/apprenant)",
-      "Server Actions avec validation Zod"
+      "Génération automatique de specs OpenAPI 3.0 et cartographie de surface d'attaque",
+      "Exécution sécurisée de requêtes sans fuite de secrets ou de jetons d'authentification"
     ],
     "securityPoints_en": [
-      "Strict RBAC (admin/teacher/student)",
-      "Zod Server Actions validation"
+      "Automated OpenAPI 3.0 spec generation and attack surface mapping",
+      "Secure request execution preventing secret or auth token leakage"
     ],
-    "githubUrl": "https://github.com/SKJUV/EduConverse"
+    "githubUrl": "https://github.com/SKJUV/api-quick",
+    "liveUrl": "https://doc-quick-cli.sineng-juvenal.me"
   },
   {
-    "id": "eduafrique",
-    "title": "EduAfrique",
-    "subtitle": "Formation panafricaine avec tuteur IA",
-    "subtitle_en": "Pan-African training with AI tutor",
-    "description": "Solution d'apprentissage en ligne adaptée au contexte africain avec tuteur intelligent, évaluations dynamiques et catalogue ciblé.",
-    "description_en": "Online learning platform tailored for the African context with intelligent tutoring, dynamic evaluations, and curated tracks.",
-    "badge": "E-Learning Panafricain",
-    "badge_en": "Pan-African E-Learning",
-    "badgeType": "education",
+    "id": "localmind",
+    "title": "LocalMind",
+    "title_en": "LocalMind",
+    "subtitle": "Agent IA local avec protocole MCP (Model Context Protocol)",
+    "subtitle_en": "Local AI Agent with Model Context Protocol (MCP)",
+    "description": "Assistant de développement et d'analyse de code exécuté 100% en local via LMStudio et le protocole standardisé MCP. Permet la manipulation autonome et sécurisée de fichiers sans fuite de code vers le cloud.",
+    "description_en": "Development assistant and code analyzer running 100% locally via LMStudio and the standardized Model Context Protocol (MCP). Enables autonomous, secure file manipulation with zero cloud data exposure.",
+    "badge": "IA Locale & Protocole MCP · Python",
+    "badge_en": "Local AI & MCP Protocol · Python",
+    "badgeType": "ai",
     "layout": "grid",
     "stack": [
-      "Next.js 15",
-      "TypeScript",
-      "Firebase",
-      "Google Genkit AI"
+      "Python 3.8+",
+      "Model Context Protocol (MCP)",
+      "LMStudio",
+      "Local LLMs",
+      "AST Tooling"
     ],
     "securityPoints": [
-      "Sessions sécurisées & validation stricte des prompts",
-      "Protection contre les dépassements d'injection"
+      "Confidentialité absolue du code source (Zero-Cloud Data Leakage)",
+      "Contrôle strict des permissions d'accès au système de fichiers local"
     ],
     "securityPoints_en": [
-      "Hardened sessions & strict prompt validation",
-      "Protection against injection overflows"
+      "Absolute source code confidentiality (Zero-Cloud Data Leakage)",
+      "Strict filesystem access permission gating"
     ],
-    "githubUrl": "https://github.com/SKJUV/EduAfrique"
+    "githubUrl": "https://github.com/SKJUV/LocalMind"
+  },
+  {
+    "id": "unlocked",
+    "title": "Unlocked App",
+    "title_en": "Unlocked App",
+    "subtitle": "Authentification Android biométrique & capteurs inertiels",
+    "subtitle_en": "Android Biometric & Inertial Sensor Authentication",
+    "description": "Application native Android explorant des mécanismes de déverrouillage sécurisé combinant données biométriques et analyse de motifs inertiels via l'accéléromètre matériel.",
+    "description_en": "Native Android application exploring secure unlocking mechanisms combining biometric data and inertial gesture patterns via hardware accelerometer.",
+    "badge": "Sécurité Mobile & Capteurs · Android",
+    "badge_en": "Mobile Security & Sensors · Android",
+    "badgeType": "mobile",
+    "layout": "grid",
+    "stack": [
+      "React Native",
+      "Android SDK",
+      "Biometrics API",
+      "Hardware Accelerometer",
+      "AsyncStorage"
+    ],
+    "securityPoints": [
+      "Authentification biométrique matérielle (Android Keystore)",
+      "Signature inertielle pour la prévention des attaques par rejeu physique"
+    ],
+    "securityPoints_en": [
+      "Hardware biometric authentication (Android Keystore)",
+      "Inertial signature preventing physical replay attacks"
+    ],
+    "githubUrl": "https://github.com/SKJUV/unlocked"
   },
   {
     "id": "tp1ct203",
     "title": "TP203 — Emplois du Temps",
-    "subtitle": "Application desktop .NET 9 & Avalonia UI",
-    "subtitle_en": ".NET 9 & Avalonia UI desktop application",
-    "description": "Application desktop professionnelle pour la planification universitaire des salles, cours et enseignants avec backend REST.",
-    "description_en": "Professional desktop application for university room and course scheduling with REST backend.",
+    "title_en": "TP203 — Timetable Planner",
+    "subtitle": "Application desktop .NET 9 & Avalonia UI multiplateforme",
+    "subtitle_en": "Cross-platform .NET 9 & Avalonia UI desktop application",
+    "description": "Logiciel desktop multiplateforme de planification universitaire, gestion des salles, cours et contraintes horaires avec architecture MVVM rigoureuse.",
+    "description_en": "Cross-platform desktop software for university scheduling, room management, and timetable optimization with strict MVVM architecture.",
     "badge": "Desktop · .NET 9 MVVM",
     "badge_en": "Desktop · .NET 9 MVVM",
-    "badgeType": "university",
+    "badgeType": "desktop",
     "layout": "compact",
     "stack": [
       "C#",
       ".NET 9",
       "Avalonia UI",
-      "MVVM",
+      "MVVM Pattern",
       "REST API"
     ],
     "securityPoints": [
-      "RBAC 4 rôles et flux API chiffrés"
+      "Contrôle d'accès basé sur les rôles (RBAC 4 rôles) et validation des flux"
     ],
     "securityPoints_en": [
-      "4-role RBAC and encrypted API streams"
+      "Role-based access control (4-role RBAC) and stream validation"
     ],
     "githubUrl": "https://github.com/SKJUV/tp1ct203"
   },
   {
     "id": "hrms",
-    "title": "HRMS — Gestion RH",
-    "subtitle": "Gestion du personnel Java & PostgreSQL",
-    "subtitle_en": "Java & PostgreSQL personnel management",
-    "description": "Système d'ingénierie RH pour le suivi des effectifs, contrats et départements avec persistance relationnelle sécurisée.",
-    "description_en": "HR management system for personnel, contract, and department tracking with secure relational persistence.",
-    "badge": "Entreprise · Java & SQL",
-    "badge_en": "Enterprise · Java & SQL",
-    "badgeType": "university",
+    "title": "HRMS — Architecture Entreprise",
+    "title_en": "HRMS — Enterprise Architecture",
+    "subtitle": "Modélisation de domaine et persistance relationnelle Java",
+    "subtitle_en": "Java Domain Modeling & Relational Persistence",
+    "description": "Système d'ingénierie logicielle d'entreprise avec spécification formelle des exigences, diagrammes ER relationnels complets et persistance JDBC sécurisée.",
+    "description_en": "Enterprise software engineering system with formal requirement specifications, comprehensive ER relational modeling, and secured JDBC persistence.",
+    "badge": "Architecture & Java",
+    "badge_en": "Architecture & Java",
+    "badgeType": "enterprise",
     "layout": "compact",
     "stack": [
       "Java",
       "PostgreSQL",
-      "JDBC"
+      "JDBC",
+      "Domain Modeling",
+      "ER Diagrams"
     ],
     "securityPoints": [
-      "Requêtes préparées anti-injections SQL"
+      "Requêtes préparées anti-injections SQL et intégrité relationnelle stricte"
     ],
     "securityPoints_en": [
-      "Prepared statements anti-SQL injection"
+      "Prepared statements preventing SQL injections and strict relational integrity"
     ],
     "githubUrl": "https://github.com/SKJUV/HRMS"
   }
