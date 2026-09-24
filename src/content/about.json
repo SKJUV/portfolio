@@ -1,7 +1,7 @@
 {
   "bio": {
-    "fr": "Développeur Backend de la plateforme Papyrus (https://papyrus.tech) et étudiant en Informatique à l'Université de Yaoundé 1. Passionné par l'architecture backend hautement disponible et la cybersécurité, je conçois des APIs résilientes, des pipelines transactionnels robustes et des systèmes sécurisés par défaut, alliant rigueur d'ingénierie logicielle et culture Zero-Trust.",
-    "en": "Backend Developer of the Papyrus platform (https://papyrus.tech) and Computer Science student at University of Yaounde 1. Passionate about highly available backend architectures and cybersecurity, I design resilient APIs, robust transactional pipelines, and secure-by-default systems, combining software engineering rigor and a Zero-Trust mindset."
+    "fr": "Étudiant en Informatique à l'Université de Yaoundé 1 et développeur axé sur la cybersécurité. Je conçois des systèmes résilients, performants et sécurisés par défaut, alliant rigueur d'ingénierie logicielle et culture Zero-Trust.",
+    "en": "Computer Science student at University of Yaounde 1 and security-focused software engineer. I build resilient, high-performance systems secured by design, combining engineering rigor and a Zero-Trust mindset."
   },
   "pillars": [
     {
@@ -12,24 +12,23 @@
       "summary_en": "OWASP Top 10 audits, penetration testing, applied cryptography, and CTF challenges."
     },
     {
-      "icon": "Server",
-      "title": "Architecture Backend & APIs",
-      "title_en": "Backend & API Architecture",
-      "summary": "APIs RESTful de production chez Papyrus, logique transactionnelle, intégrité des données et microservices.",
-      "summary_en": "Production RESTful APIs at Papyrus, transactional workflows, data integrity, and microservices."
+      "icon": "Code2",
+      "title": "Ingénierie Full-Stack",
+      "title_en": "Full-Stack Engineering",
+      "summary": "Next.js 15, TypeScript strict, architectures API résilientes et interfaces modernes.",
+      "summary_en": "Next.js 15, strict TypeScript, resilient API architectures, and modern user experiences."
     },
     {
       "icon": "Terminal",
       "title": "Systèmes & Cloud",
       "title_en": "Systems & Cloud",
-      "summary": "Environnements Linux, conteneurs Docker, modélisation SQL et architectures résilientes.",
-      "summary_en": "Linux environments, Docker containers, SQL data modeling, and resilient architectures."
+      "summary": "Environnements Linux, conteneurs Docker, modélisation SQL et architectures cloud.",
+      "summary_en": "Linux environments, Docker containers, SQL data modeling, and cloud architecture."
     }
   ],
   "highlights": [
-    { "label": "Rôle Actuel", "label_en": "Current Role", "value": "Backend Dev @ Papyrus" },
-    { "label": "Plateforme", "label_en": "Platform", "value": "papyrus.tech" },
     { "label": "Université", "label_en": "University", "value": "Yaoundé 1" },
-    { "label": "Posture", "label_en": "Posture", "value": "Zero Trust" }
+    { "label": "Posture", "label_en": "Posture", "value": "Zero Trust" },
+    { "label": "Localisation", "label_en": "Location", "value": "Yaoundé, CM" }
   ]
 }
